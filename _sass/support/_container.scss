@@ -1,0 +1,13 @@
+@include media-breakpoint-up(sm) {
+  .container-fluid.spaced {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container-fluid.spaced {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+}

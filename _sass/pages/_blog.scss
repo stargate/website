@@ -1,0 +1,141 @@
+.hero-blog {
+  background-color: #222b49;
+  background-image: url("/assets/images/hero-blog.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.hero-blog__title {
+  font-weight: bold;
+  font-size: 2.25rem;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.blog-posts {
+  padding: 80px 0;
+}
+
+.post-item {
+  padding-bottom: 40px;
+  padding-top: 40px;
+  border-bottom: 2px solid #c8cbd3;
+
+  a,
+  .link {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555dc0;
+  }
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+}
+
+.post-item__title {
+  margin-bottom: 0.875rem;
+}
+
+.post-item__title,
+.post-item__title a {
+  font-weight: bold;
+  font-size: 2.25rem;
+  line-height: 1.3;
+  color: #222b49;
+  margin-top: 0;
+  margin-bottom: 0.875rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.post-item__info {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #6a7086;
+  margin-bottom: 1.875rem;
+}
+
+.post-item__content {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #484d60;
+  margin-bottom: 1.5rem;
+}
+
+.post-item__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.post-item__share-buttons {
+  display: flex;
+
+  .share-button {
+    font-size: 1.25rem;
+  }
+}
+
+.pagination {
+  margin-top: 80px;
+  margin-bottom: 0;
+
+  .page-item {
+    .page-link {
+      background-color: transparent !important;
+      border: none;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-align: center;
+      color: #999dad;
+
+      svg {
+        width: 0.875em;
+        height: 1.5em;
+      }
+
+      &:hover {
+        color: #6A7086;
+      }
+
+      &:focus {
+        z-index: 2;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    &.active {
+      .page-link {
+        color: #555dc0;
+      }
+    }
+  }
+}
+
+.blog-tags {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #222b49;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.tags-list {
+  .tag-link {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555dc0;
+    margin-top: 0.875rem;
+  }
+}
