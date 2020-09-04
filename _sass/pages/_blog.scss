@@ -1,7 +1,7 @@
 .hero-blog {
   background-color: #222b49;
   background-image: url("/assets/images/hero-blog.png");
-  background-position: right bottom;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 120px;
@@ -137,5 +137,11 @@
     line-height: 1.5;
     color: #555dc0;
     margin-top: 0.875rem;
+  }
+}
+
+.post-item__tags {
+  @include media-breakpoint-down(md) {
+    margin-bottom: 1rem;
   }
 }

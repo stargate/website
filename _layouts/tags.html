@@ -4,7 +4,6 @@ autopages:
   permalink: /tags/:tag
 pagination:
   enabled: true
-  collection: tags
 ---
 <main class="template-blog">
 
@@ -33,7 +32,9 @@ pagination:
                 <span>{{ post.date | date: "%b %-d, %Y" }}</span>
               </div>
 
-              <p class="post-item__content">{{ post.excerpt }}</p>
+              <p class="post-item__content">
+                {{ post.synopsis }}
+              </p>
 
               <div class="post-item__footer">
                 <div class="post-item__tags">

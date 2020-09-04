@@ -2,8 +2,7 @@
 layout: base
 title: Blog
 pagination:
-  enabled: true
-  tags: all
+enabled: true
 ---
 
 <main class="template-blog">
@@ -35,11 +34,7 @@ pagination:
               </div>
 
               <p class="post-item__content">
-                {% if post.synopsis != blank %}
                 {{ post.synopsis }}
-                {% else %}
-                {{ post.excerpt }}
-                {% endif %}
               </p>
 
               <div class="post-item__footer">

@@ -15,10 +15,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-postcss
   - jekyll-lazy-load-image
-
-# Gems
-gems:
   - jekyll-paginate-v2
+
+# Purgecss
+# css_dir: "/assets/css"
 
 # Lazyloader
 lazy_load_image:
@@ -28,6 +28,7 @@ lazy_load_image:
 
 # jekyll-seo-tag configuration
 author: ""
+baseurl: ""
 url: ""
 title: ""
 description: ""
@@ -78,7 +79,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - vendor
   - yarn.lock
+  - package.json
   - package-lock.json
   - README.md
   - postcss.config.js

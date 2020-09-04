@@ -7,7 +7,6 @@
 node_modules/
 .jekyll-cache/
 _site/
-_posts/
 
 # Compiled Java class files
 *.class
