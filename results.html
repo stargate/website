@@ -4,27 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Search Results</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/website/assets/css/styles.css">
   <link type="application/atom+xml" rel="alternate" href="https://stargate.github.io/website/feed.xml" title="Stargate" />
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Home | Stargate</title>
+<title>Search Results | Stargate</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Search Results" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Stargate site" />
 <meta property="og:description" content="Stargate site" />
-<link rel="canonical" href="https://stargate.github.io/website/" />
-<meta property="og:url" content="https://stargate.github.io/website/" />
+<link rel="canonical" href="https://stargate.github.io/website/results.html" />
+<meta property="og:url" content="https://stargate.github.io/website/results.html" />
 <meta property="og:site_name" content="Stargate" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Search Results" />
 <meta name="twitter:site" content="@stargateio" />
 <script type="application/ld+json">
-{"@type":"WebSite","headline":"Home","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.github.io/website/assets/images/astranaut.png"}},"url":"https://stargate.github.io/website/","name":"Stargate","description":"Stargate site","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Search Results","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.github.io/website/assets/images/astranaut.png"}},"url":"https://stargate.github.io/website/results.html","description":"Stargate site","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -40,7 +40,7 @@
   
 </head>
 
-<body class="">
+<body class="dark-navigation">
   <nav class="navbar fixed-top navbar-expand-lg" id="stargate-main-navigation">
   <div class="container-fluid spaced">
     <a class="navbar-brand" href="/website/">
@@ -150,94 +150,94 @@
   </div>
 </nav>
 
-  <main class="template-index">
-  <div class="hero">
-    <div class="container">
-      <div class="row">
-        <div class="offset-md-1 col-md-6 d-flex flex-column align-items-start justify-content-center">
-          <h1 class="hero-title">Open Source API Framework for Data</h1>
-          <a href="/website/" class="btn btn-primary hero-btn">Get Started</a>
+  <main class="single-page spaced">
+  <div class="container">
+    
+
+    <div class="row">
+      <div class="offset-md-2 col-md-8">
+        <div class="single-page__content">
+          <div class="search-results" id="stargate-search-results">
+  <div>
+    <Search-Results app-id="" secret=""
+      app-index="" inline-template>
+      <div class="container-fluid">
+        <div class="row" v-if="!query || nbHits === 0">
+          <div class="col-md-12">
+            <form class="search-form mb-4" role="search" action="/website/results" method="get">
+              <input type="search" name="q" class="form-control" placeholder="Search">
+              <button type="submit" class="btn btn-search">
+                <span><svg width="1em" height="1em" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M11 6.5C11 8.98528 8.98528 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5ZM10.3346 11.749C9.25967 12.5356 7.93407 13 6.5 13C2.91015 13 0 10.0899 0 6.5C0 2.91015 2.91015 0 6.5 0C10.0899 0 13 2.91015 13 6.5C13 7.93414 12.5355 9.25979 11.7488 10.3348L16.6874 15.2734C17.0779 15.6639 17.0779 16.2971 16.6874 16.6876C16.2969 17.0781 15.6637 17.0781 15.2732 16.6876L10.3346 11.749Z"
+    fill="currentColor" />
+</svg></span>
+                <span class="sr-only">Submit</span>
+              </button>
+            </form>
+          </div>
         </div>
-        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-          <img class="img-fluid hero-image lazyload" data-src="/website/assets/images/astranaut.png" alt="Stargate astronaut" width="448" height="760">
-  
-          <div class="github-stats" id="github-stats" data-repository="reduxjs/redux">
-            <div class="git-stat git-watchers">
-              <div class="git-stat__info">
-                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M1.679 5.932C2.091 5.311 2.921 4.182 4.045 3.215C5.175 2.242 6.527 1.5 8 1.5C9.473 1.5 10.824 2.242 11.955 3.215C13.079 4.182 13.909 5.311 14.321 5.932C14.3349 5.95195 14.3423 5.97569 14.3423 6C14.3423 6.02431 14.3349 6.04805 14.321 6.068C13.909 6.689 13.079 7.818 11.955 8.785C10.825 9.758 9.473 10.5 8 10.5C6.527 10.5 5.176 9.758 4.045 8.785C2.92 7.818 2.09 6.69 1.679 6.068C1.66511 6.04805 1.65766 6.02431 1.65766 6C1.65766 5.97569 1.66511 5.95195 1.679 5.932ZM8 0C6.019 0 4.33 0.992 3.067 2.078C1.797 3.169 0.880001 4.423 0.430001 5.1C0.252302 5.36615 0.157463 5.67898 0.157463 5.999C0.157463 6.31902 0.252302 6.63185 0.430001 6.898C0.880001 7.576 1.797 8.83 3.067 9.922C4.329 11.008 6.019 12 8 12C9.981 12 11.67 11.008 12.933 9.922C14.203 8.831 15.12 7.577 15.57 6.899C15.7477 6.63285 15.8425 6.32002 15.8425 6C15.8425 5.67998 15.7477 5.36715 15.57 5.101C15.12 4.423 14.203 3.169 12.933 2.078C11.671 0.992 9.981 0 8 0ZM8 8C8.53043 8 9.03914 7.78929 9.41421 7.41421C9.78929 7.03914 10 6.53043 10 6C10 5.46957 9.78929 4.96086 9.41421 4.58579C9.03914 4.21071 8.53043 4 8 4C7.46957 4 6.96086 4.21071 6.58579 4.58579C6.21071 4.96086 6 5.46957 6 6C6 6.53043 6.21071 7.03914 6.58579 7.41421C6.96086 7.78929 7.46957 8 8 8Z"
-    fill="currentColor" />
-</svg>
-                <span>&nbsp;Watch</span>
+
+        <div class="row" v-if="!loading && query">
+          <div class="col-md-12">
+            <h2 class="results-message">${ nbHits } results for ${ query }</h2>
+          </div>
+        </div>
+
+        <div class="row" v-if="!loading && nbHits > 0">
+          <div class="col-md-12">
+            <div class="posts">
+              <div class="post-item" v-for="hit in hits" :key="hit.objectID">
+                <span class="post-item__caption">${ hit.type === 'post' ? 'blog' : hit.type }</span>
+                <h2 class="post-item__title"><a :href="hit.url">${ hit.title }</a>
+                </h2>
+                <p class="post-item__content">
+                  ${ hit.synopsis || hit.excerpt_text }
+                </p>
               </div>
-  
-              <span id="git-watchers">3687</span>
-            </div>
-            <div class="git-stat git-stars">
-              <div class="git-stat__info">
-                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M8 0.25C8.14001 0.24991 8.27725 0.289014 8.39619 0.362887C8.51513 0.43676 8.61102 0.542452 8.673 0.668L10.555 4.483L14.765 5.095C14.9035 5.11511 15.0335 5.17355 15.1405 5.26372C15.2475 5.35388 15.3271 5.47218 15.3704 5.60523C15.4137 5.73829 15.4189 5.8808 15.3854 6.01665C15.3519 6.1525 15.2811 6.27628 15.181 6.374L12.135 9.344L12.854 13.536C12.8777 13.6739 12.8624 13.8157 12.8097 13.9454C12.757 14.0751 12.6691 14.1874 12.5559 14.2697C12.4427 14.352 12.3087 14.401 12.1691 14.4111C12.0295 14.4212 11.8899 14.3921 11.766 14.327L8 12.347L4.234 14.327C4.11018 14.392 3.97066 14.4211 3.83119 14.411C3.69171 14.4009 3.55784 14.352 3.44468 14.2699C3.33152 14.1877 3.24359 14.0755 3.19081 13.946C3.13803 13.8165 3.12251 13.6749 3.146 13.537L3.866 9.343L0.817997 6.374C0.717563 6.27632 0.646496 6.15247 0.612848 6.01647C0.579201 5.88047 0.584318 5.73777 0.627621 5.60453C0.670924 5.47129 0.75068 5.35284 0.857852 5.26261C0.965025 5.17238 1.09533 5.11397 1.234 5.094L5.444 4.483L7.327 0.668C7.38898 0.542452 7.48486 0.43676 7.6038 0.362887C7.72274 0.289014 7.85998 0.24991 8 0.25ZM8 2.695L6.615 5.5C6.56121 5.6089 6.48178 5.70311 6.38354 5.77453C6.2853 5.84595 6.17118 5.89244 6.051 5.91L2.954 6.36L5.194 8.544C5.28115 8.62886 5.34635 8.73365 5.38398 8.84933C5.42161 8.96501 5.43054 9.0881 5.41 9.208L4.882 12.292L7.651 10.836C7.75863 10.7794 7.8784 10.7499 8 10.7499C8.12159 10.7499 8.24137 10.7794 8.349 10.836L11.119 12.292L10.589 9.208C10.5685 9.0881 10.5774 8.96501 10.615 8.84933C10.6526 8.73365 10.7178 8.62886 10.805 8.544L13.045 6.361L9.949 5.911C9.82881 5.89344 9.71469 5.84695 9.61645 5.77553C9.51821 5.70411 9.43878 5.6099 9.385 5.501L8 2.694V2.695Z"
-    fill="currentColor" />
-</svg>
-                <span>&nbsp;Star</span>
-              </div>
-  
-              <span id="git-stars">238</span>
-            </div>
-            <div class="git-stat git-forks">
-              <div class="git-stat__info">
-                <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M3 2.25005C3 2.44897 2.92099 2.63973 2.78033 2.78038C2.63968 2.92104 2.44892 3.00005 2.25 3.00005C2.05109 3.00005 1.86033 2.92104 1.71967 2.78038C1.57902 2.63973 1.5 2.44897 1.5 2.25005C1.5 2.05114 1.57902 1.86037 1.71967 1.71972C1.86033 1.57907 2.05109 1.50005 2.25 1.50005C2.44892 1.50005 2.63968 1.57907 2.78033 1.71972C2.92099 1.86037 3 2.05114 3 2.25005ZM3 4.37205C3.50042 4.19513 3.92217 3.847 4.19073 3.38919C4.45929 2.93138 4.55735 2.39337 4.4676 1.87025C4.37785 1.34713 4.10605 0.872581 3.70025 0.530474C3.29445 0.188367 2.78077 0.000732422 2.25 0.000732422C1.71924 0.000732422 1.20556 0.188367 0.79976 0.530474C0.393958 0.872581 0.122161 1.34713 0.0324079 1.87025C-0.0573456 2.39337 0.0407231 2.93138 0.309281 3.38919C0.577839 3.847 0.999594 4.19513 1.5 4.37205V5.25005C1.5 5.84679 1.73706 6.41909 2.15901 6.84104C2.58097 7.263 3.15327 7.50005 3.75 7.50005H5.25V9.62805C4.74932 9.80499 4.3273 10.1532 4.05855 10.6112C3.78981 11.0692 3.69164 11.6075 3.78139 12.1309C3.87115 12.6543 4.14306 13.1291 4.54905 13.4714C4.95504 13.8137 5.46897 14.0014 6 14.0014C6.53104 14.0014 7.04497 13.8137 7.45096 13.4714C7.85695 13.1291 8.12886 12.6543 8.21862 12.1309C8.30837 11.6075 8.2102 11.0692 7.94146 10.6112C7.67271 10.1532 7.25069 9.80499 6.75 9.62805V7.50005H8.25C8.84674 7.50005 9.41904 7.263 9.84099 6.84104C10.263 6.41909 10.5 5.84679 10.5 5.25005V4.37205C11.0004 4.19513 11.4222 3.847 11.6907 3.38919C11.9593 2.93138 12.0574 2.39337 11.9676 1.87025C11.8778 1.34713 11.6061 0.872581 11.2002 0.530474C10.7944 0.188367 10.2808 0.000732422 9.75 0.000732422C9.21924 0.000732422 8.70556 0.188367 8.29976 0.530474C7.89396 0.872581 7.62216 1.34713 7.53241 1.87025C7.44265 2.39337 7.54072 2.93138 7.80928 3.38919C8.07784 3.847 8.49959 4.19513 9 4.37205V5.25005C9 5.44897 8.92099 5.63973 8.78033 5.78038C8.63968 5.92104 8.44892 6.00005 8.25 6.00005H3.75C3.55109 6.00005 3.36033 5.92104 3.21967 5.78038C3.07902 5.63973 3 5.44897 3 5.25005V4.37205ZM6.75 11.7501C6.75 11.949 6.67099 12.1397 6.53033 12.2804C6.38968 12.421 6.19892 12.5001 6 12.5001C5.80109 12.5001 5.61033 12.421 5.46967 12.2804C5.32902 12.1397 5.25 11.949 5.25 11.7501C5.25 11.5511 5.32902 11.3604 5.46967 11.2197C5.61033 11.0791 5.80109 11.0001 6 11.0001C6.19892 11.0001 6.38968 11.0791 6.53033 11.2197C6.67099 11.3604 6.75 11.5511 6.75 11.7501ZM9.75 3.00005C9.94892 3.00005 10.1397 2.92104 10.2803 2.78038C10.421 2.63973 10.5 2.44897 10.5 2.25005C10.5 2.05114 10.421 1.86037 10.2803 1.71972C10.1397 1.57907 9.94892 1.50005 9.75 1.50005C9.55109 1.50005 9.36033 1.57907 9.21968 1.71972C9.07902 1.86037 9 2.05114 9 2.25005C9 2.44897 9.07902 2.63973 9.21968 2.78038C9.36033 2.92104 9.55109 3.00005 9.75 3.00005Z"
-    fill="currentColor" />
-</svg>
-                <span>&nbsp;Fork</span>
-              </div>
-  
-              <span id="git-forks">772</span>
             </div>
           </div>
         </div>
+
+        <div class="row" v-if="nbPages > 1">
+          <div class="col-md-12">
+            <nav>
+              <ul class="pagination justify-content-center align-items-center">
+                <li class="page-item previous" v-if="currentPage > 0">
+                  <span class="page-link" @click="changePage(currentPage - 1)">
+                    <svg width="1.3125em" height="2.25em" viewBox="0 0 21 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M19 2L3 18L19 34" stroke="currentColor" stroke-width="4" />
+</svg>
+                  </span>
+                </li>
+
+                <li v-for="(nbPage, key) in nbPages" :class="{'page-item': true, active: key === currentPage }"
+                  :key="key">
+                  <span class="page-link" @click="changePage(key)">${ nbPage }</span>
+                </li>
+
+                <li class="page-item last" v-if="(currentPage + 2) <= nbPages">
+                  <span class="page-link" @click="changePage(currentPage + 1)">
+                    <svg width="1.3125em" height="2.25em" viewBox="0 0 21 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 2L18 18L2 34" stroke="currentColor" stroke-width="4" />
+</svg>
+                  </span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </div>
-    </div>
+    </Search-Results>
   </div>
-  
-  <div class="catalog">
-    <div class="container-fluid spaced">
-      <div class="row justify-content-center">
-        <div class="col-md-5">
-          <h2 class="catalog-title">API Extensions Catalog</h2>
-          <p class="catalog-info">
-            Use the community-built API extensions or develop your own to make your data work for you.
-          </p>
-        </div>
-      </div>
-  
-      <div class="row catalog-items">
-        <div class="col-md-6 catalog-item__container">
-          <div class="catalog-item">
-            <div class="col-md-5 catalog-item__image-container">
-              <img class="catalog-item__image img-fluid lazyload" data-src="/website/assets/images/eye.png" alt="Eye" width="120" height="64">
-            </div>
-            <div class="col-md-7">
-              <p class="catalog-item__text">Use the native Cassandra Query Language to access your data</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 catalog-item__container">
-          <div class="catalog-item">
-            <div class="col-md-5 catalog-item__image-container">
-              <img class="catalog-item__image img-fluid lazyload" data-src="/website/assets/images/restapi.png" alt="{Rest API}" width="180" height="28">
-            </div>
-            <div class="col-md-7">
-              <p class="catalog-item__text">Turn your Cassandra database into a RESTful API for CRUD operations</p>
-            </div>
-          </div>
+</div>
+
+<script src="/website/assets/js/chunks.1caa69467093321b798f.js" async=""></script>
+<script src="/website/assets/js/search.1caa69467093321b798f.js" async=""></script>
         </div>
       </div>
     </div>
+
   </div>
 </main>
 
