@@ -4,9 +4,11 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 # Node artifact files
+vendor/
 node_modules/
 .jekyll-cache/
 _site/
+.bundle/
 
 # Compiled Java class files
 *.class

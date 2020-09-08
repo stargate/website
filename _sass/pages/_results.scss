@@ -1,0 +1,23 @@
+.results-message {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #484d60;
+  margin-bottom: 50px;
+}
+
+.search-results .search-form {
+  display: flex;
+
+  .form-control {
+    border-radius: 0;
+    border-right: 0;
+    box-shadow: none;
+  }
+
+  .btn {
+    border-radius: 0;
+    border: 1px solid #ced4da;
+    line-height: 1em;
+  }
+}

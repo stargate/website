@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg" id="stargate-main-navigation">
   <div class="container-fluid spaced">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="{{ '/' | relative_url }}">
       {% include logos/stargate.html %}
     </a>
 
@@ -18,10 +18,10 @@
       <div class="navbar-nav ml-auto">
         <div class="navbar-nav__items">
           {% for item in site.data.navigation %}
-          <a class="nav-item nav-link" href="{{item.link}}">{{ item.name }}</a>
+          <a class="nav-item nav-link" href="{{ item.link | relative_url }}">{{ item.name }}</a>
           {% endfor %}
 
-          <form class="search-form searchbar" role="search" id="hiddenSearchBox" action="" method="get">
+          <form class="search-form searchbar" role="search" id="hiddenSearchBox" action="{{ '/results' | relative_url}}" method="get">
             <div class="input-group">
               <input type="search" name="q" class="form-control" placeholder="Search">
               <div class="input-group-btn">
@@ -34,14 +34,14 @@
         </div>
 
         <div class="navbar-social-links">
-          <a href="https://twitter.com" target="_blank" rel="noopener" class="nav-item nav-link nav-link-logo">
+          <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank" rel="noopener noreferrer" class="nav-item nav-link nav-link-logo">
             {% include logos/twitter.html %}
           </a>
 
-          <a href="https://twitter.com" target="_blank" rel="noopener" class="nav-item nav-link nav-link-logo">
+          <a href="{{ site.discord }}" target="_blank" rel="noopener noreferrer" class="nav-item nav-link nav-link-logo">
             {% include logos/discord.html %}
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener" class="nav-item nav-link nav-link-logo">
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="nav-item nav-link nav-link-logo">
             {% include logos/github.html %}
           </a>
         </div>

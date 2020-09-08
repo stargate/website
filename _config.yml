@@ -16,6 +16,7 @@ plugins:
   - jekyll-postcss
   - jekyll-lazy-load-image
   - jekyll-paginate-v2
+  - jekyll-algolia
 
 # Purgecss
 # css_dir: "/assets/css"
@@ -28,14 +29,16 @@ lazy_load_image:
 
 # jekyll-seo-tag configuration
 author: ""
-baseurl: ""
-url: ""
-title: ""
-description: ""
+baseurl: "/website"
+url: "https://stargate.github.io"
+title: "Stargate"
+description: "Stargate site"
+discord: ""
+github_username: "stargate"
 twitter:
-  username: ""
-  card: ""
-logo: ""
+  username: "stargateio"
+  card: "large"
+logo: "/assets/images/astranaut.png"
 
 # Site Settings
 facebook_id: "321313032622303"
@@ -71,6 +74,12 @@ pagination:
   trail: 
     before: 2
     after: 2
+
+# Algolia Settings
+algolia:
+  key: "" # Algolia Public Key (Search key)
+  application_id: ""
+  index_name: ""
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

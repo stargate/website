@@ -1,6 +1,6 @@
 .hero-blog {
   background-color: #222b49;
-  background-image: url("/assets/images/hero-blog.png");
+  background-image: url($baseurl + "/assets/images/hero-blog.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,7 +37,19 @@
   }
 }
 
+.post-item__caption {
+  display: block;
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #555dc0;
+  margin-bottom: 10px;
+}
+
 .post-item__title {
+  margin-top: 0 !important;
   margin-bottom: 0.875rem;
 }
 
@@ -103,7 +115,7 @@
       }
 
       &:hover {
-        color: #6A7086;
+        color: #6a7086;
       }
 
       &:focus {

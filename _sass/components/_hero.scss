@@ -1,6 +1,6 @@
 .hero-page {
   background-color: #222b49;
-  background-image: url("/assets/images/hero-background-2.png");
+  background-image: url($baseurl + "/assets/images/hero-background-2.png");
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;

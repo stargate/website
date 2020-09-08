@@ -118,6 +118,10 @@
     padding-left: 2rem;
     box-shadow: inset 6px 0 0 0 #c9cef6;
   }
+
+  @include media-breakpoint-down(md) {
+    overflow-x: auto;
+  }
 }
 
 .tags {

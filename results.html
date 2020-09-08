@@ -1,0 +1,76 @@
+---
+layout: page
+title: Search Results
+hide_title: true
+---
+
+
+<div class="search-results" id="stargate-search-results">
+  <div>
+    <Search-Results app-id="{{site.algolia.application_id}}" secret="{{site.algolia.key}}"
+      app-index="{{site.algolia.index_name}}" inline-template>
+      <div class="container-fluid">
+        <div class="row" v-if="!query || nbHits === 0">
+          <div class="col-md-12">
+            <form class="search-form mb-4" role="search" action="{{ '/results' | relative_url }}" method="get">
+              <input type="search" name="q" class="form-control" placeholder="Search">
+              <button type="submit" class="btn btn-search">
+                <span>{% include icons/search.html %}</span>
+                <span class="sr-only">Submit</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row" v-if="!loading && query">
+          <div class="col-md-12">
+            <h2 class="results-message">${ nbHits } results for ${ query }</h2>
+          </div>
+        </div>
+
+        <div class="row" v-if="!loading && nbHits > 0">
+          <div class="col-md-12">
+            <div class="posts">
+              <div class="post-item" v-for="hit in hits" :key="hit.objectID">
+                <span class="post-item__caption">${ hit.type === 'post' ? 'blog' : hit.type }</span>
+                <h2 class="post-item__title"><a :href="hit.url">${ hit.title }</a>
+                </h2>
+                <p class="post-item__content">
+                  ${ hit.synopsis || hit.excerpt_text }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" v-if="nbPages > 1">
+          <div class="col-md-12">
+            <nav>
+              <ul class="pagination justify-content-center align-items-center">
+                <li class="page-item previous" v-if="currentPage > 0">
+                  <span class="page-link" @click="changePage(currentPage - 1)">
+                    {% include icons/previous.html %}
+                  </span>
+                </li>
+
+                <li v-for="(nbPage, key) in nbPages" :class="{'page-item': true, active: key === currentPage }"
+                  :key="key">
+                  <span class="page-link" @click="changePage(key)">${ nbPage }</span>
+                </li>
+
+                <li class="page-item last" v-if="(currentPage + 2) <= nbPages">
+                  <span class="page-link" @click="changePage(currentPage + 1)">
+                    {% include icons/next.html %}
+                  </span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </Search-Results>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/chunks.1caa69467093321b798f.js' | relative_url }}" async=""></script>
+<script src="{{ '/assets/js/search.1caa69467093321b798f.js' | relative_url }}" async=""></script>

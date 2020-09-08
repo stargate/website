@@ -1,6 +1,6 @@
 .template-index {
   background-color: #222B49;
-  background-image: url('/assets/images/hero-background.png');
+  background-image: url($baseurl + '/assets/images/hero-background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

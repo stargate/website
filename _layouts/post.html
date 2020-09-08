@@ -15,7 +15,7 @@ layout: base
 <section class="container-fluid spaced">
   <div class="row">
     <div class="col">
-      <a href="/blog" class="btn btn-link btn-link-back">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-link btn-link-back">
         <svg width="0.64em" height="1em" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 1L2 7L8 13" stroke="currentColor" stroke-width="2" />
         </svg>
@@ -36,7 +36,7 @@ layout: base
     <div class="row">
       <div class="offset-md-2 col-md-8">
         <div class="post-item__info">
-          <img data-src="{{ page.author_info.picture }}"
+          <img data-src="{{ page.author_info.picture | relative_url }}"
             alt="{{ page.author_info.name.first }} {{ page.author_info.name.last }}"
             class="post-item__info-author_image lazyload" width="32" height="32">
           <span>By <span class="link">{{ page.author_info.name.first }} {{ page.author_info.name.last }}</span></span>
@@ -59,7 +59,9 @@ layout: base
         <div class="tags">
           {% if page.tags %}
           {% for tag in page.tags %}
-          <a href="/tags/{{ tag | slugify }}" class="tag-link">{{ tag }}</a>
+            {% assign tag_slug = tag | slugify %}
+            {% assign tag_url = '/tags/' | append: tag_slug %}
+            <a href="{{ tag_url | relative_url }}" class="tag-link">{{ tag }}</a>
           {% endfor %}
           {% endif %}
         </div>
@@ -72,7 +74,8 @@ layout: base
           <h3 class="share-section__title">Share</h3>
 
           <div class="share-buttons">
-            {% include share-buttons.html %}
+            {% assign url = page.url | absolute_url %}
+            {% include share-buttons.html url=url %}
           </div>
         </div>
       </div>

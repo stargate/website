@@ -6,9 +6,9 @@ module.exports = {
     require("autoprefixer"),
     ...(jekyllEnv != "development"
       ? [
-        // require("@fullhuman/postcss-purgecss")({
-        //   content: ["!(_site|node_modules)/**/*.+(html|js|md)", "*.html"]
-        // }),
+        require("@fullhuman/postcss-purgecss")({
+          content: ["!(_site|node_modules)/**/*.+(html|js|md)", "*.html"]
+        }),
         require("cssnano")({ preset: "default" }),
       ]
       : [])

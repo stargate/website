@@ -1,0 +1,42 @@
+{% if paginator.total_pages > 1 %}
+<nav>
+  <ul class="pagination justify-content-center align-items-center">
+    {% if paginator.first_page and true == false %}
+    <li class="page-item first">
+      <a class="page-link" href="{{ paginator.first_page_path | prepend: site.baseurl | replace: '//', '/' }}">First</a>
+    </li>
+    {% endif %}
+
+    {% if paginator.previous_page %}
+    <li class="page-item previous">
+      <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+        {% include icons/previous.html %}
+      </a>
+    </li>
+    {% endif %}
+
+    {% if paginator.page_trail %}
+    {% for trail in paginator.page_trail %}
+    <li class="page-item{% if page.url == trail.path %} active{% endif %}">
+      <a class="page-link" href="{{ trail.path | prepend: site.baseurl | replace: '//', '/' }}"
+        title="{{trail.title}}">{{ trail.num }}</a>
+    </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if paginator.next_page %}
+    <li class="page-item next">
+      <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+        {% include icons/next.html %}
+      </a>
+    </li>
+    {% endif %}
+
+    {% if paginator.last_page and true == false %}
+    <li class="page-item last">
+      <a class="page-link" href="{{ paginator.last_page_path | prepend: site.baseurl | replace: '//', '/' }}">Last</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
