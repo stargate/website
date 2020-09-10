@@ -1,1 +1,1 @@
-Sitemap: https://stargate.io/website/sitemap.xml
+Sitemap: https://stargate.io/sitemap.xml
