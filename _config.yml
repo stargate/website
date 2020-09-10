@@ -29,10 +29,10 @@ lazy_load_image:
 
 # jekyll-seo-tag configuration
 author: ""
-baseurl: "/website"
+baseurl: ""
 url: "https://stargate.io"
 title: "Stargate"
-description: "Stargate site"
+description: "An open source API framework for data."
 discord: ""
 github_username: "stargate"
 twitter:
