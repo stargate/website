@@ -30,7 +30,7 @@ lazy_load_image:
 # jekyll-seo-tag configuration
 author: ""
 baseurl: "/website"
-url: "https://stargate.github.io"
+url: "https://stargate.io"
 title: "Stargate"
 description: "Stargate site"
 discord: ""
