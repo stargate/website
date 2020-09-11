@@ -39,17 +39,22 @@
   }
 }
 
+.btn-mail,
 .btn-discord {
   display: inline-flex;
   align-items: center;
   background: #7289da;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875em;
+  line-height: 1em;
   text-align: center;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #ffffff;
+
+  svg {
+    width: 2em;
+  }
 
   &:hover {
     color: #ffffff;
@@ -62,12 +67,16 @@
   align-items: center;
   background: #ffffff;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875em;
+  line-height: 1em;
   text-align: center;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #24292e;
+
+  svg {
+    width: 2em;
+  }
 
   &:hover {
     color: #24292e;

@@ -1,6 +1,6 @@
 .template-index {
-  background-color: #222B49;
-  background-image: url($baseurl + '/assets/images/hero-background.png');
+  background-color: #222b49;
+  background-image: url($baseurl + "/assets/images/hero-background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,6 +19,25 @@
   color: $white;
 }
 
+.hero-text {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+
+  .btn {
+    margin-right: 1rem;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
 .hero-image {
   @include media-breakpoint-down(md) {
     max-width: 50%;
@@ -29,6 +48,16 @@
 .hero-btn {
   margin-top: 1rem;
   padding: 0.75rem 2.25rem;
+  line-height: 1;
+
+  &.btn-github {
+    text-transform: none;
+    font-size: 1rem;
+    
+    svg {
+      width: 2em;
+    }
+  }
 }
 
 .catalog {
@@ -98,6 +127,10 @@
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .git-stat {
@@ -122,8 +155,8 @@
 .git-stat__info {
   display: flex;
   align-items: center;
-  background-color: #F6F6F6;
-  border-right: 1px solid #C8CBD3;
+  background-color: #f6f6f6;
+  border-right: 1px solid #c8cbd3;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   padding: 0.5rem;
