@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>5-minute quick start guide for Stargate :: Stargate documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../assets/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a href="https://stargate.io"><img src="../../../assets/img/logos/stargate-logo-horizontal.svg" style="height:40px" /></a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://stargate.io">Stargate</a>
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">API docs</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="">0.1</a>
+          </div>
+        </div> -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/stargate/docs/issues">File a bug</a>
+            <a class="navbar-item" href="https://groups.google.com/a/lists.stargate.io/g/stargate-users">Ask a question</a>
+            <a class="navbar-item" href="https://twitter.com/stargateio">Follow us on Twitter</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://github.com/stargate/">Stargate GitHub</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="stargate" data-version="0.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Stargate</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="quick_start.html">Quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate</span>
+    <span class="version">0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Stargate</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="quick_start.html" class="home-link is-current"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Stargate</a></li>
+    <li><a href="quick_start.html">Quick start</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/edit/HEAD/modules/quickstart/pages/quick_start.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">5-minute quick start guide for Stargate</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Stargate is a flexible framework for interacting with data stored in Apache Cassandra. Stargate clusters provide different data interfaces above an underlying Cassandra cluster, allowing you to separate your computation needs, represented by the Stargate cluster, from your storage needs, represented by the Cassandra cluster. Developers can focus on the Stargate data interfaces, and let Stargate manage and optimize the connection to the underlying storage.</p>
+</div>
+<div class="paragraph">
+<p>Stargate by default provides a CQL and REST interface to Cassandra data, with additional plugins available for GraphQL and document store interfaces.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a><a class="link" href="#_prerequisites">Prerequisites</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use Stargate you need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A local instance of Apache Cassandra</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(optional) <a href="https://github.com/riptano/ccm">ccm</a> if you need to install Cassandra locally on OS X</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Docker</p>
+</li>
+<li>
+<p>JDK 8 or later</p>
+</li>
+<li>
+<p>Git</p>
+</li>
+<li>
+<p><code>cURL</code> to run REST queries</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_installing_apache_cassandra_locally_using_docker"><a class="anchor" href="#_installing_apache_cassandra_locally_using_docker"></a><a class="link" href="#_installing_apache_cassandra_locally_using_docker">Installing Apache Cassandra locally using Docker</a></h3>
+<div class="paragraph">
+<p>Install a local Cassandra instance using Docker.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --name local-cassandra \
+--net=host \
+-e CASSANDRA_CLUSTER_NAME=stargate \
+-d cassandra:3.11.7</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Docker for Mac does not work when installing <code>local-cassandra</code> on OS X. Use ccm on OS X.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_apache_cassandra_locally_using_ccm"><a class="anchor" href="#_installing_apache_cassandra_locally_using_ccm"></a><a class="link" href="#_installing_apache_cassandra_locally_using_ccm">Installing Apache Cassandra locally using ccm</a></h3>
+<div class="paragraph">
+<p>Install a local Cassandra instance using <code>ccm</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ccm create -v 3.11.7 -b -n 1:0 -i 127.0.0 stargate &amp;&amp; ccm start</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starting_stargate"><a class="anchor" href="#_starting_stargate"></a><a class="link" href="#_starting_stargate">Starting Stargate</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are using Stargate on OS X, add an additional loopback interface:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sudo ifconfig lo0 alias 127.0.0.2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Start a local Stargate instance using Docker:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run -i -t stargate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default Stargate starts a CQL service on port 9042 and a REST interface on port 8082.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_stargate_rest_api"><a class="anchor" href="#_using_the_stargate_rest_api"></a><a class="link" href="#_using_the_stargate_rest_api">Using the Stargate REST API</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use <code>cURL</code> to access the REST interface. The REST API responds to requests at <code>{stargate host}:8082/v1</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L -X GET 'localhost:8082/v2/schemas/keyspaces' \
+--header 'accept: application/json' \
+--header 'content-type: application/json'</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_keyspace_using_the_rest_api"><a class="anchor" href="#_creating_a_keyspace_using_the_rest_api"></a><a class="link" href="#_creating_a_keyspace_using_the_rest_api">Creating a keyspace using the REST API</a></h3>
+<div class="paragraph">
+<p>Send a <code>POST</code> request to <code>/v2/schemas/keyspaces</code>, setting <code>name</code> to the name of the keyspace, and <code>replicas</code> to the Cassandra replication factor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request POST \
+  --url 'localhost:8082/v2/schemas/keyspaces' \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --data '{"name": "betterbotz", "replicas": "2"}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_table_using_the_rest_api"><a class="anchor" href="#_creating_a_table_using_the_rest_api"></a><a class="link" href="#_creating_a_table_using_the_rest_api">Creating a table using the REST API</a></h3>
+<div class="paragraph">
+<p>Send a <code>POST</code> request to <code>/v2/schemas/keyspaces/{keyspace_name}/tables</code> to create a table. Set the table name and column definitions in the JSON body.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request POST \
+  --url 'localhost:8082/v2/schemas/keyspaces/betterbotz/tables' \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --data '{"name":"products","ifNotExists":true,"columnDefinitions": [ {"name":"id","typeDefinition":"uuid","static":false}, {"name":"name","typeDefinition":"text","static":false}, {"name":"description","typeDefinition":"text","static":false}, {"name":"price","typeDefinition":"decimal","static":false}, {"name":"created","typeDefinition":"timestamp","static":false}],"primaryKey": {"partitionKey":["id"]},"tableOptions":{"defaultTimeToLive":0}}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_and_modifying_data_using_the_rest_api"><a class="anchor" href="#_adding_and_modifying_data_using_the_rest_api"></a><a class="link" href="#_adding_and_modifying_data_using_the_rest_api">Adding and modifying data using the REST API</a></h3>
+<div class="paragraph">
+<p>Send a <code>POST</code> request to <code>/v2/schemas/keyspaces/{keyspace_name}/tables/{table_name}/rows</code> to add data to the table. Set the column data as name/value pairs in the JSON body.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request POST \
+  --url 'localhost:8082/v2/schemas/keyspaces/betterbotz/tables/products/rows'
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --data '{"columns":[{"name":"id","value":"e9b6c02d-0604-4bab-a3ea-6a7984654631"},{"name":"name","value":"Heavy Lift Arms"},{"name":"description","value":"Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set."},{"name":"price","value":"4199.99"},{"name":"created","value":"2019-01-10 09:48:31.020+0040"}]}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Send a <code>GET</code> request to <code>/v2/schemas/keyspaces/{keyspace_name}/tables/{table_name}/rows/{primary_key}</code> to retrieve a particular row from the table.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request GET \
+  --url 'localhost:8082/v2/schemas/keyspaces/betterbotz/tables/products/rows/e9b6c02d-0604-4bab-a3ea-6a7984654631' \
+  --header 'accept: application/json'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To retrieve all the rows in a table, send a <code>GET</code> request to <code>/v2/schemas/keyspaces/{keyspace_name}/tables/{table_name}/rows</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request GET \
+  --url 'localhost:8082/v2/schemas/keyspaces/betterbotz/tables/products/rows' \
+  --header 'accept: application/json'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To update a row, send a <code>POST request to `/v2/schemas/keyspaces/{keyspace_name}/tables/{table_name}/rows</code>. Set the column data as name/value pairs in the JSON body.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request POST \
+  --url 'localhost:8082/v2/schemas/keyspaces/betterbotz/tables/products/rows' \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --data '{"columns":[{"name":"id","value":"e9b6c02d-0604-4bab-a3ea-6a7984654631"},{"name":"name","value":"Heavy Lift Arms"},{"name":"description","value":"Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set."},{"name":"price","value":"9999.99"},{"name":"created","value":"2019-01-10 09:48:31.020+0040"}]}'</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Updates are upserts. If the row doesn&#8217;t exist, it will be created. If it does exist, it will be udpated with the new row data.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To delete a row, send a <code>DELETE</code> request to <code>/v2/schemas/keyspaces/{keyspace_name}/tables/{table_name}/rows/{primary_key}</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --request DELETE \
+  --url 'localhost:8082/v2/schemas/keyspaces/betterbotz/tables/products/rows/e9b6c02d-0604-4bab-a3ea-6a7984654631' \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../assets/js/site.js"></script>
+<script async src="../../../assets/js/vendor/highlight.js"></script>
+  </body>
+</html>
