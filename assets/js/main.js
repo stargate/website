@@ -36,6 +36,7 @@ $(document).ready(function () {
         url: 'https://api.github.com/repos/' + repository
       })
         .done(function (repo) {
+          stats.classList.remove('hidden');
           document.getElementById('git-watchers').innerHTML = nFormatter(repo.subscribers_count || 0);
           document.getElementById('git-stars').innerHTML = nFormatter(repo.stargazers_count || 0);
           document.getElementById('git-forks').innerHTML = nFormatter(repo.forks_count || 0);
