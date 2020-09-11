@@ -4,7 +4,7 @@
   padding-bottom: 32px;
 
   .divider {
-    border-bottom-color: #6A7086;
+    border-bottom-color: #6a7086;
   }
 }
 
@@ -14,6 +14,15 @@
   font-size: 1rem;
   color: $white;
   margin: 0;
+
+  a {
+    color: $white;
+    text-decoration: underline;
+
+    &:hover {
+      color: darken($white, 20);
+    }
+  }
 }
 
 .footer-link {
@@ -54,6 +63,10 @@
     .col-4 {
       max-width: 100%;
     }
+  }
+
+  .footer-link {
+    text-align: center;
   }
 
   .footer-social-links {
