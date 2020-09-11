@@ -77,9 +77,9 @@ pagination:
 
 # Algolia Settings
 algolia:
-  key: "" # Algolia Public Key (Search key)
-  application_id: ""
-  index_name: ""
+  key: "70b4b7b67f5eb49a8a0950f64773f4d4" # Algolia Public Key (Search key)
+  application_id: "CVUVTRE4BD"
+  index_name: "Stargate"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
