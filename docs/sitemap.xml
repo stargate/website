@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://stargate.io/docs/stargate/0.1/concepts/concepts.html</loc>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
+</url>
+<url>
+<loc>https://stargate.io/docs/stargate/0.1/developers-guide/building.html</loc>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
+</url>
+<url>
+<loc>https://stargate.io/docs/stargate/0.1/developers-guide/cql.html</loc>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
+</url>
+<url>
 <loc>https://stargate.io/docs/stargate/0.1/developers-guide/docker.html</loc>
-<lastmod>2020-09-12T00:03:53.031Z</lastmod>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
 </url>
 <url>
 <loc>https://stargate.io/docs/stargate/0.1/FAQ.html</loc>
-<lastmod>2020-09-12T00:03:53.031Z</lastmod>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
 </url>
 <url>
 <loc>https://stargate.io/docs/stargate/0.1/index.html</loc>
-<lastmod>2020-09-12T00:03:53.031Z</lastmod>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
 </url>
 <url>
 <loc>https://stargate.io/docs/stargate/0.1/quickstart/quick_start.html</loc>
-<lastmod>2020-09-12T00:03:53.031Z</lastmod>
+<lastmod>2020-09-14T23:10:01.913Z</lastmod>
 </url>
 </urlset>
