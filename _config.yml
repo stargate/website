@@ -89,7 +89,9 @@ algolia:
 
 # Keep files in _site directory on builds
 keep_files:
+  - .git
   - docs
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -102,6 +104,7 @@ exclude:
   - package.json
   - package-lock.json
   - README.md
-  - DEMO_POST.md
   - postcss.config.js
   - .gitignore
+  - script
+  

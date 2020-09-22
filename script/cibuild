@@ -14,14 +14,21 @@ rm -rf _site
 mkdir _site
 
 # clone remote repo to "_site"
+echo "Clonning gh-pages"
 git clone https://${GH_TOKEN}@github.com/stargate/website.git --branch gh-pages _site
 
 # build with Jekyll into "_site"
+echo "Pushing posts to algolia"
 bundle exec jekyll algolia
+
+echo "Running Jekyll Build"
 bundle exec jekyll build
 
 # push
+echo "Pushing _site to gh-pages"
 cd _site
 git add --all
 git commit -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --force origin gh-pages
+
+echo "Done"
