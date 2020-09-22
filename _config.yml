@@ -87,6 +87,9 @@ algolia:
   application_id: "CVUVTRE4BD"
   index_name: "Stargate"
 
+# Keep files in _site directory on builds
+keep_files:
+  - docs
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
