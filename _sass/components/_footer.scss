@@ -8,6 +8,12 @@
   }
 }
 
+.footer-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .copyright,
 .footer-note,
 .footer-link {
@@ -54,6 +60,16 @@
 }
 
 @include media-breakpoint-down(md) {
+  .footer {
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 2rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .footer-row {
     flex-direction: column;
     justify-content: center !important;

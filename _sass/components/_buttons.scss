@@ -103,3 +103,14 @@
     padding-bottom: 0;
   }
 }
+
+.donwload-link {
+  color: $white;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: darken($white, 20);
+    text-decoration: none;
+  }
+}

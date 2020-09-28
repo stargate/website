@@ -1,12 +1,14 @@
 <footer class="footer">
   <div class="container-fluid spaced">
-    <div class="row justify-content-between footer-row">
-      <div class="col-4">
+    <div class="row">
+      <div class="col-md-4">
         <p class="copyright">
           © 2020 Stargate Project Authors
         </p>
       </div>
-      <div class="col-4">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end align-items-center footer-social-links">
           <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank" rel="noopener noreferrer"
             class="footer-social-link">
@@ -30,11 +32,19 @@
       </div>
     </div>
 
-    <div class="row justify-content-between footer-row">
+    <div class="row">
       <div class="col">
         <p class="footer-note">Stargate is an open source project and all source code is distributed under the <a
             href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank" rel="noopener noreferrer">Apache v2.0
             license</a></p>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-links">
+          <a class="donwload-link" href="{{ '/assets/downloads/Stargate-Logos.zip' | relative_url }}" download>
+            {% include icons/download.html %}&nbsp;
+            <span>Brand Assets</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
