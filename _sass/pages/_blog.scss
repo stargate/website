@@ -1,3 +1,7 @@
+.template-blog {
+  min-height: calc(100vh - 150px);
+}
+
 .hero-blog {
   background-color: #222b49;
   background-image: url($baseurl + "/assets/images/hero-blog.png");
