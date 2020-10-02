@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Stargate quick start :: Stargate documentation</title>
+    <title>Stargate REST API QuickStart :: Stargate documentation</title>
     <meta name="generator" content="Antora 2.3.3">
     <link rel="stylesheet" href="../../../assets/css/site.css">
   </head>
@@ -128,8 +128,21 @@
 <ul class="nav-list">
   <li class="nav-item toggler" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="quick_start.html">Quick start</a>
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="quickstart.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="quick_start-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="quick_start-graphql.html">GraphQL API QuickStart</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -141,6 +154,12 @@
 </ul>
   </li>
   <li class="nav-item toggler" data-depth="0">
+    <span class="nav-text">Installing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
 <ul class="nav-list">
   <li class="nav-item toggler" data-depth="1">
     <a class="nav-link" href="../developers-guide/docker.html">Installing Stargate</a>
@@ -156,26 +175,59 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../developers-guide/cql.html">Using the CQL API</a>
+    <a class="nav-link" href="../developers-guide/starctl.html">The starctl command</a>
   </li>
 </ul>
   </li>
   <li class="nav-item toggler" data-depth="0">
-    <span class="nav-text">Reference docs</span>
+    <span class="nav-text">Data APIs</span>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developers-guide/rest.html">REST API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../developers-guide/openapi_rest_ref.html">REST API reference</a>
   </li>
-  <li class="nav-item" data-depth="1">
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developers-guide/graphql.html">GraphQL API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/graphql-using.html">Using the GraphQL API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developers-guide/cql.html">CQL API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/cql-using.html">Using the CQL API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="https://cassandra.apache.org/doc/latest/cql/">CQL reference</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../developers-guide/starctl.html">The starctl command</a>
+</ul>
   </li>
 </ul>
   </li>
@@ -223,22 +275,23 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Stargate</a></li>
-    <li><a href="quick_start.html">Quick start</a></li>
+    <li><a href="quickstart.html">Stargate QuickStarts</a></li>
+    <li><a href="quick_start-rest.html">REST API QuickStart</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/stargate/docs/edit/HEAD/modules/quickstart/pages/quick_start.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/edit/HEAD/modules/quickstart/pages/quick_start-rest.adoc">Edit this Page</a></div>
   </div>
 
       <article class="doc">
-<h1 class="page">Stargate quick start</h1>
+<h1 class="page">Stargate REST API QuickStart</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>time to complete: 5 minutes</strong></p>
+<p><strong>Time to complete: 5 minutes</strong></p>
 </div>
 <div class="paragraph">
 <p>Stargate is a data gateway deployed between client applications and a database.
-In this quickstart, you&#8217;ll be up and running on your local machine with the REST API
+In this QuickStart, you&#8217;ll be up and running on your local machine with the REST API
 plugin that exposes CRUD access to data stored in Cassandra tables.</p>
 </div>
 </div>
@@ -268,11 +321,12 @@ plugin that exposes CRUD access to data stored in Cassandra tables.</p>
 <h2 id="_pull_the_docker_image"><a class="anchor" href="#_pull_the_docker_image"></a><a class="link" href="#_pull_the_docker_image">Pull the Docker image</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This image contains the Cassandra Query Language (CQL) and REST APIs with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
+<p>This image contains the Cassandra Query Language (CQL), REST and GraphQL APIs,
+and GraphQL Playground along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v0.0.3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v0.0.6</code></pre>
 </div>
 </div>
 </div>
@@ -282,11 +336,13 @@ plugin that exposes CRUD access to data stored in Cassandra tables.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Start the Stargate container in developer mode.
-Developer mode removes the need to set up a separate Cassandra instance and is meant for development and testing only.</p>
+Developer mode removes the need to set up a separate Cassandra instance and is
+meant for development and testing only.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --name stargate \
+  -p 8080:8080 \
   -p 8081:8081 \
   -p 8082:8082 \
   -p 127.0.0.1:9042:9042 \
@@ -294,23 +350,55 @@ Developer mode removes the need to set up a separate Cassandra instance and is m
   -e CLUSTER_NAME=stargate \
   -e CLUSTER_VERSION=3.11 \
   -e DEVELOPER_MODE=true \
-  stargateio/stargate-3_11:v0.0.3</code></pre>
+  stargateio/stargate-3_11:v0.0.6</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By default, Stargate starts a CQL service on port 9042, a REST auth service for generating tokens on 8081, and a REST interface for CRUD on port 8082.</p>
+<p>The ports align to the following services and interfaces:</p>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Default Port assignments for Stargate</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Port</th>
+<th class="tableblock halign-left valign-top">Service/Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port 8080</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GraphQL interface for CRUD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port 8081</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REST authorization service for generating tokens</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port 8082</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REST interface for CRUD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port 9042</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CQL service</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_using_the_stargate_rest_api"><a class="anchor" href="#_using_the_stargate_rest_api"></a><a class="link" href="#_using_the_stargate_rest_api">Using the Stargate REST API</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you prefer, you can use Postman as a client interface for exploring REST APIs (<a href="https://www.postman.com/downloads/">download here</a>).
-We&#8217;ve provided a <a href="https://github.com/stargate/docs/blob/master/modules/developers-guide/examples/stargate-rest-api.postman_collection.json">Stargate REST API Postman Collection</a> that you can import in Postman to play with the examples shown in this walkthrough.</p>
+<p>In order to use the Stargate REST API, an authorization token must be generated
+to access the interface.</p>
 </div>
 <div class="paragraph">
-<p>The steps below use <code>cURL</code> to access the REST interface.</p>
+<p>The step below uses <code>cURL</code> to access the REST interface to generate the needed
+token.</p>
 </div>
 <div class="sect2">
 <h3 id="_generate_an_auth_token"><a class="anchor" href="#_generate_an_auth_token"></a><a class="link" href="#_generate_an_auth_token">Generate an auth token</a></h3>
@@ -347,10 +435,26 @@ in the <code>X-Cassandra-Token</code> header.</p>
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">export AUTH_TOKEN={auth-token}</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_postman"><a class="anchor" href="#_using_postman"></a><a class="link" href="#_using_postman">Using Postman</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer, you can use Postman as a client interface for exploring REST APIs
+(<a href="https://www.postman.com/downloads/">download here</a>).
+We&#8217;ve provided a
+<a href="https://github.com/stargate/docs/blob/master/modules/developers-guide/examples/stargate-rest-api.postman_collection.json">Stargate REST API Postman Collection</a> that you can import in Postman to play with the examples shown in this walkthrough.</p>
+</div>
 <div class="paragraph">
 <p>Now you&#8217;re ready to use the REST API for CRUD operations.</p>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_creating_schema"><a class="anchor" href="#_creating_schema"></a><a class="link" href="#_creating_schema">Creating schema</a></h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="_creating_a_keyspace_using_the_rest_api"><a class="anchor" href="#_creating_a_keyspace_using_the_rest_api"></a><a class="link" href="#_creating_a_keyspace_using_the_rest_api">Creating a keyspace using the REST API</a></h3>
 <div class="paragraph">
@@ -417,6 +521,52 @@ Set the table name and column definitions in the JSON body.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_checking_that_keyspaces_and_tables_exist"><a class="anchor" href="#_checking_that_keyspaces_and_tables_exist"></a><a class="link" href="#_checking_that_keyspaces_and_tables_exist">Checking that keyspaces and tables exist</a></h3>
+<div class="paragraph">
+<p>To check if a keyspace or tables exist, execute the REST query with <code>cURL</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L -X GET 'localhost:8082/v1/keyspaces' \
+--header 'accept: application/json' \
+--header 'content-type: application/json' \
+--header 'X-Cassandra-Token: $AUTH_TOKEN'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>returns</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">["data_endpoint_auth","users_keyspace","stargate_system","system","system_auth","system_distributed","system_schema","system_traces"]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For tables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L -X GET 'localhost:8082/v1/keyspaces/'users_keyspace'/tables' \
+--header 'accept: application/json' \
+--header 'content-type: application/json' \
+--header 'X-Cassandra-Token: $AUTH_TOKEN'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>returns</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">["users"]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interacting_with_tables"><a class="anchor" href="#_interacting_with_tables"></a><a class="link" href="#_interacting_with_tables">Interacting with tables</a></h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="_write_data"><a class="anchor" href="#_write_data"></a><a class="link" href="#_write_data">Write data</a></h3>
 <div class="paragraph">
@@ -498,7 +648,7 @@ In this request we delete all data with the primary key <code>firstname</code> o
 </div>
 </div>
 <div class="paragraph">
-<p>Voila! For more information on the REST API, see the full reference in the REST API section of the docs.</p>
+<p>Voila! For more information on the REST API, see the <a href="#developers-guide/openapi_rest_ref.adoc" class="page unresolved">REST API</a> in the Data API section.</p>
 </div>
 </div>
 </div>
