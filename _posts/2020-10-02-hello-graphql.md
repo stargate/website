@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hello GraphQL; meet Cassandra"
-date:   2020-10-02 00:00:00 -0600
+date:   2020-10-05 00:00:00 -0600
 synopsis: Today, we're happy to introduce a new member of the Stargate API family; say hello 👋 to GraphQL. This new API extension makes it easy to add a GraphQL API layer to any new or existing Apache Cassandra® database.
 tags: ['graphql', 'stargate']
 author_info:
