@@ -85,9 +85,7 @@
 }
 
 .catalog-item__container {
-  @include media-breakpoint-down(md) {
-    margin-bottom: 1rem;
-  }
+  margin-bottom: 1rem;
 }
 
 .catalog-item {
