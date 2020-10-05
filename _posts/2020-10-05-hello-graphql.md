@@ -162,7 +162,7 @@ private GraphQLFieldDefinition buildCreateTable() {
 
 One thing to note is the use of `DataFetchers` which is what provides the data for the field. This is where the translation between the GraphQL input to the Cassandra query happens. You'll see for the `createTable` mutation that the `CreateTableDataFetcher` takes the arguments from the `DataFetchingEnvironment`, translates that to a Cassandra query, and passes it to the persistence engine for processing. 
 
-Each of the mutations and queries for Stargate's GraphQL API follow this general pattern. If you're interested in more of this nitty gritty, hop down to the [Deep Dive section](https://docs.google.com/document/d/1uA-Q-OI2AtrnNxNtjQLiAshygRF75UZ3Tm3FuX_9978/edit#heading=h.trlxqk1uriv5) of this blog or better yet check out the source code in the [graphqlapi](https://github.com/stargate/stargate/tree/master/graphqlapi) directory!
+Each of the mutations and queries for Stargate's GraphQL API follow this general pattern. If you're interested in more of this nitty gritty, hop down to the Deep Dive section of this blog or better yet check out the source code in the [graphqlapi](https://github.com/stargate/stargate/tree/master/graphqlapi) directory!
 
 ## Get started
 The easiest way to get your hands on the GraphQL API is to use the Stargate docker image and start the container in developer mode. There is also a built-in GraphQL Playground servlet to make it easy to test and tinker with your mutations and queries.
