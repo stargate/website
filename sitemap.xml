@@ -5,6 +5,10 @@
 <lastmod>2020-09-14T06:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>https://stargate.io/2020/10/02/hello-graphql.html</loc>
+<lastmod>2020-10-02T06:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>https://stargate.io/community.html</loc>
 </url>
 <url>
@@ -12,5 +16,11 @@
 </url>
 <url>
 <loc>https://stargate.io/results.html</loc>
+</url>
+<url>
+<loc>https://stargate.io/tags/graphql/</loc>
+</url>
+<url>
+<loc>https://stargate.io/tags/stargate/</loc>
 </url>
 </urlset>
