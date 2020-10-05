@@ -6,7 +6,7 @@ synopsis: Today, we're happy to introduce a new member of the Stargate API famil
 tags: ['graphql', 'stargate']
 author_info:
   name:
-    first: "Chriss"
+    first: "Chris"
     last: "Splinter"
   picture: "assets/images/stargate-profile.png"
 ---
