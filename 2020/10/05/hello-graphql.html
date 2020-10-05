@@ -319,7 +319,7 @@
 
 <p>One thing to note is the use of <code class="language-plaintext highlighter-rouge">DataFetchers</code> which is what provides the data for the field. This is where the translation between the GraphQL input to the Cassandra query happens. You’ll see for the <code class="language-plaintext highlighter-rouge">createTable</code> mutation that the <code class="language-plaintext highlighter-rouge">CreateTableDataFetcher</code> takes the arguments from the <code class="language-plaintext highlighter-rouge">DataFetchingEnvironment</code>, translates that to a Cassandra query, and passes it to the persistence engine for processing.</p>
 
-<p>Each of the mutations and queries for Stargate’s GraphQL API follow this general pattern. If you’re interested in more of this nitty gritty, hop down to the <a href="https://docs.google.com/document/d/1uA-Q-OI2AtrnNxNtjQLiAshygRF75UZ3Tm3FuX_9978/edit#heading=h.trlxqk1uriv5">Deep Dive section</a> of this blog or better yet check out the source code in the <a href="https://github.com/stargate/stargate/tree/master/graphqlapi">graphqlapi</a> directory!</p>
+<p>Each of the mutations and queries for Stargate’s GraphQL API follow this general pattern. If you’re interested in more of this nitty gritty, hop down to the Deep Dive section of this blog or better yet check out the source code in the <a href="https://github.com/stargate/stargate/tree/master/graphqlapi">graphqlapi</a> directory!</p>
 
 <h2 id="get-started">Get started</h2>
 <p>The easiest way to get your hands on the GraphQL API is to use the Stargate docker image and start the container in developer mode. There is also a built-in GraphQL Playground servlet to make it easy to test and tinker with your mutations and queries.</p>
