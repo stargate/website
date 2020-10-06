@@ -121,3 +121,40 @@ title: Home
     </div>
   </div>
 </main>
+
+<div class="latest-posts">
+  <div class="container-fluid spaced">
+    <div class="row">
+      <div class="col">
+        <h2 class="latest-posts__title">Latest from Stargate</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      {% for post in site.posts limit: 3 %}
+        <div class="col latest-post__item-container">
+          <div class="latest-post__item">
+            <h2 class="latest-post__item-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+
+            <p class="latest-post__item-content">
+              {{ post.synopsis }}
+            </p>
+
+            <div class="latest-post__item-info">
+              <span>By <span class="link">{{ post.author_info.name.first }}
+                  {{ post.author_info.name.last }}</span></span>
+              &#8226;
+              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+        <a href="{{ '/blog' | relative_url }}" class="btn btn-primary btn-more">See More</a>
+      </div>
+    </div>
+  </div>
+</div>
