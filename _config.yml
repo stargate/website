@@ -86,6 +86,7 @@ algolia:
   key: "70b4b7b67f5eb49a8a0950f64773f4d4" # Algolia Public Key (Search key)
   application_id: "CVUVTRE4BD"
   index_name: "Stargate"
+  docs_index: "docs"
 
 # Keep files in _site directory on builds
 keep_files:
@@ -107,4 +108,5 @@ exclude:
   - postcss.config.js
   - .gitignore
   - script
+  - config.json
   

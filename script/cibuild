@@ -31,4 +31,11 @@ git add --all
 git commit -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --force origin gh-pages
 
+# Going back to the root folder
+cd ..
+
+# pushing docs to algolia
+echo "Pushing docs to algolia"
+docker run -it -e "APPLICATION_ID=$(echo $APPLICATION_ID)" -e "API_KEY=$(echo $API_KEY)" -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
+
 echo "Done"

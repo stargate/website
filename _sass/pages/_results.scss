@@ -21,3 +21,21 @@
     line-height: 1em;
   }
 }
+
+.post-item__doc-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  span:not(:last-of-type) {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: "❯";
+      padding: 0 0.5rem;
+      color: #c9cef6;
+      font-size: 1rem;
+    }
+  }
+}

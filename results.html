@@ -8,7 +8,7 @@ hide_title: true
 <div class="search-results" id="stargate-search-results">
   <div>
     <Search-Results app-id="{{site.algolia.application_id}}" secret="{{site.algolia.key}}"
-      app-index="{{site.algolia.index_name}}" inline-template>
+      app-index="{{site.algolia.index_name}}" docs-index="{{site.algolia.docs_index}}" inline-template>
       <div class="container-fluid">
         <div class="row" v-if="!query || nbHits === 0">
           <div class="col-md-12">
@@ -32,12 +32,24 @@ hide_title: true
           <div class="col-md-12">
             <div class="posts">
               <div class="post-item" v-for="hit in hits" :key="hit.objectID">
-                <span class="post-item__caption">${ hit.type === 'post' ? 'blog' : hit.type }</span>
-                <h2 class="post-item__title"><a :href="hit.url">${ hit.title }</a>
-                </h2>
-                <p class="post-item__content">
-                  ${ hit.synopsis || hit.excerpt_text }
-                </p>
+                <div v-if="hit.hierarchy">
+                  <span class="post-item__caption">DOCS</span>
+                  <h2 class="post-item__title">
+                    <a class="post-item__doc-info" :href="hit.url">
+                      <span v-for="(lvlValue, lvl) in Object.values(hit.hierarchy || {}).filter(value => !!value)" :key="lvl">
+                        ${ lvlValue }
+                      </span>
+                    </a>
+                  </h2>
+                </div>
+                <div v-else>
+                  <span class="post-item__caption">${ hit.type === 'post' ? 'blog' : hit.type }</span>
+                  <h2 class="post-item__title"><a :href="hit.url">${ hit.title }</a>
+                  </h2>
+                  <p class="post-item__content">
+                    ${ hit.synopsis || hit.excerpt_text }
+                  </p>
+                </div>
               </div>
             </div>
           </div>

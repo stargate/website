@@ -1,11 +1,17 @@
 language: ruby
+services:
+  - docker
 # only run CI-builds on master branch
 branches:
   only:
   - master
 rvm:
 - 2.5.0
+addons:
+  apt:
+    update: true
 before_install:
+  - sudo apt-get -y install jq
   - gem install bundler -v 2.1.4
   - npm install
 # set execution permission on our build script
