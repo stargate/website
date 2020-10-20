@@ -125,6 +125,28 @@
     box-shadow: inset 6px 0 0 0 #c9cef6;
   }
 
+  .simple-table + table {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    thead {
+      td,
+      th {
+        background: #ffffff;
+        color: #222b49;
+        padding: 0 0.5rem;
+        text-align: left !important;
+      }
+    }
+
+    tbody {
+      th,
+      td {
+        padding: 0 0.5rem;
+      }
+    }
+  }
+
   @include media-breakpoint-down(md) {
     overflow-x: auto;
   }
