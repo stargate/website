@@ -6,8 +6,8 @@ synopsis: We're excited to release the first preview of Stargate, an open source
 tags: []
 author_info:
   name:
-    first: "The Stargate Authors"
-    last: ""
+    first: "Chris"
+    last: "Splinter"
   picture: "assets/images/stargate-profile.png"
 ---
 
