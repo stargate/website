@@ -27,12 +27,13 @@ This idea gave rise to the Stargate **Documents API**, which lets most Cassandra
 As [Jake Luciani](https://github.com/tjake) and I started to create the bones of this API, we realized that Cassandra is nothing like a document store. Expressing data as rows is straightforward, but expressing trees of JSON data is really not. In addition, mapping that JSON data onto a table managed by Stargate and keeping both writes and reads reasonably fast adds an additional layer of complexity. 
 
 From here, we mapped out three main design components in order for this work:
-Modeling Documents in Cassandra
-Handling Reads and Writes
-Figuring out Deletes
+- Modeling Documents in Cassandra
+- Handling Reads and Writes
+- Figuring out Deletes
 
 The rest of this blog walks through how we approached each design and resolved some hiccups along the way.
-Modeling Documents in Cassandra with Document Shredding
+
+## Modeling Documents in Cassandra with Document Shredding
 
 The first thing that we had to decide  was the schema of the managed table that backs a document collection. Due to some great discussions with some Cassandra specialists, it was decided that when a user creates a document, a table will be created with a statement of the form:
 
@@ -42,7 +43,7 @@ create table <name> (
   p0 text,
   … p[N] text,
   bool_value boolean,
-  txt_value text, d
+  txt_value text,
   bl_value double, leaf text
 )
 {% endhighlight %}
