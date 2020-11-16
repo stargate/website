@@ -190,13 +190,16 @@
 
 <p>As <a href="https://github.com/tjake">Jake Luciani</a> and I started to create the bones of this API, we realized that Cassandra is nothing like a document store. Expressing data as rows is straightforward, but expressing trees of JSON data is really not. In addition, mapping that JSON data onto a table managed by Stargate and keeping both writes and reads reasonably fast adds an additional layer of complexity.</p>
 
-<p>From here, we mapped out three main design components in order for this work:
-Modeling Documents in Cassandra
-Handling Reads and Writes
-Figuring out Deletes</p>
+<p>From here, we mapped out three main design components in order for this work:</p>
+<ul>
+  <li>Modeling Documents in Cassandra</li>
+  <li>Handling Reads and Writes</li>
+  <li>Figuring out Deletes</li>
+</ul>
 
-<p>The rest of this blog walks through how we approached each design and resolved some hiccups along the way.
-Modeling Documents in Cassandra with Document Shredding</p>
+<p>The rest of this blog walks through how we approached each design and resolved some hiccups along the way.</p>
+
+<h2 id="modeling-documents-in-cassandra-with-document-shredding">Modeling Documents in Cassandra with Document Shredding</h2>
 
 <p>The first thing that we had to decide  was the schema of the managed table that backs a document collection. Due to some great discussions with some Cassandra specialists, it was decided that when a user creates a document, a table will be created with a statement of the form:</p>
 
@@ -205,7 +208,7 @@ Modeling Documents in Cassandra with Document Shredding</p>
   <span class="n">p0</span> <span class="nb">text</span><span class="p">,</span>
   <span class="err">…</span> <span class="n">p</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="nb">text</span><span class="p">,</span>
   <span class="n">bool_value</span> <span class="nb">boolean</span><span class="p">,</span>
-  <span class="n">txt_value</span> <span class="nb">text</span><span class="p">,</span> <span class="n">d</span>
+  <span class="n">txt_value</span> <span class="nb">text</span><span class="p">,</span>
   <span class="n">bl_value</span> <span class="nb">double</span><span class="p">,</span> <span class="n">leaf</span> <span class="nb">text</span>
 <span class="p">)</span></code></pre></figure>
 

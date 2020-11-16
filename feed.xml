@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2020-11-06T19:52:23+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">The Stargate Cassandra Documents API</title><link href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html" rel="alternate" type="text/html" title="The Stargate Cassandra Documents API" /><published>2020-10-19T00:00:00+00:00</published><updated>2020-10-19T00:00:00+00:00</updated><id>https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api</id><content type="html" xml:base="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">&lt;p&gt;If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON.  Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point.  Most of the time, this isn’t a problem, it’s just the way that we build software these days.  There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2020-11-16T21:05:48+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">The Stargate Cassandra Documents API</title><link href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html" rel="alternate" type="text/html" title="The Stargate Cassandra Documents API" /><published>2020-10-19T00:00:00+00:00</published><updated>2020-10-19T00:00:00+00:00</updated><id>https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api</id><content type="html" xml:base="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">&lt;p&gt;If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON.  Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point.  Most of the time, this isn’t a problem, it’s just the way that we build software these days.  There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…&lt;/p&gt;
 
 &lt;p&gt;To double-click on that, the problem isn’t the JSON data format itself, although Cassandra doesn’t make JSON easy, it’s the way most devs use JSON when we’re building our apps.  Iterative development means that plans change.  The user registration form now needs a couple of more fields and the front-end dev went ahead and added them.  That API I’m calling returns some extra data.   Welcome to the loosely coupled world, it’s all fun and games until my app needs to send it to the database.&lt;/p&gt;
 
@@ -12,13 +12,16 @@
 
 &lt;p&gt;As &lt;a href=&quot;https://github.com/tjake&quot;&gt;Jake Luciani&lt;/a&gt; and I started to create the bones of this API, we realized that Cassandra is nothing like a document store. Expressing data as rows is straightforward, but expressing trees of JSON data is really not. In addition, mapping that JSON data onto a table managed by Stargate and keeping both writes and reads reasonably fast adds an additional layer of complexity.&lt;/p&gt;
 
-&lt;p&gt;From here, we mapped out three main design components in order for this work:
-Modeling Documents in Cassandra
-Handling Reads and Writes
-Figuring out Deletes&lt;/p&gt;
+&lt;p&gt;From here, we mapped out three main design components in order for this work:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Modeling Documents in Cassandra&lt;/li&gt;
+  &lt;li&gt;Handling Reads and Writes&lt;/li&gt;
+  &lt;li&gt;Figuring out Deletes&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;The rest of this blog walks through how we approached each design and resolved some hiccups along the way.
-Modeling Documents in Cassandra with Document Shredding&lt;/p&gt;
+&lt;p&gt;The rest of this blog walks through how we approached each design and resolved some hiccups along the way.&lt;/p&gt;
+
+&lt;h2 id=&quot;modeling-documents-in-cassandra-with-document-shredding&quot;&gt;Modeling Documents in Cassandra with Document Shredding&lt;/h2&gt;
 
 &lt;p&gt;The first thing that we had to decide  was the schema of the managed table that backs a document collection. Due to some great discussions with some Cassandra specialists, it was decided that when a user creates a document, a table will be created with a statement of the form:&lt;/p&gt;
 
@@ -27,7 +30,7 @@ Modeling Documents in Cassandra with Document Shredding&lt;/p&gt;
   &lt;span class=&quot;n&quot;&gt;p0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;err&quot;&gt;…&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;bool_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;txt_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;txt_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;bl_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;leaf&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
