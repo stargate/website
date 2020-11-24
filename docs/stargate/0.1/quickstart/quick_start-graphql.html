@@ -157,6 +157,8 @@
 </ul>
   </li>
   <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
     <span class="nav-text">Installing Stargate</span>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,36 +166,29 @@
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item toggler" data-depth="1">
-    <a class="nav-link" href="../developers-guide/docker.html">Installing Stargate</a>
-    <button class="nav-item-toggle">
-      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
-      </svg>
-    </button>
-<ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../developers-guide/existing_cstar.html">Installing Stargate with an existing Cassandra cluster</a>
+    <a class="nav-link" href="../developers-guide/install/install_docker.html">Installing Stargate with Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/install/install_existing_cstar.html">Installing Stargate with an existing Cassandra cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/install/building.html">Building Stargate from source</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../developers-guide/starctl.html">The starctl command</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item toggler" data-depth="0">
-    <span class="nav-text">Data APIs</span>
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developers-guide/devguide.html">Developing with Stargate</a>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../developers-guide/auth.html">Auth API</a>
-  </li>
-  <li class="nav-item toggler" data-depth="1">
+  <li class="nav-item toggler" data-depth="2">
     <a class="nav-link" href="../developers-guide/document.html">Document API</a>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -201,15 +196,12 @@
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../developers-guide/document-using.html">Using the Document API</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../developers-guide/openapi_document_ref.html">Document API reference</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item toggler" data-depth="1">
+  <li class="nav-item toggler" data-depth="2">
     <a class="nav-link" href="../developers-guide/rest.html">REST API</a>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -217,15 +209,12 @@
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../developers-guide/rest-using.html">Using the REST API</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../developers-guide/openapi_rest_ref.html">REST API reference</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item toggler" data-depth="1">
+  <li class="nav-item toggler" data-depth="2">
     <a class="nav-link" href="../developers-guide/graphql.html">GraphQL API</a>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -233,12 +222,12 @@
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../developers-guide/graphql-using.html">Using the GraphQL API</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item toggler" data-depth="1">
+  <li class="nav-item toggler" data-depth="2">
     <a class="nav-link" href="../developers-guide/cql.html">CQL API</a>
     <button class="nav-item-toggle">
       <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,20 +235,34 @@
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../developers-guide/cql-using.html">Using the CQL API</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developers-guide/api_ref/apiref.html">API reference for Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/auth.html">Auth API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/api_ref/openapi_rest_ref.html">REST API reference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developers-guide/api_ref/openapi_document_ref.html">Document API reference</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="https://cassandra.apache.org/doc/latest/cql/">CQL reference</a>
   </li>
 </ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item toggler" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../developers-guide/building.html">Building Stargate from source</a>
   </li>
 </ul>
   </li>
@@ -338,12 +341,12 @@ GraphQL API plugin that exposes CRUD access to data stored in Cassandra tables.<
 <div class="sect2">
 <h3 id="_pull_the_docker_image"><a class="anchor" href="#_pull_the_docker_image"></a><a class="link" href="#_pull_the_docker_image">Pull the Docker image</a></h3>
 <div class="paragraph">
-<p>This image contains the Cassandra Query Language (CQL), REST and GraphQL APIs,
-and GraphQL Playground along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
+<p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
+and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v0.0.8</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v0.0.9</code></pre>
 </div>
 </div>
 </div>
@@ -365,7 +368,7 @@ meant for development and testing only.</p>
   -e CLUSTER_NAME=stargate \
   -e CLUSTER_VERSION=3.11 \
   -e DEVELOPER_MODE=true \
-  stargateio/stargate-3_11:v0.0.8</code></pre>
+  stargateio/stargate-3_11:v0.0.9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -516,7 +519,7 @@ and create a keyspace by executing the following mutation:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">mutation createKeyspaceLibrary {
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">mutation createKsLibrary {
   createKeyspace(name:"library", replicas: 1)
 }</code></pre>
 </div>
@@ -571,9 +574,17 @@ generate token has. It is <code>x-cassandra-token</code>, not <code>auth-token</
 <p>After the keyspace exists, you can create two tables by executing the following
 mutation:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">mutation {
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation createTables {
   books: createTable(
     keyspaceName:"library",
     tableName:"books",
@@ -597,9 +608,13 @@ mutation:</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>returns</p>
 </div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -610,9 +625,16 @@ mutation:</p>
 }</code></pre>
 </div>
 </div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>Worth noting is that one mutation is used to create two tables. Information about
-partition keys and clustering keys are found in the
+<p>It is worth noting that one mutation is used to create two tables.
+Information about partition keys and clustering keys can be found in the
 <a href="https://cassandra.apache.org/doc/latest/cql/">CQL reference</a>.</p>
 </div>
 </div>
@@ -625,9 +647,17 @@ GraphQL query:</p>
 <div class="paragraph">
 <p>For keyspaces and tables:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">query GetKeyspace {
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query GetKeyspace {
   keyspace(name: "library") {
       name
       dcs {
@@ -648,8 +678,101 @@ GraphQL query:</p>
           }
       }
   }
-}
-query GetTables {
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "keyspace": {
+      "name": "library",
+      "dcs": [],
+      "tables": [
+        {
+          "name": "authors",
+          "columns": [
+            {
+              "name": "name",
+              "kind": "PARTITION",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            },
+            {
+              "name": "title",
+              "kind": "CLUSTERING",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            }
+          ]
+        },
+        {
+          "name": "books",
+          "columns": [
+            {
+              "name": "title",
+              "kind": "PARTITION",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            },
+            {
+              "name": "author",
+              "kind": "REGULAR",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            },
+            {
+              "name": "isbn",
+              "kind": "REGULAR",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>And for tables:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query GetTables {
   keyspace(name: "library") {
       name
       tables {
@@ -667,6 +790,83 @@ query GetTables {
       }
   }
 }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "keyspace": {
+      "name": "library",
+      "tables": [
+        {
+          "name": "authors",
+          "columns": [
+            {
+              "name": "name",
+              "kind": "PARTITION",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            },
+            {
+              "name": "title",
+              "kind": "CLUSTERING",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            }
+          ]
+        },
+        {
+          "name": "books",
+          "columns": [
+            {
+              "name": "title",
+              "kind": "PARTITION",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            },
+            {
+              "name": "author",
+              "kind": "REGULAR",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            },
+            {
+              "name": "isbn",
+              "kind": "REGULAR",
+              "type": {
+                "basic": "VARCHAR",
+                "info": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -756,9 +956,17 @@ Change the location to
 <a href="http://localhost:8080/graphql/library">http://localhost:8080/graphql/library</a>
 and add a couple of books to the <code>book</code> table:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">mutation {
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation insert2Books {
   moby: insertBooks(value: {title:"Moby Dick", author:"Herman Melville"}) {
     value {
       title
@@ -772,9 +980,13 @@ and add a couple of books to the <code>book</code> table:</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>returns</p>
 </div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -794,6 +1006,13 @@ and add a couple of books to the <code>book</code> table:</p>
 </div>
 </div>
 </div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_read_data"><a class="anchor" href="#_read_data"></a><a class="link" href="#_read_data">Read data</a></h3>
 <div class="paragraph">
@@ -808,9 +1027,17 @@ The following query, looking at the location
 will get both the <code>title</code> and the <code>author</code> for the specified book <code>WHERE
 title:"Moby Dick"</code>:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">query oneBook {
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query oneBook {
     books (value: {title:"Moby Dick"}) {
       values {
       	title
@@ -820,9 +1047,13 @@ title:"Moby Dick"</code>:</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>returns</p>
 </div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -840,23 +1071,66 @@ title:"Moby Dick"</code>:</p>
 </div>
 </div>
 </div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_update_data"><a class="anchor" href="#_update_data"></a><a class="link" href="#_update_data">Update data</a></h3>
 <div class="paragraph">
 <p>Using the column that we added earlier, the data for a book is updated with the
 ISBN value:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">mutation updateABook {
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation updateOneBook {
   moby: updateBooks(value: {title:"Moby Dick", author:"Herman Melville", isbn: "9780140861723"}, ifExists: true ) {
     value {
       title
       author
       isbn
     }
+  }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "moby": {
+      "value": {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "isbn": "9780140861723"
+      }
+    }
   }
 }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -866,8 +1140,10 @@ ISBN value:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Updates are upserts. If the row doesn&#8217;t exist, it will be created.
-If it does exist, it will be updated with the new row data.
+<div class="paragraph">
+<p>Updates are upserts. If the row doesn&#8217;t exist, it will be created.
+If it does exist, it will be updated with the new row data.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -876,12 +1152,20 @@ If it does exist, it will be updated with the new row data.
 <div class="sect2">
 <h3 id="_delete_data"><a class="anchor" href="#_delete_data"></a><a class="link" href="#_delete_data">Delete data</a></h3>
 <div class="paragraph">
-<p>After adding the book "Pride and Prejudice" with an <code>insertBooks()</code>, I can delete
+<p>After adding the book "Pride and Prejudice" with an <code>insertBooks()</code>, you can delete
 the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">graphQL command</dt>
+<dd>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">mutation deleteABook {
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation deleteOneBook {
   PaP: deleteBooks(value: {title:"Pride and Prejudice"}, ifExists: true ) {
     value {
       title
@@ -889,6 +1173,36 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
   }
 }</code></pre>
 </div>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Result</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "PaP": {
+      "value": {
+        "title": "Pride and Prejudice"
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Note the use of <code>ifExists</code> to validate that the book exists before deleting it.</p>
 </div>
 <div class="paragraph">
 <p>For more information on the GraphQL API,
