@@ -571,14 +571,19 @@ generate token has. It is <code>x-cassandra-token</code>, not <code>auth-token</
 <p>After the keyspace exists, you can create two tables by executing the following
 mutation:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation createTables {
@@ -606,12 +611,7 @@ mutation:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -622,10 +622,6 @@ mutation:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -640,14 +636,19 @@ Information about partition keys and clustering keys can be found in the
 <p>A table can be created with an option <code>ifNotExists</code> that will only create the
 table if it does not already exist:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation createTableIfNotExists {
@@ -666,12 +667,7 @@ table if it does not already exist:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -681,10 +677,6 @@ table if it does not already exist:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -701,14 +693,19 @@ Information about partition keys and clustering keys can be found in the
 <div class="paragraph">
 <p>Including a collection in a table has a couple of extra parts:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation createCollTable {
@@ -728,12 +725,7 @@ Information about partition keys and clustering keys can be found in the
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -743,10 +735,6 @@ Information about partition keys and clustering keys can be found in the
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -759,14 +747,19 @@ Information about partition keys and clustering keys can be found in the
 <p>If you need to add more attributes to something you are storing in a table, you
 can add a column:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation {
@@ -784,12 +777,7 @@ can add a column:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -799,10 +787,6 @@ can add a column:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -816,14 +800,19 @@ GraphQL query:</p>
 <div class="paragraph">
 <p>For keyspaces and tables:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query GetKeyspace {
@@ -851,12 +840,7 @@ GraphQL query:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -923,22 +907,23 @@ GraphQL query:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>And for tables:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query GetTables {
@@ -962,12 +947,7 @@ GraphQL query:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1033,10 +1013,6 @@ GraphQL query:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Because these queries are named, the GraphQL playground will allow you to select
@@ -1069,14 +1045,19 @@ the keyspace schema.</p>
 <div class="paragraph">
 <p>You can delete a table. All data will be deleted along with the table schema.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset7_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation dropTableBooks {
@@ -1086,12 +1067,7 @@ the keyspace schema.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1103,10 +1079,6 @@ the keyspace schema.</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_drop_options"><a class="anchor" href="#_drop_options"></a><a class="link" href="#_drop_options">Drop options</a></h4>
@@ -1114,14 +1086,19 @@ the keyspace schema.</p>
 <p>You can delete a table after checking that it exists with the <code>ifExists</code> option.
 All data will be deleted along with the table schema.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset8_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation dropTableIfExists {
@@ -1132,12 +1109,7 @@ All data will be deleted along with the table schema.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1147,10 +1119,6 @@ All data will be deleted along with the table schema.</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1162,14 +1130,19 @@ All data will be deleted along with the table schema.</p>
 <p>If you find an attribute is no longer required in a table, you
 can remove a column.  Allcolumn data will be deleted along with the column schema.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset9_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation dropColumnIsbn {
@@ -1182,12 +1155,7 @@ can remove a column.  Allcolumn data will be deleted along with the column schem
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1197,10 +1165,6 @@ can remove a column.  Allcolumn data will be deleted along with the column schem
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1285,14 +1249,19 @@ Change the location to
 <a href="http://localhost:8080/graphql/library">http://localhost:8080/graphql/library</a>
 and add a couple of books to the <code>book</code> table:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset10_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation insert2Books {
@@ -1310,12 +1279,7 @@ and add a couple of books to the <code>book</code> table:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1334,10 +1298,6 @@ and add a couple of books to the <code>book</code> table:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1362,14 +1322,19 @@ and add a couple of books to the <code>book</code> table:</p>
 <div class="paragraph">
 <p>An example insertion that sets the consistency level and TTL:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset11_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset11_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation insertWithOption {
@@ -1382,12 +1347,7 @@ and add a couple of books to the <code>book</code> table:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1403,10 +1363,6 @@ and add a couple of books to the <code>book</code> table:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>The serial consistency can also be set with <code>serialConsistency</code> in the options,
@@ -1418,14 +1374,19 @@ if needed.</p>
 <div class="paragraph">
 <p>Inserting a collection is simple.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset12_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation insertOneBadge {
@@ -1440,12 +1401,7 @@ if needed.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1466,10 +1422,6 @@ if needed.</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1487,14 +1439,19 @@ The following query, looking at the location
 will get both the <code>title</code> and the <code>author</code> for the specified book <code>WHERE
 title:"Moby Dick"</code>:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset13_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset13_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query oneBook {
@@ -1508,12 +1465,7 @@ title:"Moby Dick"</code>:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1532,10 +1484,6 @@ title:"Moby Dick"</code>:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1544,14 +1492,19 @@ title:"Moby Dick"</code>:</p>
 <p>Using the column that we added earlier, the data for a book is updated with the
 ISBN value:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset14_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset14_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation updateOneBook {
@@ -1565,12 +1518,7 @@ ISBN value:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1586,10 +1534,6 @@ ISBN value:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1615,14 +1559,19 @@ If it does exist, it will be updated with the new row data.</p>
 <p>After adding the book "Pride and Prejudice" with an <code>insertBooks()</code>, you can delete
 the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset15_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset15_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset15_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation deleteOneBook {
@@ -1635,12 +1584,7 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset15_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1654,10 +1598,6 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1670,14 +1610,19 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 <p>Similar to the option <code>ifExists</code>, you can delete a book using <code>consistency</code>,
 <code>serialConsistency</code>, or <code>ttl</code>, similar to <a href="#WriteAdvData">insertions</a>:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset16_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset16_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">graphQL command</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset16_graphql-command">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation deleteOneBookCL {
@@ -1690,12 +1635,7 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset16_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1709,10 +1649,6 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>

@@ -506,14 +506,19 @@ datacenter.</p>
 <p>Send a <code>POST</code> request to <code>/v2/schemas/keyspaces</code>.
 In this example we use <code>user_keyspace</code> for the <code>name</code>, and no <code>replicas</code> setting, to default to 1.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'localhost:8082/v2/schemas/keyspaces' \
@@ -525,21 +530,12 @@ In this example we use <code>user_keyspace</code> for the <code>name</code>, and
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"users_keyspace"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -559,14 +555,19 @@ for <code>--header</code>, and <code>-d</code> for <code>--data</code>.</p>
 In this example we use <code>users_keyspace</code> for the <code>name</code>,
 and <code>1</code> for the number of data <code>replicas</code>.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'localhost:8082/v2/schemas/keyspaces' \
@@ -579,21 +580,12 @@ and <code>1</code> for the number of data <code>replicas</code>.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"users_keyspace"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -606,14 +598,19 @@ Send a <code>POST</code> request to <code>/v2/schemas/keyspaces</code>.
 In this example we use <code>users_keyspace-dcs</code> for the <code>name</code>, the datacenters are <code>dc1</code> and <code>dc2</code>,
 where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 replicas.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'localhost:8082/v2/schemas/keyspaces' \
@@ -626,21 +623,12 @@ where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 r
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"users_keyspace_dcs"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -663,14 +651,19 @@ where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 r
 <p>To check if a keyspaces exist, execute a
 REST API query with <code>cURL</code> to find all the keyspaces:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'localhost:8082/v2/schemas/keyspaces' \
@@ -679,12 +672,7 @@ REST API query with <code>cURL</code> to find all the keyspaces:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -728,22 +716,23 @@ REST API query with <code>cURL</code> to find all the keyspaces:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To get a particular keyspace, specify the keyspace in the URL:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'localhost:8082/v2/schemas/keyspaces/users_keyspace' \
@@ -752,21 +741,12 @@ REST API query with <code>cURL</code> to find all the keyspaces:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"data":{"name":"users_keyspace"}}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -777,14 +757,19 @@ REST API query with <code>cURL</code> to find all the keyspaces:</p>
 <p>Send a <code>POST</code> request to <code>/v2/schemas/keyspaces/{keyspace_name}/tables</code> to create a table.
 Set the table name and column definitions in the JSON body.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -823,21 +808,12 @@ Set the table name and column definitions in the JSON body.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"users"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -852,14 +828,19 @@ Set the table name and column definitions in the JSON body.</p>
 <p>If you need to add an attribute to something you are storing in a table, you
 can add a column by sending a <code>POST</code> request to add the column.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset7_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'localhost:8082/v2/schemas/keyspaces/users_keyspace/tables/users/columns' \
@@ -873,12 +854,7 @@ can add a column by sending a <code>POST</code> request to add the column.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{ "name": "email" }</code></pre>
@@ -886,23 +862,24 @@ can add a column by sending a <code>POST</code> request to add the column.</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To change the name or data type of an existing column, use a similar command, but
 sent a <code>PUT</code> request instead:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset8_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -916,12 +893,7 @@ sent a <code>PUT</code> request instead:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -929,10 +901,6 @@ sent a <code>PUT</code> request instead:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -946,14 +914,19 @@ sent a <code>PUT</code> request instead:</p>
 <p>To check if a table exists, execute a
 REST API query with <code>cURL</code> to find all the tables:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset9_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'localhost:8082/v2/schemas/keyspaces/users_keyspace/tables' \
@@ -962,12 +935,7 @@ REST API query with <code>cURL</code> to find all the tables:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1021,22 +989,23 @@ REST API query with <code>cURL</code> to find all the tables:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To get a particular table, specify the table in the URL:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset10_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1046,12 +1015,7 @@ REST API query with <code>cURL</code> to find all the tables:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1103,23 +1067,24 @@ REST API query with <code>cURL</code> to find all the tables:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To check if a column exists, execute a
 REST API query with <code>cURL</code> to find all the columns:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset11_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset11_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1130,12 +1095,7 @@ REST API query with <code>cURL</code> to find all the columns:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1166,22 +1126,23 @@ REST API query with <code>cURL</code> to find all the columns:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To get a particular column, specify the column in the URL:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset12_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1192,12 +1153,7 @@ REST API query with <code>cURL</code> to find all the columns:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1209,10 +1165,6 @@ REST API query with <code>cURL</code> to find all the columns:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1291,14 +1243,19 @@ Send a <code>POST</code> request to <code>/v2/keyspaces/{keyspace_name}/{table_n
 to add data to the table.
 The column name/value pairs are passed in the JSON body.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset13_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset13_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'localhost:8082/v2/keyspaces/users_keyspace/users' \
@@ -1322,22 +1279,13 @@ curl --location --request POST 'localhost:8082/v2/keyspaces/users_keyspace/users
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"firstname":"Mookie","lastname":"Betts"}
 {"firstname":"Janesha","lastname":"Doesha"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1364,14 +1312,19 @@ URI, only the <code>{tableName}</code>.</p>
 <code>/v2/keyspaces/{keyspace_name}/{table_name}?where={searchPath}</code> to retrieve the two users
 that were entered:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset14_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset14_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'http://localhost:8082/v2/keyspaces/users_keyspace/users?where=\{"firstname":\{"$in":\["Janesha","Mookie"\]\}\}' \
@@ -1380,12 +1333,7 @@ that were entered:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1407,10 +1355,6 @@ that were entered:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1440,14 +1384,19 @@ rows.</p>
 <p>Send a <code>GET</code> request to <code>/v2/keyspaces/{keyspace_name}/{table_name}</code>
 to retrieve the row for <code>Mookie</code> using <code>$eq</code>:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset15_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset15_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset15_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'http://localhost:8082/v2/keyspaces/users_keyspace/users?where=\{"firstname":\{"$eq":"Mookie"\}\}' \
@@ -1456,12 +1405,7 @@ to retrieve the row for <code>Mookie</code> using <code>$eq</code>:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset15_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1479,22 +1423,23 @@ to retrieve the row for <code>Mookie</code> using <code>$eq</code>:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Finally, a primary key can be supplied to retrieve a row:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset16_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset16_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset16_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'localhost:8082/v2/keyspaces/users_keyspace/users/Mookie/Betts' \
@@ -1503,12 +1448,7 @@ to retrieve the row for <code>Mookie</code> using <code>$eq</code>:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset16_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1524,10 +1464,6 @@ to retrieve the row for <code>Mookie</code> using <code>$eq</code>:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1542,14 +1478,19 @@ In this example, the partition key is <code>firstname</code> "Mookie" and the
 clustering key is <code>lastname</code> "Betts";
 thus, we use <code>/Mookie/Betts</code> as the <code>{path}</code> in our request.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset17_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset17_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset17_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X PUT 'localhost:8082/v2/keyspaces/users_keyspace/users/Mookie/Betts' \
@@ -1561,21 +1502,12 @@ thus, we use <code>/Mookie/Betts</code> as the <code>{path}</code> in our reques
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset17_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"data":{"email":"mookie.betts.new-email@email.com"}}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1600,14 +1532,19 @@ a <code>PATCH</code> request to <code>/v2/keyspaces/{keyspace_name}/{table_name}
 In this example, we realize we should not have changed the email address, and
 we want to only change that one column:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset18_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset18_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset18_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X PATCH 'localhost:8082/v2/keyspaces/users_keyspace/users/Mookie/Betts' \
@@ -1619,21 +1556,12 @@ we want to only change that one column:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset18_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"data":{"email":"mookie.betts.email@email.com"}}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>

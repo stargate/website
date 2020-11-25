@@ -503,14 +503,19 @@ datacenter.</p>
 <p>Send a <code>POST</code> request to <code>/v2/schemas/namespaces</code>.
 In this example we use <code>myworld</code> for the <code>name</code>, and no <code>replicas</code> setting, to default to 1.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'localhost:8082/v2/schemas/namespaces' \
@@ -522,21 +527,12 @@ In this example we use <code>myworld</code> for the <code>name</code>, and no <c
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"myworld"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -556,14 +552,19 @@ for <code>--header</code>, and <code>-d</code> for <code>--data</code>.</p>
 In this example we use <code>myworld</code> for the <code>name</code>,
 and <code>2</code> for the number of data <code>replicas</code>.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'localhost:8082/v2/schemas/namespaces' \
@@ -576,21 +577,12 @@ and <code>2</code> for the number of data <code>replicas</code>.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"myworld"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -603,14 +595,19 @@ Send a <code>POST</code> request to <code>/v2/schemas/namespaces</code>.
 In this example we use <code>myworld-dcs</code> for the <code>name</code>, the datacenters are <code>dc1</code> and <code>dc2</code>,
 where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 replicas.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'localhost:8082/v2/schemas/namespaces' \
@@ -623,21 +620,12 @@ where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 r
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"name":"myworld_dcs"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -649,14 +637,19 @@ where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 r
 <p>To check if a namespaces exist, execute a
 Document API query with <code>cURL</code> to find all the namespaces:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'localhost:8082/v2/schemas/namespaces' \
@@ -665,12 +658,7 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"data":[{"name":"system_distributed"},{"name":"system"},
@@ -680,22 +668,23 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To get a particular namespace, specify the namespace in the URL:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X GET 'localhost:8082/v2/schemas/namespaces/myworld' \
@@ -704,21 +693,12 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"data":{"name":"myworld"}}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -757,14 +737,19 @@ Send a <code>POST</code> request to <code>/v2/namespaces/{namespace_name}/collec
 to add data to the collection <code>fitness</code>.
 The data is passed in the JSON body.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -778,21 +763,12 @@ The data is passed in the JSON body.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"3ffc7ae6-c42d-46de-b52b-b5e77ae6a87b"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -810,14 +786,19 @@ to add data to the collection <code>Janet</code>.
 The <code>document-id</code> can be any string.
 The data is passed in the JSON body.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset7_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X PUT 'localhost:8082/v2/namespaces/myworld/collections/fitness/Janet' \
@@ -832,21 +813,12 @@ The data is passed in the JSON body.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"Janet"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -870,14 +842,19 @@ Send a <code>PUT</code> request to
 to add data to the existing collection.
 The data is passed in the JSON body.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset8_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X PUT 'localhost:8082/v2/namespaces/myworld/collections/fitness/Joey' \
@@ -895,21 +872,12 @@ The data is passed in the JSON body.</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"Joey"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -924,14 +892,19 @@ The data is passed in the JSON body.</p>
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}</code> to retrieve
 all the documents:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset9_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -941,12 +914,7 @@ all the documents:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -976,10 +944,6 @@ all the documents:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>The <code>page-size</code> parameter is included to get all the documents, rather than the
@@ -994,14 +958,19 @@ The <code>pageState</code> is useful for pagination of the results in queries.</
 Send a <code>GET</code> request to <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}</code>
 to retrieve the document:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset10_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1011,12 +980,7 @@ to retrieve the document:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1028,10 +992,6 @@ to retrieve the document:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1049,14 +1009,19 @@ Send a <code>GET</code> request to
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}?{where-clause}</code>
 to get the same information:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset11_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset11_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X  GET 'localhost:8082/v2/namespaces/myworld/collections/fitness?where=\{"firstname":\{"$eq":"Janet"\}\}' \
@@ -1065,12 +1030,7 @@ to get the same information:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1087,10 +1047,6 @@ to get the same information:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Note that the <code>where</code> clause must be url encoded, so curly brackets are escaped
@@ -1101,14 +1057,19 @@ Also, the full document is returned, as opposed to the value of the field specif
 <div class="paragraph">
 <p>You can also retrieve documents using a <code>WHERE</code> clause that searches sub-documents:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset12_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X  GET 'localhost:8082/v2/namespaces/myworld/collections/fitness?where=\{"weights.type":\{"$eq":"bench%20press"\}\}' \
@@ -1117,12 +1078,7 @@ Also, the full document is returned, as opposed to the value of the field specif
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1143,10 +1099,6 @@ Also, the full document is returned, as opposed to the value of the field specif
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -1156,14 +1108,19 @@ Also, the full document is returned, as opposed to the value of the field specif
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}</code>
 to retrieve the type of weights Joey has done in his workout:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset13_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset13_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X  GET 'localhost:8082/v2/namespaces/myworld/collections/fitness/Joey/weights/type' \
@@ -1172,21 +1129,12 @@ to retrieve the type of weights Joey has done in his workout:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"Joey","data":"bench press"}</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1195,14 +1143,19 @@ to retrieve the type of weights Joey has done in his workout:</p>
 <code>document-path</code> specified to retrieve that data about the <code>reps</code>, <code>type</code>, and
 <code>weight</code>.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset14_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset14_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'localhost:8082/v2/namespaces/myworld/collections/fitness/Joey/weights' \
@@ -1211,12 +1164,7 @@ to retrieve the type of weights Joey has done in his workout:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1229,10 +1177,6 @@ to retrieve the type of weights Joey has done in his workout:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1250,14 +1194,19 @@ to retrieve the type of weights Joey has done in his workout:</p>
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}</code>
 to replace data to the existing collection. All fields included will be changed.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset15_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset15_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset15_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1271,12 +1220,7 @@ to replace data to the existing collection. All fields included will be changed.
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset15_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"Janet"}</code></pre>
@@ -1284,22 +1228,23 @@ to replace data to the existing collection. All fields included will be changed.
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>A <code>GET</code> request will show that the data has been replaced in the document:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset16_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset16_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset16_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'localhost:8082/v2/namespaces/myworld/collections/fitness/Janet' \
@@ -1308,12 +1253,7 @@ to replace data to the existing collection. All fields included will be changed.
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset16_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1327,10 +1267,6 @@ to replace data to the existing collection. All fields included will be changed.
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1356,14 +1292,19 @@ a <code>PATCH</code> request to
  <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}</code>.
 In this example, we want to change just the firstname of the document:</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset17_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset17_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset17_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1376,12 +1317,7 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset17_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"Joey"}</code></pre>
@@ -1389,22 +1325,23 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>and a <code>GET</code> will show that only the <code>weights</code> has been changed.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset18_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset18_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset18_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1414,12 +1351,7 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset18_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1438,10 +1370,6 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>To partially update a sub-document,  send a <code>PATCH</code> request to
@@ -1450,14 +1378,19 @@ In this example, we want to change just the firstname of the document:</p>
  information to change and the <code>document-path</code> of the sub-document. Include
  all fields that you wish to update.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset19_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset19_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset19_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1472,12 +1405,7 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset19_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"documentId":"Joey"}</code></pre>
@@ -1485,22 +1413,23 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>and a <code>GET</code> will show that only the <code>weights</code> has been changed.</p>
 </div>
-<div class="exampleblock">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset20_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset20_result"></a>Result</p>
+</li>
+</ul>
+</div>
 <div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">cURL command (/v2)</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset20_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1510,12 +1439,7 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 </div>
-</div>
-</dd>
-<dt class="hdlist1">Result</dt>
-<dd>
-<div class="openblock">
-<div class="content">
+<div class="tab-pane" aria-labelledby="tabset20_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1532,10 +1456,6 @@ In this example, we want to change just the firstname of the document:</p>
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
