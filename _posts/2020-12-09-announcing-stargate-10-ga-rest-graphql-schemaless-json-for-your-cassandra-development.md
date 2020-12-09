@@ -112,7 +112,7 @@ The above was just a quick tour on how to do a few data API calls for a basic Ti
 
 ## What’s next?
 
-For more examples, we have hands-on tutorials for using [Stargate’s REST](https://www.datastax.com/dev/rest), [Document](https://www.datastax.com/dev/document) and [GraphQL APIs](https://www.datastax.com/dev/graphql). Check ‘em out and let us know what you think. 
+For more examples, we have hands-on tutorials for using [Stargate’s REST](https://www.datastax.com/dev/rest), [Document](https://www.datastax.com/dev/documents-api) and [GraphQL APIs](https://www.datastax.com/dev/graphql). Check ‘em out and let us know what you think. 
 
 Have an app idea or want to join the fun? [You can join the Stargate community, too](https://discord.gg/2Xt8QNyFZA).
 
