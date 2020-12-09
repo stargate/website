@@ -46,7 +46,7 @@ To see it in action, let’s see how this works by using JSON with Stargate’s 
 
 ## Real Quick Note First
 
-Slinging JSON to and from Apache Cassandra without data modeling is just too much fun. You gotta [try this out in Astra for yourself](http://astra.datastax.com/). You can get [hands on with it right away](https://www.datastax.com/dev/document) or check out our [sample app gallery](https://astra.datastax.com/sample-app-gallery) to see schemaless Cassandra in action.
+Slinging JSON to and from Apache Cassandra without data modeling is just too much fun. You gotta [try this out in Astra for yourself](http://astra.datastax.com/). You can get [hands on with it right away](https://www.datastax.com/dev/documents-api) or check out our [sample app gallery](https://astra.datastax.com/sample-app-gallery) to see schemaless Cassandra in action.
 
 We are stoked to have engineers from Netflix, Burberry, Macquarie Bank, USAA, and Yelp creating Stargate with us. They are already hard at work battletesting the APIs and collaborating on new features. 
 
@@ -108,7 +108,7 @@ const post = await postsCollection.update(post.documentId, {
 
 {% endhighlight %}
 
-The above was just a quick tour on how to do a few data API calls for a basic TikTok clone. Want to see the full thing? Check out [Ania Kubow](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw)’s tutorial to see how to wire this up into a full React app with Netlify.
+The above was just a quick tour on how to do a few data API calls for a basic TikTok clone. Want to see the full thing? Check out [Ania Kubow](https://www.youtube.com/watch?v=IATOicvih5A)’s tutorial to see how to wire this up into a full React app with Netlify.
 
 ## What’s next?
 
@@ -191,7 +191,7 @@ And, lastly, if you need to delete that user:
 const user = await usersCollection.delete(user.documentId);
 {% endhighlight %}
 
-Want to see the full code? Check out [Ania Kubow’s app](https://github.com/kubowania) to get all the goodness and start customizing it on your own. Let me know when you have stories up and I can subscribe to your ducks channel. 
+Want to see the full code? Check out [Ania Kubow’s app](https://github.com/kubowania/stargate-tik-tok) to get all the goodness and start customizing it on your own. Let me know when you have stories up and I can subscribe to your ducks channel. 
 
 Thank you for following along all the way down here. 
 
