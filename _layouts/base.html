@@ -18,7 +18,7 @@
   {% endif %}
 </head>
 
-<body class="{{ layout.classes }}">
+<body class="{{ layout.classes }}{% unless hide_banner %}includes-banner{% endunless %}">
   {% include navigation.html %}
 
   {{ content }}

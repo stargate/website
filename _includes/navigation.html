@@ -1,4 +1,13 @@
-<nav class="navbar fixed-top navbar-expand-lg" id="stargate-main-navigation">
+<nav class="navbar fixed-top navbar-expand-lg {% unless page.hide_banner %}with-banner{% endunless %}"
+  id="stargate-main-navigation">
+  {% unless page.hide_banner %}
+  <div class="banner">
+    <div class="d-flex align-items-center justify-content-center">
+      <p>Big day! Stargate is now live on DataStax Astra as the official data API. Try It Now</p>&nbsp;
+      <a href="https://astra.datastax.com/register">Try It Now</a>
+    </div>
+  </div>
+  {% endunless %}
   <div class="container-fluid spaced">
     <a class="navbar-brand" href="{{ '/' | relative_url }}">
       {% include logos/stargate.html %}

@@ -1,4 +1,12 @@
 
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+window.whatIsStargatePlayer = undefined;
+
 function nFormatter(num) {
   if (num >= 1000000000) {
     return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
@@ -23,6 +31,11 @@ function updateNavStyles() {
       }
     }
   }
+}
+
+function onYouTubeIframeAPIReady() {
+  window.whatIsStargatePlayer = new YT.Player('whatis-stargate-video', {
+  });
 }
 
 $(document).ready(function () {
@@ -53,6 +66,18 @@ $(document).ready(function () {
   $('#stargate-navigation').on('hidden.bs.collapse', function () {
     $('#stargate-main-navigation').removeClass('open');
   })
+
+  $('#what-is-stargate-video-modal').on('show.bs.modal', function () {
+    if (window.whatIsStargatePlayer) {
+      window.whatIsStargatePlayer.playVideo();
+    }
+  });
+
+  $('#what-is-stargate-video-modal').on('hide.bs.modal', function () {
+    if (window.whatIsStargatePlayer) {
+      window.whatIsStargatePlayer.stopVideo();
+    }
+  });
 });
 
 if (typeof jQuery === "undefined") { throw new Error("jQuery required"); }

@@ -1,12 +1,14 @@
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .divider {
   margin: 1rem 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: #222B49;
+  border-bottom-color: #222b49;
 }

@@ -39,3 +39,7 @@
     justify-content: center;
   }
 }
+
+body.includes-banner div[class*="hero"] {
+  padding-top: 160px;
+}

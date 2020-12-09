@@ -118,3 +118,43 @@
 .btn-more {
   padding: 12px 34px;
 }
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  font-weight: bold;
+  font-size: 1.125em;
+  line-height: 1.5em;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  color: #555dc0;
+
+  &:hover {
+    color: #555dc0;
+  }
+}
+
+.hero-btn.btn-github {
+  font-size: 1.125em;
+  line-height: 1.5em;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.btn-banner {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  font-weight: bold;
+  font-size: 1.125em;
+  line-height: 1.5em;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+  color: #FFFFFF;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}

@@ -5,6 +5,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 80px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .hero {
@@ -13,14 +15,16 @@
 
 .hero-title {
   font-weight: 900;
-  font-size: 2.25rem;
+  font-size: 3rem;
+  line-height: 1.2;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: $white;
 }
 
 .hero-text {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 400;
   line-height: 1.5;
   color: #ffffff;
 }
@@ -55,7 +59,7 @@
     text-transform: none;
     font-size: 1rem;
     line-height: 1em;
-    
+
     svg {
       width: 2em;
     }
@@ -63,7 +67,7 @@
 }
 
 .catalog {
-  padding: 40px 0;
+  padding-top: 40px;
 }
 
 .catalog-title {
@@ -126,7 +130,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  padding-bottom: 60px;
 
   &.hidden {
     display: none;
@@ -177,7 +181,7 @@
   .btn {
     margin-top: 60px;
   }
-  
+
   @include media-breakpoint-down(md) {
     padding: 60px 0;
 
@@ -191,11 +195,10 @@
   font-weight: 800;
   font-size: 36px;
   text-align: center;
-  color: #222B49;
+  color: #222b49;
   margin-bottom: 40px;
   margin-top: 0;
 }
-
 
 .latest-post__item {
   padding: 30px;
@@ -207,13 +210,13 @@
 
 .latest-post__item-container:not(:last-of-type) {
   .latest-post__item {
-    border-right: 1px solid #C9CEF6;
+    border-right: 1px solid #c9cef6;
   }
-  
+
   @include media-breakpoint-down(md) {
     .latest-post__item {
       border-right: none;
-      border-bottom: 1px solid #C9CEF6;
+      border-bottom: 1px solid #c9cef6;
     }
   }
 }
@@ -229,7 +232,7 @@
   font-weight: 800;
   font-size: 18px;
   line-height: 1.5;
-  color: #222B49;
+  color: #222b49;
 }
 
 .latest-post__item-title {
@@ -240,17 +243,89 @@
 .latest-post__item-content {
   font-size: 16px;
   line-height: 1.5;
-  color: #6A7086;
+  color: #6a7086;
   margin-bottom: 30px;
 }
 
 .latest-post__item-info {
   font-size: 14px;
   line-height: 1.5;
-  color: #6A7086;
+  color: #6a7086;
 
   .link {
-    color: #555DC0;
+    color: #555dc0;
     font-weight: 600;
   }
 }
+
+.index-banner {
+  background: #555dc0;
+  padding: 2.25rem;
+
+  p {
+    font-weight: 800;
+    font-size: 1.3125rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+
+.what-is-stargate {
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+.what-is-stargate__title {
+  font-weight: 800;
+  font-size: 2.25rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #ffffff;
+}
+
+.what-is-stargate__text {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #ffffff;
+
+  p {
+    margin: 0;
+  }
+}
+
+.what-is-stargate__player {
+  position: relative;
+  display: block;
+  margin-top: 2rem;
+  cursor: pointer;
+
+  .play-icon {
+    font-size: 5rem;
+    color: #555dc0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.what-is-stargate__image {
+  width: 100%;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+}
+
