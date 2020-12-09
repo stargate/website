@@ -40,6 +40,7 @@
   }
 }
 
-body.includes-banner div[class*="hero"] {
+body.includes-banner div[class^="hero-"],
+body.includes-banner header[class^="hero-"] {
   padding-top: 160px;
 }
