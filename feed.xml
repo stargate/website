@@ -1,4 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2020-12-01T19:52:04+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">The Stargate Cassandra Documents API</title><link href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html" rel="alternate" type="text/html" title="The Stargate Cassandra Documents API" /><published>2020-10-19T00:00:00+00:00</published><updated>2020-10-19T00:00:00+00:00</updated><id>https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api</id><content type="html" xml:base="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">&lt;p&gt;If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON.  Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point.  Most of the time, this isn’t a problem, it’s just the way that we build software these days.  There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2020-12-09T13:41:46+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Announcing: Stargate 1.0 GA; REST, GraphQL, &amp;amp; Schemaless JSON for Your Cassandra Development</title><link href="https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html" rel="alternate" type="text/html" title="Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development</id><content type="html" xml:base="https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html">&lt;p&gt;It is a really great time to be a developer.&lt;/p&gt;
+
+&lt;p&gt;We have tons of APIs integrated within great tools for building dynamic, full stack apps. If you are a developer, you probably are using technologies like schemaless data stores, serverless architectures, JSON APIs, and/or the GraphQL language.&lt;/p&gt;
+
+&lt;p&gt;Further, there are a bunch of cool frameworks like the &lt;strong&gt;Jam&lt;/strong&gt;stack (&lt;strong&gt;J&lt;/strong&gt;avaScript, &lt;strong&gt;A&lt;/strong&gt;PIs, and &lt;strong&gt;M&lt;/strong&gt;arkup) and services like Netlify to make it fast to deploy a serverless app.&lt;/p&gt;
+
+&lt;p&gt;And now, for the first time ever, Apache Cassandra is a part of this stack because &lt;a href=&quot;https://astra.datastax.com/&quot;&gt;Stargate is now live on Astra&lt;/a&gt; as the official data API.&lt;/p&gt;
+
+&lt;p&gt;The modern apps we build need data APIs which integrate into our toolset and work with native data shapes (JSON, REST, GraphQL, etc). These data APIs need to support schemaless JSON, while simultaneously providing speed and scalability.&lt;/p&gt;
+
+&lt;p&gt;Most importantly, it better only take a few minutes for us to use them within our project.&lt;/p&gt;
+
+&lt;p&gt;DataStax built &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; into Astra to give us, app developers, a natural data API stack which meshes with the Jamstack (or serverless stack of your choice). Stargate in Astra is built on the rock solid NoSQL data engine (Apache Cassandra) which powers Netflix, Instagram, Yelp, iCloud and other apps we all use everyday.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-exactly-is-stargate&quot;&gt;What exactly is Stargate?&lt;/h2&gt;
+&lt;p&gt;Stargate is an &lt;a href=&quot;https://stargate.io/2020/09/14/init-stargate.html&quot;&gt;open source data gateway&lt;/a&gt; that sits between your app server and your databases. Stargate brings together an API platform and data request coordination code into one OSS project.&lt;/p&gt;
+
+&lt;p&gt;Multiple successful app companies - like Netflix and Yelp - built their own data gateways to help internal app developers create features using simple APIs, without needing to learn the underlying database or mess with schema.&lt;/p&gt;
+
+&lt;p&gt;DataStax integrated Stargate into Astra to give you the same power and ease of access to your data.&lt;/p&gt;
+
+&lt;p&gt;What does this mean for you?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No upfront data modelling needed for Documents.&lt;/li&gt;
+  &lt;li&gt;Less custom code to maintain.&lt;/li&gt;
+  &lt;li&gt;More time to build what you care about.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-astra/stargate-astra.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can work with your data the way you want – JSON via schemaless document APIs or database schema aware GraphQL and RESTful APIs – while Stargate serves as the proxy that coordinates these requests to different flavors of Cassandra.&lt;/p&gt;
+
+&lt;p&gt;To see it in action, let’s see how this works by using JSON with Stargate’s schemaless Document API in a TikTok clone. Because, if Instagram and Snapchat have a TikTok clone, we should have one, too. Right?&lt;/p&gt;
+
+&lt;h2 id=&quot;real-quick-note-first&quot;&gt;Real Quick Note First&lt;/h2&gt;
+
+&lt;p&gt;Slinging JSON to and from Apache Cassandra without data modeling is just too much fun. You gotta &lt;a href=&quot;http://astra.datastax.com/&quot;&gt;try this out in Astra for yourself&lt;/a&gt;. You can get &lt;a href=&quot;https://www.datastax.com/dev/document&quot;&gt;hands on with it right away&lt;/a&gt; or check out our &lt;a href=&quot;https://astra.datastax.com/sample-app-gallery&quot;&gt;sample app gallery&lt;/a&gt; to see schemaless Cassandra in action.&lt;/p&gt;
+
+&lt;p&gt;We are stoked to have engineers from Netflix, Burberry, Macquarie Bank, USAA, and Yelp creating Stargate with us. They are already hard at work battletesting the APIs and collaborating on new features.&lt;/p&gt;
+
+&lt;p&gt;Ok, onto the code!&lt;/p&gt;
+
+&lt;h2 id=&quot;posts-in-tiktok&quot;&gt;Posts in TikTok&lt;/h2&gt;
+
+&lt;p&gt;We are going to walk through using Stargate’s APIs in Astra for creating and updating posts within a TikTok clone. We’re walking through examples that are ready to be pasted into your latest Jamstack app.&lt;/p&gt;
+
+&lt;p&gt;To use Stargate in Astra in your app, first install and set up our &lt;a href=&quot;https://www.npmjs.com/package/@astrajs/collections&quot;&gt;JavaScript SDK&lt;/a&gt;. You can learn about storing environment &lt;a href=&quot;https://www.youtube.com/watch?v=vSmzEGZQI5A&quot;&gt;variables in your .env file here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s start with a basic TikTok post: a video with a caption, like:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;postId&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;video&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://i.imgur.com/FTBP02Y.mp4&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;These ducks are cute&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2020-12-09T09:08:31.020Z&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;likes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;After connecting to Stargate in Astra with a nodejs client, let’s create a new collection in our app and add the post with:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;astraClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;tikTokClone&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you’ve ever used Cassandra before, you know this is amazing. Look at what we didn’t do: no data modeling, no table creation, no configuration code, no partition keys, no clustering columns. I think you get my drift.&lt;/p&gt;
+
+&lt;p&gt;Stargate in Astra allows you to add data to Apache Cassandra in one line of code.&lt;/p&gt;
+
+&lt;p&gt;This level of ease of use hasn’t previously been possible with Cassandra. Insert JSON and move on.&lt;/p&gt;
+
+&lt;p&gt;Next up, let’s say you want to find all posts about ducks. You can do that via:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// find all posts about ducks&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;posts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;$in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;ducks&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And boom. Now you have your ducks channel all set up for your users. Because who doesn’t want a stream fully dedicated to ducks?&lt;/p&gt;
+
+&lt;p&gt;Now, your app isn’t going to &lt;a href=&quot;https://www.newsweek.com/twitter-fleets-reactions-memes-edit-button-1548037&quot;&gt;be like Twitter&lt;/a&gt;. We can edit stuff here. Let’s show how to edit your post’s caption. Stories tho? That’s on you&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// update the post’s caption&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;These ducks are MEGA cute&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The above was just a quick tour on how to do a few data API calls for a basic TikTok clone. Want to see the full thing? Check out &lt;a href=&quot;https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw&quot;&gt;Ania Kubow&lt;/a&gt;’s tutorial to see how to wire this up into a full React app with Netlify.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s next?&lt;/h2&gt;
+
+&lt;p&gt;For more examples, we have hands-on tutorials for using &lt;a href=&quot;https://www.datastax.com/dev/rest&quot;&gt;Stargate’s REST&lt;/a&gt;, &lt;a href=&quot;https://www.datastax.com/dev/document&quot;&gt;Document&lt;/a&gt; and &lt;a href=&quot;https://www.datastax.com/dev/graphql&quot;&gt;GraphQL APIs&lt;/a&gt;. Check ‘em out and let us know what you think.&lt;/p&gt;
+
+&lt;p&gt;Have an app idea or want to join the fun? &lt;a href=&quot;https://discord.gg/2Xt8QNyFZA&quot;&gt;You can join the Stargate community, too&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We would love to see how you customize your TikTok clone to show off more ways to feature data in your app. Or, you can create your own non-TikTok example. We would love to showcase your example in our &lt;a href=&quot;https://astra.datastax.com/sample-app-gallery&quot;&gt;sample app gallery&lt;/a&gt;, so tell us about it in &lt;a href=&quot;https://discord.gg/33mKDHHFUE&quot;&gt;our contribute channel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-you-are-down-here-looking-for-a-few-more-details&quot;&gt;So, you are down here looking for a few more details&lt;/h2&gt;
+&lt;p&gt;If you came down here, maybe you are looking for a few more lines of code.&lt;/p&gt;
+
+&lt;p&gt;No problem.&lt;/p&gt;
+
+&lt;p&gt;Let’s show how to set up the node JS client and a few more data API calls. For starters, let’s take a look at how to set up your client to connect to Stargate in Astra.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// npm install @astrajs/collections&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@astrajs/collections&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// create an Astra client&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;astraClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;   &lt;span class=&quot;na&quot;&gt;astraDatabaseId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;astraDatabaseRegion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_REGION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_USERNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_PASSWORD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Easy enough.&lt;/p&gt;
+
+&lt;p&gt;Then, let’s create a users collection in our database to store documents about our TikTok users:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create the users collection in the app&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;astraClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;tikTokClone&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A TikTok user in our app will have the basics: a unique id, a name, username, etc.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;id_3&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Mo Farooq&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mofarooq32&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://i.imgur.com/9KYq7VG.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So, let’s add our user into our collection:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create a new user&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can check to make sure your user was stored in the database by reading the user back by any of their properties, like their username.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// find our user by username&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;$eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mofarooq32&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or, you can lookup a user by their &lt;strong&gt;documentId&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// get the user by document id&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And, lastly, if you need to delete that user:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// delete the post&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Want to see the full code? Check out &lt;a href=&quot;https://github.com/kubowania&quot;&gt;Ania Kubow’s app&lt;/a&gt; to get all the goodness and start customizing it on your own. Let me know when you have stories up and I can subscribe to your ducks channel.&lt;/p&gt;
+
+&lt;p&gt;Thank you for following along all the way down here.&lt;/p&gt;
+
+&lt;p&gt;Happy building!&lt;/p&gt;</content><author><name></name></author><summary type="html">It is a really great time to be a developer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The Stargate Cassandra Documents API</title><link href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html" rel="alternate" type="text/html" title="The Stargate Cassandra Documents API" /><published>2020-10-19T00:00:00+00:00</published><updated>2020-10-19T00:00:00+00:00</updated><id>https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api</id><content type="html" xml:base="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">&lt;p&gt;If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON.  Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point.  Most of the time, this isn’t a problem, it’s just the way that we build software these days.  There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…&lt;/p&gt;
 
 &lt;p&gt;To double-click on that, the problem isn’t the JSON data format itself, although Cassandra doesn’t make JSON easy, it’s the way most devs use JSON when we’re building our apps.  Iterative development means that plans change.  The user registration form now needs a couple of more fields and the front-end dev went ahead and added them.  That API I’m calling returns some extra data.   Welcome to the loosely coupled world, it’s all fun and games until my app needs to send it to the database.&lt;/p&gt;
 
