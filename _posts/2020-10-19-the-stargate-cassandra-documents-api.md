@@ -44,7 +44,7 @@ create table <name> (
   … p[N] text,
   bool_value boolean,
   txt_value text,
-  bl_value double, 
+  dbl_value double, 
   leaf text
 )
 {% endhighlight %}
