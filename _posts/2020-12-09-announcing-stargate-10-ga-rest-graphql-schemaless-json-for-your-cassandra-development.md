@@ -187,7 +187,7 @@ const user = await usersCollection.get(user.documentId);
 And, lastly, if you need to delete that user:
 
 {% highlight javascript %}
-// delete the post
+// delete the user
 const user = await usersCollection.delete(user.documentId);
 {% endhighlight %}
 
