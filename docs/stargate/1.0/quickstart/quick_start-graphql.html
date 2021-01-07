@@ -1255,7 +1255,8 @@ query oneBook {
       author
       isbn
     }
-  }</code></pre>
+  }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -1316,7 +1317,7 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation deleteOneBook {
-  PaP: deletebook(value: {title:"Pride and Prejudice"}, ifExists: true ) {
+  PaP: deletebook(value: {title:"Pride and Prejudice", author: "Jane Austen"}, ifExists: true ) {
     value {
       title
     }
