@@ -5,31 +5,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Stargate Cassandra Documents API</title>
+  <title>Turbocharge App Development on DSE with Stargate Support for Modern Data APIs</title>
 
   <link rel="shortcut icon" type="image/png" href="/assets/images/stargate-profile.png">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate">
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>The Stargate Cassandra Documents API | Stargate</title>
+<title>Turbocharge App Development on DSE with Stargate Support for Modern Data APIs | Stargate</title>
 <meta name="generator" content="Jekyll v3.9.0">
-<meta property="og:title" content="The Stargate Cassandra Documents API">
+<meta property="og:title" content="Turbocharge App Development on DSE with Stargate Support for Modern Data APIs">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON. Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point. Most of the time, this isn’t a problem, it’s just the way that we build software these days. There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…">
-<meta property="og:description" content="If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON. Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point. Most of the time, this isn’t a problem, it’s just the way that we build software these days. There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…">
-<link rel="canonical" href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">
-<meta property="og:url" content="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">
+<meta name="description" content="It’s a monumental day for DataStax Enterprise (DSE) users: Stargate support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.">
+<meta property="og:description" content="It’s a monumental day for DataStax Enterprise (DSE) users: Stargate support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.">
+<link rel="canonical" href="https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html">
+<meta property="og:url" content="https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html">
 <meta property="og:site_name" content="Stargate">
 <meta property="og:image" content="https://stargate.io/assets/images/default-stargate.png">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2020-10-19T00:00:00+00:00">
+<meta property="article:published_time" content="2021-02-10T00:00:00+00:00">
 <meta name="twitter:card" content="large">
 <meta property="twitter:image" content="https://stargate.io/assets/images/default-stargate.png">
-<meta property="twitter:title" content="The Stargate Cassandra Documents API">
+<meta property="twitter:title" content="Turbocharge App Development on DSE with Stargate Support for Modern Data APIs">
 <meta name="twitter:site" content="@stargateio">
 <script type="application/ld+json">
-{"image":"https://stargate.io/assets/images/default-stargate.png","@type":"BlogPosting","headline":"The Stargate Cassandra Documents API","dateModified":"2020-10-19T00:00:00+00:00","datePublished":"2020-10-19T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html"},"description":"If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON. Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point. Most of the time, this isn’t a problem, it’s just the way that we build software these days. There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…","@context":"https://schema.org"}</script>
+{"image":"https://stargate.io/assets/images/default-stargate.png","@type":"BlogPosting","headline":"Turbocharge App Development on DSE with Stargate Support for Modern Data APIs","dateModified":"2021-02-10T00:00:00+00:00","datePublished":"2021-02-10T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html"},"description":"It’s a monumental day for DataStax Enterprise (DSE) users: Stargate support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -196,18 +196,18 @@
   <div class="container">
     <div class="row">
       <div class="offset-md-2 col-md-8">
-        <h1 class="single-post__title">The Stargate Cassandra Documents API</h1>
-        <h4 class="single-post__subtitle">Because, sometimes, we just want JSON.</h4>
+        <h1 class="single-post__title">Turbocharge App Development on DSE with Stargate Support for Modern Data APIs</h1>
+        <h4 class="single-post__subtitle"></h4>
       </div>
     </div>
 
     <div class="row">
       <div class="offset-md-2 col-md-8">
         <div class="post-item__info">
-          <img data-src="/assets/images/stargate-profile.png" alt="Eric Borczuk" class="post-item__info-author_image lazyload lazyload" width="32" height="32">
-          <span>By <span class="link">Eric Borczuk</span></span>
+          <img data-src="/assets/images/stargate-profile.png" alt="Paras Mehra" class="post-item__info-author_image lazyload lazyload" width="32" height="32">
+          <span>By <span class="link">Paras Mehra</span></span>
           •
-          <span>Oct 19, 2020</span>
+          <span>Feb 10, 2021</span>
         </div>
       </div>
     </div>
@@ -215,221 +215,40 @@
     <div class="row">
       <div class="offset-md-2 col-md-8">
         <div class="single-page__content">
-          <p>If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON.  Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point.  Most of the time, this isn’t a problem, it’s just the way that we build software these days.  There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…</p>
+          <p>It’s a monumental day for <a href="https://www.datastax.com/products/datastax-enterprise">DataStax Enterprise</a> (DSE) users: <a href="http://www.stargate.io">Stargate</a> support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.</p>
 
-<p>To double-click on that, the problem isn’t the JSON data format itself, although Cassandra doesn’t make JSON easy, it’s the way most devs use JSON when we’re building our apps.  Iterative development means that plans change.  The user registration form now needs a couple of more fields and the front-end dev went ahead and added them.  That API I’m calling returns some extra data.   Welcome to the loosely coupled world, it’s all fun and games until my app needs to send it to the database.</p>
+<h2 id="whats-stargate">What’s Stargate?</h2>
+<p>Stargate is an open source data gateway with built-in extensibility. It allows you to integrate APIs of your choice with any persistence layer. It provides this ability with two components: API services and persistence services. What this means is you can create APIs to connect with various persistence stores, such as DSE.</p>
 
-<p>In the early days, Cassandra actually made this pretty simple to do, but as the project matured and added features like enterprise-friendly SQL-like query languages and better indexing, that meant that we needed the database to enforce a schema.  Over time, it became harder and harder to use Cassandra for things like JSON and other document-oriented use cases.</p>
+<h2 id="stargate-with-dse">Stargate with DSE</h2>
+<p>With this release, Stargate supports DSE 6.8 as one of these pluggable persistence stores. In order to run Stargate, users will need to add additional nodes to their cluster. These nodes will behave as coordinators in the cluster and no data will be stored on them.</p>
 
-<p>Enter Stargate - if there’s one thing you should know about the Stargate team it’s that our personal mission is to make Cassandra easy for every developer.  Figuring out how to give Javascript devs native JSON support without having to give up any of the reliability and scalability goodness of Cassandra was a challenge we couldn’t pass up.</p>
+<p><img alt="" data-src="/assets/images/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis/stargate-dse-integration-example.png" class="lazyload"></p>
 
-<p>This idea gave rise to the Stargate <strong>Documents API</strong>, which lets most Cassandra distros (Cassandra 3.11, Cassandra 4.0, and DataStax Enterprise 6.8), work with JSON through a REST API.</p>
+<h2 id="why-do-enterprises-need-stargate">Why Do Enterprises Need Stargate?</h2>
 
-<h2 id="api-features-and-design">API features and design</h2>
+<p><strong>Modern developers need schemaless data.</strong> Building an app and then continuing to iterate is a critical part of accelerating time to market. For too long, developers and DBAs have had to predefine the schema before writing their first line of code. Adding a new field (for a phone number, for example), required an ‘ALTER TABLE’ command, costing even more time. With Stargat`e, Document-based development can use schemaless JSON without the need for defining and modifying schemas during the development life cycle. Your application can now evolve as fast as your customers’ needs.</p>
 
-<p>As <a href="https://github.com/tjake">Jake Luciani</a> and I started to create the bones of this API, we realized that Cassandra is nothing like a document store. Expressing data as rows is straightforward, but expressing trees of JSON data is really not. In addition, mapping that JSON data onto a table managed by Stargate and keeping both writes and reads reasonably fast adds an additional layer of complexity.</p>
+<p><strong>Modern apps need modern data APIs.</strong> Exchanging data with simple, easy-to-use APIs is a fundamental characteristic of modern data apps. Gone are the days of custom or vendor-specific APIs, many of which don’t work with popular new languages and frameworks such as Java, Python, React, and Spring. GraphQL API usage has doubled annually for the last 5 years (<a href="https://2020.stateofjs.com/en-US/technologies/datalayer/">50%</a> of developers say they are or will be using GraphQL). And REST is still the gold standard as <a href="https://rapidapi.com/blog/rapidapi-developer-survey-insights/">63%</a> of all APIs are using REST. Stargate is aligned with building modern apps; it provides REST, Document (JSON) and GraphQL APIs to help developers create applications using the languages and frameworks they know best.</p>
 
-<p>From here, we mapped out three main design components in order for this work:</p>
-<ul>
-  <li>Modeling Documents in Cassandra</li>
-  <li>Handling Reads and Writes</li>
-  <li>Figuring out Deletes</li>
-</ul>
+<p><strong>Modern architecture needs microservices.</strong> Cloud-native applications are predominantly built using a microservices architecture and run via Kubernetes. Stargate was designed with this in mind. It abstracts away backends, enabling developers and architects to focus on interacting with data using modern APIs, and not on specific database implementations. Developers have the freedom to use what languages they know and what fits their requirements to build microservices. These are necessary elements for reducing the friction to build innovative cloud native applications. And by leveraging Kubernetes, Stargate mitigates some of the hurdles associated with a microservices architecture like scalability and resiliency.</p>
 
-<p>The rest of this blog walks through how we approached each design and resolved some hiccups along the way.</p>
+<blockquote>
+  <p>“At Yelp, we are excited about Stargate’s vision to be an open-source and cloud-native data access API gateway. We already heavily rely on the reliability and resilience of Cassandra to handle big workloads with zero downtime. Therefore, the ability to abstract Cassandra-specific concepts entirely from app developers and support different API options — like REST, GraphQL and gRPC — will go a long way in removing barriers of entry for new software developers at Yelp.”</p>
+</blockquote>
 
-<h2 id="modeling-documents-in-cassandra-with-document-shredding">Modeling Documents in Cassandra with Document Shredding</h2>
+<p>— <a href="https://www.linkedin.com/in/sirishavanteru/">Sirisha Vanteru</a>, Engineering Manager, Yelp</p>
 
-<p>The first thing that we had to decide  was the schema of the managed table that backs a document collection. Due to some great discussions with some Cassandra specialists, it was decided that when a user creates a document, a table will be created with a statement of the form:</p>
+<blockquote>
+  <p>“Our team is focused on implementing technology that empowers our customers to innovate and invest for a better future. Currently, it is hard to lift and shift our older driver versions in our data infrastructure. Using Stargate’s REST API platform would simplify this and allow us to build modern apps with ease. We are excited to see how we can modernize our architecture with Stargate in Astra.”</p>
+</blockquote>
 
-<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">table</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">(</span>
-  <span class="k">key</span> <span class="nb">text</span><span class="p">,</span>
-  <span class="n">p0</span> <span class="nb">text</span><span class="p">,</span>
-  <span class="err">…</span> <span class="n">p</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="nb">text</span><span class="p">,</span>
-  <span class="n">bool_value</span> <span class="nb">boolean</span><span class="p">,</span>
-  <span class="n">txt_value</span> <span class="nb">text</span><span class="p">,</span>
-  <span class="n">dbl_value</span> <span class="nb">double</span><span class="p">,</span> 
-  <span class="n">leaf</span> <span class="nb">text</span>
-<span class="p">)</span></code></pre></figure>
+<p>— <a href="https://www.linkedin.com/in/jon-lau-10a81363/">Jon Lau</a>, Cassandra DB Platform Owner,  Engineer, Macquarie Group</p>
 
-<p>At this point is where we had to solve an unbounded data modeling problem. Because any JSON document that has a depth of [N] or less can be added to this table, each value in the JSON will get stored as a row in the table. So if I wanted to represent a document called “x” that has the JSON:</p>
+<h2 id="how-to-get-started">How To Get Started</h2>
+<p>Follow our documentation <a href="https://stargate.io/docs/stargate/1.0/developers-guide/install/install_dse_68.html">here</a> to get started with Stargate. If you’d like to learn more and see how Stargate exposes these endpoints and integrates with DSE, take a look at this <a href="https://stargate.io/2020/09/14/init-stargate.html">blog post</a> and the <a href="https://github.com/stargate/stargate">Stargate</a> source code for a deeper dive. The blog post does a great job of explaining the mechanics of Stargate and you can always dig into the code for a more thorough analysis.</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"b"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span></code></pre></figure>
-
-<p>The document would be “shredded” into rows looking like this:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>key</th>
-      <th>p0</th>
-      <th>p1</th>
-      <th>dbl_value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>x</td>
-      <td>a</td>
-      <td>b</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>x</td>
-      <td>c</td>
-      <td>null</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>For data with an array, such as:</p>
-
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"b"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">}]}</span></code></pre></figure>
-
-<p>there would be two rows, like so:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>key</th>
-      <th>p0</th>
-      <th>p1</th>
-      <th>p2</th>
-      <th>dbl_value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>x</td>
-      <td>a</td>
-      <td>b</td>
-      <td>null</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>x</td>
-      <td>c</td>
-      <td>[0]</td>
-      <td>d</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Array elements are stored with square braces in the column.</p>
-
-<h3 id="handling-reads-and-writes">Handling Reads and Writes</h3>
-
-<p>The next problem that arose was that naïvely, updates to a document could require reading the document from the database, seeing what modification would have to be made, and then writing the updated data.  This “read-before-write” process is a notorious source of performance and consistency issues in most data stores.</p>
-
-<p>Therefore, we resolved to avoid doing any read-before-write operations at all costs.</p>
-
-<p>An interesting implementation detail that came up is that when you write some data to a document, the resulting write operation is just a simple batch with some inserts and deletes. In some cases, this can cause the document rows in the database to show two different states for the same JSON field.</p>
-
-<p><em>And, upon reading the rows out, the Documents API reconciles conflicting information by accepting the data that has a later Cassandra write time (much like Cassandra itself!).</em></p>
-
-<p>This allows us to write data really quickly while not compromising too much in reads either, as the reconciliation does not happen often and is also quite fast. It also gives us a very important core principle to our basic write and read operations:</p>
-<ol>
-  <li>Every write to a single document is a single batch of statements, and</li>
-  <li>Every read from a single document is a single SELECT statement.</li>
-</ol>
-
-<p>So writes and reads are squared away - but what about deletes?</p>
-
-<h3 id="figuring-out-deletes">Figuring out Deletes</h3>
-
-<p>Because of the distributed nature of the database, a deletion in Cassandra actually is very similar to an insert, but instead a “tombstone” is written at a particular write time to signify the death of a row.</p>
-
-<p>Rest in peace… almost</p>
-
-<p>Cassandra periodically (the frequency here depends on your compaction strategy and/or cluster load) does a compaction operation to remove tombstones and alleviate this pressure, so the only way to avoid overwhelming Cassandra is to make sure that the frequency of deletions is low enough.</p>
-
-<p>This poses a problem for the Document API specifically because of arrays. Let’s walk through this one.</p>
-
-<p>Imagine that you have an array at some key that is of length 100000. If you then issue a replace operation (via a PUT) and decide to replace that array with some other value, then all of those 100000 rows would be deleted, causing 100000 tombstones to be written.  This is an enormous number of tombstones to be written in one operation, and if you do that just a few more times, Cassandra will likely get super slow. So the structure of the data in each table needed one last major modification.</p>
-
-<p>We said before that array paths are stored in the database with square brackets; for example the element at index 0 would be stored as [0]. That would mean a deletion of 100000 elements would look like this:</p>
-
-<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="k">where</span> <span class="n">p0</span> <span class="k">in</span> <span class="p">(</span><span class="s1">'[0]'</span><span class="p">,</span> <span class="s1">'[1]'</span><span class="p">,</span> <span class="s1">'[2]'</span><span class="p">,</span> <span class="err">…</span><span class="p">,</span> <span class="s1">'[99999]'</span><span class="p">)</span></code></pre></figure>
-
-<p>Causing 100000 tombstones to be written. Instead of doing that, we decided to pad all array elements with leading zeros, so the element at index 0 would instead be represented as [000000], and the element at index 99999 would be [099999]. Doing this allowed us to change the deletion statement to:</p>
-
-<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="k">where</span> <span class="n">p0</span> <span class="o">&gt;=</span> <span class="s1">'[000000]'</span> <span class="k">and</span> <span class="n">p0</span> <span class="o">&lt;=</span> <span class="s1">'[999999]'</span></code></pre></figure>
-
-<p>Which causes only a single so-called “range” tombstone to be written, instead of 100000 cell tombstones (note that greater and less than works on strings in Cassandra and will compare lexically). It also relaxes the array length limit to one million elements, which is pretty neat! The time series below shows how the old vs. new implementation might behave, if you performed compactions every week:</p>
-
-<p><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/tombstone_counts.png" class="lazyload"></p>
-
-<p>So the new strategy is just safer for deletions; it would require an incredibly large amount of deletion with the new strategy to even come close to the theoretical tombstone limits!</p>
-
-<h2 id="preliminary-look-at-api-performance">Preliminary Look at API performance</h2>
-
-<p>⚠️ Before starting on this section, we want to mention that benchmarking is a great tool, but does not necessarily represent how a system will behave under real load, out in the wild. We also haven’t done comparisons on the same hardware with other document stores…yet. Alright, let’s get to it!</p>
-
-<p>In order to test that the Document API is reasonably fast, we ran a benchmark test using a single Cassandra storage node and a single Stargate node (Stargate is the API that contains the Documents API). We then ran two different benchmarks, one that uses HTTP GET to repeatedly get random paths in a document, and another that performs HTTP POSTs repeatedly to create brand new documents.  Each of these actions got run 100000 times, and here are two graphs of the results.</p>
-
-<p>To keep things simple, as there is no baseline to compare things against just yet, the benchmark was performed using only one requester at a time, with light concurrency (10 users at once), and with more concurrency (100 users at once). Note that it’s expected with only one backend node that higher concurrency would cause degradation in performance; you should have multiple nodes to service that degree of concurrent requests!</p>
-
-<p>Here are the results for reads:</p>
-
-<div class="simple-table">
-</div>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">1 user:</th>
-      <th style="text-align: center">10 users:</th>
-      <th style="text-align: center">100 users:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/Reads_1_User.png" class="lazyload"></td>
-      <td style="text-align: center"><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/Reads_10_Users.png" class="lazyload"></td>
-      <td style="text-align: center"><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/Reads_100_Users.png" class="lazyload"></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>And for writes:</p>
-
-<div class="simple-table">
-</div>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">1 user:</th>
-      <th style="text-align: center">10 users:</th>
-      <th style="text-align: center">100 users:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/Writes_1_User.png" class="lazyload"></td>
-      <td style="text-align: center"><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/Writes_10_Users.png" class="lazyload"></td>
-      <td style="text-align: center"><img alt="" data-src="/assets/images/the-stargate-cassandra-documents-api/Writes_100_Users.png" class="lazyload"></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>From the above, we can see that the API performs pretty well at a reasonable level of concurrency for our setup.</p>
-
-<h2 id="final-remarks">Final remarks</h2>
-
-<p>We hope you enjoyed taking this quick tour of the Documents API. If you are interested in using the API head over to <a href="https://stargate.io/docs/stargate/0.1/quickstart/quickstart.html">Stargate.io</a> for more information about how to use it in your own Cassandra distribution.</p>
-
-<p>If you are interested in contributing to Stargate, which is entirely open-source, we have two places for you to join us:</p>
-
-<ol>
-  <li>Come join our <a href="https://discord.gg/5gY8GDB">Discord Community</a> to follow the latest with Stargate and get early access to new stuff</li>
-  <li>For any issues or pull requests, come on over to our <a href="https://www.github.com/stargate/stargate">GitHub Repository</a>
-</li>
-</ol>
-
-<p>The APIs in Stargate are being actively developed, so we are hoping to be able to get back to you soon with news of even more improvements!</p>
+<p>Get started today! <a href="https://downloads.datastax.com/#stargate">Download Stargate</a> and <a href="https://www.datastax.com/resources/webinar/create-new-apps-faster-worlds-most-proven-nosql-database-nam">sign up for our upcoming webinar</a>!</p>
 
         </div>
       </div>
@@ -439,22 +258,6 @@
       <div class="offset-md-2 col-md-8">
         <div class="tags">
           
-          
-            
-            
-            <a href="/tags/json" class="tag-link">json</a>
-          
-            
-            
-            <a href="/tags/api" class="tag-link">api</a>
-          
-            
-            
-            <a href="/tags/documentation" class="tag-link">documentation</a>
-          
-            
-            
-            <a href="/tags/stargate" class="tag-link">stargate</a>
           
           
         </div>
@@ -472,19 +275,19 @@
 
 
 
-<div class="share-button facebook" title="Share this on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstargate.io%2F2020%2F10%2F19%2Fthe-stargate-cassandra-documents-api.html')">
+<div class="share-button facebook" title="Share this on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstargate.io%2F2021%2F02%2F10%2Fturbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html')">
   <svg width="1em" height="1em" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M25 0H3C2.20435 0 1.44129 0.316071 0.87868 0.87868C0.31607 1.44129 0 2.20435 0 3L0 25C0 25.7957 0.31607 26.5587 0.87868 27.1213C1.44129 27.6839 2.20435 28 3 28H11.5781V18.4806H7.64062V14H11.5781V10.585C11.5781 6.70063 13.8906 4.555 17.4325 4.555C19.1288 4.555 20.9025 4.8575 20.9025 4.8575V8.67H18.9481C17.0225 8.67 16.4219 9.865 16.4219 11.0906V14H20.7206L20.0331 18.4806H16.4219V28H25C25.7957 28 26.5587 27.6839 27.1213 27.1213C27.6839 26.5587 28 25.7957 28 25V3C28 2.20435 27.6839 1.44129 27.1213 0.87868C26.5587 0.316071 25.7957 0 25 0Z" fill="currentColor"></path>
   </svg>
 
 </div>
-<div class="share-button twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fstargate.io%2F2020%2F10%2F19%2Fthe-stargate-cassandra-documents-api.html&amp;tw_p=tweetbutton');">
+<div class="share-button twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fstargate.io%2F2021%2F02%2F10%2Fturbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html&amp;tw_p=tweetbutton');">
   <svg width="1em" height="1em" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M25 0H3C1.34375 0 0 1.34375 0 3V25C0 26.6563 1.34375 28 3 28H25C26.6562 28 28 26.6563 28 25V3C28 1.34375 26.6562 0 25 0ZM21.9438 9.925C21.9563 10.1 21.9562 10.2813 21.9562 10.4563C21.9562 15.875 17.8313 22.1188 10.2937 22.1188C7.96875 22.1188 5.8125 21.4438 4 20.2813C4.33125 20.3188 4.65 20.3313 4.9875 20.3313C6.90625 20.3313 8.66875 19.6813 10.075 18.5813C8.275 18.5438 6.7625 17.3625 6.24375 15.7375C6.875 15.8313 7.44375 15.8313 8.09375 15.6625C6.21875 15.2813 4.8125 13.6313 4.8125 11.6375V11.5875C5.35625 11.8938 5.99375 12.0813 6.6625 12.1063C6.10027 11.7323 5.63936 11.2249 5.32092 10.6295C5.00247 10.034 4.83639 9.369 4.8375 8.69375C4.8375 7.93125 5.0375 7.23125 5.39375 6.625C7.4125 9.1125 10.4438 10.7375 13.8438 10.9125C13.2625 8.13125 15.3438 5.875 17.8438 5.875C19.025 5.875 20.0875 6.36875 20.8375 7.16875C21.7625 6.99375 22.65 6.65 23.4375 6.18125C23.1313 7.13125 22.4875 7.93125 21.6375 8.4375C22.4625 8.35 23.2625 8.11875 24 7.8C23.4438 8.61875 22.7438 9.34375 21.9438 9.925Z" fill="currentColor"></path>
   </svg>
 
 </div>
-<div class="share-button linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fstargate.io%2F2020%2F10%2F19%2Fthe-stargate-cassandra-documents-api.html');">
+<div class="share-button linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fstargate.io%2F2021%2F02%2F10%2Fturbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html');">
   <svg width="1em" height="1em" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M26 0H1.99375C0.89375 0 0 0.90625 0 2.01875V25.9813C0 27.0938 0.89375 28 1.99375 28H26C27.1 28 28 27.0938 28 25.9813V2.01875C28 0.90625 27.1 0 26 0ZM8.4625 24H4.3125V10.6375H8.46875V24H8.4625ZM6.3875 8.8125C5.05625 8.8125 3.98125 7.73125 3.98125 6.40625C3.98125 5.08125 5.05625 4 6.3875 4C7.7125 4 8.79375 5.08125 8.79375 6.40625C8.79375 7.7375 7.71875 8.8125 6.3875 8.8125ZM24.0187 24H19.8687V17.5C19.8687 15.95 19.8375 13.9563 17.7125 13.9563C15.55 13.9563 15.2188 15.6438 15.2188 17.3875V24H11.0688V10.6375H15.05V12.4625H15.1062C15.6625 11.4125 17.0188 10.3063 19.0375 10.3063C23.2375 10.3063 24.0187 13.075 24.0187 16.675V24Z" fill="currentColor"></path>
   </svg>
