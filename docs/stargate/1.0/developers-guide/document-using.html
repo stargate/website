@@ -261,7 +261,7 @@
     </button>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="auth.html">Auth API</a>
+    <a class="nav-link" href="authnz.html">Auth API</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="api_ref/openapi_rest_ref.html">REST API reference</a>
@@ -289,14 +289,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Stargate</span>
-    <span class="version">1</span>
+    <span class="version">1.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Stargate</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">1</a>
+          <a href="../index.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -345,7 +345,7 @@ describes the underlying structure used to store collections.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Docker installed and running</p>
+<p>Docker installed and running, if using Docker</p>
 </li>
 <li>
 <p><code>cURL</code> to run REST queries</p>
@@ -367,8 +367,6 @@ can get you started with no install steps.</p>
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_pull_the_docker_image"><a class="anchor" href="#_pull_the_docker_image"></a><a class="link" href="#_pull_the_docker_image">Pull the Docker image</a></h3>
 <div class="paragraph">
 <p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
 and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
@@ -378,9 +376,6 @@ and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 ba
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v1.0.7</code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_start_the_stargate_container"><a class="anchor" href="#_start_the_stargate_container"></a><a class="link" href="#_start_the_stargate_container">Start the Stargate container</a></h3>
 <div class="paragraph">
 <p>Start the Stargate container in developer mode.
 Developer mode removes the need to set up a separate Cassandra instance and is
@@ -398,7 +393,6 @@ meant for development and testing only.</p>
   -e CLUSTER_VERSION=3.11 \
   -e DEVELOPER_MODE=true \
   stargateio/stargate-3_11:v1.0.7</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -706,7 +700,7 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_dropping_a_namespace"><a class="anchor" href="#_dropping_a_namespace"></a><a class="link" href="#_dropping_a_namespace">Dropping a namespace</a></h3>
+<h3 id="_deleting_a_namespace"><a class="anchor" href="#_deleting_a_namespace"></a><a class="link" href="#_deleting_a_namespace">Deleting a namespace</a></h3>
 <div class="paragraph">
 <p>Send a <code>DELETE</code> request to <code>/v2/schemas/namespaces/{namespace_name}</code> to delete
 a namespace. All collections and documents will be deleted along with the
@@ -1677,7 +1671,7 @@ In this example, we want to change just the firstname of the document:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_delete_documents"><a class="anchor" href="#_delete_documents"></a><a class="link" href="#_delete_documents">Delete documents</a></h3>
+<h3 id="_delete_a_document"><a class="anchor" href="#_delete_a_document"></a><a class="link" href="#_delete_a_document">Delete a document</a></h3>
 <div class="paragraph">
 <p>To delete a document, send a <code>DELETE</code> request to
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}</code>.</p>
@@ -1686,6 +1680,32 @@ In this example, we want to change just the firstname of the document:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L \
 -X DELETE 'http://localhost:8082/v2/namespaces/myworld/collections/fitness/3ffc7ae6-c42d-46de-b52b-b5e77ae6a87b' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To delete a document, based on a document path, send a <code>DELETE</code> request to
+<code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L -X  DELETE 'localhost:8082/v2/namespaces/myworld/collections/fitness?where=\{"id":\{"$eq":"some%2Dstuff"\}\}' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete_a_collection"><a class="anchor" href="#_delete_a_collection"></a><a class="link" href="#_delete_a_collection">Delete a collection</a></h3>
+<div class="paragraph">
+<p>Send a <code>DELETE</code> request to <code>/v2/schemas/namespaces/{namespace_name}/collections/{collection_name}</code>
+to delete a collection. All data will be deleted along with the collection schema.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L \
+-X DELETE 'http://localhost:8082/v2/namespaces/myworld/collections/fitness' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
 </div>
