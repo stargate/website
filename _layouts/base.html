@@ -18,7 +18,7 @@
   {% endif %}
 </head>
 
-<body class="{{ layout.classes }}{% unless hide_banner %}includes-banner{% endunless %}">
+<body class="stargate {{ layout.classes }}{% unless hide_banner %}includes-banner{% endunless %}">
   {% include navigation.html %}
 
   {{ content }}
@@ -33,6 +33,11 @@
   integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
   crossorigin="anonymous"></script>
   <script src="{{ '/assets/js/main.js' | relative_url }}" async=""></script>
+  <script
+  src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+  type="text/javascript"
+  data-domain-script="2d329c5f-8feb-4a63-8c63-03232bcaacbd"
+    async=""></script>
 </body>
 
 </html>

@@ -1,0 +1,41 @@
+.stargate #onetrust-banner-sdk #onetrust-button-group-parent {
+  text-align: right;
+}
+
+.footer-links #ot-sdk-btn.ot-sdk-show-settings,
+.footer-links #ot-sdk-btn.optanon-show-settings,
+.footer-links .ot-sdk-show-settings {
+  color: #fff;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+  margin-left: 0.5rem;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+.stargate #onetrust-consent-sdk #onetrust-pc-sdk .active-group {
+  border-color: #555dc0;
+}
+
+.stargate #onetrust-consent-sdk #onetrust-pc-sdk button:not(#clear-filters-handler):not(.ot-close-icon):not(#filter-btn-handler):not(.ot-remove-objection-handler):not(.ot-obj-leg-btn-handler):not([aria-expanded]):not(.ot-link-btn),
+.stargate #onetrust-consent-sdk #onetrust-pc-sdk .ot-leg-btn-container .ot-active-leg-btn {
+  color: #fff;
+  background-color: #555DC0;
+  border-color: #555DC0;
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:hover {
+    background-color: #4149ae;
+    border-color: #3d45a5;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(85, 93, 192, 0.5);
+  }
+}
