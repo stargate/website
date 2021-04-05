@@ -1,4 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-03-01T19:47:05+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Turbocharge App Development on DSE with Stargate Support for Modern Data APIs</title><link href="https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html" rel="alternate" type="text/html" title="Turbocharge App Development on DSE with Stargate Support for Modern Data APIs" /><published>2021-02-10T00:00:00+00:00</published><updated>2021-02-10T00:00:00+00:00</updated><id>https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis</id><content type="html" xml:base="https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html">&lt;p&gt;It’s a monumental day for &lt;a href=&quot;https://www.datastax.com/products/datastax-enterprise&quot;&gt;DataStax Enterprise&lt;/a&gt; (DSE) users: &lt;a href=&quot;http://www.stargate.io&quot;&gt;Stargate&lt;/a&gt; support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-04-05T12:20:02+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">The Stargate Documents API: Storage mechanisms, search filters, and performance improvements</title><link href="https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements.html" rel="alternate" type="text/html" title="The Stargate Documents API: Storage mechanisms, search filters, and performance improvements" /><published>2021-04-05T00:00:00+00:00</published><updated>2021-04-05T00:00:00+00:00</updated><id>https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements</id><content type="html" xml:base="https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements.html">&lt;p&gt;The Stargate Documents API has made great strides in the past few months. After being introduced as open-source software in late 2020, its development has accelerated quickly. I’m here to give you the rundown: the premises on which we built it, the limitations we’ve faced and worked through, and most importantly, the improvements we have made as a community in the past few months. Let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-the-documents-api&quot;&gt;What is the Documents API?&lt;/h2&gt;
+&lt;p&gt;The Documents API is a part of &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; that enables a user to create, get, modify, delete, and search JSON documents in a collection, all backed by the power and robustness of Apache Cassandra. For the uninitiated, this might seem a little bit like fantasy. An API that facilitates working with JSON documents against a storage database that enforces a schema seems like a bridge between two different worlds, but that is exactly what Stargate is! At its core, the Documents API abstracts away the complexities of converting JSON documents into tabular form and back again, so from a user’s perspective, they only work with JSON over HTTP at any given point.&lt;/p&gt;
+
+&lt;p&gt;One of the use-cases that the Documents API is perfect for is rapid iteration. Creating an application quickly, making a bunch of changes, and still being able to store documents in whatever form you desire without any lock-in to a schema is a very potent pattern that is used by agile organizations. Not having to define a schema before storing data is incredibly powerful for this purpose. And because it’s built on Cassandra, there will be pathways in the future to migrate to having a defined schema, when your application has settled on a format for its various data.&lt;/p&gt;
+
+&lt;p&gt;There are three main benefits to creating a free-form document API against Cassandra in particular:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Convenience&lt;/strong&gt;: Perhaps you want to start collecting and storing (and searching!) data without knowing precisely what schema it might conform to. Maybe you have such free-form data that you don’t want to require a schema so early in development.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scalability&lt;/strong&gt;: Other document stores scale up pretty far, but Cassandra is well-known as the database of greatest scale, being able to theoretically scale infinitely with infinite resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Durability&lt;/strong&gt;: While other document stores do have this to some degree, Cassandra has a distributed node infrastructure that ensures that data is never lost, and also that downtime is virtually never experienced.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to create the Documents API with these three main benefits in mind, we first had to devise a reasonable method of storage of JSON documents. Because the end user does not interact with the Cassandra schema directly, it is up to the API to decide upon and maintain the schema as-is. We decided to do what we describe as “shredding” the JSON document, in order to get it into a form that can easily be stored in Cassandra. This process of shredding can be shown by example; a JSON blob such as:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nested&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;can be turned into a form where there is one row per &lt;em&gt;value&lt;/em&gt; in the JSON:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nested&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This is the shredding process, and the data gets stored in a table with a name of the user’s choosing (from their perspective it is called a &lt;strong&gt;collection&lt;/strong&gt;) with a schema as follows:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;key text&lt;/th&gt;
+      &lt;th&gt;p0 text&lt;/th&gt;
+      &lt;th&gt;p1 text&lt;/th&gt;
+      &lt;th&gt;p2 text&lt;/th&gt;
+      &lt;th&gt;p3 text&lt;/th&gt;
+      &lt;th&gt;…&lt;/th&gt;
+      &lt;th&gt;pmax text&lt;/th&gt;
+      &lt;th&gt;dbl_value double&lt;/th&gt;
+      &lt;th&gt;text_value text&lt;/th&gt;
+      &lt;th&gt;bool_value boolean&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;docname&lt;/td&gt;
+      &lt;td&gt;a&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;key&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;docname&lt;/td&gt;
+      &lt;td&gt;b&lt;/td&gt;
+      &lt;td&gt;nested&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;key1&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;docname&lt;/td&gt;
+      &lt;td&gt;c&lt;/td&gt;
+      &lt;td&gt;[0]&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;docname&lt;/td&gt;
+      &lt;td&gt;c&lt;/td&gt;
+      &lt;td&gt;[1]&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;docname&lt;/td&gt;
+      &lt;td&gt;c&lt;/td&gt;
+      &lt;td&gt;[2]&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Because Cassandra’s storage format stores rows in a “sparse” format–that is, it only stores the value of non-null columns–this is an efficient way to store document data.  And writing this data is actually quite simple, as all we have to do is iterate through every value in the JSON and determine its path; we then write the document in a single batch to Cassandra. On the flip side, reading a document based on its key (the name of the document) is quite easy as well: just get all of the rows that match the document key, and assemble them back into JSON to return to the client.&lt;/p&gt;
+
+&lt;p&gt;One other benefit of this shredding method is that the user can ask for a path within the JSON, such as “what is the value of b.nested?” and it is quite easy to just query for that value and return that relevant row. For those who know Cassandra, note that key is the Partition Key, and p0 through pmax (by default &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max&lt;/code&gt; is 63) are part of a compound Clustering Key. This is the storage schema that is created on the fly when you create your first document in a new collection. Stargate manages that creation and maintenance of the Cassandra schema so that you don’t have to!&lt;/p&gt;
+
+&lt;h2 id=&quot;search-filters&quot;&gt;Search filters&lt;/h2&gt;
+&lt;p&gt;There are two different search functions that are available with the documents API. You can search within the document for all of the paths that match a predicate, which is perfect for larger documents, and you can search for documents that match a predicate in an entire collection. Both of these search functions allow a set of filters, which are used by sending JSON as a query parameter. The allowed filters are: $eq, $gt, $gte, $lt, $lte, $exists, $ne, $in, and $nin. If multiple filters are supplied, they are executed using AND, since OR is not yet supported natively by CQL.&lt;/p&gt;
+
+&lt;p&gt;There is a bit of subtlety with these filters, however. Some filters ($eq, $gt(e), $lt(e), $exists) translate directly into CQL and therefore can do their filtering in Cassandra, which is fast and efficient on the whole, but the rest ($ne, $in, and $nin) are not natively supported by Cassandra. In order to bridge this gap, we deemed these filters “limited-support” filters, and gave them the following restrictions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data will be fetched from Cassandra &lt;em&gt;unfiltered&lt;/em&gt; in pages, and as those pages come out the relevant limited-support filters will be applied &lt;em&gt;in-memory&lt;/em&gt; on the coordinator node (where Stargate runs).&lt;/li&gt;
+  &lt;li&gt;For a search within a document, the result set must fit within a single Cassandra page. This essentially means that the page-size you request with has to be sufficiently low.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As a result of the above, it is expected that limited-support filters perform poorly for cases where either you are searching for a small set of results within a large document, or if you are searching for a small number of documents in a large collection. Also, if you are using multiple filters (regardless of whether they are limited-support), you will observe a similar performance pattern as of version 1.0.16.&lt;/p&gt;
+
+&lt;p&gt;DataStax has published a Cassandra Enhancement Proposal to bring its &lt;a href=&quot;https://www.datastax.com/blog/eliminate-trade-offs-between-database-ease-use-and-massive-scale-sai-storage-attached&quot;&gt;Storage-Attached Indexing technology&lt;/a&gt; to Cassandra, which will allow more efficient native indexing of this type of filter.&lt;/p&gt;
+
+&lt;h2 id=&quot;improvements-past-and-planned&quot;&gt;Improvements, past and planned&lt;/h2&gt;
+&lt;p&gt;The Documents API was in beta in late 2020 and had its first major version released at the end of 2020. As such, there was and still is a lot to improve upon!&lt;/p&gt;
+
+&lt;p&gt;The very first issue that was seen after release was an issue of performance. Initial benchmarks showed that against a Cassandra cluster with 2 Stargate nodes and 2 Storage nodes the average latency for reads (under high concurrency) was 40 milliseconds. While not terrible, a great deal of JVM profiling was done to determine where exactly the time was being spent. It was determined that the authentication process was the culprit, as it attempts to read from (and in some cases write to) an internal table each time the user authenticates.&lt;/p&gt;
+
+&lt;p&gt;By keeping this data in a short-lived cache, we could avoid the performance penalty associated with auth. The next thing we noticed was that our endpoints were not utilizing asynchronous execution in quite the manner we wanted. By adding async at the highest level of the HTTP service, we were able to get some performance gains on both read and write. After these two major changes, we began to see average read latencies of between 12 and 18 milliseconds, depending on the version of Cassandra that was being used. Not only that, these changes affected the write path as well, so this change of between 2x-3x was observed for creating and updating documents as well. Not a bad first stab, and there is still more to come!&lt;/p&gt;
+
+&lt;p&gt;Another optimization that was made since release was to the “search across collections” functionality. In earlier versions, if you searched across a collection with any filters, you would end up filtering in memory, in the inefficient manner described above. This meant that if you had a table with a million documents that had 10 fields each, a simple $eq filter that matched only a few results would take &lt;em&gt;minutes&lt;/em&gt; to complete, or time out entirely. A change was made in v1.0.13 that improved the performance in this particular case by querying Cassandra; now that same process takes on the scale of 100 milliseconds. There is still more room for optimization there, which is very promising.&lt;/p&gt;
+
+&lt;p&gt;For the future, we are looking into ways to support OR queries, and also ways to use Cassandra for more of these multi-filter AND queries, which would likely improve performance by a ton. As this progresses, we will be benchmark testing at every step to see what kinds of performance improvements we are getting. All in all, I’m very excited to see what future the Document API holds—there is a lot of potential room for improvement, and we are just getting started!&lt;/p&gt;
+
+&lt;p&gt;If you would like to contribute to the Documents API or to Stargate in any part, all contributions are welcome. Please go to our GitHub repository: &lt;a href=&quot;https://github.com/stargate/stargate&quot;&gt;https://github.com/stargate/stargate&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">The Stargate Documents API has made great strides in the past few months. After being introduced as open-source software in late 2020, its development has accelerated quickly. I’m here to give you the rundown: the premises on which we built it, the limitations we’ve faced and worked through, and most importantly, the improvements we have made as a community in the past few months. Let’s get started!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Turbocharge App Development on DSE with Stargate Support for Modern Data APIs</title><link href="https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html" rel="alternate" type="text/html" title="Turbocharge App Development on DSE with Stargate Support for Modern Data APIs" /><published>2021-02-10T00:00:00+00:00</published><updated>2021-02-10T00:00:00+00:00</updated><id>https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis</id><content type="html" xml:base="https://stargate.io/2021/02/10/turbocharge-app-development-on-dse-with-stargate-support-for-modern-data-apis.html">&lt;p&gt;It’s a monumental day for &lt;a href=&quot;https://www.datastax.com/products/datastax-enterprise&quot;&gt;DataStax Enterprise&lt;/a&gt; (DSE) users: &lt;a href=&quot;http://www.stargate.io&quot;&gt;Stargate&lt;/a&gt; support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.&lt;/p&gt;
 
 &lt;h2 id=&quot;whats-stargate&quot;&gt;What’s Stargate?&lt;/h2&gt;
 &lt;p&gt;Stargate is an open source data gateway with built-in extensibility. It allows you to integrate APIs of your choice with any persistence layer. It provides this ability with two components: API services and persistence services. What this means is you can create APIs to connect with various persistence stores, such as DSE.&lt;/p&gt;
