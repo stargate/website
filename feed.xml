@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-04-05T12:20:02+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">The Stargate Documents API: Storage mechanisms, search filters, and performance improvements</title><link href="https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements.html" rel="alternate" type="text/html" title="The Stargate Documents API: Storage mechanisms, search filters, and performance improvements" /><published>2021-04-05T00:00:00+00:00</published><updated>2021-04-05T00:00:00+00:00</updated><id>https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements</id><content type="html" xml:base="https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements.html">&lt;p&gt;The Stargate Documents API has made great strides in the past few months. After being introduced as open-source software in late 2020, its development has accelerated quickly. I’m here to give you the rundown: the premises on which we built it, the limitations we’ve faced and worked through, and most importantly, the improvements we have made as a community in the past few months. Let’s get started!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-04-08T13:37:20+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Blasting Off into Stargate using HTTPie</title><link href="https://stargate.io/2021/04/08/blasting-off-into-stargate-using-httpie.html" rel="alternate" type="text/html" title="Blasting Off into Stargate using HTTPie" /><published>2021-04-08T00:00:00+00:00</published><updated>2021-04-08T00:00:00+00:00</updated><id>https://stargate.io/2021/04/08/blasting-off-into-stargate-using-httpie</id><content type="html" xml:base="https://stargate.io/2021/04/08/blasting-off-into-stargate-using-httpie.html">&lt;p&gt;As a DataStax Developer Advocate, my job is to help our amazing teams provide you with the best possible experience with Cassandra and our products.&lt;/p&gt;
+
+&lt;p&gt;Datastax &lt;a href=&quot;https://dtsx.io/workshop&quot;&gt;Astra&lt;/a&gt; provides Cassandra as a service. In addition to great &lt;a href=&quot;https://docs.astra.datastax.com/docs&quot;&gt;documentation&lt;/a&gt;, Astra offers a robust free tier that can run small production workloads, pet projects, or just let you play—all for free, no credit card required. Cassandra can be tricky for hardcore SQL developers, because it uses a different slightly different query language (CQL), but when you get Astra, Stargate is there to let you interact with your data through APIs. Our open source &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; product provides REST, GraphQL, and schemaless document APIs in addition to native language drivers. If you like them but don’t want to use our products, that’s fine!  It’s completely open source and you can implement it on your own system.&lt;/p&gt;
+
+&lt;p&gt;One of the things I noticed when I arrived at DataStax is that our tutorials rely heavily on curl for performing commands against our APIs. I prefer HTTPie, a similar tool designed for REST API interaction.So I created an authentication plugin for the HTTPie tool that stores your variables and lets you make requests like:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;schemas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyspaces&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I’ve put together a &lt;a href=&quot;https://katacoda.com/datastax/scenarios/httpie-astra&quot;&gt;Katacoda scenario&lt;/a&gt; for you to see how everything works. If you want to implement it locally, here are the instructions:&lt;/p&gt;
+
+&lt;p&gt;The first secret to this is an rc file (~/.astrarc), which keeps track of your DB, region, username, and password, and auto-refreshes your token. You can have as many sections in this file as works for you—it’s just an INI-style configuration file.&lt;/p&gt;
+
+&lt;p&gt;The second secret is the HTTPie configuration file, in ~/.config/httpie/config.json&lt;/p&gt;
+
+&lt;p&gt;My configuration is what you see here; I have the “fruity” color scheme, my default auth-type is astra, and the section of the .astrarc file is “default”.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;default_options&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;--style=fruity&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;--auth-type=astra&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;--auth=default:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;My goal here is to make it so you can bounce around between REST and GraphQL queries, get nicely formatted JSON results, and perhaps use jq to pare them down—but mostly I want for the tool to get out of your way.&lt;/p&gt;
+
+&lt;p&gt;Interested?  At this point httpie-astra requires python 3.5, but if you want me to make it support 2.7, please just let me know in the &lt;a href=&quot;https://community.datastax.com/index.html&quot;&gt;Datastax Community&lt;/a&gt; or on Discord.&lt;/p&gt;
+
+&lt;p&gt;You can get it through github:
+git clone https://synedra-datastax/httpie-astra&lt;/p&gt;
+
+&lt;p&gt;Or with pip:
+pip3 install httpie-astra&lt;/p&gt;
+
+&lt;p&gt;Once you’ve got it installed, get your environment set up by making a simple call like:&lt;/p&gt;
+
+&lt;p&gt;http –auth-type astra -a default: :/v2/schemas/keyspaces&lt;/p&gt;
+
+&lt;p&gt;This will give you instructions to get all your variables set up.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at an example from our Astra REST documentation.&lt;/p&gt;
+
+&lt;p&gt;The curl command looks like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-curl&quot; data-lang=&quot;curl&quot;&gt;curl --request GET \
+--url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/restv2/schemas/keyspaces/${ASTRA_DB_KEYSPACE}/tables/products
+\
+--header 'accept: application/json' \
+--header 'x-cassandra-request-id: {unique-UUID}' \
+--header &quot;x-cassandra-token: ${ASTRA_AUTHORIZATION_TOKEN}&quot;
+```
+
+Then it gives you back a single line JSON doc.
+
+```
+{&quot;data&quot;:{&quot;name&quot;:&quot;products&quot;,&quot;keyspace&quot;:&quot;tutorial&quot;,&quot;columnDefinitions&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;typeDefinition&quot;:&quot;uuid&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;created&quot;,&quot;typeDefinition&quot;:&quot;timestamp&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;description&quot;,&quot;typeDefinition&quot;:&quot;varchar&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;name&quot;,&quot;typeDefinition&quot;:&quot;varchar&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;price&quot;,&quot;typeDefinition&quot;:&quot;decimal&quot;,&quot;static&quot;:false}],&quot;primaryKey&quot;:{&quot;partitionKey&quot;:[&quot;id&quot;],&quot;clusteringKey&quot;:[]},&quot;tableOptions&quot;:{&quot;defaultTimeToLive&quot;:0,&quot;clusteringExpression&quot;:[]}}}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The httpie command already knows a lot of this information, so the call is much simpler. I’m using the config.json I described above to set my auth-type and config section. I’ll show this output as a screen shot because it’s really easy to understand:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/blasting-off-into-stargate-using-httpie/httpie.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re on the job, getting the Stargate examples and Astra API examples to include HTTPie tabs, but in the meantime if you’re having fun with this, please let me know in the community or discord, and let’s make this rock for you!&lt;/p&gt;</content><author><name></name></author><summary type="html">As a DataStax Developer Advocate, my job is to help our amazing teams provide you with the best possible experience with Cassandra and our products.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The Stargate Documents API: Storage mechanisms, search filters, and performance improvements</title><link href="https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements.html" rel="alternate" type="text/html" title="The Stargate Documents API: Storage mechanisms, search filters, and performance improvements" /><published>2021-04-05T00:00:00+00:00</published><updated>2021-04-05T00:00:00+00:00</updated><id>https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements</id><content type="html" xml:base="https://stargate.io/2021/04/05/the-stargate-documents-api-storage-mechanisms-search-filters-and-performance-improvements.html">&lt;p&gt;The Stargate Documents API has made great strides in the past few months. After being introduced as open-source software in late 2020, its development has accelerated quickly. I’m here to give you the rundown: the premises on which we built it, the limitations we’ve faced and worked through, and most importantly, the improvements we have made as a community in the past few months. Let’s get started!&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-the-documents-api&quot;&gt;What is the Documents API?&lt;/h2&gt;
 &lt;p&gt;The Documents API is a part of &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; that enables a user to create, get, modify, delete, and search JSON documents in a collection, all backed by the power and robustness of Apache Cassandra. For the uninitiated, this might seem a little bit like fantasy. An API that facilitates working with JSON documents against a storage database that enforces a schema seems like a bridge between two different worlds, but that is exactly what Stargate is! At its core, the Documents API abstracts away the complexities of converting JSON documents into tabular form and back again, so from a user’s perspective, they only work with JSON over HTTP at any given point.&lt;/p&gt;
