@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>DataStax Enterprise (DSE) 6.8 :: Stargate documentation</title>
     <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/developers-guide/install/install_dse_68.html">
+    <link rel="prev" href="install_cass_40.html">
+    <link rel="next" href="starctl.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../../assets/css/site.css">
+    <link rel="icon" href="../../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
   <body class="article">
 <header class="header">
@@ -372,7 +375,7 @@ and GraphQL Playground, along with a DataStax Enterprise<sup>&#8482;</sup>  6.8 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-dse-68:v1.0.7</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-dse-68:v1.0.13</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -391,7 +394,7 @@ meant for development and testing only.</p>
   -e CLUSTER_NAME=stargate \
   -e CLUSTER_VERSION=6.8 \
   -e DEVELOPER_MODE=true \
-  stargateio/stargate-dse-68:v1.0.7</code></pre>
+  stargateio/stargate-dse-68:v1.0.13</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -540,7 +543,7 @@ containerized environment with the following command:</p>
   -e SEED=cass1 \
   -e SIMPLE_SNITCH=true \
   -e ENABLE_AUTH=true \
-  -d stargateio/stargate-dse-68:v1.0.7</code></pre>
+  -d stargateio/stargate-dse-68:v1.0.13</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -653,7 +656,7 @@ machine or bare metal.</p>
 <div class="paragraph">
 <p>[Optional] Make sure DSE is up and running.
 Stargate requires authentication, so be sure to enable it in the
-<a href="https://cassandra.apache.org/doc/latest/configuration/cass_yaml_file.html#authenticator">cassandra.yaml</a> file.
+<a href="https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator">cassandra.yaml</a> file.
 If you don&#8217;t have a cluster running, use these instructions to install
 <a href="https://docs.datastax.com/en/install/6.8/install/installWhichOne.html">DSE 6.8</a>.</p>
 </div>
@@ -663,13 +666,13 @@ Java 8 is installed.</p>
 </div>
 <div class="paragraph">
 <p>Once you have a machine ready,
-download the <a href="https://github.com/stargate/stargate/releases/download/v1.0.7/stargate-jars.zip">Stargate zip file</a>.
+download the <a href="https://github.com/stargate/stargate/releases/download/v1.0.13/stargate-jars.zip">Stargate zip file</a>.
 This file will provide the jar files that are required to run Stargate.
 A typical method is using wget:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">wget https://github.com/stargate/stargate/releases/download/v1.0.7/stargate-jars.zip</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">wget https://github.com/stargate/stargate/releases/download/v1.0.13/stargate-jars.zip</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -737,7 +740,7 @@ and configuring Stargate:</p>
 </li>
 <li>
 <p><code>RACK1</code> is the name of the data center of the DSE node
-The full set of options are described in <a href="#starctl.adoc" class="page unresolved">the <code>starctl</code> documentation</a>.</p>
+The full set of options are described in <a href="starctl.html" class="page">the <code>starctl</code> documentation</a>.</p>
 </li>
 </ul>
 </div>
@@ -763,6 +766,10 @@ Terminate that process and start it again.</p>
 </div>
 </div>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="install_cass_40.html">Cassandra 4.0</a></span>
+  <span class="next"><a href="starctl.html">The starctl command</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>

@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Using the Stargate GraphQL API :: Stargate documentation</title>
     <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/developers-guide/graphql-using.html">
+    <link rel="prev" href="graphql.html">
+    <link rel="next" href="cql.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
   <body class="article">
 <header class="header">
@@ -381,7 +384,7 @@ and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 ba
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v1.0.7</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v1.0.13</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -400,7 +403,7 @@ meant for development and testing only.</p>
   -e CLUSTER_NAME=stargate \
   -e CLUSTER_VERSION=3.11 \
   -e DEVELOPER_MODE=true \
-  stargateio/stargate-3_11:v1.0.7</code></pre>
+  stargateio/stargate-3_11:v1.0.13</code></pre>
 </div>
 </div>
 </div>
@@ -489,6 +492,21 @@ such as <code>CREATE KEYSPACE</code>, <code>CREATE TABLE1</code>, or <code>DROP 
 </div>
 <div class="paragraph">
 <p>We&#8217;ll start the playground with <code>/graphql-schema</code> to create some schema.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_postman"><a class="anchor" href="#_using_postman"></a><a class="link" href="#_using_postman">Using Postman</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer, you can use Postman as a client interface for exploring GraphQL APIs
+(<a href="https://www.postman.com/downloads/">download here</a>).
+We&#8217;ve provided a
+<a href="https://github.com/stargate/docs/blob/master/modules/developers-guide/examples/json/Stargate_GraphQL_API_users_keyspace.postman_collection.json">Stargate GraphQL API Postman Collection</a>
+that you can import in Postman to play with the examples shown in this walkthrough.</p>
+</div>
+<div class="paragraph">
+<p>Now you&#8217;re ready to use the REST API for CRUD operations.</p>
 </div>
 </div>
 </div>
@@ -2738,6 +2756,10 @@ the book using <code>deleteBooks()</code> to illustrate deleting data:</p>
 </div>
 </div>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="graphql.html">GraphQL API</a></span>
+  <span class="next"><a href="cql.html">CQL API</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
