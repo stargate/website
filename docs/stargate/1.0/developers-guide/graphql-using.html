@@ -248,6 +248,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="cql-using.html">Using the CQL API</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="https://cassandra.apache.org/doc/latest/cql/">CQL reference</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -255,32 +258,16 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="metrics.html">Accessing Stargate metrics with Prometheus and Grafana</a>
   </li>
-  <li class="nav-item toggler" data-depth="1">
-    <a class="nav-link" href="api_ref/apiref.html">API reference for Stargate</a>
-    <button class="nav-item-toggle">
-      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
-      </svg>
-    </button>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="authnz.html">Auth API</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="api_ref/openapi_rest_ref.html">REST API reference</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="api_ref/openapi_document_ref.html">Document API reference</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="https://cassandra.apache.org/doc/latest/cql/">CQL reference</a>
-  </li>
-</ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="authnz.html">Securing Stargate</a>
   </li>
 </ul>
   </li>
   <li class="nav-item toggler" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api.html">API references</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../FAQ.html">FAQ</a>
   </li>
@@ -322,7 +309,7 @@
     <li><a href="graphql-using.html">Using the GraphQL API</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/stargate/docs/edit/HEAD/modules/developers-guide/pages/graphql-using.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/main/modules/developers-guide/pages/graphql-using.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -502,11 +489,11 @@ such as <code>CREATE KEYSPACE</code>, <code>CREATE TABLE1</code>, or <code>DROP 
 <h2 id="_using_postman"><a class="anchor" href="#_using_postman"></a><a class="link" href="#_using_postman">Using Postman</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you prefer, you can use Postman as a client interface for exploring GraphQL APIs
+<p>If you prefer, you can use Postman as a client interface for exploring the GraphQL API
 (<a href="https://www.postman.com/downloads/">download here</a>).
-We&#8217;ve provided a
-<a href="https://github.com/stargate/docs/blob/master/modules/developers-guide/examples/json/Stargate_GraphQL_API_users_keyspace.postman_collection.json">Stargate GraphQL API Postman Collection</a>
-that you can import in Postman to play with the examples shown in this walkthrough.</p>
+See <a href="../tooling.html" class="page">Tooling Resources</a> for links to downloadable collections and environments.
+Instructions for configuring the environments for Stargate OSS and <a href="https://astra.datastax.com">Astra</a> are available.
+You can immediately import the documentation code examples and explore!</p>
 </div>
 <div class="paragraph">
 <p>Now you&#8217;re ready to use the REST API for CRUD operations.</p>

@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Stargate :: Stargate documentation</title>
-    <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/index.html">
-    <link rel="next" href="quickstart/quickstart.html">
+    <title>API References :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/api.html">
+    <link rel="prev" href="developers-guide/authnz.html">
+    <link rel="next" href="FAQ.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../assets/css/site.css">
     <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon"> 
@@ -264,7 +265,7 @@
   </li>
   <li class="nav-item toggler" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="api.html">API references</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -303,115 +304,55 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Stargate</a></li>
+    <li><a href="api.html">API references</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/main/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/main/modules/ROOT/pages/api.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Stargate</h1>
-<div class="sect1">
-<h2 id="_quick_links"><a class="anchor" href="#_quick_links"></a><a class="link" href="#_quick_links">Quick Links</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">What</th>
-<th class="tableblock halign-left valign-top">Where</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Community</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://groups.google.com/a/lists.stargate.io/g/stargate-users">Chat with us</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_version_compatibility"><a class="anchor" href="#_version_compatibility"></a><a class="link" href="#_version_compatibility">Version Compatibility</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Stargate</th>
-<th class="tableblock halign-left valign-top">Cassandra</th>
-<th class="tableblock halign-left valign-top">DSE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.0, 3.x</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.8</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building"><a class="anchor" href="#_building"></a><a class="link" href="#_building">Building</a></h2>
+<h1 class="page">API References</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>See <a href="developers-guide/install/building.html" class="page">Building</a></p>
+<p>Stargate  provides APIs to manage database resources.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_documentation"><a class="anchor" href="#_documentation"></a><a class="link" href="#_documentation">Documentation</a></h2>
+<h2 id="_stargate"><a class="anchor" href="#_stargate"></a><a class="link" href="#_stargate">Stargate</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Stargate provides multiple APIs to connect to your database:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="quickstart/quickstart.html" class="page">QuickStart guides</a></p>
+<p><a href="_attachments/docv2.html">Stargate Document API v2</a>: The Stargate Document API allows you to use schemaless storage of free-form JSON Documents in your database. Get examples of using the Document API in the <a href="#document-api.adoc" class="page unresolved">Developing your application/Document API</a> section.</p>
 </li>
 <li>
-<p><a href="#developers-guide:install/install_docker.adoc" class="page unresolved">Installing Stargate</a></p>
+<p><a href="_attachments/restv2.html">Stargate REST API v2</a>: The Stargate REST API allows you to perform standard CRUD operations on your data using a simple, cross-language interface. Get examples of using the REST API v2 in the <a href="#getting-started-with-datastax-astra.adoc" class="page unresolved">Developing your application/REST API</a> section.</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <a href="developers-guide/graphql-using.html" class="page">Stargate GraphQL API</a> allows you to easily interact with your data using GraphQL types, queries, and mutations. For every table in your keyspace, a series of GraphQL objects are generated, along with queries and mutations that allow you to search and modify the table data. Get examples of using the GraphQL API in the <a href="developers-guide/graphql-using.html" class="page">Developing your application/GraphQL API</a> section.</p>
+</div>
+<div class="sect2">
+<h3 id="_older_versions"><a class="anchor" href="#_older_versions"></a><a class="link" href="#_older_versions">Older versions</a></h3>
+<div class="ulist">
+<ul>
 <li>
-<p><a href="developers-guide/devguide.html" class="page">Developer&#8217;s Guide</a></p>
-</li>
-<li>
-<p><a href="developers-guide/api_ref/apiref.html" class="page">API reference</a></p>
-</li>
-<li>
-<p><a href="FAQ.html" class="page">FAQ</a></p>
+<p><a href="_attachments/restv1.html">Stargate REST API v1</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_community"><a class="anchor" href="#_community"></a><a class="link" href="#_community">Community</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_reporting_bugs"><a class="anchor" href="#_reporting_bugs"></a><a class="link" href="#_reporting_bugs">Reporting Bugs</a></h3>
-<div class="paragraph">
-<p>New issues may be reported using <a href="https://github.com/stargate/docs/issues">GitHub Issues</a>. Please include all relevant details including versions of Stargate and Cassandra and/or DSE. A minimal reproducible case with sample code is ideal.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_questions_comments_and_feedback"><a class="anchor" href="#_questions_comments_and_feedback"></a><a class="link" href="#_questions_comments_and_feedback">Questions, comments, and feedback</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Go to our <a href="https://groups.google.com/a/lists.stargate.io/g/stargate-users">Google group</a> to discuss Stargate with the community.</p>
-</div>
-</div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="quickstart/quickstart.html">Stargate QuickStarts</a></span>
+  <span class="prev"><a href="developers-guide/authnz.html">Securing Stargate</a></span>
+  <span class="next"><a href="FAQ.html">FAQ</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
