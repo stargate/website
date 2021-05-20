@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Auth API :: Stargate documentation</title>
-    <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/developers-guide/auth.html">
+    <title>Apollo data federation :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/developers-guide/apollo-federation.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../assets/css/site.css">
     <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
@@ -305,50 +305,24 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Stargate</a></li>
-    <li><a href="auth.html">Auth API</a></li>
+    <li><a href="apollo-federation.html">Apollo data federation</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/main/modules/developers-guide/pages/auth.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/main/modules/developers-guide/pages/apollo-federation.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Auth API</h1>
-<div id="preamble">
+<h1 class="page">Apollo data federation</h1>
+<div class="sect1">
+<h2 id="_installing_apollo_gateway"><a class="anchor" href="#_installing_apollo_gateway"></a><a class="link" href="#_installing_apollo_gateway">Installing Apollo gateway</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>The Stargate Auth API is implemented using REST queries with any Cassandra
-deployment to generate authorization tokens for the REST, GraphQL, and
-Document APIs.</p>
-</div>
-<div class="paragraph">
-<p>The step below uses <code>cURL</code> to access the REST interface to generate the needed
-token.</p>
+
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_generate_an_auth_token"><a class="anchor" href="#_generate_an_auth_token"></a><a class="link" href="#_generate_an_auth_token">Generate an auth token</a></h3>
-<div class="paragraph">
-<p>First generate an auth token that is required in each subsequent request
-in the <code>X-Cassandra-Token</code> header. Note the port for the auth service is 8081.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L -X POST 'http://localhost:8081/v1/auth' \
-  -H 'Content-Type: application/json' \
-  --data-raw '{
-    "username": "cassandra",
-    "password": "cassandra"
-}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should receive a token in the response.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"authToken":"{auth-token}"}</code></pre>
-</div>
+<div class="sect1">
+<h2 id="_graphql_schema_required"><a class="anchor" href="#_graphql_schema_required"></a><a class="link" href="#_graphql_schema_required">GraphQL schema required</a></h2>
+<div class="sectionbody">
+
 </div>
 </div>
 </article>
