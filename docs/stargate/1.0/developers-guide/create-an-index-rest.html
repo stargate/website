@@ -3,10 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using the CQL API :: Stargate documentation</title>
-    <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/developers-guide/cql-using.html">
-    <link rel="prev" href="cql.html">
-    <link rel="next" href="metrics.html">
+    <title>Untitled :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/docs/stargate/1.0/developers-guide/create-an-index-rest.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../assets/css/site.css">
     <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
@@ -248,7 +246,7 @@
       </svg>
     </button>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="3">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="cql-using.html">Using the CQL API</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -305,309 +303,212 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="../index.html">Stargate</a></li>
-    <li><a href="devguide.html">Developing with Stargate</a></li>
-    <li><a href="cql.html">CQL API</a></li>
-    <li><a href="cql-using.html">Using the CQL API</a></li>
-  </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/modules/developers-guide/pages/cql-using.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/modules/developers-guide/pages/create-an-index-rest.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Using the CQL API</h1>
-<div id="preamble">
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_create_an_index"><a class="anchor" href="#_create_an_index"></a><a class="link" href="#_create_an_index">Create an index</a></h3>
 <div class="paragraph">
-<p>To use Stargate&#8217;s Cassandra Query Language (CQL) API you can use the same CQL
-syntax, tools and native language drivers that you would with a normal
-Cassandra deployment.</p>
+<p>Tables can contain partition keys and clustering keys, both of which define the
+primary key. A table can also include non-primary keys.</p>
 </div>
 <div class="paragraph">
-<p>Popular Cassandra drivers are:</p>
+<p>If you wish to create a table query that uses anything other than the partition key
+to define which row or rows are to be retrieved, a column index must be created
+on each column to read the data.</p>
+</div>
+<div class="paragraph">
+<p>Currently, those indexes can be created with REST,
+<a href="https://cassandra.apache.org/doc/latest/cql/indexes.html#create-index">CQL</a>,
+or <a href="graphql-using.html#_create-an-index" class="page">GraphQL</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use the REST API to create indexes, you&#8217;ll need the <a href="auth.html" class="page">application token</a>
+you generated to create other schema in your keyspace.</p>
+</div>
+<div class="paragraph">
+<p>Send a <code>POST</code> request to
+<code>/v2/schemas/keyspaces/{keyspace_name}/tables/{table_name}/indexes</code>
+to create an index.
+Set the index definitions in the JSON body in the <code>--data</code>. In this example,
+an index name is defined as <code>fav_books_idx</code> for the column <code>favorite_books</code> in
+the keyspace <code>users_keyspace</code> and table <code>users</code>.
+An option to only create the index if it already exists is set with <code>ifNotExists: true</code>;
+the default is <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Two additional options are available:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/datastax/java-driver">Java</a></p>
+<p><code>type</code> can be defined to use SAI indexes if desired; the default is secondary indexes.</p>
 </li>
 <li>
-<p><a href="https://github.com/datastax/csharp-driver">C#</a></p>
-</li>
-<li>
-<p><a href="https://github.com/datastax/cpp-driver">C++</a></p>
-</li>
-<li>
-<p><a href="https://github.com/datastax/python-driver">Python</a></p>
-</li>
-<li>
-<p><a href="https://github.com/datastax/nodejs-driver">Node.js</a></p>
-</li>
-<li>
-<p><a href="https://github.com/gocql/gocql">Go</a></p>
-</li>
-<li>
-<p><a href="https://spring.io/projects/spring-data-cassandra">Spring Data Cassandra</a></p>
+<p><code>kind</code> defines the kind of index for map collections; the choices available are
+<code>VALUES/KEYS/ENTRIES/FULL</code>.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When using Cassandra drivers with Stargate you must:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Use the addresses of the Stargate instances as contact points rather than the
-addresses of the Cassandra storage instances.</p>
-</li>
-<li>
-<p>Use the Round Robin policy in the driver for the
-<a href="https://docs.datastax.com/en/devapp/doc/devapp/driversLoadBalancing.html">Load Balancing Policy</a>
-rather than the Token Aware Policy.</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a><a class="link" href="#_prerequisites">Prerequisites</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To use Stargate you need:</p>
-</div>
-<div class="ulist">
+<div class="tabset is-loading">
+<div class="ulist tabs">
 <ul>
 <li>
-<p>Docker installed and running, if using Docker</p>
+<p><a id="tabset1_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><code>cURL</code> to run REST, Document, or GraphQL queries</p>
-</li>
-<li>
-<p>cqlsh (CQL shell) (standalone, or as part of a separate Cassandra installation)</p>
+<p><a id="tabset1_result"></a>Result</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If you are looking to just get started, <a href="https://astra.datastax.com">DataStax Astra Database-as-a-Service</a>
-can get you started with no install steps.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
-and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
-</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v1.0.29</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "favorite_books",
+  "name": "fav_books_idx",
+  "ifNotExists": true
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "success": true
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>Start the Stargate container in developer mode.
-Developer mode removes the need to set up a separate Cassandra instance and is
-meant for development and testing only.</p>
+<p>Here is an additional example, which creates indexes that are used in the REST API examples:</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_curl-command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --name stargate \
-  -p 8080:8080 \
-  -p 8081:8081 \
-  -p 8082:8082 \
-  -p 127.0.0.1:9042:9042 \
-  -d \
-  -e CLUSTER_NAME=stargate \
-  -e CLUSTER_VERSION=3.11 \
-  -e DEVELOPER_MODE=true \
-  stargateio/stargate-3_11:v1.0.29</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_accessing_the_cql_api_using_cqlsh"><a class="anchor" href="#_accessing_the_cql_api_using_cqlsh"></a><a class="link" href="#_accessing_the_cql_api_using_cqlsh">Accessing the CQL API using cqlsh</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_installing_a_standalone_cqlsh_using_docker"><a class="anchor" href="#_installing_a_standalone_cqlsh_using_docker"></a><a class="link" href="#_installing_a_standalone_cqlsh_using_docker">Installing a standalone cqlsh using Docker</a></h3>
-<div class="paragraph">
-<p>Install a standalone cqlsh docker image to access Stargate. First, pull the
-following docker image:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull nuvo/docker-cqlsh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Get the IP address of your Stargate docker container (assuming the Stargate
- container name is "stargate"). This command assumes the stargate docker
- container is running:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' stargate</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Connect to your Stargate container using <code>cqlsh</code> using the IP address from the
-last command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --rm -it nuvo/docker-cqlsh cqlsh {ip-address} --cqlversion=3.4.5</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you are ready to interact with Cassandra!</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_create_a_keyspace"><a class="anchor" href="#_create_a_keyspace"></a><a class="link" href="#_create_a_keyspace">Create a keyspace</a></h3>
-<div class="paragraph">
-<p>Create a keyspace called <code>users_keyspace</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">CREATE KEYSPACE users_keyspace
-  WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}
-  AND durable_writes = true;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_create_a_table"><a class="anchor" href="#_create_a_table"></a><a class="link" href="#_create_a_table">Create a table</a></h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">CREATE TABLE users_keyspace.users (
-    firstname text,
-    lastname text,
-    email text,
-    "favorite color" text,
-    PRIMARY KEY (firstname, lastname)
-) WITH CLUSTERING ORDER BY (lastname ASC);</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_insert_data"><a class="anchor" href="#_insert_data"></a><a class="link" href="#_insert_data">Insert data</a></h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">INSERT INTO users_keyspace.users (
-  firstname,
-  lastname,
-  email,
-  "favorite color"
-) VALUES (
-  'Mookie',
-  'Betts',
-  'mookie.betts@gmail.com',
-  'blue'
-);</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_retrieve_data"><a class="anchor" href="#_retrieve_data"></a><a class="link" href="#_retrieve_data">Retrieve data</a></h3>
-<div class="paragraph">
-<p>To select all rows in the table:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">SELECT * FROM users_keyspace.users;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To select a row using the primary key:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">SELECT * FROM users_keyspace.users WHERE firstname = 'Mookie' AND lastname = 'Betts';</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_update_data"><a class="anchor" href="#_update_data"></a><a class="link" href="#_update_data">Update data</a></h3>
-<div class="paragraph">
-<p>Update the email address:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">UPDATE users_keyspace.users SET email = 'mookie.betts-new-email@gmail.com' WHERE firstname = 'Mookie' AND lastname = 'Betts';</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Verify that the row has the updated email address:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">SELECT * FROM users_keyspace.users WHERE firstname = 'Mookie';</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_delete_data"><a class="anchor" href="#_delete_data"></a><a class="link" href="#_delete_data">Delete data</a></h3>
-<div class="paragraph">
-<p>Delete the row using the primary key:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">DELETE FROM users_keyspace.users WHERE firstname = 'Mookie' AND lastname = 'Betts';</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_the_cql_api_with_cassandra_drivers"><a class="anchor" href="#_using_the_cql_api_with_cassandra_drivers"></a><a class="link" href="#_using_the_cql_api_with_cassandra_drivers">Using the CQL API with Cassandra drivers</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Stargate can be used with any of the Cassandra drivers. Use the Stargate node as the contact point when connecting using Cassandra drivers, and use the <a href="https://docs.datastax.com/en/devapp/doc/devapp/driversLoadBalancing.html">Round Robin load balancing policy</a>.</p>
-</div>
-<div class="paragraph">
-<p>For example, to connect to Stargate running on your local machine using the Python driver:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from cassandra.cluster import Cluster
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "favorite_books",
+  "name": "fav_books_idex",
+  "ifNotExists": true
+}'
 
-cluster = Cluster(['127.0.0.1'])
+curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "top_three_tv_shows",
+  "name": "tv_idx",
+  "ifNotExists": true
+}'
 
-session = cluster.connect()
+curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "evaluations",
+  "name": "evalv_idx",
+  "ifNotExists": true
+}'
 
-session.set_keyspace('users_keyspace')
+curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "evaluations",
+  "name": "evalk_idx",
+  "kind": "KEYS",
+  "ifNotExists": true
+}'
 
-rows = session.execute('SELECT firstname, lastname, email FROM users')
-for user_row in rows:
-    print(user_row.firstname, user_row.lastname, user_row.email)</code></pre>
+curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "evaluations",
+  "name": "evale_idx",
+  "kind": "ENTRIES",
+  "ifNotExists": true
+}'
+
+curl -s --location \
+--request POST http://localhost:8080/v2/schemas/keyspaces/users_keyspace/tables/users/indexes \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header "Content-Type: application/json" \
+--header "Accept: application/json" \
+--data '{
+  "column": "current_country",
+  "name": "country_idx",
+  "ifNotExists": true
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "success": true
+}
+{
+  "success": true
+}
+{
+  "success": true
+}
+{
+  "success": true
+}
+{
+  "success": true
+}
+{
+  "success": true
+}</code></pre>
 </div>
 </div>
 </div>
 </div>
-<nav class="pagination">
-  <span class="prev"><a href="cql.html">CQL API</a></span>
-  <span class="next"><a href="metrics.html">Accessing Stargate metrics with Prometheus and Grafana</a></span>
-</nav>
+</div>
+<div class="paragraph">
+<p>Note the use of the <code>kind</code> in the definitions used for the map collection <code>evaluations</code>.</p>
+</div>
+</div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
