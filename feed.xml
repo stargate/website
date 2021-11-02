@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-11-02T15:54:40+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Introducing the Design for Stargate v2</title><link href="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html" rel="alternate" type="text/html" title="Introducing the Design for Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html">&lt;p&gt;When we &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;announced Stargate v2&lt;/a&gt;, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-11-02T16:37:38+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Announcing Stargate v2</title><link href="https://stargate.io/2021/11/02/announcing-stargate-v2.html" rel="alternate" type="text/html" title="Announcing Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/announcing-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/announcing-stargate-v2.html">&lt;p&gt;After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of &lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate&lt;/a&gt;. We’re listening to feedback from the &lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate developer community&lt;/a&gt; and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Breaking up the monolith&lt;/li&gt;
+  &lt;li&gt;Improving developer experience for contributors&lt;/li&gt;
+  &lt;li&gt;Making Stargate more cloud-friendly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’ll expand on these goals below, but first let’s take a look at how we got to this point.&lt;/p&gt;
+
+&lt;h2 id=&quot;stargate-a-brief-history&quot;&gt;Stargate: a brief history&lt;/h2&gt;
+
+&lt;p&gt;In September 2020 we &lt;a href=&quot;https://dtsx.io/3jQRa7D&quot;&gt;announced the Stargate project&lt;/a&gt; as an open-source data gateway. Our goal was (and continues to be) to help speed up application development and reduce the workload for teams that find themselves creating and maintaining layers of microservice APIs on top of databases like &lt;a href=&quot;https://cassandra.apache.org/_/index.html&quot;&gt;Apache Cassandra®&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since that first release, which included support for CQL and REST APIs, the project has seen a number of milestones since then. Here are a few of the highlights:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Addition of the &lt;a href=&quot;https://dtsx.io/3EsZUsp&quot;&gt;GraphQL API&lt;/a&gt; and the &lt;a href=&quot;https://dtsx.io/3blyRCT&quot;&gt;Document API&lt;/a&gt;, with a gRPC API coming soon&lt;/li&gt;
+  &lt;li&gt;Reaching the &lt;a href=&quot;https://dtsx.io/2Y0PNLU&quot;&gt;1.0 milestone&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Support for &lt;a href=&quot;https://dtsx.io/3pTsDT5&quot;&gt;Cassandra 4.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Adoption of Stargate as the official API layer for &lt;a href=&quot;https://dtsx.io/3nMs4bg&quot;&gt;DataStax Astra DB&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This represents a lot of change for a project that’s just over a year old, and now it’s time for us to set the stage for this open-source community to grow even more.&lt;/p&gt;
+
+&lt;h2 id=&quot;breaking-up-the-monolith&quot;&gt;Breaking up the monolith&lt;/h2&gt;
+
+&lt;p&gt;The current Stargate design is monolithic; that is to say, each Stargate node runs as a single process containing all of the supported APIs. This has a few consequences for deploying and running Stargate:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;All of the APIs are enabled by default. You could run your own version with individual APIs disabled, but not by using the official Stargate Docker images. Instead, you’d have to download and build the Stargate source and selectively omit specific OSGI bundles from the startup script. This isn’t intuitive and requires knowledge of the existing bundles (more on OSGI below).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;More importantly, it’s not possible to scale the individual APIs. For example, if you’re primarily using the REST API and need to scale up to meet increased REST traffic, you can’t just scale up REST independently. Instead, you have to add additional Stargate nodes supporting all the APIs to meet the demand. The nodes are “heavier” than they need to be, leading to inefficient resource usage.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Today, extending Stargate with a new API requires creating a new module, adding the module’s Jar file to the existing stargate-lib directory, and then packaging all the Jars and configuration up for deployment.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As you can see, the current design makes Stargate more difficult for both users and contributors, and it’s time to break up this monolith to improve the experience for everyone.&lt;/p&gt;
+
+&lt;h2 id=&quot;improving-the-developer-experience-for-users&quot;&gt;Improving the developer experience for users&lt;/h2&gt;
+
+&lt;p&gt;As you’d expect, we absolutely want the Stargate APIs to be as easy to use and adopt as possible, but our goals for v2 are specifically focused on making Stargate easy to deploy and manage, rather than on making API revisions.&lt;/p&gt;
+
+&lt;p&gt;Stargate v2 will move the API implementations out of the Stargate node (aka “monolith”) into separate microservices. This will allow you to scale each API independently. You can even disable APIs that you don’t intend to use entirely, allowing you to focus on a smaller surface area of the project and giving you fewer endpoints to secure.&lt;/p&gt;
+
+&lt;h2 id=&quot;improving-the-developer-experience-for-contributors&quot;&gt;Improving the developer experience for contributors&lt;/h2&gt;
+
+&lt;p&gt;We’re also committed to growing the community of open source developers who are actively contributing code to Stargate. For this reason, another major goal of v2 is to make the implementation itself easier to understand, debug, enhance, and extend.&lt;/p&gt;
+
+&lt;h3 id=&quot;removing-osgi&quot;&gt;Removing OSGI&lt;/h3&gt;
+
+&lt;p&gt;The original Stargate (“v1”) has a pluggable design, using the &lt;a href=&quot;https://www.osgi.org/&quot;&gt;OSGI framework&lt;/a&gt; to allow different modules to be composed at deployment time. This is useful for swapping in different Cassandra persistence modules, such as Cassandra 3.11, 4.0, and DataStax Enterprise 6.8. We chose OSGI because it’s a proven technology that provided us with the plugin framework we needed to iterate quickly.&lt;/p&gt;
+
+&lt;p&gt;However, OSGI isn’t widely used these days, and several developers have reported that debugging can be difficult due to the nuances of working with OSGI. The move to microservices will help reduce the need for OSGI, and we’ll work toward replacing the remaining usage with another solution.&lt;/p&gt;
+
+&lt;h3 id=&quot;encouraging-modernization-and-innovation&quot;&gt;Encouraging modernization and innovation&lt;/h3&gt;
+
+&lt;p&gt;The current requirement to support a Cassandra 3.11 persistence layer means that the Stargate nodes must run Java 8 — the lowest common denominator. Unfortunately, this has prevented the usage of more modern Java frameworks, such as Quarkus or Micronaut that require later Java versions.&lt;/p&gt;
+
+&lt;p&gt;We believe that one of the great benefits of breaking up the monolith will be to encourage innovation in the Stargate community. The v2 architecture will be more conducive to external contributions since the developer of each microservice will be able to make their own choices about what language and frameworks to use. This has the dual benefit of both modernizing Stargate and potentially attracting contributors who are interested in working with new and exciting frameworks or languages.&lt;/p&gt;
+
+&lt;h3 id=&quot;refactoring-and-cleanup&quot;&gt;Refactoring and cleanup&lt;/h3&gt;
+
+&lt;p&gt;As with any project that has many contributors, the codebase has started to show some entropy. Although it’s nowhere near “spaghetti code” state, the modules and Java package structure could use some refactoring. We’re hoping to clean up some dependencies and improve the overall code organization to make it easier for you to find your way around.&lt;/p&gt;
+
+&lt;h2 id=&quot;making-stargate-more-cloud-friendly&quot;&gt;Making Stargate more cloud-friendly&lt;/h2&gt;
+
+&lt;p&gt;While the Stargate project currently provides &lt;a href=&quot;https://dtsx.io/3myshiV&quot;&gt;Docker images&lt;/a&gt; that can be used for deployment in containerized environments, Stargate v2 is going to add additional images for the various microservices. This will add some complexity to deployments.&lt;/p&gt;
+
+&lt;p&gt;Since &lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt; has emerged as the clear choice for container orchestration in both public and private clouds, v2 will provide assistance in deploying Stargate on Kubernetes via Helm. We envision providing a Helm chart to expose each enabled API as a Kubernetes Service, use Deployments to manage replicas of the API implementations, create a StatefulSet to manage the persistence nodes, and so on.&lt;/p&gt;
+
+&lt;p&gt;On another note, we look forward to continuing our collaboration with the &lt;a href=&quot;https://dtsx.io/3Erl8Xr&quot;&gt;K8ssandra&lt;/a&gt; project, which provides deployments of Stargate and Cassandra on Kubernetes. The K8ssandra team is also building a &lt;a href=&quot;https://dtsx.io/3vYmeqJ&quot;&gt;Stargate Controller&lt;/a&gt; as part of the &lt;a href=&quot;https://github.com/k8ssandra/k8ssandra-operator&quot;&gt;K8ssandra Operator&lt;/a&gt; for their own v2 release.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-journey-to-v2-is-just-beginning&quot;&gt;The journey to V2 is just beginning&lt;/h2&gt;
+
+&lt;p&gt;We’re just getting started on working toward a Stargate v2 release and are committed to sharing our plans and progress early and often. We’d love to get as much input as possible from the &lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate open source community&lt;/a&gt;. In our next blog post, we’ll introduce a proposed design for Stargate v2, other design options we considered, and share how you can provide feedback on the proposal.&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate Community&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3pTsDT5&quot;&gt;Stargate and Cassandra 4.0 - Better Together&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3Erl8Xr&quot;&gt;K8ssandra - K8ssandra, Apache Cassandra® on Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of Stargate. We’re listening to feedback from the Stargate developer community and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Introducing the Design for Stargate v2</title><link href="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html" rel="alternate" type="text/html" title="Introducing the Design for Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html">&lt;p&gt;When we &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;announced Stargate v2&lt;/a&gt;, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”&lt;/p&gt;
 
 &lt;p&gt;Like all things in software engineering, arriving at this point was an iterative process.To give you a glimpse into our journey, we’ll show you some of the designs we considered before landing on the one we propose today. For context, we had a few different criteria in mind while reviewing each of these designs:&lt;/p&gt;
 
