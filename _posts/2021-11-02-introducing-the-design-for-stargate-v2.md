@@ -10,7 +10,7 @@ author_info:
   picture: "assets/images/stargate-profile.png"
 ---
 
-When we [announced Stargate v2](https://stargate.io/2021/11/01/announcing-stargate-v2.html), we mainly focused on the "why" behind the change. In this post, we’ll dive into the "how."
+When we [announced Stargate v2](https://stargate.io/2021/11/02/announcing-stargate-v2.html), we mainly focused on the "why" behind the change. In this post, we’ll dive into the "how."
 
 Like all things in software engineering, arriving at this point was an iterative process.To give you a glimpse into our journey, we’ll show you some of the designs we considered before landing on the one we propose today. For context, we had a few different criteria in mind while reviewing each of these designs:
 
@@ -55,7 +55,7 @@ Furthermore, this approach would require creating a new schema definition langua
 The next option we considered was similar to the “shared nothing” design, but differed in that it used CQL as the communication protocol.
 
 
-![](/assets/images/stargate-v2-cql-shared-nothing.png)
+![Figure 2: Diagram of a "shared nothing" approach using CQL to communicate.](/assets/images/stargate-v2-cql-shared-nothing.png)
 Figure 2: Diagram of a "shared nothing" approach using CQL to communicate.
 
 In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.
@@ -165,7 +165,7 @@ We believe that the changes proposed in this design will lead to a much better e
 
 Contributors will be able to quickly iterate on just the parts of the project they want — without needing to understand as deeply the other components. Plus, it’ll open up the potential for newer Java versions and frameworks rather than Java 8 with OSGi or even a polyglot environment. Meanwhile, operators will have greater flexibility over their Stargate deployment and the potential for a lower-resource footprint when scaling to handle higher loads. 
 
-Overall, we’re excited about these new changes and look forward to working with the [Stargate community](https://dtsx.io/3pMAp0Y) to make this new design a reality. On that note, if you want to review this design and give us your feedback, [join the discussion on GitHub](https://github.com/stargate/stargate/discussions/1381). \
+Overall, we’re excited about these new changes and look forward to working with the [Stargate community](https://dtsx.io/3pMAp0Y) to make this new design a reality. On that note, if you want to review this design and give us your feedback, [join the discussion on GitHub](https://github.com/stargate/stargate/discussions/1381).
 
 
 
