@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-11-02T16:37:38+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Announcing Stargate v2</title><link href="https://stargate.io/2021/11/02/announcing-stargate-v2.html" rel="alternate" type="text/html" title="Announcing Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/announcing-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/announcing-stargate-v2.html">&lt;p&gt;After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of &lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate&lt;/a&gt;. We’re listening to feedback from the &lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate developer community&lt;/a&gt; and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-11-02T17:41:43+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Announcing Stargate v2</title><link href="https://stargate.io/2021/11/02/announcing-stargate-v2.html" rel="alternate" type="text/html" title="Announcing Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/announcing-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/announcing-stargate-v2.html">&lt;p&gt;After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of &lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate&lt;/a&gt;. We’re listening to feedback from the &lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate developer community&lt;/a&gt; and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Breaking up the monolith&lt;/li&gt;
@@ -106,8 +106,10 @@
 
 &lt;p&gt;One of our ideas was to go in the opposite direction of where Stargate is currently. In this design we’d switch from a “shared everything” approach to a “shared nothing.” Instead of everything running within the same JVM and connected using &lt;a href=&quot;https://www.osgi.org/&quot;&gt;OSGi&lt;/a&gt;, each component of Stargate would be its own .jar capable of running in a dedicated container. The diagram below illustrates what this new architecture would look like.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-v2-shared-nothing.png&quot; alt=&quot;Figure 1: Diagram of our proposed &amp;quot;shared nothing&amp;quot; design for Stargate v2.&quot; /&gt;
-Figure 1: Diagram of our proposed “shared nothing” design for Stargate v2.&lt;/p&gt;
+&lt;figure class=&quot;image&quot;&gt;
+  &amp;lt;img src=&quot;/assets/images/stargate-v2-shared-nothing.png&quot; alt=&quot;Figure 1: Diagram of our proposed &quot;shared nothing&quot; design for Stargate v2.&quot;&amp;gt;
+  &lt;figcaption&gt;Figure 1: Diagram of our proposed &quot;shared nothing&quot; design for Stargate v2.&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;From left to right, here’s how it would work:&lt;/p&gt;
 
@@ -128,8 +130,10 @@ Figure 1: Diagram of our proposed “shared nothing” design for Stargate v2.&l
 
 &lt;p&gt;The next option we considered was similar to the “shared nothing” design, but differed in that it used CQL as the communication protocol.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-v2-cql-shared-nothing.png&quot; alt=&quot;Figure 2: Diagram of a &amp;quot;shared nothing&amp;quot; approach using CQL to communicate.&quot; /&gt;
-Figure 2: Diagram of a “shared nothing” approach using CQL to communicate.&lt;/p&gt;
+&lt;figure class=&quot;image&quot;&gt;
+  &amp;lt;img src=&quot;/assets/images/stargate-v2-cql-shared-nothing.png&quot; alt=&quot;Figure 2: Diagram of a &quot;shared nothing&quot; approach using CQL to communicate.&quot;&amp;gt;
+  &lt;figcaption&gt;Figure 2: Diagram of a &quot;shared nothing&quot; approach using CQL to communicate.&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.&lt;/p&gt;
 
@@ -145,8 +149,10 @@ Figure 2: Diagram of a “shared nothing” approach using CQL to communicate.&l
 
 &lt;p&gt;One of our next ideas was a hybrid of the previous two. In this design, the simpler services that map more readily to CQL would take one path to the persistence service, while the others would take a different path.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-v2-multibridge.png&quot; alt=&quot;Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&quot; /&gt;
-Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&lt;/p&gt;
+&lt;figure class=&quot;image&quot;&gt;
+  &lt;img src=&quot;/assets/images/stargate-v2-multibridge.png&quot; alt=&quot;Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&quot; /&gt;
+  &lt;figcaption&gt;Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;As shown in the diagram above, we have now gone from one to two Bridge pods and split up the GraphQL service. At the top half of the diagram, things have stayed largely the same in that services that map cleanly to CQL transform their requests into a gRPC payload, and then pass that to the Bridge. Where this diverges is the “not directly CQL” services, which now go through a different Bridge that translates the requests into something lower-level before passing them along to the primary Bridge service.&lt;/p&gt;
 
@@ -158,8 +164,10 @@ Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&l
 
 &lt;p&gt;After weighing the pros and cons of the other potential designs, we finally settled on what we believe is the best option for Stargate v2. Take a look at the diagram below.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-v2-services.png&quot; alt=&quot;Figure 4: Diagram of the final design approach for Stargate v2.&quot; /&gt;
-Figure 4: Diagram of the final design approach for Stargate v2.&lt;/p&gt;
+&lt;figure class=&quot;image&quot;&gt;
+  &lt;img src=&quot;/assets/images/stargate-v2-services.png&quot; alt=&quot;Figure 4: Diagram of the final design approach for Stargate v2.&quot; /&gt;
+  &lt;figcaption&gt;Figure 4: Diagram of the final design approach for Stargate v2.&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;This design is similar to the earlier ones where the user-facing services are sitting behind a load balancer and communicating with the persistence service via gRPC. Although a noticeable feature is the addition of a “Coordinator Node.” This new Coordinator Node pod will contain three different services that run together in the same JVM: CQL, Bridge, and Persistence.&lt;/p&gt;
 

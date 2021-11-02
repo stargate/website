@@ -238,8 +238,10 @@
 
 <p>One of our ideas was to go in the opposite direction of where Stargate is currently. In this design we’d switch from a “shared everything” approach to a “shared nothing.” Instead of everything running within the same JVM and connected using <a href="https://www.osgi.org/">OSGi</a>, each component of Stargate would be its own .jar capable of running in a dedicated container. The diagram below illustrates what this new architecture would look like.</p>
 
-<p><img alt='Figure 1: Diagram of our proposed "shared nothing" design for Stargate v2.' data-src="/assets/images/stargate-v2-shared-nothing.png" class="lazyload">
-Figure 1: Diagram of our proposed “shared nothing” design for Stargate v2.</p>
+<figure class="image">
+  &lt;img src="/assets/images/stargate-v2-shared-nothing.png" alt="Figure 1: Diagram of our proposed "shared nothing" design for Stargate v2."&gt;
+  <figcaption>Figure 1: Diagram of our proposed "shared nothing" design for Stargate v2.</figcaption>
+</figure>
 
 <p>From left to right, here’s how it would work:</p>
 
@@ -260,8 +262,10 @@ Figure 1: Diagram of our proposed “shared nothing” design for Stargate v2.</
 
 <p>The next option we considered was similar to the “shared nothing” design, but differed in that it used CQL as the communication protocol.</p>
 
-<p><img alt='Figure 2: Diagram of a "shared nothing" approach using CQL to communicate.' data-src="/assets/images/stargate-v2-cql-shared-nothing.png" class="lazyload">
-Figure 2: Diagram of a “shared nothing” approach using CQL to communicate.</p>
+<figure class="image">
+  &lt;img src="/assets/images/stargate-v2-cql-shared-nothing.png" alt="Figure 2: Diagram of a "shared nothing" approach using CQL to communicate."&gt;
+  <figcaption>Figure 2: Diagram of a "shared nothing" approach using CQL to communicate.</figcaption>
+</figure>
 
 <p>In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.</p>
 
@@ -277,8 +281,10 @@ Figure 2: Diagram of a “shared nothing” approach using CQL to communicate.</
 
 <p>One of our next ideas was a hybrid of the previous two. In this design, the simpler services that map more readily to CQL would take one path to the persistence service, while the others would take a different path.</p>
 
-<p><img alt="Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges." data-src="/assets/images/stargate-v2-multibridge.png" class="lazyload">
-Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.</p>
+<figure class="image">
+  <img alt="Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges." data-src="/assets/images/stargate-v2-multibridge.png" class="lazyload">
+  <figcaption>Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.</figcaption>
+</figure>
 
 <p>As shown in the diagram above, we have now gone from one to two Bridge pods and split up the GraphQL service. At the top half of the diagram, things have stayed largely the same in that services that map cleanly to CQL transform their requests into a gRPC payload, and then pass that to the Bridge. Where this diverges is the “not directly CQL” services, which now go through a different Bridge that translates the requests into something lower-level before passing them along to the primary Bridge service.</p>
 
@@ -290,8 +296,10 @@ Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.</
 
 <p>After weighing the pros and cons of the other potential designs, we finally settled on what we believe is the best option for Stargate v2. Take a look at the diagram below.</p>
 
-<p><img alt="Figure 4: Diagram of the final design approach for Stargate v2." data-src="/assets/images/stargate-v2-services.png" class="lazyload">
-Figure 4: Diagram of the final design approach for Stargate v2.</p>
+<figure class="image">
+  <img alt="Figure 4: Diagram of the final design approach for Stargate v2." data-src="/assets/images/stargate-v2-services.png" class="lazyload">
+  <figcaption>Figure 4: Diagram of the final design approach for Stargate v2.</figcaption>
+</figure>
 
 <p>This design is similar to the earlier ones where the user-facing services are sitting behind a load balancer and communicating with the persistence service via gRPC. Although a noticeable feature is the addition of a “Coordinator Node.” This new Coordinator Node pod will contain three different services that run together in the same JVM: CQL, Bridge, and Persistence.</p>
 
