@@ -32,7 +32,7 @@ Not every idea can be a winner, and we abandoned our fair share of ideas during 
 One of our ideas was to go in the opposite direction of where Stargate is currently. In this design we’d switch from a "shared everything" approach to a "shared nothing." Instead of everything running within the same JVM and connected using [OSGi](https://www.osgi.org/), each component of Stargate would be its own .jar capable of running in a dedicated container. The diagram below illustrates what this new architecture would look like.
 
 
-{% include image.html file="stargate-v2-shared-nothing.png" description="Figure 1: Diagram of our proposed \"shared nothing\" design for Stargate v2." %}
+{% include image.html file="stargate-v2-shared-nothing.png" description="Figure 1: Diagram of our proposed 'shared nothing' design for Stargate v2." %}
 
 From left to right, here’s how it would work: 
 
@@ -53,7 +53,7 @@ Furthermore, this approach would require creating a new schema definition langua
 
 The next option we considered was similar to the “shared nothing” design, but differed in that it used CQL as the communication protocol.
 
-{% include image.html file="stargate-v2-cql-shared-nothing.png" description="Figure 2: Diagram of a \"shared nothing\" approach using CQL to communicate." %}
+{% include image.html file="stargate-v2-cql-shared-nothing.png" description="Figure 2: Diagram of a 'shared nothing' approach using CQL to communicate." %}
 
 In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.
 
