@@ -53,7 +53,7 @@ Furthermore, this approach would require creating a new schema definition langua
 
 The next option we considered was similar to the “shared nothing” design, but differed in that it used CQL as the communication protocol.
 
-{% include image.html file="stargate-v2-cql-shared-nothing" description="Figure 2: Diagram of a "shared nothing" approach using CQL to communicate." %}
+{% include image.html file="stargate-v2-cql-shared-nothing.png" description="Figure 2: Diagram of a "shared nothing" approach using CQL to communicate." %}
 
 In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.
 
