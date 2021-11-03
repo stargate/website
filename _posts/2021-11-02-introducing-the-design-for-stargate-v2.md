@@ -12,11 +12,12 @@ author_info:
 
 When we [announced Stargate v2](https://stargate.io/2021/11/02/announcing-stargate-v2.html), we mainly focused on the "why" behind the change. In this post, we’ll dive into the "how."
 
-Like all things in software engineering, arriving at this point was an iterative process.To give you a glimpse into our journey, we’ll show you some of the designs we considered before landing on the one we propose today. For context, we had a few different criteria in mind while reviewing each of these designs:
+Like all things in software engineering, arriving at this point was an iterative process. We’ll show you some of the designs we considered before landing on the one we propose today.
 
+For context, we had a few different criteria in mind while reviewing each of these designs:
 
-* **Ease of contribution:** We wanted to make sure that whatever change we made resulted in it being easier for both new and existing contributors to work with [Stargate](https://dtsx.io/3w732Y9). 
-* **Deployment flexibility:** The ability to scale components independently was important to us, but we recognize that not everyone will need this and would instead prefer only one or two containers running. 
+* **Ease of contribution:** We wanted to make sure that whatever change we made resulted in it being easier for both new and existing contributors to work with [Stargate](https://dtsx.io/3w732Y9).
+* **Deployment flexibility:** The ability to scale components independently was important to us, but we recognize that not everyone will need this and would instead prefer only one or two containers running.
 * **Ongoing performance:** Of course, we also wanted to be sure that neither of the above changes came at the cost of latency, so we also wanted to ensure that the potential design would still be performant.
 
 With that said, let’s get into the designs. 
@@ -29,7 +30,7 @@ Not every idea can be a winner, and we abandoned our fair share of ideas during 
 
 ### Design 1: Separate everything
 
-One of our ideas was to go in the opposite direction of where Stargate is currently. In this design we’d switch from a "shared everything" approach to a "shared nothing." Instead of everything running within the same JVM and connected using [OSGi](https://www.osgi.org/), each component of Stargate would be its own .jar capable of running in a dedicated container. The diagram below illustrates what this new architecture would look like.
+One of our ideas was to go in the opposite direction of where Stargate is currently. In this design, we’d switch from a “shared everything” approach to a “shared nothing.” Instead of everything running within the same JVM and connected using [OSGi](https://www.osgi.org/), each component of Stargate would be its own .jar capable of running in a dedicated container. The diagram below illustrates what this new architecture would look like.
 
 
 {% include image.html file="stargate-v2-shared-nothing.png" description="Figure 1: Diagram of our proposed 'shared nothing' design for Stargate v2." %}
@@ -37,14 +38,14 @@ One of our ideas was to go in the opposite direction of where Stargate is curren
 From left to right, here’s how it would work: 
 
 
-* A request would come in through the load balancer and then be routed to the proper user-facing service based on routing rules. 
+* A request would come in through the load balancer and then be routed to the proper user-facing service based on routing rules.
 * Each service would be responsible for transforming its request into a gRPC payload that it would pass on to an internal gRPC (i.e. the “Bridge”).
 * The Bridge would apply all cross-cutting concerns, like authentication and authorization, before passing the request along to the persistence service again over gRPC.
 * Finally, the persistence would take the gRPC payload and transform it into CQL that could be processed and coordinated to the underlying storage nodes.
 
 One benefit of this approach is that it provides flexibility for scaling and deployment. For example, if you don’t need the REST API then you would have the option to not deploy that pod. Likewise, for scaling, if you had more [GraphQL](https://dtsx.io/3BpaA9p) traffic than [Document API](https://dtsx.io/3BpaA9p), you could add more GraphQL pods without changing the other deployments.
 
-An immediate downside to this approach was for CQL, since those requests would need to be transformed from CQL frames to gRPC and then back to CQL. Given CQL’s latency-sensitive nature, we felt the additional overhead of multiple serialization and deserialization would be unacceptable. 
+An immediate downside to this approach was for CQL, since those requests would need to be transformed from CQL frames to gRPC and then back to CQL. Given CQL’s latency-sensitive nature, we felt the additional overhead of multiple serialization and deserialization would be unacceptable.
 
 Furthermore, this approach would require creating a new schema definition language to transport the requests between services. Although this would certainly be helpful for services that operate at a higher level than plain CQL (like the Documents API), we thought it was unnecessarily complex.
 
@@ -57,10 +58,10 @@ The next option we considered was similar to the “shared nothing” design, bu
 
 In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.
 
-This seemed like a promising approach since all of the current services are written in Java, which has a robust CQL driver. Except the requirement of a driver introduces three potential issues:
+This seemed like a promising approach since all of the current services are written in Java, which has a robust CQL driver. Except for the requirement of a driver introduces three potential issues:
 
 1. Stargate is written in Java, but we welcome the possibility of services being written in other languages. Although this means your language of choice would need a driver, and if it has a driver, it needs to be in a usable state.
-2. Having a driver bridge the communication gap between user-facing service and persistence creates some authentication issues. Since drivers tend to be session scoped with a username and password, each service would need to create a new session for each request. Alternatively, there would need to be a system user for the services, which would then need to execute the queries on behalf of the user initiating the request.
+2. Having a driver bridge the communication gap between user-facing service and persistence creates some authentication issues. Since drivers tend to be session-scoped with a username and password, each service would need to create a new session for each request. Alternatively, there would need to be a system user for the services, which would then need to execute the queries on behalf of the user initiating the request.
 3. Even though most of the services are a one-to-one translation to CQL, there are occasions when this isn’t the case, so it would require making several requests from the service to persistence.
 
 
@@ -70,7 +71,7 @@ One of our next ideas was a hybrid of the previous two. In this design, the simp
 
 {% include image.html file="stargate-v2-multibridge.png" description="Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges." %}
 
-As shown in the diagram above, we have now gone from one to two Bridge pods and split up the GraphQL service. At the top half of the diagram, things have stayed largely the same in that services that map cleanly to CQL transform their requests into a gRPC payload, and then pass that to the Bridge. Where this diverges is the “not directly CQL” services, which now go through a different Bridge that translates the requests into something lower-level before passing them along to the primary Bridge service.
+As shown in the diagram above, we have now gone from one to two Bridge pods and split up the GraphQL service. At the top half of the diagram, things have stayed largely the same in that services that map cleanly to CQL transform their requests into a gRPC payload and then pass that to the Bridge. Where this diverges is the “not directly CQL” services, which now go through a different Bridge that translates the requests into something lower-level before passing them along to the primary Bridge service.
 
 One of the benefits of this design is that it removes the complexity of translating requests into gRPC from the external services and pushes it down into a centralized location. The translation Bridge can take the customized requests from both the Documents API and the schema-first version of GraphQL and transform them into simpler gRPC payloads that the inner Bridge service can process.
 
@@ -123,7 +124,7 @@ The Bridge will be packaged within each Persistence layer to produce deployable 
 
 ### REST, GraphQL, and gRPC services
 
-The current `rest-api` module will be refactored to a separate microservice that uses the internal gRPC API of the Bridge. Dependence on OSGI will be removed — although we’ll likely reuse the health checker module for this and the other HTTP-based API services to provide endpoints for liveness/readiness. 
+The current `rest-api` module will be refactored to a separate microservice that uses the internal gRPC API of the Bridge. Dependence on OSGI will be removed — although we’ll likely reuse the health checker module for this and the other HTTP-based API services to provide endpoints for liveness/readiness.
 
 The REST API service will continue to support both the REST v1 and v2 APIs as there’ll be no API contract changes. The current GraphQL and gRPC API implementations will be factored out from their current places into separate microservices that use the internal gRPC API, and we’ll remove the dependence on OSGI.
 
@@ -132,14 +133,14 @@ The REST API service will continue to support both the REST v1 and v2 APIs as th
 
 The current Document API implementation will be moved from the `rest-api` module into a separate microservice that uses the internal gRPC API. Dependence on OSGI will also be removed.
 
-Because the Document API operates at a higher level than REST or GraphQL, it won’t follow the same pattern as those two services. Instead, it’ll need to either pull back more data than it needs and perform filtering on its side or send a different sort of payload to the Bridge, which is then interpreted and executed. An example of this payload would be an OR query. Both sides have their benefits. By pulling back more data than necessary it reduces complexity of the Bridge and moves the resource penalty (high memory usage) to the Document API service. 
+Because the Document API operates at a higher level than REST or GraphQL, it won’t follow the same pattern as those two services. Instead, it’ll need to either pull back more data than it needs and perform filtering on its side or send a different sort of payload to the Bridge, which is then interpreted and executed. An example of this payload would be an OR query. Both sides have their benefits. By pulling back more data than necessary reduces the complexity of the Bridge and moves the resource penalty (high memory usage) to the Document API service.
 
 On the other hand, if we were to handle this on the Coordinator Node side we would then be able to reuse this functionality in other services. An application of this would be to add ORs or JOINs to GraphQL. We’ll resolve this question based on further testing as we progress.
 
 
 ### Load balancing, authentication, and other cross-cutting concerns
 
-We don’t assume usage of any particular ingress, but encourage its use. The intent is to be compatible with whatever load balancer is used, be it Nginx, Envoy, or HAProxy.
+We don’t assume usage of any particular ingress but encourage its use. The intent is to be compatible with whatever load balancer is used, be it Nginx, Envoy, or HAProxy.
 
 For HTTP services we could move some of the cross-cutting functionality into a load balancer by exposing endpoints for rate limiting and ext_authz. But we would then leave it up to each user to implement this for their particular load balancer (assuming that their load balancer supports that functionality). For CQL, we still need to implement this logic within Stargate since load balancers wouldn’t be able to act on the binary protocol.
 
@@ -150,16 +151,16 @@ Authentication and authorization will continue to be pluggable as it is today. A
 
 Breaking apart Stargate will require changes to how it’s deployed, meaning we’ll need to create a Helm chart. As we iterate, this chart can become more advanced and allow for a more customizable deployment (e.g. just REST or some other subset of services).
 
-In the base case, the chart will deploy each of the user-facing services as a separate pod in addition to the Coordinator Node pod (persistence, CQL, and Bridge). For resource constrained environments, where there’s a sensitivity to the number of pods, various combinations of pods and containers are possible. For one, it could maintain the same setup as exists today by placing all of the containers in a single pod. Another setup could be two pods: one for the Coordinator Node and another for the services.
+In the base case, the chart will deploy each of the user-facing services as a separate pod in addition to the Coordinator Node pod (persistence, CQL, and Bridge). For resource-constrained environments, where there’s a sensitivity to the number of pods, various combinations of pods and containers are possible. For one, it could maintain the same setup as exists today by placing all of the containers in a single pod. Another setup could be two pods: one for the Coordinator Node and another for the services.
 
 
 ## Final notes
 
-We believe that the changes proposed in this design will lead to a much better experience for those who contribute to the Stargate project and those who run it to support their other applications. 
+We believe that the changes proposed in this design will lead to a much better experience for those who contribute to the Stargate project and those who run it to support their other applications.
 
-Contributors will be able to quickly iterate on just the parts of the project they want — without needing to understand as deeply the other components. Plus, it’ll open up the potential for newer Java versions and frameworks rather than Java 8 with OSGi or even a polyglot environment. Meanwhile, operators will have greater flexibility over their Stargate deployment and the potential for a lower-resource footprint when scaling to handle higher loads. 
+Contributors will be able to quickly iterate on just the parts of the project they want without needing to understand as deeply the other components. Plus, it’ll open up the potential for newer Java versions and frameworks rather than Java 8 with OSGi or even a polyglot environment. Meanwhile, operators will have greater flexibility over their Stargate deployment and the potential for a lower-resource footprint when scaling to handle higher loads.
 
-Overall, we’re excited about these new changes and look forward to working with the [Stargate community](https://dtsx.io/3pMAp0Y) to make this new design a reality. On that note, if you want to review this design and give us your feedback, [join the discussion on GitHub](https://github.com/stargate/stargate/discussions/1381).
+Overall, we’re excited about these new changes and look forward to working with the [Stargate community](https://dtsx.io/3pMAp0Y) to make this new design a reality. On that note, if you want to review this design and give us your feedback, [join the discussion on GitHub](https://dtsx.io/2ZQoJQ4).
 
 
 
@@ -167,10 +168,11 @@ Overall, we’re excited about these new changes and look forward to working wit
 
 1. [Stargate.io](https://dtsx.io/3w732Y9) 
 2. [Announcing Stargate v2](https://stargate.io/2021/11/01/announcing-stargate-v2.html)
-3. [Stargate Community](https://dtsx.io/3pMAp0Y) 
-4. [Blog: Hello GraphQL: meet Cassandra](https://stargate.io/2020/10/05/hello-graphql.html) 
-5. [Blog: The Stargate Cassandra Documents API](https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html) 
-6. [Stargate Document API](https://dtsx.io/3CoHWXf) 
-7. [Stargate REST API](https://dtsx.io/3moyxcN) 
-8. [Stargate GraphQL API](https://dtsx.io/3BpaA9p)
-9. [Stargate CQL API](https://dtsx.io/3mnCcrp)  
+3. [Stargate Community](https://dtsx.io/3pMAp0Y)
+4. [Stargate v2 discussion on GitHub](https://dtsx.io/2ZQoJQ4)
+5. [Blog: Hello GraphQL: meet Cassandra](https://stargate.io/2020/10/05/hello-graphql.html) 
+6. [Blog: The Stargate Cassandra Documents API](https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html) 
+7. [Stargate Document API](https://dtsx.io/3CoHWXf) 
+8. [Stargate REST API](https://dtsx.io/3moyxcN) 
+9. [Stargate GraphQL API](https://dtsx.io/3BpaA9p)
+10. [Stargate CQL API](https://dtsx.io/3mnCcrp)  
