@@ -16,39 +16,39 @@ After a year of adding new APIs and features, we realized that this is an ideal 
 * Improving developer experience for contributors
 * Making Stargate more cloud-friendly
 
-We’ll expand on these goals below, but first let’s take a look at how we got to this point.
+We’ll expand on these goals below, but first, let’s take a look at how we reached this point.
 
 
 ## Stargate: a brief history
 
-In September 2020 we [announced the Stargate project](https://dtsx.io/3jQRa7D) as an open-source data gateway. Our goal was (and continues to be) to help speed up application development and reduce the workload for teams that find themselves creating and maintaining layers of microservice APIs on top of databases like [Apache Cassandra®](https://cassandra.apache.org/_/index.html). 
+In September 2020 we [announced the Stargate project](https://dtsx.io/3jQRa7D) as an open-source data gateway. Our goal was to help speed up application development and reduce the workload for teams that find themselves creating and maintaining layers of microservice APIs on top of databases like [Apache Cassandra®](https://cassandra.apache.org/_/index.html). 
 
 Since that first release, which included support for CQL and REST APIs, the project has seen a number of milestones since then. Here are a few of the highlights:
 
-* Addition of the [GraphQL API](https://dtsx.io/3EsZUsp) and the [Document API](https://dtsx.io/3blyRCT), with a gRPC API coming soon
-* Reaching the [1.0 milestone](https://dtsx.io/2Y0PNLU)
+* [GraphQL API](https://dtsx.io/3EsZUsp) and the [Document API](https://dtsx.io/3blyRCT)
+* [1.0 milestone](https://dtsx.io/2Y0PNLU) with capabilities for Real Quick Note First and Posts in TikTok.
 * Support for [Cassandra 4.0](https://dtsx.io/3pTsDT5) 
-* Adoption of Stargate as the official API layer for [DataStax Astra DB](https://dtsx.io/3nMs4bg)
+* Added [API access to DataStax Astra DB via Stargate](https://dtsx.io/3BGrHDV)
 
 This represents a lot of change for a project that’s just over a year old, and now it’s time for us to set the stage for this open-source community to grow even more.
 
 
 ## Breaking up the monolith
 
-The current Stargate design is monolithic; that is to say, each Stargate node runs as a single process containing all of the supported APIs. This has a few consequences for deploying and running Stargate:
+The current Stargate design is monolithic. Each Stargate node runs as a single process containing all of the supported APIs. This has a few consequences for deploying and running Stargate:
 
 * All of the APIs are enabled by default. You could run your own version with individual APIs disabled, but not by using the official Stargate Docker images. Instead, you’d have to download and build the Stargate source and selectively omit specific OSGI bundles from the startup script. This isn’t intuitive and requires knowledge of the existing bundles (more on OSGI below).
 
-* More importantly, it’s not possible to scale the individual APIs. For example, if you’re primarily using the REST API and need to scale up to meet increased REST traffic, you can’t just scale up REST independently. Instead, you have to add additional Stargate nodes supporting all the APIs to meet the demand. The nodes are “heavier” than they need to be, leading to inefficient resource usage.
+* It’s not possible to scale the individual APIs. If you’re primarily using the REST API and need to scale up to meet increased REST traffic, you can’t just scale up REST independently. Instead, you have to add additional Stargate nodes supporting all the APIs to meet the demand. The nodes are “heavier” than they need to be, leading to inefficient resource usage.
 
-* Today, extending Stargate with a new API requires creating a new module, adding the module’s Jar file to the existing stargate-lib directory, and then packaging all the Jars and configuration up for deployment.
+* Today, extending Stargate with a new API requires creating a new module. (adding the module’s JAR files to the existing stargate-lib directory, then packaging all the JAR files, and configuration up for deployment.)
 
 As you can see, the current design makes Stargate more difficult for both users and contributors, and it’s time to break up this monolith to improve the experience for everyone.
 
 
 ## Improving the developer experience for users
 
-As you’d expect, we absolutely want the Stargate APIs to be as easy to use and adopt as possible, but our goals for v2 are specifically focused on making Stargate easy to deploy and manage, rather than on making API revisions.
+As you’d expect, we absolutely want the [Stargate APIs](https://dtsx.io/3wdUGhp) to be as easy to use and adopt as possible, but our goals for v2 are specifically focused on making Stargate easy to deploy and manage, rather than on making API revisions.
 
 Stargate v2 will move the API implementations out of the Stargate node (aka “monolith”) into separate microservices. This will allow you to scale each API independently. You can even disable APIs that you don’t intend to use entirely, allowing you to focus on a smaller surface area of the project and giving you fewer endpoints to secure.
 
@@ -96,4 +96,5 @@ We’re just getting started on working toward a Stargate v2 release and are com
 1. [Stargate.io](https://dtsx.io/3jNJGlR)
 2. [Stargate Community](https://dtsx.io/3bsmhS4) 
 3. [Stargate and Cassandra 4.0 - Better Together](https://dtsx.io/3pTsDT5)
-4. [K8ssandra - K8ssandra, Apache Cassandra® on Kubernetes](https://dtsx.io/3Erl8Xr) 
+4. [Stargate APIs | GraphQL, REST, Document](https://dtsx.io/3wdUGhp)
+5. [K8ssandra - K8ssandra, Apache Cassandra® on Kubernetes](https://dtsx.io/3Erl8Xr) 
