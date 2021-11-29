@@ -14,7 +14,7 @@ Developers should be able to build highly scalable apps even when they call mult
 
 The new API is called [gRPC Remote Procedure Call](https://dtsx.io/2Z2nCfU) (gRPC), and we built it on the framework created by Google. In this post, we’ll show you how easy it is to start using this API from the Java ecosystem. We’ll also explain the basic methods exposed to the clients that allow us to interact with the gRPC API.
 
-The setup is simple. The generated code based on protobuf files (“`query.proto`” and “`stargate.proto`”) is shipped with the `grpc-proto` dependency. In your client application, you only need to add two dependencies, the client and a functional channel service provider. In this example we picked netty:
+The setup is simple. The generated code based on protobuf files (`query.proto` and `stargate.proto`) is shipped with the `grpc-proto` dependency. In your client application, you only need to add two dependencies, the client and a functional channel service provider. In this example we picked netty:
 
 ```xml
 <dependencies>
@@ -146,7 +146,7 @@ We can get all rows with the `getRowsList()` method and iterate over the result 
 
 Our retrieval query (`SELECT k, v FROM ks.test`) stated explicitly which columns should be retrieved. Because of that, we can safely get the values using their positions via the `getValues()` method.
 
-The `getString()` and `getInt()` perform deserialization of data. These methods were used because we knew the underlying type of the corresponding columns. The API provides utility methods for deserialization for more types as well. For the full list of available types, see `value` section in the [query.proto](https://dtsx.io/3nxrgYI) file. If you want to iterate over all results, you can with this snippet:
+The `getString()` and `getInt()` perform deserialization of data. These methods were used because we knew the underlying type of the corresponding columns. The API provides utility methods for deserialization for more types as well. For the full list of available types, see `value` section in the [`query.proto`](https://dtsx.io/3nxrgYI) file. If you want to iterate over all results, you can with this snippet:
 
 ```java
 for(QueryOuterClass.Row row: rs.getRowsList()){
