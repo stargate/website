@@ -1,4 +1,167 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-11-23T15:49:33+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Announcing Stargate v2</title><link href="https://stargate.io/2021/11/02/announcing-stargate-v2.html" rel="alternate" type="text/html" title="Announcing Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/announcing-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/announcing-stargate-v2.html">&lt;p&gt;After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of &lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate&lt;/a&gt;. We’re listening to feedback from the &lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate developer community&lt;/a&gt; and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2021-11-29T20:38:38+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Say Goodbye to Native Drivers with Stargate gRPC API in Java</title><link href="https://stargate.io/2021/11/29/say-goodbye-to-native-drivers-with-stargate-grpc-api-in-java.html" rel="alternate" type="text/html" title="Say Goodbye to Native Drivers with Stargate gRPC API in Java" /><published>2021-11-29T06:00:00+00:00</published><updated>2021-11-29T06:00:00+00:00</updated><id>https://stargate.io/2021/11/29/say-goodbye-to-native-drivers-with-stargate-grpc-api-in-java</id><content type="html" xml:base="https://stargate.io/2021/11/29/say-goodbye-to-native-drivers-with-stargate-grpc-api-in-java.html">&lt;p&gt;Developers should be able to build highly scalable apps even when they call multilingual and multi-cloud microservices. That’s why the Stargate team recently made a new API generally available to help developers build applications with their preferred language.&lt;/p&gt;
+
+&lt;p&gt;The new API is called &lt;a href=&quot;https://dtsx.io/2Z2nCfU&quot;&gt;gRPC Remote Procedure Call&lt;/a&gt; (gRPC), and we built it on the framework created by Google. In this post, we’ll show you how easy it is to start using this API from the Java ecosystem. We’ll also explain the basic methods exposed to the clients that allow us to interact with the gRPC API.&lt;/p&gt;
+
+&lt;p&gt;The setup is simple. The generated code based on protobuf files (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;query.proto&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stargate.proto&lt;/code&gt;) is shipped with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grpc-proto&lt;/code&gt; dependency. In your client application, you only need to add two dependencies, the client and a functional channel service provider. In this example we picked netty:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;io.stargate.grpc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;grpc-proto&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0.40&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;io.grpc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;grpc-netty-shaded&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.40.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you don’t add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grpc-netty-shaded&lt;/code&gt;, you’ll get the following error:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;No functional channel service provider found. Try adding a dependency on the grpc-okhttp, grpc-netty, or grpc-netty-shaded artifact.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once we have all the needed dependencies we should be able to use the Stargate gRPC-stub API.&lt;/p&gt;
+
+&lt;p&gt;After this step, you should have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StargateGrpc&lt;/code&gt; available on your classpath from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grpc-proto&lt;/code&gt; dependency. It contains the logic for interacting with Stargate gRPC API.&lt;/p&gt;
+
+&lt;h2 id=&quot;putting-the-stargate-grpc-api-to-use&quot;&gt;Putting the Stargate gRPC API to use&lt;/h2&gt;
+
+&lt;p&gt;Once we have the generated code with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StargateGrpc&lt;/code&gt; class shipped within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grpc-proto&lt;/code&gt; dependency, we’re ready to create the client.&lt;/p&gt;
+
+&lt;p&gt;Before delving into the code, we need to generate the auth token that will be used to perform authorization. Please visit the &lt;a href=&quot;https://dtsx.io/3csSw47&quot;&gt;Stargate Authz documentation&lt;/a&gt; for a guide on this. Here’s some code that will work for our needs:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;s1&quot;&gt;'localhost:8081/v1/auth'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--data-raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
+    &quot;username&quot;: &quot;cassandra&quot;,
+    &quot;password&quot;: &quot;cassandra&quot;
+}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this snippet, we’re assuming that Stargate is running on the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:8081&lt;/code&gt;. Once we have that, we can connect to the gRPC API. First, we need to generate the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Channel&lt;/code&gt; that is used to perform the connection:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ManagedChannel&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createChannel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ManagedChannelBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;forAddress&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;usePlaintext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Please note that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;usePlaintext()&lt;/code&gt; should only be used for development and testing. When used in a production environment it should use a load balancer that terminates transport layer security (TLS). For local development of Stargate, it will be:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ManagedChannel&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createChannel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8090&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next, we can generate the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StargateGrpc&lt;/code&gt; stub. There are two ways of interacting with the gRPC API. The first one is synchronous (blocking):&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.stargate.grpc.StargateBearerToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;StargateGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;StargateBlockingStub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blockingStub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StargateGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBlockingStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withCallCredentials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StargateBearerToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token-value&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The second way of interacting is asynchronous (non-blocking):&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;StargateGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;StargateStub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StargateGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withCallCredentials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StargateBearerToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token-value&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We will focus on the blocking approach in this example since it is simpler to illustrate. Please be aware that for your use case you might need to use the second approach.&lt;/p&gt;
+
+&lt;p&gt;We need to set up the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CallCredentials&lt;/code&gt;, using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;token-value&lt;/code&gt; generated in the previous step. We will assume that all queries are executed within the existing keyspace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ks&lt;/code&gt; and table &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test&lt;/code&gt;. The table definition is as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IF&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EXISTS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The Stargate gRPC API provides a way to execute two types of queries: Standard CQL queries and batch queries containing N CQL queries.&lt;/p&gt;
+
+&lt;h2 id=&quot;build-and-execute-a-standard-query-with-the-grpc-api&quot;&gt;Build and execute a standard query with the gRPC API&lt;/h2&gt;
+
+&lt;p&gt;When we want to run a standard query we can start by inserting a record using the gRPC stub:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.stargate.proto.QueryOuterClass.Response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.stargate.proto.QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;Response&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blockingStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;executeQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setCql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;INSERT INTO ks.test (k, v) VALUES ('a', 1)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will build and execute a single query. Next, we can retrieve the inserted record(s):&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Response&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;executeQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setCql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SELECT k, v FROM ks.test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If we print out the result set, it will have the following structure:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result_set &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  data &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    type_url: &lt;span class=&quot;s2&quot;&gt;&quot;type.googleapis.com/stargate.ResultSet&quot;&lt;/span&gt;
+    value: &lt;span class=&quot;s2&quot;&gt;&quot;some_binary_data&quot;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The value contains the binary data, that we can deserialize. First, we need to unwrap the result set:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ResultSet&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getResultSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getRows&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValues&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// it will return value for k = &quot;a&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getRows&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValues&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// it will return value for v = 1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can get all rows with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getRowsList()&lt;/code&gt; method and iterate over the result or get the specific row using its index and pass it to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getRows(int index)&lt;/code&gt; method. We picked the latter approach in the example above.&lt;/p&gt;
+
+&lt;p&gt;Our retrieval query (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT k, v FROM ks.test&lt;/code&gt;) stated explicitly which columns should be retrieved. Because of that, we can safely get the values using their positions via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getValues()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getString()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getInt()&lt;/code&gt; perform deserialization of data. These methods were used because we knew the underlying type of the corresponding columns. The API provides utility methods for deserialization for more types as well. For the full list of available types, see &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value&lt;/code&gt; section in the &lt;a href=&quot;https://dtsx.io/3nxrgYI&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;query.proto&lt;/code&gt;&lt;/a&gt; file. If you want to iterate over all results, you can with this snippet:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Row&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;row:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getRowsList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()){&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValuesList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will allow you to operate on a single row. When you execute it, you’ll get the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;string: &lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;
+, int: 1 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-batch-queries-with-stargate-grpc-api&quot;&gt;Run Batch queries with Stargate gRPC API&lt;/h2&gt;
+
+&lt;p&gt;In case we want to execute N queries, we can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;executeBatch&lt;/code&gt; method:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Response&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blockingStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;executeBatch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Batch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;               
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addQueries&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setCql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;INSERT INTO ks.test (k, v) VALUES ('a', 1)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+         &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;          
+         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addQueries&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; 
+             &lt;span class=&quot;nc&quot;&gt;QueryOuterClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                 &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setCql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;INSERT INTO ks.test (k, v) VALUES ('b', 2)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                 &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                 &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This takes the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Batch&lt;/code&gt; as an argument. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Batch&lt;/code&gt; can contain N queries of type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INSERT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UPDATE&lt;/code&gt;, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;. We are adding two queries via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;addQueries&lt;/code&gt; method. You can learn more about handling the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Batch&lt;/code&gt; request in the &lt;a href=&quot;https://dtsx.io/3cs7doc&quot;&gt;Batch Documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now you know how to integrate the gRPC client via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blockingStub&lt;/code&gt;. If you want to dive deeper into it take a look at the &lt;a href=&quot;https://dtsx.io/2Z2nCfU&quot;&gt;Java Client documentation on gRPC&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3qTlaUL&quot;&gt;Join the Stargate community&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/2Z2nCfU&quot;&gt;Using Stargate gRPC API clients for Rust, Go and Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Developers should be able to build highly scalable apps even when they call multilingual and multi-cloud microservices. That’s why the Stargate team recently made a new API generally available to help developers build applications with their preferred language.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Announcing Stargate v2</title><link href="https://stargate.io/2021/11/02/announcing-stargate-v2.html" rel="alternate" type="text/html" title="Announcing Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/announcing-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/announcing-stargate-v2.html">&lt;p&gt;After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of &lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate&lt;/a&gt;. We’re listening to feedback from the &lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate developer community&lt;/a&gt; and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Breaking up the monolith&lt;/li&gt;
@@ -85,16 +248,7 @@
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3jNJGlR&quot;&gt;Stargate.io&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3bsmhS4&quot;&gt;Stargate Community&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3pTsDT5&quot;&gt;Stargate and Cassandra 4.0 - Better Together&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[Stargate APIs&lt;/td&gt;
-          &lt;td&gt;GraphQL, REST, Document](https://dtsx.io/3wdUGhp)&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3wdUGhp&quot;&gt;Stargate APIs - GraphQL, REST, Document&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3Erl8Xr&quot;&gt;K8ssandra - K8ssandra, Apache Cassandra® on Kubernetes&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><author><name></name></author><summary type="html">After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of Stargate. We’re listening to feedback from the Stargate developer community and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Introducing the Design for Stargate v2</title><link href="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html" rel="alternate" type="text/html" title="Introducing the Design for Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html">&lt;p&gt;When we &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;announced Stargate v2&lt;/a&gt;, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”&lt;/p&gt;
 
@@ -1247,156 +1401,4 @@ Access the GraphQL Playground in a browser:
 &lt;p&gt;As always we hope that you’ll join us on this collective journey and feel free to give us a shout on &lt;a href=&quot;https://github.com/stargate/stargate&quot;&gt;GitHub&lt;/a&gt;, the stargate-users &lt;a href=&quot;https://groups.google.com/a/lists.stargate.io/g/stargate-users&quot;&gt;mailing list&lt;/a&gt;, or on Twitter &lt;a href=&quot;https://twitter.com/stargateio&quot;&gt;@stargateio&lt;/a&gt;. We’ll see you in the stars!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/init-stargate/astronaut.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;Shoutout to Andrew Regan for the cool visor reflection&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="graphql" /><category term="stargate" /><summary type="html">Today, we’re happy to introduce a new member of the Stargate API family; say hello 👋 to GraphQL. This new API extension makes it easy to add a GraphQL API layer to any new or existing Apache Cassandra® database.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Init Stargate</title><link href="https://stargate.io/2020/09/14/init-stargate.html" rel="alternate" type="text/html" title="Init Stargate" /><published>2020-09-14T06:00:00+00:00</published><updated>2020-09-14T06:00:00+00:00</updated><id>https://stargate.io/2020/09/14/init-stargate</id><content type="html" xml:base="https://stargate.io/2020/09/14/init-stargate.html">&lt;p&gt;We’re excited to release the first preview of Stargate, an open source API framework for data. This project came about because we got tired of using different databases and different APIs depending on the work that we were trying to get done. With “read the manual” fatigue and lengthy selection processes wearing on us every time we created a new project, we thought - why not create a framework that can serve many APIs for a range of workloads? From this, Stargate was born.&lt;/p&gt;
-
-&lt;p&gt;For example, if you’re a JavaScript developer building a website, saving and searching JSON is great and maybe you also have some GraphQL sprinkled throughout. If you’re a Java or C# developer working on an enterprise application, SQL is likely more your style. The goal of Stargate is to make your data available for you through whatever API you can dream up regardless of the backing datastore.&lt;/p&gt;
-
-&lt;p&gt;So far we’ve started with Apache Cassandra as the first backend and implemented the Cassandra Query Language (CQL) and a REST API for CRUD access to data in tables and have many more APIs coming soon.&lt;/p&gt;
-
-&lt;p&gt;For any project to thrive it needs to be easy to work with and contribute to. We kept that in mind while architecting Stargate and the core codebase is modularized to facilitate extensibility and collaboration. We hope that you’ll join us on this journey to redefine what’s possible when it comes to interacting with data at scale and if you’re interested in getting involved you can check out the code on &lt;a href=&quot;https://github.com/stargate/stargate&quot;&gt;GitHub&lt;/a&gt;, join our &lt;a href=&quot;https://groups.google.com/a/lists.stargate.io/g/stargate-users&quot;&gt;mailing list&lt;/a&gt;, or follow us on Twitter &lt;a href=&quot;https://twitter.com/stargateio&quot;&gt;@stargateio&lt;/a&gt;! 🚀&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/init-stargate/stargate.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-stargate-work&quot;&gt;How does Stargate work?&lt;/h2&gt;
-
-&lt;p&gt;Stargate is a data gateway component that is deployed between your client applications and database. We chose Cassandra as the first database because it solves the world’s hardest scale and availability challenges and we think there’s low hanging fruit in terms of APIs for the database.&lt;/p&gt;
-
-&lt;p&gt;Stargate itself is based on the concept of a Cassandra &lt;a href=&quot;https://cassandra.apache.org/doc/latest/architecture/dynamo.html&quot;&gt;coordinator node&lt;/a&gt; and is very similar to the “fat client” that Eric Lubow explains in his &lt;a href=&quot;https://www.slideshare.net/DataStax/optimizing-your-cluster-with-coordinator-nodes-eric-lubow-simplereach-cassandra-summit-2016&quot;&gt;presentation&lt;/a&gt; at Cassandra Summit in 2016. This means when Stargate is deployed, it joins the Cassandra cluster as a coordinator node but does not store any data. We chose this design because coordinator nodes in Cassandra already handle most of the request handling and routing that’s needed for a highly available storage proxy and it made sense to reuse that time-tested logic. This architecture allows for compute to be scaled independently of storage; a common model when using cloud infrastructure.&lt;/p&gt;
-
-&lt;p&gt;The high-level architecture diagram below explains where Stargate fits in the stack and the vision for new APIs and integrations.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/init-stargate/kubernetes.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Taking a closer look, when a request is sent to Stargate, it is handled by the API Service, translated to the database query, and dispatched to the Persistence Service. The Persistence service then sends the request to the storage replicas of that row using Cassandra’s internal QueryHandler. The Persistence Service processes the request and responds to the client once it receives acknowledgements from the number of storage replicas specified by the request consistency level.&lt;/p&gt;
-
-&lt;p&gt;This is a pretty classic implementation of “&lt;a href=&quot;https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf&quot;&gt;Dynamo-based&lt;/a&gt;” coordination. Stargate’s ultimate goal is to have pluggable APIs on the front-end and pluggable storage engines on the &lt;em&gt;back-end&lt;/em&gt; with all the Dynamo magic happening in the middle.&lt;/p&gt;
-
-&lt;p&gt;To understand how this distributed coordination works a bit more, in a single 6-node datacenter cluster with 3 storage replicas, an incoming request will go to all 3 replicas that own the requested row. In this case, the nodes labeled 1, 3, and 4 are storages nodes that own the data for the request. In the example below, the consistency level is LOCAL_QUORUM which means that Stargate will read or write data to 2 of the 3 storage replicas in order to satisfy the client request and ack the success.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/init-stargate/steps.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;get-started&quot;&gt;Get Started&lt;/h2&gt;
-&lt;p&gt;Below is an example of the REST API for CRUD operations that serves the data stored in Cassandra tables over HTTP. You can try this example by downloading &lt;a href=&quot;https://www.postman.com/downloads/&quot;&gt;Postman&lt;/a&gt; and importing the Stargate REST API collection in the &lt;a href=&quot;https://github.com/stargate/docs/blob/master/modules/developers-guide/examples/stargate-rest-api.postman_collection.json&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 1: Pull down the docker image&lt;/strong&gt; (&lt;a href=&quot;https://hub.docker.com/u/stargateio&quot;&gt;https://hub.docker.com/u/stargateio&lt;/a&gt;)&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker pull stargateio/stargate-3_11:v0.0.3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 2: Start the docker container&lt;/strong&gt; using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEVELOPER_MODE=true&lt;/code&gt; env variable. This removes the need to install a separate Cassandra instance.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;  docker run &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; stargate &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8081:8081 &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8082:8082 &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 127.0.0.1:9042:9042 &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;CLUSTER_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;stargate &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;CLUSTER_VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3.11 &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DEVELOPER_MODE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;stargateio/stargate-3_11:v0.0.3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 3: Generate an auth token&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;  curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;s1&quot;&gt;'http://localhost:8081/v1/auth'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--data-raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
-    &quot;username&quot;: &quot;cassandra&quot;,
-    &quot;password&quot;: &quot;cassandra&quot;
-  }'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Expected Output:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;authToken&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{auth-token-here}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 4: Create a keyspace&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;  curl &lt;span class=&quot;nt&quot;&gt;--location&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--request&lt;/span&gt; POST &lt;span class=&quot;s1&quot;&gt;'localhost:8082/schemas/keyspaces'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'X-Cassandra-Token: {auth-token-here}'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--data-raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
-      &quot;name&quot;: &quot;users_keyspace&quot;,
-      &quot;replicas&quot;: 1
-    }'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Expected Output:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;users_keyspace&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 5: Create a table&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;  curl &lt;span class=&quot;nt&quot;&gt;--location&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--request&lt;/span&gt; POST &lt;span class=&quot;s1&quot;&gt;'localhost:8082/schemas/keyspaces/users_keyspace/tables'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'X-Cassandra-Token: {auth-token-here}'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--data-raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
-      &quot;name&quot;: &quot;users&quot;,
-      &quot;columnDefinitions&quot;: [
-        {
-          &quot;name&quot;: &quot;firstname&quot;,
-          &quot;typeDefinition&quot;: &quot;text&quot;
-        },
-        {
-          &quot;name&quot;: &quot;lastname&quot;,
-          &quot;typeDefinition&quot;: &quot;text&quot;
-        },
-        {
-          &quot;name&quot;: &quot;email&quot;,
-          &quot;typeDefinition&quot;: &quot;text&quot;
-        },
-        {
-          &quot;name&quot;: &quot;favorite color&quot;,
-          &quot;typeDefinition&quot;: &quot;text&quot;
-        }
-      ],
-      &quot;primaryKey&quot;: {
-        &quot;partitionKey&quot;: [&quot;firstname&quot;],
-        &quot;clusteringKey&quot;: [&quot;lastname&quot;]
-      },
-      &quot;tableOptions&quot;: {
-        &quot;defaultTimeToLive&quot;: 0,
-        &quot;clusteringExpression&quot;:[
-          {
-            &quot;column&quot;: &quot;lastname&quot;,
-            &quot;order&quot;: &quot;ASC&quot;
-          }
-        ]
-      }
-    }'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Expected Output:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;users&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 6: Add rows&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;  curl &lt;span class=&quot;nt&quot;&gt;--location&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--request&lt;/span&gt; POST &lt;span class=&quot;s1&quot;&gt;'localhost:8082/v2/keyspaces/users_keyspace/users'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'X-Cassandra-Token: {auth-token-here}'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;--data-raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
-    &quot;firstname&quot;: &quot;Mookie&quot;,
-    &quot;lastname&quot;: &quot;Betts&quot;,
-    &quot;email&quot;: &quot;mookie.betts@gmail.com&quot;,
-    &quot;favorite color&quot;: &quot;blue&quot;
-  }'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Expected Output:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;firstname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Mookie&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;lastname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Betts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 7: Get rows&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;  curl &lt;span class=&quot;nt&quot;&gt;-G&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--location&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://localhost:8082/v2/keyspaces/users_keyspace/users'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'X-Cassandra-Token: {auth-token-here}'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--header&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;--data-urlencode&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'where={&quot;firstname&quot;: {&quot;$eq&quot;: &quot;Mookie&quot;}}'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Expected Output:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;count&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;firstname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Mookie&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;favorite color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;email&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mookie.betts@gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;lastname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Betts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Voila! You can find the full reference for the table-based REST API and more in the &lt;a href=&quot;https://stargate.io/docs&quot;&gt;docs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-can-i-get-involved&quot;&gt;How can I get involved?&lt;/h2&gt;
-&lt;p&gt;Check out the code and start building with us! We’ve architected this project with exploration, flexibility, and API and storage agnosticism as our &lt;em&gt;first class&lt;/em&gt; citizens; the goal is that this makes it easy for the community to innovate and add new APIs and extensions.&lt;/p&gt;
-
-&lt;p&gt;The diagram below shows how the Stargate modules fit together.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/init-stargate/stargate-modules.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To get started building a new API extension, have a look at the existing &lt;a href=&quot;https://github.com/stargate/stargate/tree/master/restapi&quot;&gt;REST API&lt;/a&gt; implementation in the Stargate repo first. To get started building a new storage extension, check out the &lt;a href=&quot;https://github.com/stargate/stargate/tree/master/persistence-cassandra-3.11&quot;&gt;persistence-cassandra-3.11&lt;/a&gt; implementation. Once you have an idea of what you want to build, shoot us a note on the &lt;a href=&quot;https://groups.google.com/a/lists.stargate.io/g/stargate-users&quot;&gt;mailing list&lt;/a&gt; to discuss. Note that the internal APIs are under active development and they are likely to change before the first version is released.&lt;/p&gt;
-
-&lt;p&gt;To request new features or file bugs, create a new GitHub issue in the &lt;a href=&quot;https://github.com/stargate/stargate&quot;&gt;stargate/stargate&lt;/a&gt; repository and we’ll take it from there.
-Let’s Explore
-We can’t wait to see where this project takes &lt;em&gt;us&lt;/em&gt; and we’ll be rolling out a few new APIs in the coming weeks. You can get updates by following us on Twitter &lt;a href=&quot;https://twitter.com/stargateio&quot;&gt;@stargateio&lt;/a&gt; and throw us a star on Github if you like what you see!&lt;/p&gt;
-
-&lt;p&gt;We’re ready for lift-off, see you in the stars! ✨&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/init-stargate/astronaut.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">We’re excited to release the first preview of Stargate, an open source API framework for data. This project came about because we got tired of using different databases and different APIs depending on the work that we were trying to get done. With “read the manual” fatigue and lengthy selection processes wearing on us every time we created a new project, we thought - why not create a framework that can serve many APIs for a range of workloads? From this, Stargate was born.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;em&gt;Shoutout to Andrew Regan for the cool visor reflection&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="graphql" /><category term="stargate" /><summary type="html">Today, we’re happy to introduce a new member of the Stargate API family; say hello 👋 to GraphQL. This new API extension makes it easy to add a GraphQL API layer to any new or existing Apache Cassandra® database.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
