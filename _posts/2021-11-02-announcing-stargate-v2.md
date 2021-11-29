@@ -96,5 +96,5 @@ We’re just getting started on working toward a Stargate v2 release and are com
 1. [Stargate.io](https://dtsx.io/3jNJGlR)
 2. [Stargate Community](https://dtsx.io/3bsmhS4) 
 3. [Stargate and Cassandra 4.0 - Better Together](https://dtsx.io/3pTsDT5)
-4. [Stargate APIs | GraphQL, REST, Document](https://dtsx.io/3wdUGhp)
+4. [Stargate APIs - GraphQL, REST, Document](https://dtsx.io/3wdUGhp)
 5. [K8ssandra - K8ssandra, Apache Cassandra® on Kubernetes](https://dtsx.io/3Erl8Xr) 
