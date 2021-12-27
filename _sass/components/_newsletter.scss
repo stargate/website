@@ -1,5 +1,6 @@
 .newsletter-card {
   padding: 80px 190px 80px 110px;
+  background-color: #222b49;
   background-image: url($baseurl + "/assets/images/newsletter-bg.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -18,7 +19,7 @@
 
     h2 {
       font-weight: 800;
-      font-size: 2.25;
+      font-size: 2.25rem;
       line-height: 1.2em;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -58,5 +59,23 @@
 
   @include media-breakpoint-down(md) {
     background-image: url($baseurl + "/assets/images/mobile-newsletter-bg.png");
+    flex-direction: column;
+    padding: 36px 30px;
+
+    .heading-content,
+    .content-form {
+      width: 100%;
+      padding: 0;
+
+      h2 {
+        font-size: 1.5rem;
+        line-height: 1.2em;
+        margin-bottom: 32px;
+      }
+
+      img {
+        display: none;
+      }
+    }
   }
 }
