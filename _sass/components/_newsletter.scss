@@ -1,0 +1,62 @@
+.newsletter-card {
+  padding: 80px 190px 80px 110px;
+  background-image: url($baseurl + "/assets/images/newsletter-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 16px;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+
+  .heading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding-right: 40px;
+
+    h2 {
+      font-weight: 800;
+      font-size: 2.25;
+      line-height: 1.2em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: auto;
+    }
+  }
+
+  .content-form {
+    display: flex;
+    width: 45%;
+
+    form {
+      width: 100%;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.2em;
+      color: #ffffff;
+    }
+
+    button {
+      margin-top: 16px;
+      border-radius: 6px;
+      width: 100%;
+      font-weight: bold;
+      font-size: 1.125rem;
+      line-height: 1.56em;
+      text-align: center;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+    }
+  }
+
+
+  @include media-breakpoint-down(md) {
+    background-image: url($baseurl + "/assets/images/mobile-newsletter-bg.png");
+  }
+}

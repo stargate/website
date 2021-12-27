@@ -59,7 +59,6 @@ $(document).ready(function () {
   }
 
   if (releases) {
-    console.log("releases", releases);
     var repository = releases.dataset.repository;
 
     if (repository) {
@@ -95,6 +94,12 @@ $(document).ready(function () {
     if (window.whatIsStargatePlayer) {
       window.whatIsStargatePlayer.stopVideo();
     }
+  });
+
+  $('form[newsletter-form]').on('submit', function(event) {
+    event.preventDefault();
+
+    // TODO: add functionality to the newsletter form
   });
 });
 
