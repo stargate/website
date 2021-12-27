@@ -1,12 +1,16 @@
 .template-index {
   background-color: #222b49;
-  background-image: url($baseurl + "/assets/images/hero-background.png");
+  background-image: url($baseurl + "/assets/images/index-background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 80px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @include media-breakpoint-down(md) {
+    background-image: url($baseurl + "/assets/images/index-mobile-bg.png");
+  }
 }
 
 .hero {
@@ -35,6 +39,7 @@
 
   .btn {
     margin-right: 1rem;
+    color: #555dc0;
 
     &:last-of-type {
       margin-right: 0;
@@ -63,6 +68,83 @@
     svg {
       width: 2em;
     }
+  }
+}
+
+.template-index .latest-blog {
+  padding: 20px 0 60px;
+
+  h2 {
+    font-weight: bold;
+    font-size: 0.75rem;
+    line-height: 1.5em;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 32px;
+  }
+
+  .post-card {
+    padding: 30px;
+    background: #222B49;
+    border-radius: 6px;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 32px;
+    width: 100%;
+
+    p {
+      font-style: normal;
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.5em;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+
+    span {
+      font-family: 'Mulish', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.875rem;
+      line-height: 1.5em;
+      color: #FFFFFF;
+
+      &.link {
+        color: #C9CEF6;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .btn-more-blog {
+    padding: 12px 35px;
+    background: #555DC0;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.389em;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+  }
+}
+
+.latest-release {
+  font-size: 1rem;
+  line-height: 1.375em;
+  text-align: center;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  margin-bottom: 80px;
+
+  a, span {
+    color: #C9CEF6;
+  }
+
+  span {
+    font-weight: 700;
   }
 }
 

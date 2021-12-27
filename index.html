@@ -8,30 +8,63 @@ hide_banner: true
   <div class="hero">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="row">
-            <div class="offset-lg-1 col-lg-3 d-flex flex-column align-items-center justify-content-center">
-              <img class="img-fluid hero-image lazyload" data-src="{{ '/assets/images/astranaut.png' | relative_url }}"
-                alt="Stargate astronaut" width="448" height="760">
-            </div>
-            <div class="offset-md-1 col-lg-6 d-flex flex-column align-items-start justify-content-center">
-              <h1 class="hero-title">Open Source<br>Data Gateway</h1>
-              <p class="hero-text">
-                Stargate is an open source data gateway that sits between your app and your databases. Stargate brings
-                together an API platform and data request coordination code into one OSS project.
-              </p>
-              <div class="buttons-hero">
-                <a href="{{ '/docs' | relative_url }}" class="btn btn-white hero-btn">Get Started</a>
-                <a href="https://github.com/{{ site.github_repository }}" target="_blank" rel="noopener noreferrer"
-                  class="btn btn-icon hero-btn btn-github">
-                  <span>
-                    {% include logos/github.html %}
-                  </span>
-                  <span>Github</span>
-                </a>
-              </div>
-            </div>
+        <div class="col-lg-10 d-flex flex-column align-items-center text-center">
+          <h1 class="hero-title">Open Source Data Gateway</h1>
+          <p class="hero-text">
+            Stargate is an open source data gateway that sits between your app and your databases. Stargate brings
+            together an API platform and data request coordination code into one OSS project.
+          </p>
+          <div class="buttons-hero">
+            <a href="{{ '/docs' | relative_url }}" class="btn btn-white hero-btn">Get Started</a>
+            <a href="https://github.com/{{ site.github_repository }}" target="_blank" rel="noopener noreferrer"
+              class="btn btn-icon hero-btn btn-github">
+              <span>
+                {% include logos/github.html %}
+              </span>
+              <span>Github</span>
+            </a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="latest-blog">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h2>Latest From Stargate</h2>
+        </div>
+      </div>
+      <div class="row">
+        {% for post in site.posts limit: 3 %}
+          <div class="col-lg-4 col-md-4 d-flex">
+            <a class="post-card" href="{{ post.url | relative_url }}">
+              <p>{{ post.title | escape }}</p>
+              <span>
+                <span>By <span class="link">{{ post.author_info.name.first }}
+                    {{ post.author_info.name.last }}</span></span>
+                &#8226;
+                <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+                </span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <a href="{{ '/blog' | relative_url }}" class="btn btn-primary btn-more-blog">See More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="latest-release">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <p id="github-releases" className="github-releases hidden" data-repository="{{ site.github_repository }}">
+          </p>
         </div>
       </div>
     </div>
@@ -80,7 +113,7 @@ hide_banner: true
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="row justify-content-center">
-            <div class="col-lg-5">
+            <div class="col-lg-8">
               <h2 class="catalog-title">API Extensions Catalog</h2>
             </div>
           </div>
@@ -202,43 +235,6 @@ hide_banner: true
     </div>
   </div>
 </main>
-
-<div class="latest-posts">
-  <div class="container-fluid spaced">
-    <div class="row">
-      <div class="col">
-        <h2 class="latest-posts__title">Latest from Stargate</h2>
-      </div>
-    </div>
-
-    <div class="row">
-      {% for post in site.posts limit: 3 %}
-      <div class="col latest-post__item-container">
-        <div class="latest-post__item">
-          <h2 class="latest-post__item-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
-
-          <p class="latest-post__item-content">
-            {{ post.synopsis }}
-          </p>
-
-          <div class="latest-post__item-info">
-            <span>By <span class="link">{{ post.author_info.name.first }}
-                {{ post.author_info.name.last }}</span></span>
-            &#8226;
-            <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-    <div class="row">
-      <div class="col text-center">
-        <a href="{{ '/blog' | relative_url }}" class="btn btn-primary btn-more">See More</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal" id="what-is-stargate-video-modal" tabindex="-1" role="dialog"
   aria-labelledby="WhatIsStargateVideoModal" aria-hidden="true">
