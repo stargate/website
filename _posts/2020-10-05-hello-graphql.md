@@ -17,7 +17,7 @@ If you already know Cassandra and its data model, this first version of the Grap
 
 When Stargate's GraphQL API is added to an existing Cassandra deployment, it scans the database and automatically creates HTTP endpoints with GraphQL queries and mutations for the objects that it finds in the database. New database tables can also be created directly via the API. 
 
-We're just getting started with this new extension and we'd love to hear what you think. Read on to see the steps to get started and drop a comment on the [GitHub issues](https://github.com/stargate/stargate/issues?q=is%3Aissue+is%3Aopen+label%3Agraphql) labeled with "graphql", shoot us a thread on the [mailing list](https://groups.google.com/a/lists.stargate.io/g/stargate-users), or give us a shout on Twitter at [@stargateio](https://twitter.com/stargateio).
+We're just getting started with this new extension and we'd love to hear what you think. Read on to see the steps to get started and drop a comment on the [GitHub issues](https://github.com/stargate/stargate/issues?q=is%3Aissue+is%3Aopen+label%3Agraphql) labeled with "graphql", post in the graphql-api channel on our [Discord serever](https://discord.gg/GravUqY), or give us a shout on Twitter at [@stargateio](https://twitter.com/stargateio).
 
 ![](/assets/images/hello-graphql/stargate+graphql.png)
 
@@ -367,7 +367,7 @@ Stargate's GraphQL API also allows you to have control over the execution of the
 
 Stay tuned as we continue to iterate on this new GraphQL API and you can follow along by checking out the [GitHub issues](https://github.com/stargate/stargate/issues) that are labeled with "graphql". If there's anything missing that you think needs to be included, give a 👍 on the corresponding GitHub issue or file a new one if we haven't captured it. 
 
-As always we hope that you'll join us on this collective journey and feel free to give us a shout on [GitHub](https://github.com/stargate/stargate), the stargate-users [mailing list](https://groups.google.com/a/lists.stargate.io/g/stargate-users), or on Twitter [@stargateio](https://twitter.com/stargateio). We'll see you in the stars!
+As always we hope that you'll join us on this collective journey and feel free to give us a shout on [GitHub](https://github.com/stargate/stargate), our [Discord server](https://discord.gg/GravUqY), or on Twitter [@stargateio](https://twitter.com/stargateio). We'll see you in the stars!
 
 ![](/assets/images/init-stargate/astronaut.png)
 *Shoutout to Andrew Regan for the cool visor reflection*
