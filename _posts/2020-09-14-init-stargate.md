@@ -17,7 +17,7 @@ For example, if you're a JavaScript developer building a website, saving and sea
 
 So far we've started with Apache Cassandra as the first backend and implemented the Cassandra Query Language (CQL) and a REST API for CRUD access to data in tables and have many more APIs coming soon.
 
-For any project to thrive it needs to be easy to work with and contribute to. We kept that in mind while architecting Stargate and the core codebase is modularized to facilitate extensibility and collaboration. We hope that you'll join us on this journey to redefine what's possible when it comes to interacting with data at scale and if you're interested in getting involved you can check out the code on [GitHub](https://github.com/stargate/stargate), join our [mailing list](https://groups.google.com/a/lists.stargate.io/g/stargate-users), or follow us on Twitter [@stargateio](https://twitter.com/stargateio)! 🚀
+For any project to thrive it needs to be easy to work with and contribute to. We kept that in mind while architecting Stargate and the core codebase is modularized to facilitate extensibility and collaboration. We hope that you'll join us on this journey to redefine what's possible when it comes to interacting with data at scale and if you're interested in getting involved you can check out the code on [GitHub](https://github.com/stargate/stargate), join our [Discord server](https://discord.gg/GravUqY), or follow us on Twitter [@stargateio](https://twitter.com/stargateio)! 🚀
 
 ![](/assets/images/init-stargate/stargate.png)
 
@@ -181,7 +181,7 @@ The diagram below shows how the Stargate modules fit together.
 
 ![](/assets/images/init-stargate/stargate-modules.png)
 
-To get started building a new API extension, have a look at the existing [REST API](https://github.com/stargate/stargate/tree/master/restapi) implementation in the Stargate repo first. To get started building a new storage extension, check out the [persistence-cassandra-3.11](https://github.com/stargate/stargate/tree/master/persistence-cassandra-3.11) implementation. Once you have an idea of what you want to build, shoot us a note on the [mailing list](https://groups.google.com/a/lists.stargate.io/g/stargate-users) to discuss. Note that the internal APIs are under active development and they are likely to change before the first version is released.
+To get started building a new API extension, have a look at the existing [REST API](https://github.com/stargate/stargate/tree/master/restapi) implementation in the Stargate repo first. To get started building a new storage extension, check out the [persistence-cassandra-3.11](https://github.com/stargate/stargate/tree/master/persistence-cassandra-3.11) implementation. Once you have an idea of what you want to build, reach out on our [Discord server](https://discord.gg/GravUqY) to discuss. Note that the internal APIs are under active development and they are likely to change before the first version is released.
 
 To request new features or file bugs, create a new GitHub issue in the [stargate/stargate](https://github.com/stargate/stargate) repository and we'll take it from there.
 Let's Explore
