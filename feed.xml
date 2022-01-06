@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-01-03T21:10:04+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Announcing Github branch renaming change</title><link href="https://stargate.io/2021/12/14/announce-github-naming-change.html" rel="alternate" type="text/html" title="Announcing Github branch renaming change" /><published>2021-12-14T06:00:00+00:00</published><updated>2021-12-14T06:00:00+00:00</updated><id>https://stargate.io/2021/12/14/announce-github-naming-change</id><content type="html" xml:base="https://stargate.io/2021/12/14/announce-github-naming-change.html">&lt;p&gt;Starting in October 2020, all new source code repositories created on GitHub have a primary branch named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; as part of the company’s effort to remove unnecessary references to slavery and replace them with more inclusive terms. This “fix forward first” approach is the first step in making systemic changes to the naming conventions.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-01-06T19:04:48+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate v2 Update: Reaching the First Milestone</title><link href="https://stargate.io/2022/01/06/reaching-the-first-milestone.html" rel="alternate" type="text/html" title="Stargate v2 Update: Reaching the First Milestone" /><published>2022-01-06T06:00:00+00:00</published><updated>2022-01-06T06:00:00+00:00</updated><id>https://stargate.io/2022/01/06/reaching-the-first-milestone</id><content type="html" xml:base="https://stargate.io/2022/01/06/reaching-the-first-milestone.html">&lt;h1 id=&quot;stargate-v2-update-reaching-the-first-milestone&quot;&gt;Stargate v2 Update: Reaching the First Milestone&lt;/h1&gt;
+
+&lt;p&gt;Back in November, we shared the goals of the &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;Stargate v2 release&lt;/a&gt; and our &lt;a href=&quot;https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html&quot;&gt;proposed design approach&lt;/a&gt;, and now it’s time for a progress check. To kick off 2022, the Stargate team is excited to provide an update on our first milestone in the continued development of Stargate v2.&lt;/p&gt;
+
+&lt;p&gt;For this first milestone, we adopted a “steel thread” approach – our goal was to begin &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;breaking up the monolith&lt;/a&gt; by factoring a single API service out of the Stargate coordinator node – the REST API service. While the original v2 design referenced above includes the introduction of a new gRPC “Bridge” component, we elected to use the new gRPC API that was released in November 2021 as a placeholder for the Bridge in this first milestone, and defer starting work on the Bridge to the next milestone. This enabled us to work more quickly and focus on separating out the new service from the Coordinator Node. The result of what we built is shown in Figure 1 below:&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+  &lt;img src=&quot;/assets/images/steel-thread-image.png&quot; alt=&quot;Figure 1: Summary of Stargate v2 Milestone 1 implementation.&quot; /&gt;
+  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 1: Summary of Stargate v2 Milestone 1 implementation.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;You can find our work on the new standalone REST API service on the &lt;code&gt;[v2.0.0 branch](https://github.com/stargate/stargate/tree/v2.0.0)&lt;/code&gt; in the &lt;code&gt;[sgv2-restapi module](https://github.com/stargate/stargate/tree/v2.0.0/sgv2-restapi)&lt;/code&gt;. While the new REST API service is not production-ready, at the time of writing it is passing over 90% of the integration tests for the REST v2 endpoints. In fact, the easiest way to see the new endpoint in action is to check out the v2.0.0 branch and run the integration test suite as described in the project &lt;a href=&quot;https://github.com/stargate/stargate/blob/v2.0.0/README.md&quot;&gt;README&lt;/a&gt;. We’re also working on ”Dockerizing” this configuration as well.&lt;/p&gt;
+
+&lt;p&gt;We had some interesting learnings and design discussions that came up along the way. We captured a bunch of them in our retrospective, and then did some affinity mapping to identify common themes. In the sections below, we’ll cover some of the key points that emerged from this exercise.&lt;/p&gt;
+
+&lt;h2 id=&quot;open-discussions&quot;&gt;Open discussions&lt;/h2&gt;
+
+&lt;p&gt;One of our main goals for Stargate v2 has been to make it easier for new contributors to get involved. To help move things in that direction, we’ve started documenting design discussions and proposals via &lt;a href=&quot;https://github.com/stargate/stargate/discussions&quot;&gt;GitHub discussions&lt;/a&gt; instead of private Google docs so that the community can benefit and participate. In fact, we’ll link to some of those discussions in the sections below.&lt;/p&gt;
+
+&lt;h2 id=&quot;rest-api-observations&quot;&gt;REST API observations&lt;/h2&gt;
+
+&lt;p&gt;As we were planning Stargate v2, we decided to focus on the architectural refactoring over making improvements to the existing APIs, in order to move quickly and in order to preserve backward compatibility. However, as we worked to make sure the new REST API service worked the same as the existing Stargate v1 REST endpoint, we actually found a few defects and improvements, which we have been documenting in a &lt;a href=&quot;https://github.com/stargate/stargate/discussions/1501&quot;&gt;GitHub discussion&lt;/a&gt; and making equivalent fixes for both Stargate v1 and v2.&lt;/p&gt;
+
+&lt;p&gt;As noted above, we have completed the implementation of the majority of the “REST v2” endpoints (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/v2/keyspaces…&lt;/code&gt;) in the new REST API Service. We did not prioritize implementation of the “REST v1” endpoints (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/v1/keyspaces/…&lt;/code&gt;) and are investigating how widely used the v1 endpoints are in order to determine the level of interest in bringing those endpoints forward into Stargate v2. Please reach out on the &lt;a href=&quot;https://github.com/stargate/stargate/discussions/1528&quot;&gt;GitHub discussion&lt;/a&gt; if you have feedback on this.&lt;/p&gt;
+
+&lt;h2 id=&quot;talking-to-coordinator-nodes-via-grpc&quot;&gt;Talking to coordinator nodes via gRPC&lt;/h2&gt;
+
+&lt;p&gt;We were able to move quickly in implementing the new REST API service by using the new gRPC API exposed by the Stargate coordinator nodes. We’ve started to refer to the style of this interface as “CQL over gRPC” because the operations on the gRPC endpoint work in terms of providing CQL query strings and an array of parameters you wish to bind to the query string. We ended up creating a standalone query builder similar to the one available in the DataStax Java Driver in order to construct CQL strings that the standalone REST service could pass to the gRPC API. This work was not part of our original plan, but we hope it will make implementing subsequent services go more quickly.&lt;/p&gt;
+
+&lt;h2 id=&quot;packaging-and-releasing-for-docker-and-kubernetes&quot;&gt;Packaging and releasing for Docker and Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;As mentioned above, we have an integration test configuration that launches the new REST API service alongside Stargate coordinator and Apache Cassandra&lt;strong&gt;®&lt;/strong&gt; nodes. We’re working on updated release processes so that we can have tagged releases for v2, associated Docker images, and example configurations for Docker Compose and Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;Since one of the Stargate v2 goals is to be more Docker/Kubernetes friendly, we’re also working on building Docker images as part of our regular Maven builds so we can make use of the images in local development for unit and integration testing. We’re looking at &lt;a href=&quot;https://github.com/GoogleContainerTools/jib&quot;&gt;Google’s Jib&lt;/a&gt; as a possible option to replace our current process, which uses a separate &lt;a href=&quot;https://github.com/stargate/docker-images&quot;&gt;docker-images&lt;/a&gt; repo to build Docker images only after a release.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next-for-milestone-2&quot;&gt;What’s next for Milestone 2?&lt;/h2&gt;
+
+&lt;p&gt;Now that we’ve mostly completed breaking our first API service out of the monolith, we’re working on setting up performance testing, reviewing the architecture, and getting ready to factor the GraphQL and Document APIs into their own services.&lt;/p&gt;
+
+&lt;p&gt;We’d love to hear your inputs about the new architecture and the progress that is being made on the new implementation, so feel free to jump into the conversation on &lt;a href=&quot;https://discord.com/invite/5gY8GDB&quot;&gt;Discord&lt;/a&gt; with questions, or comment on our &lt;a href=&quot;https://github.com/stargate/stargate/discussions?discussions_q=label:stargate-v2&quot;&gt;design discussions on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Special thanks to Tatu Saloranta, Olivier Michallat, Doug Wettlaufer and Mark Stone for their contributions to the Stargate v2 effort and this post.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Stargate v2 Update: Reaching the First Milestone</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Announcing Github branch renaming change</title><link href="https://stargate.io/2021/12/14/announce-github-naming-change.html" rel="alternate" type="text/html" title="Announcing Github branch renaming change" /><published>2021-12-14T06:00:00+00:00</published><updated>2021-12-14T06:00:00+00:00</updated><id>https://stargate.io/2021/12/14/announce-github-naming-change</id><content type="html" xml:base="https://stargate.io/2021/12/14/announce-github-naming-change.html">&lt;p&gt;Starting in October 2020, all new source code repositories created on GitHub have a primary branch named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; as part of the company’s effort to remove unnecessary references to slavery and replace them with more inclusive terms. This “fix forward first” approach is the first step in making systemic changes to the naming conventions.&lt;/p&gt;
 
 &lt;p&gt;Github will also gradually rename their own internal repositories over time. This reflects the difficulty that Github and other organizations face – it’s hard to rename something that is in active use.&lt;/p&gt;
 
@@ -862,217 +903,4 @@ Then it gives you back a single line JSON doc.
 
 &lt;p&gt;Thank you for following along all the way down here.&lt;/p&gt;
 
-&lt;p&gt;Happy building!&lt;/p&gt;</content><author><name></name></author><summary type="html">It is a really great time to be a developer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The Stargate Cassandra Documents API</title><link href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html" rel="alternate" type="text/html" title="The Stargate Cassandra Documents API" /><published>2020-10-19T00:00:00+00:00</published><updated>2020-10-19T00:00:00+00:00</updated><id>https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api</id><content type="html" xml:base="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">&lt;p&gt;If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON.  Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point.  Most of the time, this isn’t a problem, it’s just the way that we build software these days.  There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…&lt;/p&gt;
-
-&lt;p&gt;To double-click on that, the problem isn’t the JSON data format itself, although Cassandra doesn’t make JSON easy, it’s the way most devs use JSON when we’re building our apps.  Iterative development means that plans change.  The user registration form now needs a couple of more fields and the front-end dev went ahead and added them.  That API I’m calling returns some extra data.   Welcome to the loosely coupled world, it’s all fun and games until my app needs to send it to the database.&lt;/p&gt;
-
-&lt;p&gt;In the early days, Cassandra actually made this pretty simple to do, but as the project matured and added features like enterprise-friendly SQL-like query languages and better indexing, that meant that we needed the database to enforce a schema.  Over time, it became harder and harder to use Cassandra for things like JSON and other document-oriented use cases.&lt;/p&gt;
-
-&lt;p&gt;Enter Stargate - if there’s one thing you should know about the Stargate team it’s that our personal mission is to make Cassandra easy for every developer.  Figuring out how to give Javascript devs native JSON support without having to give up any of the reliability and scalability goodness of Cassandra was a challenge we couldn’t pass up.&lt;/p&gt;
-
-&lt;p&gt;This idea gave rise to the Stargate &lt;strong&gt;Documents API&lt;/strong&gt;, which lets most Cassandra distros (Cassandra 3.11, Cassandra 4.0, and DataStax Enterprise 6.8), work with JSON through a REST API.&lt;/p&gt;
-
-&lt;h2 id=&quot;api-features-and-design&quot;&gt;API features and design&lt;/h2&gt;
-
-&lt;p&gt;As &lt;a href=&quot;https://github.com/tjake&quot;&gt;Jake Luciani&lt;/a&gt; and I started to create the bones of this API, we realized that Cassandra is nothing like a document store. Expressing data as rows is straightforward, but expressing trees of JSON data is really not. In addition, mapping that JSON data onto a table managed by Stargate and keeping both writes and reads reasonably fast adds an additional layer of complexity.&lt;/p&gt;
-
-&lt;p&gt;From here, we mapped out three main design components in order for this work:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Modeling Documents in Cassandra&lt;/li&gt;
-  &lt;li&gt;Handling Reads and Writes&lt;/li&gt;
-  &lt;li&gt;Figuring out Deletes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The rest of this blog walks through how we approached each design and resolved some hiccups along the way.&lt;/p&gt;
-
-&lt;h2 id=&quot;modeling-documents-in-cassandra-with-document-shredding&quot;&gt;Modeling Documents in Cassandra with Document Shredding&lt;/h2&gt;
-
-&lt;p&gt;The first thing that we had to decide  was the schema of the managed table that backs a document collection. Due to some great discussions with some Cassandra specialists, it was decided that when a user creates a document, a table will be created with a statement of the form:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;p0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;err&quot;&gt;…&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;bool_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;txt_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;dbl_value&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-  &lt;span class=&quot;n&quot;&gt;leaf&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;text&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;At this point is where we had to solve an unbounded data modeling problem. Because any JSON document that has a depth of [N] or less can be added to this table, each value in the JSON will get stored as a row in the table. So if I wanted to represent a document called “x” that has the JSON:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The document would be “shredded” into rows looking like this:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;key&lt;/th&gt;
-      &lt;th&gt;p0&lt;/th&gt;
-      &lt;th&gt;p1&lt;/th&gt;
-      &lt;th&gt;dbl_value&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;a&lt;/td&gt;
-      &lt;td&gt;b&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;c&lt;/td&gt;
-      &lt;td&gt;null&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;For data with an array, such as:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;there would be two rows, like so:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;key&lt;/th&gt;
-      &lt;th&gt;p0&lt;/th&gt;
-      &lt;th&gt;p1&lt;/th&gt;
-      &lt;th&gt;p2&lt;/th&gt;
-      &lt;th&gt;dbl_value&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;a&lt;/td&gt;
-      &lt;td&gt;b&lt;/td&gt;
-      &lt;td&gt;null&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;x&lt;/td&gt;
-      &lt;td&gt;c&lt;/td&gt;
-      &lt;td&gt;[0]&lt;/td&gt;
-      &lt;td&gt;d&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Array elements are stored with square braces in the column.&lt;/p&gt;
-
-&lt;h3 id=&quot;handling-reads-and-writes&quot;&gt;Handling Reads and Writes&lt;/h3&gt;
-
-&lt;p&gt;The next problem that arose was that naïvely, updates to a document could require reading the document from the database, seeing what modification would have to be made, and then writing the updated data.  This “read-before-write” process is a notorious source of performance and consistency issues in most data stores.&lt;/p&gt;
-
-&lt;p&gt;Therefore, we resolved to avoid doing any read-before-write operations at all costs.&lt;/p&gt;
-
-&lt;p&gt;An interesting implementation detail that came up is that when you write some data to a document, the resulting write operation is just a simple batch with some inserts and deletes. In some cases, this can cause the document rows in the database to show two different states for the same JSON field.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;And, upon reading the rows out, the Documents API reconciles conflicting information by accepting the data that has a later Cassandra write time (much like Cassandra itself!).&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;This allows us to write data really quickly while not compromising too much in reads either, as the reconciliation does not happen often and is also quite fast. It also gives us a very important core principle to our basic write and read operations:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Every write to a single document is a single batch of statements, and&lt;/li&gt;
-  &lt;li&gt;Every read from a single document is a single SELECT statement.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;So writes and reads are squared away - but what about deletes?&lt;/p&gt;
-
-&lt;h3 id=&quot;figuring-out-deletes&quot;&gt;Figuring out Deletes&lt;/h3&gt;
-
-&lt;p&gt;Because of the distributed nature of the database, a deletion in Cassandra actually is very similar to an insert, but instead a “tombstone” is written at a particular write time to signify the death of a row.&lt;/p&gt;
-
-&lt;p&gt;Rest in peace… almost&lt;/p&gt;
-
-&lt;p&gt;Cassandra periodically (the frequency here depends on your compaction strategy and/or cluster load) does a compaction operation to remove tombstones and alleviate this pressure, so the only way to avoid overwhelming Cassandra is to make sure that the frequency of deletions is low enough.&lt;/p&gt;
-
-&lt;p&gt;This poses a problem for the Document API specifically because of arrays. Let’s walk through this one.&lt;/p&gt;
-
-&lt;p&gt;Imagine that you have an array at some key that is of length 100000. If you then issue a replace operation (via a PUT) and decide to replace that array with some other value, then all of those 100000 rows would be deleted, causing 100000 tombstones to be written.  This is an enormous number of tombstones to be written in one operation, and if you do that just a few more times, Cassandra will likely get super slow. So the structure of the data in each table needed one last major modification.&lt;/p&gt;
-
-&lt;p&gt;We said before that array paths are stored in the database with square brackets; for example the element at index 0 would be stored as [0]. That would mean a deletion of 100000 elements would look like this:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[0]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[1]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[2]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;…&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[99999]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Causing 100000 tombstones to be written. Instead of doing that, we decided to pad all array elements with leading zeros, so the element at index 0 would instead be represented as [000000], and the element at index 99999 would be [099999]. Doing this allowed us to change the deletion statement to:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[000000]'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[999999]'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Which causes only a single so-called “range” tombstone to be written, instead of 100000 cell tombstones (note that greater and less than works on strings in Cassandra and will compare lexically). It also relaxes the array length limit to one million elements, which is pretty neat! The time series below shows how the old vs. new implementation might behave, if you performed compactions every week:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/tombstone_counts.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So the new strategy is just safer for deletions; it would require an incredibly large amount of deletion with the new strategy to even come close to the theoretical tombstone limits!&lt;/p&gt;
-
-&lt;h2 id=&quot;preliminary-look-at-api-performance&quot;&gt;Preliminary Look at API performance&lt;/h2&gt;
-
-&lt;p&gt;⚠️ Before starting on this section, we want to mention that benchmarking is a great tool, but does not necessarily represent how a system will behave under real load, out in the wild. We also haven’t done comparisons on the same hardware with other document stores…yet. Alright, let’s get to it!&lt;/p&gt;
-
-&lt;p&gt;In order to test that the Document API is reasonably fast, we ran a benchmark test using a single Cassandra storage node and a single Stargate node (Stargate is the API that contains the Documents API). We then ran two different benchmarks, one that uses HTTP GET to repeatedly get random paths in a document, and another that performs HTTP POSTs repeatedly to create brand new documents.  Each of these actions got run 100000 times, and here are two graphs of the results.&lt;/p&gt;
-
-&lt;p&gt;To keep things simple, as there is no baseline to compare things against just yet, the benchmark was performed using only one requester at a time, with light concurrency (10 users at once), and with more concurrency (100 users at once). Note that it’s expected with only one backend node that higher concurrency would cause degradation in performance; you should have multiple nodes to service that degree of concurrent requests!&lt;/p&gt;
-
-&lt;p&gt;Here are the results for reads:&lt;/p&gt;
-
-&lt;div class=&quot;simple-table&quot;&gt;
-&lt;/div&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;1 user:&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;10 users:&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;100 users:&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/Reads_1_User.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/Reads_10_Users.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/Reads_100_Users.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;And for writes:&lt;/p&gt;
-
-&lt;div class=&quot;simple-table&quot;&gt;
-&lt;/div&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;1 user:&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;10 users:&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;100 users:&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/Writes_1_User.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/Writes_10_Users.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/the-stargate-cassandra-documents-api/Writes_100_Users.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;From the above, we can see that the API performs pretty well at a reasonable level of concurrency for our setup.&lt;/p&gt;
-
-&lt;h2 id=&quot;final-remarks&quot;&gt;Final remarks&lt;/h2&gt;
-
-&lt;p&gt;We hope you enjoyed taking this quick tour of the Documents API. If you are interested in using the API head over to &lt;a href=&quot;https://stargate.io/docs/stargate/0.1/quickstart/quickstart.html&quot;&gt;Stargate.io&lt;/a&gt; for more information about how to use it in your own Cassandra distribution.&lt;/p&gt;
-
-&lt;p&gt;If you are interested in contributing to Stargate, which is entirely open-source, we have two places for you to join us:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Come join our &lt;a href=&quot;https://discord.gg/5gY8GDB&quot;&gt;Discord Community&lt;/a&gt; to follow the latest with Stargate and get early access to new stuff&lt;/li&gt;
-  &lt;li&gt;For any issues or pull requests, come on over to our &lt;a href=&quot;https://www.github.com/stargate/stargate&quot;&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The APIs in Stargate are being actively developed, so we are hoping to be able to get back to you soon with news of even more improvements!&lt;/p&gt;</content><author><name></name></author><category term="json" /><category term="api" /><category term="documentation" /><category term="stargate" /><summary type="html">If you’re like me, when you start coding something new, you’re probably finding yourself working with JSON. Maybe you’re using Node.js or Python or any other dynamic language that uses JSON-like data natively or maybe you’re working with data that you’re pulling or serving from REST APIs. Either way, increasingly it seems like everything is ending up in JSON at some point. Most of the time, this isn’t a problem, it’s just the way that we build software these days. There’s just one problem, and that’s that Cassandra isn’t particularly good at JSON…</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;Happy building!&lt;/p&gt;</content><author><name></name></author><summary type="html">It is a really great time to be a developer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
