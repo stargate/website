@@ -33,7 +33,7 @@ One of our main goals for Stargate v2 has been to make it easier for new contrib
 
 As we were planning Stargate v2, we decided to focus on the architectural refactoring over making improvements to the existing APIs, in order to move quickly and in order to preserve backward compatibility. However, as we worked to make sure the new REST API service worked the same as the existing Stargate v1 REST endpoint, we actually found a few defects and improvements, which we have been documenting in a [GitHub discussion](https://github.com/stargate/stargate/discussions/1501) and making equivalent fixes for both Stargate v1 and v2.
 
-As noted above, we have completed the implementation of the majority of the “REST v2” endpoints (e.g. `/v2/keyspaces…`) in the new REST API Service. We did not prioritize implementation of the “REST v1” endpoints (e.g. `/v1/keyspaces/…`) and are investigating how widely used the v1 endpoints are in order to determine the level of interest in bringing those endpoints forward into Stargate v2. Please reach out if you have feedback on this.
+As noted above, we have completed the implementation of the majority of the “REST v2” endpoints (e.g. `/v2/keyspaces…`) in the new REST API Service. We did not prioritize implementation of the “REST v1” endpoints (e.g. `/v1/keyspaces/…`) and are investigating how widely used the v1 endpoints are in order to determine the level of interest in bringing those endpoints forward into Stargate v2. Please reach out on the [GitHub discussion](https://github.com/stargate/stargate/discussions/1528) if you have feedback on this.
 
 
 ## Talking to coordinator nodes via gRPC
