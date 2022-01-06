@@ -18,9 +18,7 @@ Back in November, we shared the goals of the [Stargate v2 release](https://dtsx.
 
 For this first milestone, we adopted a “steel thread” approach – our goal was to begin [breaking up the monolith](https://dtsx.io/3pZJR0R) by factoring a single API service out of the Stargate coordinator node – the REST API service. While the original v2 design referenced above includes the introduction of a new gRPC “Bridge” component, we elected to use the new gRPC API that was released in November 2021 as a placeholder for the Bridge in this first milestone, and defer starting work on the Bridge to the next milestone. This enabled us to work more quickly and focus on separating out the new service from the Coordinator Node. The result of what we built is shown in Figure 1 below:
 
-
-![Figure 1: Summary of Stargate v2 Milestone 1 implementation.](/assets/images/steel-thread-image.png)
-
+{% include image.html file="steel-thread-image.png" description="Figure 1: Summary of Stargate v2 Milestone 1 implementation." %}
 
 You can find our work on the new standalone REST API service on the <code>[v2.0.0 branch](https://dtsx.io/3n1b5lS)</code> in the <code>[sgv2-restapi module](https://dtsx.io/3zEWule)</code>. While the new REST API service is not production-ready, at the time of writing it is passing over 90% of the integration tests for the REST v2 endpoints. In fact, the easiest way to see the new endpoint in action is to check out the v2.0.0 branch and run the integration test suite as described in the project [README](https://dtsx.io/3qWoJHY). We’re also working on ”Dockerizing” this configuration as well. 
 
