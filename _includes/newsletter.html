@@ -12,26 +12,38 @@
   <div class="content-form">
     <form newsletter-form>
       <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" name="firstName">
+        <label for="firstName">First Name<sup>*</sup></label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+        />
       </div>
       <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" name="lastName">
+        <label for="lastName">Last Name<sup>*</sup></label>
+        <input type="text" class="form-control" id="lastName" name="lastName" />
       </div>
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" name="email">
+        <label for="email">Email address<sup>*</sup></label>
+        <input type="email" class="form-control" id="email" name="email" />
       </div>
       <div class="form-group">
-        <label for="role">Role</label>
+        <label for="role">Role<sup>*</sup></label>
         <select class="form-control" id="role" name="role">
-          <option>Role 1</option>
-          <option>Role 2</option>
-          <option>Role 3</option>
+          <option value="">Select...</option>
+          <option value="Administrator">Administrator</option>
+          <option value="Editor">Editor</option>
+          <option value="Contributor">Contributor</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Subscribe</button>
     </form>
+
+    <p class="newsletter-form-message" style="display: none"></p>
+
+    <form id="mktoForm_4188" style="display: none"></form>
   </div>
 </div>
+
+<script src="//app-ab17.marketo.com/js/forms2/js/forms2.min.js"></script>

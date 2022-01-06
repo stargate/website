@@ -7,26 +7,300 @@
   gtag('js', new Date()); gtag('config', 'UA-20879577-9');
 </script>
 
-<!-- Marketo Munchkin - Analytics -->
+{% if page.has_marketo %}
+<!--  MKTO  -->
+<script src="//pages.datastax.com/js/forms2/js/forms2.min.js"></script>
+
+<!-- Marketo Munchkin code -->
 <script type="text/javascript">
   (function () {
     var didInit = false;
+
     function initMunchkin() {
       if (didInit === false) {
         didInit = true;
-        Munchkin.init('259-IFZ-779');
+        Munchkin.init("259-IFZ-779", {
+          asyncOnly: true,
+          disableClickDelay: true,
+        });
       }
     }
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
+
+    var s = document.createElement("script");
+    s.type = "text/javascript";
     s.async = true;
-    s.src = '//munchkin.marketo.net/munchkin.js';
+    s.src = document.location.protocol + "//munchkin.marketo.net/munchkin.js";
     s.onreadystatechange = function () {
-      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      if (this.readyState == "complete" || this.readyState == "loaded") {
         initMunchkin();
       }
     };
     s.onload = initMunchkin;
-    document.getElementsByTagName('head')[0].appendChild(s);
+    document.getElementsByTagName("head")[0].appendChild(s);
   })();
 </script>
+
+<script>
+  /*!
+   * Author: Jon Bourne, jonbourne.com
+   * Company: Digital Pi, digitalpi.com
+   * Copyright: Digital Pi, LLC
+   * License: Released under MIT License. This notice must be included in all uses of this software.
+   * Revised: 2020-05-14
+   */
+  (function () {
+    "use strict";
+
+    /****************** CONFIGURATION VARIABLES ******************/
+
+    // Use Marketo's SOAP API names of corresponding UTM fields
+    var utmFields = {
+      utm_medium: "Campaign_Medium__c",
+      utm_source: "Campaign_Source__c",
+      utm_campaign: "CampaignID__c",
+      utm_content: "Campaign_Offer_Code__c",
+      utm_term: "Campaign_Term__c",
+      digital_id: "Digital_ID__c",
+    };
+
+    /**************** DO NOT EDIT BELOW THIS LINE ****************/
+    var cookieName = "dpi_utmVals";
+    var cookieExpiry = 2; // in days
+    var cookieDomain = "";
+
+    var _ = function (msg) {
+      if (location.hash === "#debug") {
+        console.log(msg);
+      }
+    };
+
+    var getQueryVar = function (queryVar) {
+      queryVar = queryVar.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&");
+      var match = location.search.match(
+        new RegExp("[?&]" + queryVar + "=([^&]+)(&|$)")
+      );
+
+      return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    };
+
+    // Cookie CRUD functions from plainjs.com
+    var getCookie = function (name) {
+      var v = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+
+      return v ? JSON.parse(v[2]) : null;
+    };
+
+    var setCookie = function (name, value, days, domain) {
+      var d = new Date();
+      d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+
+      var cookieDomain = "";
+
+      if (typeof domain === "string" && domain.length > 0) {
+        cookieDomain = ";domain=." + domain;
+      }
+
+      document.cookie =
+        name +
+        "=" +
+        JSON.stringify(value) +
+        ";path=/;expires=" +
+        d.toGMTString() +
+        cookieDomain;
+    };
+
+    var overwriteCookie = function (name, value, days, domain) {
+      var cookie = getCookie(name) || {};
+
+      for (var attribute in value) {
+        if (cookie.hasOwnProperty(attribute)) {
+          cookie[attribute] = value[attribute];
+        }
+      }
+
+      setCookie(name, cookie, days, domain);
+    };
+
+    var overwriteNotNullCookieValues = function (name, value, days, domain) {
+      var cookie = getCookie(name) || {};
+
+      for (var attribute in value) {
+        if (cookie.hasOwnProperty(attribute) && "NULL" !== value[attribute]) {
+          cookie[attribute] = value[attribute];
+        }
+      }
+
+      setCookie(name, cookie, days, domain);
+    };
+
+    var deleteCookie = function (name, domain) {
+      setCookie(name, "", -1, domain);
+    };
+
+    var getCookieDomain = function () {
+      var dpi_testCookie = "dpi_test";
+      var hostname = location.hostname.split(".");
+      var cookieDomain = "";
+
+      for (var i = hostname.length - 1; i >= 0; i--) {
+        cookieDomain =
+          cookieDomain.length > 0
+            ? hostname[i] + "." + cookieDomain
+            : hostname[i];
+        setCookie(dpi_testCookie, cookieDomain, 1, cookieDomain);
+
+        if (getCookie(dpi_testCookie)) {
+          deleteCookie(dpi_testCookie, cookieDomain);
+
+          return cookieDomain;
+        } else {
+          if (i === 0) {
+            return null;
+          }
+        }
+      }
+    };
+
+    var init = function () {
+      _("Running init() function");
+
+      var queryUtmVals = {};
+      var qsVar = "";
+      var qsVarCount = 0;
+      var cookies = [cookieName];
+      var currentCookie = getCookie(cookieName);
+      var cookieExists = null != currentCookie;
+
+      cookieDomain = getCookieDomain();
+      _("Cookie domain is " + cookieDomain);
+
+      // Create or update tracking cookies
+      _("Checking for query string...");
+      if (location.search.length) {
+        _("Query string found; searching for UTM parameters and values...");
+
+        var utm_param;
+
+        for (utm_param in utmFields) {
+          qsVar = getQueryVar(utm_param);
+
+          if (qsVar) {
+            qsVarCount++;
+            queryUtmVals[utmFields[utm_param]] = qsVar;
+          } else {
+            queryUtmVals[utmFields[utm_param]] = "NULL";
+          }
+        }
+      }
+
+      if ((cookieExists && qsVarCount > 0) || !cookieExists) {
+        // returning visitor & new utms | new visitor
+        queryUtmVals["Referrer_URL__c"] =
+          document.referrer.length > 0 ? document.referrer : "NULL";
+        queryUtmVals["Referrer_Domain__c"] =
+          document.referrer.length > 0
+            ? document.referrer.split("/")[2].replace(/^www\./, "")
+            : "NULL";
+      }
+
+      // Path always changes
+      queryUtmVals["Offer_LT__c"] = window.location.pathname;
+
+      if (cookieExists) {
+        // returning visitor
+        if (qsVarCount > 0) {
+          // new utms
+          overwriteCookie(cookieName, queryUtmVals, cookieExpiry, cookieDomain);
+        } else {
+          overwriteNotNullCookieValues(
+            cookieName,
+            queryUtmVals,
+            cookieExpiry,
+            cookieDomain
+          );
+        }
+      } else {
+        // new visitor
+        setCookie(cookieName, queryUtmVals, cookieExpiry, cookieDomain);
+      }
+
+      // Update form from cookies
+      _("Checking for MktoForms2 API...");
+      if (typeof MktoForms2 === "object") {
+        _("MktoForms2 API detected");
+
+        MktoForms2.whenReady(function (form) {
+          var f = form.getFormElem()[0]; // form element
+          _("Marketo form detected (#mktoForm_" + form.getId() + ")");
+
+          cookies.forEach(function (c) {
+            _("Checking for " + c + " cookie...");
+
+            if (getCookie(c)) {
+              _(
+                "Found " +
+                  c +
+                  " cookie with " +
+                  Object.keys(getCookie(c)).length +
+                  " UTM values"
+              );
+              _(
+                "Adding UTM values from " +
+                  c +
+                  " cookie to Marketo form #mktoForm_" +
+                  form.getId()
+              );
+
+              form.addHiddenFields(getCookie(c));
+
+              if (!f.getAttribute("digitalpi-utms-added")) {
+                f.setAttribute("digitalpi-utms-added", true);
+              }
+            } else {
+              _(c + " cookie not found");
+            }
+          });
+
+          form.onSuccess(function () {
+            _(
+              "Marketo form (#mktoForm_" +
+                form.getId() +
+                ") submitted successfully with UTM data; deleting " +
+                cookieName +
+                " cookie"
+            );
+          });
+        });
+      } else {
+        _("MktoForms2 API not detected; exiting");
+        return false;
+      }
+    };
+
+    var global = function () {
+      _("_digitalpi object defined in global scope");
+      window._digitalpi = window._digitalpi || {};
+
+      _("_digitalpi.trackUTMs() defined in global scope");
+      window._digitalpi.trackUTMs = function () {
+        init();
+      };
+    };
+
+    if (/complete|interactive|loaded/.test(document.readyState)) {
+      _("Document loaded; calling init()");
+      init();
+      global();
+    } else {
+      _(
+        "Document not loaded; setting DOMContentLoaded event listener to call init()"
+      );
+      document.addEventListener("DOMContentLoaded", function () {
+        _("DOMContentLoaded event fired; calling init()");
+        init();
+        global();
+      });
+    }
+  })();
+</script>
+{% endif %}

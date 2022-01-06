@@ -41,6 +41,10 @@
   type="text/javascript"
   data-domain-script="2d329c5f-8feb-4a63-8c63-03232bcaacbd"
     async=""></script>
+
+  {% if page.has_marketo %}
+    <script src="{{ '/assets/js/forms.js' | relative_url }}"></script>
+  {% endif %}
 </body>
 
 </html>

@@ -95,12 +95,6 @@ $(document).ready(function () {
       window.whatIsStargatePlayer.stopVideo();
     }
   });
-
-  $('form[newsletter-form]').on('submit', function(event) {
-    event.preventDefault();
-
-    // TODO: add functionality to the newsletter form
-  });
 });
 
 if (typeof jQuery === "undefined") { throw new Error("jQuery required"); }

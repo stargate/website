@@ -30,10 +30,12 @@
 
   .content-form {
     display: flex;
+    flex-direction: column;
     width: 45%;
 
     form {
       width: 100%;
+      margin-bottom: 40px;
     }
 
     label {
@@ -52,6 +54,10 @@
       line-height: 1.56em;
       text-align: center;
       letter-spacing: 0.04em;
+      color: #ffffff;
+    }
+
+    .newsletter-form-message {
       color: #ffffff;
     }
   }
