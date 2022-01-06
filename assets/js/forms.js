@@ -26,6 +26,7 @@ function loadNewsletterForm() {
   var newsletterFormId = 4188;
 
   function onFormLoaded(form) {
+    $newsletterForm.style.display = "block";
     $newsletterForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
