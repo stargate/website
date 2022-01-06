@@ -24,8 +24,7 @@ For this first milestone, we adopted a “steel thread” approach – our goal 
 
 You can find our work on the new standalone REST API service on the <code>[v2.0.0 branch](https://dtsx.io/3n1b5lS)</code> in the <code>[sgv2-restapi module](https://dtsx.io/3zEWule)</code>. While the new REST API service is not production-ready, at the time of writing it is passing over 90% of the integration tests for the REST v2 endpoints. In fact, the easiest way to see the new endpoint in action is to check out the v2.0.0 branch and run the integration test suite as described in the project [README](https://dtsx.io/3qWoJHY). We’re also working on ”Dockerizing” this configuration as well. 
 
-We had some interesting learnings and design discussions that came up along the way. We captured a bunch of them in our retrospective, using a tool called Figma to crowdsource our observations and then do some affinity mapping to identify common themes. In the sections below, we’ll cover at a 10,000 foot view some of the key points that emerged from this exercise_. _
-
+We had some interesting learnings and design discussions that came up along the way. We captured a bunch of them in our retrospective, and then did some affinity mapping to identify common themes. In the sections below, we’ll cover some of the key points that emerged from this exercise. 
 
 ## Open discussions
 
