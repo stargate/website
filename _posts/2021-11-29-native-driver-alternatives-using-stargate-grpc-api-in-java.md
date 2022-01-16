@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Say Goodbye to Native Drivers with Stargate gRPC API in Java"
+title: "Native Driver Alternatives Using Stargate gRPC API in Java"
 date:   2021-11-29 00:00:00 -0600
 synopsis: "Developers should be able to build highly scalable apps even when they call multilingual and multi-cloud microservices. That’s why the Stargate team recently made a new API generally available to help developers build applications with their preferred language."
 author_info:
