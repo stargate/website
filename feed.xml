@@ -1,4 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-01-16T00:15:53+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate v2 Update: Reaching the First Milestone</title><link href="https://stargate.io/2022/01/06/reaching-the-first-milestone.html" rel="alternate" type="text/html" title="Stargate v2 Update: Reaching the First Milestone" /><published>2022-01-06T06:00:00+00:00</published><updated>2022-01-06T06:00:00+00:00</updated><id>https://stargate.io/2022/01/06/reaching-the-first-milestone</id><content type="html" xml:base="https://stargate.io/2022/01/06/reaching-the-first-milestone.html">&lt;h1 id=&quot;stargate-v2-update-reaching-the-first-milestone&quot;&gt;Stargate v2 Update: Reaching the First Milestone&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-01-17T17:44:41+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate gRPC: The Better Way to CQL</title><link href="https://stargate.io/2022/01/15/stargate-grpc-the-better-way-to-cql.html" rel="alternate" type="text/html" title="Stargate gRPC: The Better Way to CQL" /><published>2022-01-15T06:00:00+00:00</published><updated>2022-01-15T06:00:00+00:00</updated><id>https://stargate.io/2022/01/15/stargate-grpc-the-better-way-to-cql</id><content type="html" xml:base="https://stargate.io/2022/01/15/stargate-grpc-the-better-way-to-cql.html">&lt;h1 id=&quot;stargate-grpc-the-better-way-to-cql&quot;&gt;&lt;strong&gt;Stargate gRPC: The Better Way to CQL&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/data-cloud.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Stargate’s new gRPC API is so much more than just a feature release — it’s your official welcome to the “no drivers” future of Apache Cassandra.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently, we &lt;a href=&quot;https://stargate.io/2021/11/29/native-driver-alternatives-using-stargate-grpc-api-in-java&quot;&gt;released gRPC as the newest API&lt;/a&gt; supported by &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt;, our API data gateway. On the surface, it would seem like the API doesn’t do very much; it receives CQL queries via the gRPC protocol, then passes those to &lt;a href=&quot;https://cassandra.apache.org/_/index.html&quot;&gt;Apache Cassandra®&lt;/a&gt; and returns the results. Sounds like a pretty modest feature release, right?&lt;/p&gt;
+
+&lt;p&gt;In reality, what the Stargate team has delivered is groundbreaking. Not quite a native driver and not quite a simple HTTP-based API, Stargate’s gRPC implementation represents a fundamentally new approach for applications interacting with Cassandra — an approach that’s more cloud native than any driver, and more performant than any simple HTTP-based API.&lt;/p&gt;
+
+&lt;p&gt;So let me tell you why this approach is so important, and why this is such a revolutionary solution for a common developer problem.&lt;/p&gt;
+
+&lt;h2 id=&quot;native-drivers-are-not-cloud-friendly&quot;&gt;Native drivers are not cloud friendly&lt;/h2&gt;
+
+&lt;p&gt;Functionality inside a native driver can be divided into two parts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The query engine.&lt;/strong&gt; This issues requests in a particular query language for a particular database, and receives responses to those requests that can then be used in application code. In our case, the query language is CQL, and the database is Cassandra.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Operational management.&lt;/strong&gt; This includes tasks like connection pooling, TLS, authentication, load balancing, retry policies, write coalescing, compression, health checks, etc.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You’ll notice that most of those operational tasks are abstracted away from applications in cloud environments, and simply handled automatically on behalf of the application. For example, load balancing, health checks, and TLS termination are intrinsic to most cloud environments; even retries can be configured within the environment.&lt;/p&gt;
+
+&lt;p&gt;Put another way: in a well-designed microservices environment, network management tasks should live inside a service boundary and execute within an SLA defined in a service contract. There should be no need, and it would be a violation of microservices principles for an application to want to reach across that boundary and directly manipulate those operational tasks.&lt;/p&gt;
+
+&lt;p&gt;And yet, this is exactly what native drivers do.&lt;/p&gt;
+
+&lt;p&gt;This is not a mere architectural nicety. Building native drivers into an otherwise cloud-native, microservice-oriented application has real and negative consequences. Let’s dig a little deeper into why.&lt;/p&gt;
+
+&lt;p&gt;Native protocol drivers are expensive to maintain and require reimplementing the same complex functionality for different platforms (like Java, Go, Node, Rust). All that operational management forces developers to extend their skill set from application development in their preferred language to areas of systems operation, thus steepening the learning curve for native drivers.&lt;/p&gt;
+
+&lt;p&gt;More significantly, this co-mingling of concerns opens up a new vector that could trigger the need for a driver update. A configuration change in the network environment, for example, could require an update to the way every driver handles load balancing or connection pooling. Now your organization has to stop every application instance using that driver, apply the change within the driver, and restart all those application instances. Depending on the nature of the driver change, some changes in the rest of the application may also be required.&lt;/p&gt;
+
+&lt;p&gt;They also inject surprising brittleness into applications because of the network management overhead required, making it more likely that drivers, and therefore applications that use them, must be updated.&lt;/p&gt;
+
+&lt;p&gt;In sum, native drivers are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Complex and present a steep learning curve&lt;/li&gt;
+  &lt;li&gt;Hard to update and maintain&lt;/li&gt;
+  &lt;li&gt;Speed bumps for developer velocity&lt;/li&gt;
+  &lt;li&gt;A threat to application resilience&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So we can safely say that native drivers are fast, which makes it easy to overemphasize raw performance, but the overall picture of performance and resilience is much more complicated.&lt;/p&gt;
+
+&lt;h2 id=&quot;http-based-apis-are-a-performance-trade-off&quot;&gt;HTTP-based APIs are a performance trade-off&lt;/h2&gt;
+
+&lt;p&gt;The modern approach to application development is, in part, a rebellion against the burden of native drivers. Today’s application developers, particularly front end developers, are expected to interact with data through an HTTP-based API and rely on JSON as the primary method of structuring data.&lt;/p&gt;
+
+&lt;p&gt;We fully support this API-based approach on Stargate. This has several advantages:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Language agnosticism.&lt;/strong&gt; Applications can be written in any language that can talk to an HTTP endpoint.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Separation of concerns&lt;/strong&gt; between application environment and infrastructure environment. Precisely as should happen in a cloud-native context, all of the network management and operational overhead lives behind the API. Changes and updates there stay contained within that service boundary, removing this as an area of concern for application logic.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resilience.&lt;/strong&gt; The statelessness of HTTP constrains application design to avoid reliance on durable network connections, meaning applications designed in this manner are more resilient against the vagaries of network behavior.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Unsurprisingly, HTTP-based APIs have become the backbone of microservice applications for a cloud-native environment. But these benefits are not free. HTTP-based APIs are a slower way to query a database, for two reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Networking&lt;/strong&gt; -  Native drivers talk “closer to the wire,” which significantly improves performance. The Java driver for CQL, for example, operates at Layer 5, whereas HTTP operates at Layer 7.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data transformation&lt;/strong&gt; - Databases don’t store JSON natively (even MongoDB relies on the WiredTiger storage engine when you drill down far enough). So some transformation has to happen to turn a JSON-oriented query into a native database query (CQL, in the case of Cassandra). The compute overhead of performing this transformation further slows performance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And now, we have a dilemma. On one hand, HTTP-based APIs offer simplicity and language agnosticism that accelerates developer velocity, while also offering a separation of concerns between application and infrastructure that improves application resilience. To put it simply, HTTP-based APIs are good cloud citizens, presenting and abiding by clear service boundaries.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, while native drivers are a burden to developers and co-mingled concerns between development and operations negatively impact resilience, native drivers are just flat out more performant than HTTP-based APIs.&lt;/p&gt;
+
+&lt;p&gt;So, what to do?&lt;/p&gt;
+
+&lt;h2 id=&quot;decomposing-the-driver&quot;&gt;Decomposing the driver&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; supports native driver calls, offering a CQL API through which to talk to Cassandra. This is essentially just a transparent proxy, and so CQL calls via Stargate remain highly performant. Let’s look at a simple architecture diagram of this part of Stargate. (See Figure 1.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/grpc-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Figure 1: Simple Architecture of Native Driver and Stargate.&lt;/p&gt;
+
+&lt;p&gt;The fundamental problem is the co-mingling of concerns. Some of what lives inside the native driver should, in a cloud-native context, live behind an API and thus inside the API’s service boundary. So what if we looked at it this way instead? (See Figure 2.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/grpc-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Figure 2: Decomposing the driver.&lt;/p&gt;
+
+&lt;p&gt;The real challenge is how to move that box that says “Network Management Tasks” across the service boundary into Stargate and behind an API. We’ll also have to do it in a way that honors the language agnosticism of APIs. Without that agnosticism, we have to maintain a different “box” of network management tasks for each language, even though those tasks are essentially the same across languages. We’d lighten the driver but make Stargate harder to maintain, and a good bit less cloud friendly.&lt;/p&gt;
+
+&lt;h2 id=&quot;enter-grpc&quot;&gt;Enter gRPC&lt;/h2&gt;
+
+&lt;p&gt;In 2008, Google developed, open-sourced and released &lt;a href=&quot;https://developers.google.com/protocol-buffers&quot;&gt;Protocol Buffers&lt;/a&gt; — a language-neutral mechanism for serializing structured data. In 2015, Google released &lt;a href=&quot;https://grpc.io/&quot;&gt;gRPC&lt;/a&gt; (also open source) to incorporate Protocol Buffers into work to modernize Remote Procedure Call (RPC).&lt;/p&gt;
+
+&lt;p&gt;gRPC has a couple of important performance characteristics. One is the improved data serialization, making data transit over the network much more efficient. The other is the use of HTTP/2, which enables bidirectional communication. As a result, there are four call types supported in gRPC:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unary calls&lt;/li&gt;
+  &lt;li&gt;Client side streaming calls&lt;/li&gt;
+  &lt;li&gt;Server side streaming calls&lt;/li&gt;
+  &lt;li&gt;Bidirectional calls, which are a composite of client side and server side streaming&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Put all this together and you have a mechanism that is fast — &lt;em&gt;very&lt;/em&gt; fast when compared to other HTTP-based APIs. gRPC message transmission can be &lt;a href=&quot;https://blog.dreamfactory.com/grpc-vs-rest-how-does-grpc-compare-with-traditional-rest-apis/&quot;&gt;7x to 10x faster&lt;/a&gt; than traditional REST APIs. In other words, a solution based on gRPC could offer performance comparable to native drivers.&lt;/p&gt;
+
+&lt;h2 id=&quot;stargate-grpc&quot;&gt;Stargate gRPC&lt;/h2&gt;
+
+&lt;p&gt;When you pull all of the network management tasks out of a driver, what you’re left with is a thin client library containing little more than the query engine. In our case, these CQL queries transit to a Stargate API endpoint via gRPC. (See Figure 3.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/grpc-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Figure 3: Stargate’s gRPC Implementation.&lt;/p&gt;
+
+&lt;p&gt;Behind that endpoint is what amounts to a CQL driver written in gRPC. In other words, it receives CQL calls on the API endpoint via gRPC, and then makes direct CQL calls to Cassandra. No data transformation is required, because we’re using CQL end to end.&lt;/p&gt;
+
+&lt;p&gt;These client libraries are dramatically easier to write and maintain. Our original intent was to launch with client libraries for Java and for Go, since these are our two most requested languages. As it happened, adding new languages was so easy that we also included client libraries for Node.js and Rust.&lt;/p&gt;
+
+&lt;p&gt;These four — and perhaps more languages in the future -— represent a fully DataStax-supported way to make CQL calls from your application. We’ll continue to support our existing native drivers, and in those languages the gRPC client libraries represent an additional, supported alternative. For languages like Go where DataStax does not have a supported native driver, the supported gRPC client library is now a great way to go.&lt;/p&gt;
+
+&lt;h2 id=&quot;do-more-with-stargate-grpc&quot;&gt;Do more with Stargate gRPC&lt;/h2&gt;
+
+&lt;p&gt;If your favorite language is not on our list, extending to a new language is not hard. From a protobuf file you get a skeleton of the CQL calls you need to make in your chosen language, and none of the operational overhead is required. You get that out of the box with gRPC, and it lives inside of Stargate where it belongs in a proper cloud-native context.&lt;/p&gt;
+
+&lt;p&gt;Thanks to bidirectionality and efficient data serialization, you’ll now get performance on par with native drivers combined with the simplicity of a thin client library, all within a context that plays nicely with the rest of your microservices.&lt;/p&gt;
+
+&lt;p&gt;To learn more, head over to &lt;a href=&quot;https://github.com/stargate&quot;&gt;Stargate’s Github&lt;/a&gt;. You can also find source code and examples on &lt;a href=&quot;https://stargate.io/docs/stargate/1.0/developers-guide/gRPC-using.html&quot;&gt;using Stargate gRPC API clients&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/stargate/stargate-grpc-java-client&quot;&gt;Java client&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/stargate/stargate-grpc-go-client&quot;&gt;Go client&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/stargate/stargate-grpc-node-client&quot;&gt;Node.js client&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/stargate/stargate-grpc-rust-client&quot;&gt;Rust client&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And, lastly, welcome to the “No Drivers” future of Apache Cassandra.&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/stargate&quot;&gt;Stargate - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stargate.io/docs/stargate/1.0/developers-guide/gRPC-using.html&quot;&gt;Using Stargate gRPC API clients&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stargate.io/2021/11/29/native-driver-alternatives-using-stargate-grpc-api-in-java&quot;&gt;Native Driver Alternatives Using Stargate gRPC API in Java&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Stargate gRPC: The Better Way to CQL</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stargate v2 Update: Reaching the First Milestone</title><link href="https://stargate.io/2022/01/06/reaching-the-first-milestone.html" rel="alternate" type="text/html" title="Stargate v2 Update: Reaching the First Milestone" /><published>2022-01-06T06:00:00+00:00</published><updated>2022-01-06T06:00:00+00:00</updated><id>https://stargate.io/2022/01/06/reaching-the-first-milestone</id><content type="html" xml:base="https://stargate.io/2022/01/06/reaching-the-first-milestone.html">&lt;h1 id=&quot;stargate-v2-update-reaching-the-first-milestone&quot;&gt;Stargate v2 Update: Reaching the First Milestone&lt;/h1&gt;
 
 &lt;p&gt;Back in November, we shared the goals of the &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;Stargate v2 release&lt;/a&gt; and our &lt;a href=&quot;https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html&quot;&gt;proposed design approach&lt;/a&gt;, and now it’s time for a progress check. To kick off 2022, the Stargate team is excited to provide an update on our first milestone in the continued development of Stargate v2.&lt;/p&gt;
 
@@ -747,160 +890,4 @@ Then it gives you back a single line JSON doc.
 &lt;h2 id=&quot;how-to-get-started&quot;&gt;How To Get Started&lt;/h2&gt;
 &lt;p&gt;Follow our documentation &lt;a href=&quot;https://stargate.io/docs/stargate/1.0/developers-guide/install/install_dse_68.html&quot;&gt;here&lt;/a&gt; to get started with Stargate. If you’d like to learn more and see how Stargate exposes these endpoints and integrates with DSE, take a look at this &lt;a href=&quot;https://stargate.io/2020/09/14/init-stargate.html&quot;&gt;blog post&lt;/a&gt; and the &lt;a href=&quot;https://github.com/stargate/stargate&quot;&gt;Stargate&lt;/a&gt; source code for a deeper dive. The blog post does a great job of explaining the mechanics of Stargate and you can always dig into the code for a more thorough analysis.&lt;/p&gt;
 
-&lt;p&gt;Get started today! &lt;a href=&quot;https://downloads.datastax.com/#stargate&quot;&gt;Download Stargate&lt;/a&gt; and &lt;a href=&quot;https://www.datastax.com/resources/webinar/create-new-apps-faster-worlds-most-proven-nosql-database-nam&quot;&gt;sign up for our upcoming webinar&lt;/a&gt;!&lt;/p&gt;</content><author><name></name></author><summary type="html">It’s a monumental day for DataStax Enterprise (DSE) users: Stargate support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Announcing: Stargate 1.0 GA; REST, GraphQL, &amp;amp; Schemaless JSON for Your Cassandra Development</title><link href="https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html" rel="alternate" type="text/html" title="Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development</id><content type="html" xml:base="https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html">&lt;p&gt;It is a really great time to be a developer.&lt;/p&gt;
-
-&lt;p&gt;We have tons of APIs integrated within great tools for building dynamic, full stack apps. If you are a developer, you probably are using technologies like schemaless data stores, serverless architectures, JSON APIs, and/or the GraphQL language.&lt;/p&gt;
-
-&lt;p&gt;Further, there are a bunch of cool frameworks like the &lt;strong&gt;Jam&lt;/strong&gt;stack (&lt;strong&gt;J&lt;/strong&gt;avaScript, &lt;strong&gt;A&lt;/strong&gt;PIs, and &lt;strong&gt;M&lt;/strong&gt;arkup) and services like Netlify to make it fast to deploy a serverless app.&lt;/p&gt;
-
-&lt;p&gt;And now, for the first time ever, Apache Cassandra is a part of this stack because &lt;a href=&quot;https://astra.datastax.com/&quot;&gt;Stargate is now live on Astra&lt;/a&gt; as the official data API.&lt;/p&gt;
-
-&lt;p&gt;The modern apps we build need data APIs which integrate into our toolset and work with native data shapes (JSON, REST, GraphQL, etc). These data APIs need to support schemaless JSON, while simultaneously providing speed and scalability.&lt;/p&gt;
-
-&lt;p&gt;Most importantly, it better only take a few minutes for us to use them within our project.&lt;/p&gt;
-
-&lt;p&gt;DataStax built &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; into Astra to give us, app developers, a natural data API stack which meshes with the Jamstack (or serverless stack of your choice). Stargate in Astra is built on the rock solid NoSQL data engine (Apache Cassandra) which powers Netflix, Instagram, Yelp, iCloud and other apps we all use everyday.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-exactly-is-stargate&quot;&gt;What exactly is Stargate?&lt;/h2&gt;
-&lt;p&gt;Stargate is an &lt;a href=&quot;https://stargate.io/2020/09/14/init-stargate.html&quot;&gt;open source data gateway&lt;/a&gt; that sits between your app server and your databases. Stargate brings together an API platform and data request coordination code into one OSS project.&lt;/p&gt;
-
-&lt;p&gt;Multiple successful app companies - like Netflix and Yelp - built their own data gateways to help internal app developers create features using simple APIs, without needing to learn the underlying database or mess with schema.&lt;/p&gt;
-
-&lt;p&gt;DataStax integrated Stargate into Astra to give you the same power and ease of access to your data.&lt;/p&gt;
-
-&lt;p&gt;What does this mean for you?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;No upfront data modelling needed for Documents.&lt;/li&gt;
-  &lt;li&gt;Less custom code to maintain.&lt;/li&gt;
-  &lt;li&gt;More time to build what you care about.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-astra/stargate-astra.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can work with your data the way you want – JSON via schemaless document APIs or database schema aware GraphQL and RESTful APIs – while Stargate serves as the proxy that coordinates these requests to different flavors of Cassandra.&lt;/p&gt;
-
-&lt;p&gt;To see it in action, let’s see how this works by using JSON with Stargate’s schemaless Document API in a TikTok clone. Because, if Instagram and Snapchat have a TikTok clone, we should have one, too. Right?&lt;/p&gt;
-
-&lt;h2 id=&quot;real-quick-note-first&quot;&gt;Real Quick Note First&lt;/h2&gt;
-
-&lt;p&gt;Slinging JSON to and from Apache Cassandra without data modeling is just too much fun. You gotta &lt;a href=&quot;http://astra.datastax.com/&quot;&gt;try this out in Astra for yourself&lt;/a&gt;. You can get &lt;a href=&quot;https://www.datastax.com/dev/documents-api&quot;&gt;hands on with it right away&lt;/a&gt; or check out our &lt;a href=&quot;https://astra.datastax.com/sample-app-gallery&quot;&gt;sample app gallery&lt;/a&gt; to see schemaless Cassandra in action.&lt;/p&gt;
-
-&lt;p&gt;We are stoked to have engineers from Netflix, Burberry, Macquarie Bank, USAA, and Yelp creating Stargate with us. They are already hard at work battletesting the APIs and collaborating on new features.&lt;/p&gt;
-
-&lt;p&gt;Ok, onto the code!&lt;/p&gt;
-
-&lt;h2 id=&quot;posts-in-tiktok&quot;&gt;Posts in TikTok&lt;/h2&gt;
-
-&lt;p&gt;We are going to walk through using Stargate’s APIs in Astra for creating and updating posts within a TikTok clone. We’re walking through examples that are ready to be pasted into your latest Jamstack app.&lt;/p&gt;
-
-&lt;p&gt;To use Stargate in Astra in your app, first install and set up our &lt;a href=&quot;https://www.npmjs.com/package/@astrajs/collections&quot;&gt;JavaScript SDK&lt;/a&gt;. You can learn about storing environment &lt;a href=&quot;https://www.youtube.com/watch?v=vSmzEGZQI5A&quot;&gt;variables in your .env file here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let’s start with a basic TikTok post: a video with a caption, like:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;postId&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;video&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://i.imgur.com/FTBP02Y.mp4&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;These ducks are cute&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2020-12-09T09:08:31.020Z&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;likes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;After connecting to Stargate in Astra with a nodejs client, let’s create a new collection in our app and add the post with:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;astraClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;tikTokClone&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you’ve ever used Cassandra before, you know this is amazing. Look at what we didn’t do: no data modeling, no table creation, no configuration code, no partition keys, no clustering columns. I think you get my drift.&lt;/p&gt;
-
-&lt;p&gt;Stargate in Astra allows you to add data to Apache Cassandra in one line of code.&lt;/p&gt;
-
-&lt;p&gt;This level of ease of use hasn’t previously been possible with Cassandra. Insert JSON and move on.&lt;/p&gt;
-
-&lt;p&gt;Next up, let’s say you want to find all posts about ducks. You can do that via:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// find all posts about ducks&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;posts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;$in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;ducks&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And boom. Now you have your ducks channel all set up for your users. Because who doesn’t want a stream fully dedicated to ducks?&lt;/p&gt;
-
-&lt;p&gt;Now, your app isn’t going to &lt;a href=&quot;https://www.newsweek.com/twitter-fleets-reactions-memes-edit-button-1548037&quot;&gt;be like Twitter&lt;/a&gt;. We can edit stuff here. Let’s show how to edit your post’s caption. Stories tho? That’s on you&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// update the post’s caption&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postsCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;These ducks are MEGA cute&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The above was just a quick tour on how to do a few data API calls for a basic TikTok clone. Want to see the full thing? Check out &lt;a href=&quot;https://www.youtube.com/watch?v=IATOicvih5A&quot;&gt;Ania Kubow&lt;/a&gt;’s tutorial to see how to wire this up into a full React app with Netlify.&lt;/p&gt;
-
-&lt;h2 id=&quot;whats-next&quot;&gt;What’s next?&lt;/h2&gt;
-
-&lt;p&gt;For more examples, we have hands-on tutorials for using &lt;a href=&quot;https://www.datastax.com/dev/rest&quot;&gt;Stargate’s REST&lt;/a&gt;, &lt;a href=&quot;https://www.datastax.com/dev/documents-api&quot;&gt;Document&lt;/a&gt; and &lt;a href=&quot;https://www.datastax.com/dev/graphql&quot;&gt;GraphQL APIs&lt;/a&gt;. Check ‘em out and let us know what you think.&lt;/p&gt;
-
-&lt;p&gt;Have an app idea or want to join the fun? &lt;a href=&quot;https://discord.gg/2Xt8QNyFZA&quot;&gt;You can join the Stargate community, too&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;We would love to see how you customize your TikTok clone to show off more ways to feature data in your app. Or, you can create your own non-TikTok example. We would love to showcase your example in our &lt;a href=&quot;https://astra.datastax.com/sample-app-gallery&quot;&gt;sample app gallery&lt;/a&gt;, so tell us about it in &lt;a href=&quot;https://discord.gg/33mKDHHFUE&quot;&gt;our contribute channel&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;so-you-are-down-here-looking-for-a-few-more-details&quot;&gt;So, you are down here looking for a few more details&lt;/h2&gt;
-&lt;p&gt;If you came down here, maybe you are looking for a few more lines of code.&lt;/p&gt;
-
-&lt;p&gt;No problem.&lt;/p&gt;
-
-&lt;p&gt;Let’s show how to set up the node JS client and a few more data API calls. For starters, let’s take a look at how to set up your client to connect to Stargate in Astra.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// npm install @astrajs/collections&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@astrajs/collections&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// create an Astra client&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;astraClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;   &lt;span class=&quot;na&quot;&gt;astraDatabaseId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;astraDatabaseRegion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_REGION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_USERNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ASTRA_DB_PASSWORD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Easy enough.&lt;/p&gt;
-
-&lt;p&gt;Then, let’s create a users collection in our database to store documents about our TikTok users:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create the users collection in the app&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;astraClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;tikTokClone&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;A TikTok user in our app will have the basics: a unique id, a name, username, etc.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;id_3&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Mo Farooq&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mofarooq32&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://i.imgur.com/9KYq7VG.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;So, let’s add our user into our collection:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create a new user&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;You can check to make sure your user was stored in the database by reading the user back by any of their properties, like their username.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// find our user by username&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;$eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mofarooq32&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or, you can lookup a user by their &lt;strong&gt;documentId&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// get the user by document id&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And, lastly, if you need to delete that user:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// delete the user&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;usersCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Want to see the full code? Check out &lt;a href=&quot;https://github.com/kubowania/stargate-tik-tok&quot;&gt;Ania Kubow’s app&lt;/a&gt; to get all the goodness and start customizing it on your own. Let me know when you have stories up and I can subscribe to your ducks channel.&lt;/p&gt;
-
-&lt;p&gt;Thank you for following along all the way down here.&lt;/p&gt;
-
-&lt;p&gt;Happy building!&lt;/p&gt;</content><author><name></name></author><summary type="html">It is a really great time to be a developer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;Get started today! &lt;a href=&quot;https://downloads.datastax.com/#stargate&quot;&gt;Download Stargate&lt;/a&gt; and &lt;a href=&quot;https://www.datastax.com/resources/webinar/create-new-apps-faster-worlds-most-proven-nosql-database-nam&quot;&gt;sign up for our upcoming webinar&lt;/a&gt;!&lt;/p&gt;</content><author><name></name></author><summary type="html">It’s a monumental day for DataStax Enterprise (DSE) users: Stargate support for DSE is here! This means that you can now use REST, GraphQL, and schemaless Document APIs in addition to CQL when building your applications on top of DSE. These APIs are available for use with DSE 6.8.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
