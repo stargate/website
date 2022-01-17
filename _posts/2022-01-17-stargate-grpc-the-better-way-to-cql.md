@@ -4,15 +4,15 @@ title: "Stargate gRPC: The Better Way to CQL"
 date:   2022-01-15 00:00:00 -0600
 synopsis: "Read why the new gRPC API for Stargate is a revolutionary solution for a common developer problem with cloud-native drivers."
 author_info:
-name:
-first: "Mark"
-last: "Stone"
-picture: "assets/images/stargate-profile.png"
+  name:
+    first: "Mark"
+    last: "Stone"
+  picture: "assets/images/stargate-profile.png"
 ---
 
 # **Stargate gRPC: The Better Way to CQL**
 
-![](/assets/images/data-cloud.jpg)
+![](/assets/images/data-cloud.jpeg)
 
 _Stargate’s new gRPC API is so much more than just a feature release — it’s your official welcome to the “no drivers” future of Apache Cassandra._
 
