@@ -40,6 +40,7 @@ function onYouTubeIframeAPIReady() {
 
 $(document).ready(function () {
   var stats = document.getElementById('github-stats');
+  var releases = document.getElementById('github-releases');
 
   if (stats) {
     var repository = stats.dataset.repository;
@@ -53,6 +54,22 @@ $(document).ready(function () {
           document.getElementById('git-watchers').innerHTML = nFormatter(repo.subscribers_count || 0);
           document.getElementById('git-stars').innerHTML = nFormatter(repo.stargazers_count || 0);
           document.getElementById('git-forks').innerHTML = nFormatter(repo.forks_count || 0);
+        });
+    }
+  }
+
+  if (releases) {
+    var repository = releases.dataset.repository;
+
+    if (repository) {
+      $.ajax({
+        url: 'https://api.github.com/repos/' + repository + '/releases'
+      })
+        .done(function (releasesArray) {
+          const release = releasesArray[0];
+          const name = release.name.replace(/((R|r)elease( v)?)/, '');
+          releases.classList.remove('hidden');
+          releases.innerHTML = `Latest Stargate Release: <span>${name}</span> [<a href="${release.html_url}">Release Notes</a>]`;
         });
     }
   }

@@ -1,0 +1,49 @@
+<div class="newsletter-card">
+  <div class="heading-content">
+    <h2>Get the latest Stargate news and updates</h2>
+    <img
+      src="{{ '/assets/images/helmet.png' | relative_url }}"
+      alt="Helmet"
+      width="164"
+      height="auto"
+      loading="lazy"
+    />
+  </div>
+  <div class="content-form">
+    <form newsletter-form style="display: none;">
+      <div class="form-group">
+        <label for="firstName">First Name<sup>*</sup></label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name<sup>*</sup></label>
+        <input type="text" class="form-control" id="lastName" name="lastName" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email address<sup>*</sup></label>
+        <input type="email" class="form-control" id="email" name="email" />
+      </div>
+      <div class="form-group">
+        <label for="role">Role<sup>*</sup></label>
+        <select class="form-control" id="role" name="role">
+          <option value="">Select...</option>
+          <option value="Administrator">Administrator</option>
+          <option value="Editor">Editor</option>
+          <option value="Contributor">Contributor</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+
+    <p class="newsletter-form-message" style="display: none"></p>
+
+    <form id="mktoForm_4188" style="display: none"></form>
+  </div>
+</div>
+
+<script src="//app-ab17.marketo.com/js/forms2/js/forms2.min.js"></script>

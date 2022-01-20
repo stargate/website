@@ -1,11 +1,15 @@
 .hero-page {
   background-color: #222b49;
-  background-image: url($baseurl + "/assets/images/hero-background-2.png");
+  background-image: url($baseurl + "/assets/images/hero-bg.png");
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 120px;
   padding-bottom: 80px;
+
+  @include media-breakpoint-down(md) {
+    background-image: url($baseurl + "/assets/images/mobile-hero-bg.png");
+  }
 }
 
 .hero-page__title {
