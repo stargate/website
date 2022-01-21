@@ -39,15 +39,11 @@ function loadNewsletterForm() {
       var email = document.querySelector(
         "form[newsletter-form] input#email"
       ).value;
-      var role = document.querySelector(
-        "form[newsletter-form] select#role"
-      ).value;
 
       form.setValues({
         FirstName: firstName,
         LastName: lastName,
         Email: email,
-        Stargate_Role__c: role,
       });
 
       var validation = form.validate();
