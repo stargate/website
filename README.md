@@ -7,5 +7,3 @@
 				- `npm install` -> to install package.json dependencies 
 				- `bundle install` -> to install gemfile dependencies
 3. Run the project with `npm start`. This will run the jekyll serve script and will open the development URL.
-
-
