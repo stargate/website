@@ -63,10 +63,9 @@ $(document).ready(function () {
 
     if (repository) {
       $.ajax({
-        url: 'https://api.github.com/repos/' + repository + '/releases'
+        url: 'https://api.github.com/repos/' + repository + '/releases/latest'
       })
-        .done(function (releasesArray) {
-          const release = releasesArray[0];
+        .done(function (release) {
           const name = release.name.replace(/((R|r)elease( v)?)/, '');
           releases.classList.remove('hidden');
           releases.innerHTML = `Latest Stargate Release: <span>${name}</span> [<a href="${release.html_url}">Release Notes</a>]`;
