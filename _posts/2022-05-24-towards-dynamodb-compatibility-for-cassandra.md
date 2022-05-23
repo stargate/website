@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)"
-date:   2022-04-23 00:00:00 -0600
+date:   2022-05-23 00:00:00 -0600
 synopsis: "A team of students from Carnegie Mellon University (CMU) share their work on a DynamoDB-compatible API for Stargate."
 author_info:
   name:
