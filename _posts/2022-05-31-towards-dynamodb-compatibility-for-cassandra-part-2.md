@@ -11,7 +11,7 @@ author_info:
 ---
 
 
-In my [previous blog post](/2022/05/22/towards-dynamodb-compatibility-for-cassandra.html), I introduced the Dynamo API Service, which is our project to make Apache Cassandra<sup>Ⓡ</sup> compatible with Amazon DynamoDB by building a middleware. In this blog post, I will share a few interesting challenges we encountered and how we tackled them.
+In my [previous blog post](/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html), I introduced the Dynamo API Service, which is our project to make Apache Cassandra<sup>Ⓡ</sup> compatible with Amazon DynamoDB by building a middleware. In this blog post, I will share a few interesting challenges we encountered and how we tackled them.
 
 ## How to authenticate?
 
