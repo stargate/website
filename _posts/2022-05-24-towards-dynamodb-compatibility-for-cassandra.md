@@ -10,7 +10,7 @@ author_info:
   picture: "assets/images/stargate-profile.png"
 ---
 
-To fulfill my capstone project requirement for the Carnegie Mellon University (CMU) [Master of Computational Data Science](https://mcds.cs.cmu.edu/) (MCDS) program, I and two of my classmates, Ziyan Zhang and Xiang Yue, collaborated with [DataStax](https://datastax.com/) to develop a new module in the [Stargate](http://stargate.io/) system to bring Amazon [DynamoDB](https://aws.amazon.com/dynamodb/) compatibility to [Apache Cassandra](https://cassandra.apache.org/_/index.html).<sup>Ⓡ</sup> I will introduce our journey in two blog posts. Here in Part 1, I will provide some background on the project and describe the overall design of our system. In Part 2, I will discuss some interesting challenges we encountered and how we solved them.
+To fulfill my capstone project requirement for the Carnegie Mellon University (CMU) [Master of Computational Data Science](https://mcds.cs.cmu.edu/) (MCDS) program, I and two of my classmates, Ziyan Zhang and Xiang Yue, collaborated with [DataStax](https://datastax.com/) to develop a new module in the [Stargate](http://stargate.io/) system to bring Amazon [DynamoDB](https://aws.amazon.com/dynamodb/) compatibility to [Apache Cassandra](https://cassandra.apache.org/_/index.html).<sup>Ⓡ</sup> I will introduce our journey in two blog posts. Here in Part 1, I will provide some background on the project and describe the overall design of our system. In [Part 2](/2022/05/30/towards-dynamodb-compatibility-for-cassandra-part-2.html), I will discuss some interesting challenges we encountered and how we solved them.
 
 ![DynamoDB Compatibility for Cassandra](/assets/images/towards-dynamodb-compatibility-for-cassandra/stargate-dynamodb-compatibility.png)
 
