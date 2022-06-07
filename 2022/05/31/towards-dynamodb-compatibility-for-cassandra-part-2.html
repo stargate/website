@@ -238,7 +238,7 @@
 
 <h2 id="parser-is-all-you-need">Parser is all you need</h2>
 
-<p>If you are building a database, then you almost certainly need to write parsers to parse the queries. DynamoDB, at the first glance, seemed to be an exception because it uses JSON as a request payload — there are so many JSON libraries that can help us with the parsing (deserialization). This seems to suggest we don’t need to worry about writing parsers. Unfortunately, this is not actually the case. DynamoDB queries have fields like <code>[FilterExpression](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html#DDB-Query-request-FilterExpression)</code> that allow users to define certain conditions in plain text format. For example, in a query, you can have a filter expression like the following:</p>
+<p>If you are building a database, then you almost certainly need to write parsers to parse the queries. DynamoDB, at the first glance, seemed to be an exception because it uses JSON as a request payload — there are so many JSON libraries that can help us with the parsing (deserialization). This seems to suggest we don’t need to worry about writing parsers. Unfortunately, this is not actually the case. DynamoDB queries have fields like <a href="https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html#DDB-Query-request-FilterExpression"><code>FilterExpression</code></a> that allow users to define certain conditions in plain text format. For example, in a query, you can have a filter expression like the following:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(Debt = :debt OR Deposit &lt;&gt; :deposit) AND Sex = :s
 </code></pre></div></div>
