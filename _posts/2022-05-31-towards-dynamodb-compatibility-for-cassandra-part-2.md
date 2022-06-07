@@ -57,7 +57,7 @@ In all, what we do is quite simple: whenever the user writes a collection data e
 
 ## Parser is all you need
 
-If you are building a database, then you almost certainly need to write parsers to parse the queries. DynamoDB, at the first glance, seemed to be an exception because it uses JSON as a request payload — there are so many JSON libraries that can help us with the parsing (deserialization). This seems to suggest we don’t need to worry about writing parsers. Unfortunately, this is not actually the case. DynamoDB queries have fields like <code>[FilterExpression](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html#DDB-Query-request-FilterExpression)</code> that allow users to define certain conditions in plain text format. For example, in a query, you can have a filter expression like the following:
+If you are building a database, then you almost certainly need to write parsers to parse the queries. DynamoDB, at the first glance, seemed to be an exception because it uses JSON as a request payload — there are so many JSON libraries that can help us with the parsing (deserialization). This seems to suggest we don’t need to worry about writing parsers. Unfortunately, this is not actually the case. DynamoDB queries have fields like [<code>FilterExpression</code>](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html#DDB-Query-request-FilterExpression) that allow users to define certain conditions in plain text format. For example, in a query, you can have a filter expression like the following:
 
 ```
 (Debt = :debt OR Deposit <> :deposit) AND Sex = :s
