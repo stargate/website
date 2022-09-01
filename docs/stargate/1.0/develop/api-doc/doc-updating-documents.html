@@ -272,6 +272,12 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../tooling.html">Tooling Resources</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -327,10 +333,13 @@
     </button>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../_attachments/docv2.html">Stargate Document API v2</a>
+    <a class="nav-link" href="../_attachments/docv2.html">Stargate Document API v2</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../_attachments/restv2.html">Stargate REST API v2</a>
+    <a class="nav-link" href="../_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv1.html">Stargate REST API v1</a>
   </li>
 </ul>
   </li>
@@ -400,7 +409,7 @@
 <div class="tab-pane" aria-labelledby="tabset1_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library/{docid}' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -440,7 +449,7 @@
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
--X GET 'https://localhost:8082/v2/namespaces/test/collections/library/{docid}' \
+-X GET 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
 </div>
@@ -487,7 +496,7 @@ the values will be overwritten.</p>
 <div class="tab-pane" aria-labelledby="tabset3_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/{docid}' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -526,7 +535,7 @@ the values will be overwritten.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
--X GET 'https://localhost:8082/v2/namespaces/test/collections/library/{docid}' \
+-X GET 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
 </div>
@@ -583,7 +592,7 @@ If it does exist, it will be updated with the new document data.</p>
 <div class="tab-pane" aria-labelledby="tabset5_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/{docid}' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -627,7 +636,7 @@ If it does exist, it will be updated with the new document data.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
--X GET 'https://localhost:8082/v2/namespaces/test/collections/library/{docid}' \
+-X GET 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
 </div>
@@ -682,7 +691,7 @@ This example will change the book title from <code>Native Son</code> to <code>Na
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X 'PUT' \
-  'http://https://localhost:8082/v2/namespaces/test/collections/library/{bookdocid}/book' \
+  'http://https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book' \
   -H "X-Cassandra-Token: $AUTH_TOKEN" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -728,7 +737,7 @@ This example overwrites a book&#8217;s information:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X 'PATCH' \
-  'http://https://localhost:8082/v2/namespaces/test/collections/library/{bookdocid}/book' \
+  'http://https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book' \
   -H 'accept: application/json' \
   -H "X-Cassandra-Token: $AUTH_TOKEN" \
   -H 'Content-Type: application/json' \
@@ -845,7 +854,7 @@ This example overwrites a book&#8217;s information:</p>
 <div class="tab-pane" aria-labelledby="tabset10_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/{bookdocid}/book/genre' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
@@ -890,7 +899,7 @@ document-path. Notice that structure of the data passed:</p>
 <div class="tab-pane" aria-labelledby="tabset11_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/{bookdocid}/book/genre/function' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -945,7 +954,7 @@ document-path. Notice that structure of the data passed:</p>
 <div class="tab-pane" aria-labelledby="tabset12_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/{bookdocid}/book/genre/function' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -984,7 +993,7 @@ document-path. Notice that structure of the data passed:</p>
 <div class="tab-pane" aria-labelledby="tabset13_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/{bookdocid}/book/genre' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
