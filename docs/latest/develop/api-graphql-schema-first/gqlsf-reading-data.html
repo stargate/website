@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>Untitled :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/develop/api-graphql-schema-first/gqlsf-reading-data.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +133,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../manage/manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -155,16 +372,665 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-develop/modules/develop/pages/api-graphql-schema-first/gqlsf-reading-data.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<div class="sect2">
+<h3 id="retrieve-data"><a class="anchor" href="#retrieve-data"></a><a class="link" href="#retrieve-data">Retrieve data</a></h3>
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>Let&#8217;s check that the data was inserted.
+Use the query <code>book</code> with the primary key to find a book based on its title.
+Use <a href="http://localhost:8080/graphql/library">http://localhost:8080/graphql/library</a>
+to execute the query in GraphQL playground:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query fetchBook {
+  book(title: "Native Son") {
+    title
+    author
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "book": [
+      {
+        "title": "Native Son",
+        "author": "Richard Wright"
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>It is also possible to find books with a partial primary key. If more than one book
+has the same title (partition key), for instance, but different isbn codes (clustering key),
+then a listing of all books that match can be retrieved:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query fetchSameBook {
+  bookByTitle(title: "Groundswell") {
+    title
+    isbn
+    author
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "bookByTitle": [
+      {
+        "title": "Groundswell",
+        "isbn": "978-1422125007",
+        "author": [
+          "Charlene Li"
+        ]
+      },
+      {
+        "title": "Groundswell",
+        "isbn": "978-1439183595",
+        "author": [
+          "Katie Lee"
+        ]
+      }
+    ]
+  }
+}}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In both queries, the <code>title</code>, <code>isbn</code>, and <code>author</code> are specified as return results.</p>
+</div>
+<div class="paragraph">
+<p>To display the contents of a UDT, notice the inclusion of <code>addresses</code> and its
+embedded fields in the values designated as return values in this query to retrieve the readers:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">query fetchJane {
+  readerByNameAndUserid(
+      name: "Jane Doe",
+      user_id: "f02e2894-db48-4347-8360-34f28f958590"
+    ) {
+    name
+    user_id
+    birthdate
+    email
+    address {
+      street
+      city
+      state
+      zipCode
+    }
+    reviews {
+      bookTitle
+      comment
+      rating
+      reviewDate
+    }
+  }
+}
+query fetchHerman {
+  readerByNameAndUserid(
+    name: "Herman Melville"
+    user_id: "e0ec47e1-2b46-41ad-961c-70e6de629810"
+  ) {
+    name
+    user_id
+    birthdate
+    email
+    address {
+      street
+      city
+      state
+      zipCode
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "reader": [
+      {
+        "name": "Jane Doe",
+        "user_id": "f02e2894-db48-4347-8360-34f28f958590",
+        "birthdate": null,
+        "email": [],
+        "address": [],
+        "reviews": [
+          {
+            "bookTitle": "Moby Dick",
+            "comment": "It's about a whale.",
+            "rating": 3,
+            "reviewDate": "2021-04-01"
+          },
+          {
+            "bookTitle": "Native Son",
+            "comment": "An awesome work of art.",
+            "rating": 5,
+            "reviewDate": "2021-01-01"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+{
+  "data": {
+    "reader": [
+      {
+        "name": "Herman Melville",
+        "user_id": "e0ec47e1-2b46-41ad-961c-70e6de629810",
+        "birthdate": "1900-01-01",
+        "email": [
+          "herman.melville@gmail.com",
+          "hermy@mobydick.org"
+        ],
+        "address": [
+          {
+            "street": "100 Main St",
+            "city": "Boston",
+            "state": "MA",
+            "zipCode": "50050"
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the primary key consists of both <code>name</code> and <code>user_id</code>, to distinguish
+readers who might have the same name.</p>
+</div>
+<div class="paragraph">
+<p>Stargate only allows combinations of fields that have:
+* at most one indexed field in the query
+* if no indexed field is present, then all partition key fields must be present
+** it&#8217;s possible to omit some or all of the clustering fields (in which case
+  the query may return multiple rows</p>
+</div>
+<div class="sect3">
+<h4 id="filter-options-for-reads"><a class="anchor" href="#filter-options-for-reads"></a><a class="link" href="#filter-options-for-reads"><strong>Filter options for reads</strong></a></h4>
+<div class="paragraph">
+<p>It&#8217;s possible to customize the CQL condition of each parameter with <code>@cql_where</code>
+with the following arguments:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>field: the GraphQL field name to which the condition applies</p>
+</li>
+<li>
+<p>predicate: the conditional predicate to use</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The filters available are:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Predicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GraphQL fields that can have condition applied</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EQ (equal)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">partition key, clustering key, regular indexed field</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IN (within)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">partition key, clustering key, regular indexed field</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GT (greater than)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GTE (greater than or equal to)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LT (less than)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LTE (less than or equal to)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CONTAINS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">regular indexed field that is a list and has an index target of VALUES</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>IN example, that finds the books that are listed in the supplied array:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">type Query {
+  booksIn( 
+    title: [String!] @cql_where(field: "title", predicate: IN)
+  ): [Book]
+}
+
+query fetchBooksIn {
+  booksIn(title:["Native Son", "Moby Dick"]) {
+      title 
+      author
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "booksIn": [
+      {
+        "title": "Moby Dick",
+        "author": "Herman Melville"
+      },
+      {
+        "title": "Native Son",
+        "author": "Richard Wright"
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>IN example with 2 partition keys, demonstrating that values for each
+can be supplied:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">type Query {
+  libcoll(type: String!, lib_id: Int!): [LibCollection]
+  libCollIn( 
+    type: [String!] @cql_where(field: "type", predicate: IN)
+    lib_id: [Int!] @cql_where(field: "lib_id", predicate: IN)
+  ): [LibCollection]
+}
+
+query fetchLibCollIn {
+  libCollIn(type:[ "photo", "book" ], lib_id: [ 12345, 12543 ]) {
+      type 
+      lib_id
+      lib_name
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "libCollIn": [
+      {
+        "type": "book",
+        "lib_id": 12345,
+        "lib_name": "CSRM"
+      },
+      {
+        "type": "photo",
+        "lib_id": 12345,
+        "lib_name": "CSRM"
+      },
+      {
+        "type": "photo",
+        "lib_id": 12543,
+        "lib_name": "West Sacramento Historical Society"
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>GT example, that looks for equality on the partition key, and then a range of
+possible values for the clustering field:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">type Query {
+  readerGT( 
+    name: [String!] 
+    user_id: [Uuid!]
+    @cql_where(field: "user_id", predicate: GT)
+  ): [Reader]
+}
+
+query fetchReadersGT {
+  readerGT( name:"Herman Melville",  user_id: "e0ec47e1-2b46-41ad-961c-70e6de629800" ) {
+    name
+    user_id
+    birthdate
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "readerGT": [
+      {
+        "name": "Herman Melville",
+        "user_id": "e0ec47e1-2b46-41ad-961c-70e6de629810",
+        "birthdate": "1900-01-01"
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>GT example #2, that looks for a book with a title and an isbn code that is
+greater than the value supplied:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset7_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">type Query {
+bookGT(
+  title: String
+  isbn: String @cql_where(field: "isbn", predicate: GT)
+): [Book]
+}
+
+# retrieves only one book, by Katie Lee
+query fetchIsbnGT {
+  bookGT(title: "Groundswell", isbn: "978-1422125007") {
+    title
+    isbn
+    author
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "bookGT": [
+      {
+        "title": "Groundswell",
+        "isbn": "978-1439183595",
+        "author": [
+          "Katie Lee"
+        ]
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>LT example, that looks for a book with the same title and an isbn code that is
+less than the value supplied:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset8_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">type Query {
+bookLT(
+  title: String
+  isbn: String @cql_where(field: "isbn", predicate: LT)
+): [Book]
+}
+
+# retrieves only one book, by Charlene Li
+query fetchIsbnLT {
+  bookLT(title: "Groundswell", isbn: "978-1422125008") {
+    title
+    isbn
+    author
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "bookLT": [
+      {
+        "title": "Groundswell",
+        "isbn": "978-1422125007",
+        "author": [
+          "Charlene Li"
+        ]
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>CONTAINS example that shows how to retrieve a reader that submitted a
+supplied review:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset9_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">type Query {
+  readerCONTAINS(
+    reviews: ReviewInput! @cql_where(field: "reviews", predicate: CONTAINS)
+  ): [Reader]
+}
+
+query fetchReadersCONTAINS {
+  readerCONTAINS( reviews: {
+          bookTitle: "Moby Dick"
+          comment: "It's about a whale."
+          rating: 3
+          reviewDate: "2021-04-01"
+        } ) {
+    name
+    user_id
+    birthdate
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset9_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "readerCONTAINS": [
+      {
+        "name": "Jane Doe",
+        "user_id": "f02e2894-db48-4347-8360-34f28f958590",
+        "birthdate": null
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -233,8 +1099,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../../assets'</script>
+<script src="../../../assets/js/site.js"></script>
+<script async src="../../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>

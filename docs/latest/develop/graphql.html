@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>GraphQL API :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/develop/graphql.html">
+    <link rel="prev" href="dev-with-doc.html">
+    <link rel="next" href="dev-with-graphql-cql-first.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../assets/css/site.css">
+    <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +135,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler is-current-page" data-depth="2">
+    <a class="nav-link" href="graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api-grpc/gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api-grpc/gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api-grpc/gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api-grpc/gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../manage/manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../manage/metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../manage/start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -154,18 +373,378 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Stargate Documentation</a></li>
+    <li><a href="developing.html">Developing with Stargate APIs</a></li>
+    <li><a href="graphql.html">Develop with GraphQL</a></li>
+  </ul>
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-develop/modules/develop/pages/graphql.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">GraphQL API</h1>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>The Stargate GraphQL API is implemented to easily modify and query your table data
+using GraphQL types, mutations, and queries with any Cassandra deployment.</p>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>The Stargate GraphQL API has two modes, one developed from native GraphQL schema principles,
+and one developed with the Cassandra Query Language (CQL) in mind.
+To distinguish these two modes, the rest of the documentation will refer to the
+modes as <code>schema-first</code> and <code>cql-first</code>.</p>
 </div>
+<div class="paragraph">
+<p>The CQL-first approach directly translates CQL tables into GraphQL types, mutations, and queries.
+The GraphQL schema is automatically generated from the keyspace, tables, and columns
+defined, but no customization is allowed.
+A standard set of mutations and queries are produced for searching and modifying the table data.
+If you are familiar with Cassandra, you might prefer this approach.</p>
+</div>
+<div class="paragraph">
+<p>The schema-first approach allows you to create idiomatic GraphQL types, mutations, and queries
+in a manner familiar to GraphQL developers.
+The schema is deployed and can be updated by deploying a new schema without
+recreating the tables and columns directly.
+Under the covers, this approach will create and modify the CQL tables to match
+the GraphQL types.
+The schema can be modified for CQL decorated schema, such as specifying table
+and column names in Cassandra,
+while retaining GraphQL-centric names for the types that correspond.
+If you are a GraphQL developer, this approach is for you.</p>
+</div>
+<div class="paragraph">
+<p>To compare the two approaches, let&#8217;s look at an example that creates
+a container (table or type) to hold information about  a <code>reader</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre> cql-first</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre> reader: createTable(
+  keyspaceName:"library",
+  tableName:"reader",
+  partitionKeys: [ { name: "name", type: {basic: TEXT} } ]
+  # Secondary key used to access values within the partition
+  clusteringKeys: [ { name: "user_id", type: {basic: UUID}, order: "ASC" } ]
+  values: [
+    { name: "birthdate", type: {basic: DATE} }
+    { name: "email", type: {basic: SET, info:{ subTypes: [ { basic: TEXT } ] } } }
+    { name: "reviews", type: {basic: TUPLE,
+      info: { subTypes: [ { basic: TEXT }, { basic: INT }, { basic: DATE } ] } } }
+    { name: "addresses", type: { basic: LIST,
+      info: { subTypes: [ { basic: UDT, info: { name: "address_type", frozen: true } } ] } } }
+    ]
+  )
+}</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre> schema-first</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre> type Reader @key @cql_entity(name: "reader") @cql_input {
+  name: String! @cql_column(partitionKey: true)
+  user_id: Uuid! @cql_column(clusteringOrder: ASC)
+  birthdate: Date @cql_index(name: "date_idx")
+  email: [String] @cql_column(typeHint: "set&lt;varchar&gt;")
+  reviews: [Review] @cql_index(name: "review_idx", target: VALUES)
+  address: [Address]
+}</pre></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The two approaches are similar, in that both must name the columns (cql-first) or
+fields (schema-first). The data type must be specified for each column or field.
+Although the syntax of the data type is different, by comparing, you can see
+that they are similar. Each approach can define the primary key composed of one or
+more partition keys and zero or more clustering keys.
+The column <code>reviews</code> in the cql-first example is defined as a tuple, but since
+the schema-first approach doesn&#8217;t support tuples, a user-defined type <code>Review</code>
+is used instead.
+The UDTs are not included here for brevity, but are explained later.</p>
+</div>
+<div class="paragraph">
+<p>The main difference in the two approaches shown here are the CQL directives included
+in the schema-first type. To extend the power of Cassandra, these directives
+allow a user to fine-tune, if you choose, how the type is defined in the underlying
+database.</p>
+</div>
+<div class="paragraph">
+<p>The other difference, not illustrated here, is that, in the cql-first approach,
+mutations and queries are automatically generated, but no customization is possible.
+In the schema-first approach, the developer is responsible for declaring the mutations
+and queries, and so has the freedom to do whatever is needed for an application.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For more information about the GraphQL API, see
+<a href="https://stargate.io/2020/10/05/hello-graphql.html">the blog post on the GraphQL API</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can start with a <a href="../quickstart/qs-graphql-cql-first.html" class="xref page">GraphQL CQL-first QuickStart</a> or
+follow the full instructions: <a href="dev-with-graphql-schema-first.html" class="xref page">(schema-first)</a> <a href="dev-with-graphql-cql-first.html" class="xref page">(cql-first)</a> .</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll show you you how to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a keyspace
+<a href="dev-with-graphql-schema-first.html#_create_a_keyspace.adoc" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_create_a_keyspace.adoc" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Delete a keyspace
+<a href="dev-with-graphql-schema-first.html#_delete_a_keyspace.adoc" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_delete_a_keyspace.adoc" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p><em>Optional</em> Create a user-defined type (UDT)
+<a href="dev-with-graphql-schema-first.html#_create_a_user_defined_type_udt" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_create_a_user_defined_type_udt" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p><em>Optional</em> Delete a UDT
+<a href="dev-with-graphql-cql-first.html#_delete_a_user_defined_type_UDT" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Create object types
+<a href="dev-with-graphql-schema-first.html#_create_object_types" class="xref page">(schema-first)</a></p>
+</li>
+<li>
+<p>Create table schema
+<a href="dev-with-graphql-cql-first.html#_create_a_table" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Delete table schema
+<a href="dev-with-graphql-cql-first.html#_delete_a_table" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p><em>Optional</em> Create indexes
+<a href="dev-with-graphql-schema-first.html#_create_indexes" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_create_indexes" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Deploy schema
+<a href="dev-with-graphql-schema-first.html#_deploy_schema" class="xref page">(schema-first)</a></p>
+</li>
+<li>
+<p>Undeploy schema
+<a href="dev-with-graphql-schema-first.html#_undeploy_schema" class="xref page">(schema-first)</a></p>
+</li>
+<li>
+<p>Add data
+<a href="dev-with-graphql-schema-first.html#_insert_data" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_write_data" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Get data
+<a href="dev-with-graphql-schema-first.html#_retrieve_data" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_read_data" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Update data
+<a href="dev-with-graphql-schema-first.html#_update_data" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_update_data" class="xref page">(cql-first)</a></p>
+</li>
+<li>
+<p>Delete data
+<a href="dev-with-graphql-schema-first.html#_delete_data" class="xref page">(schema-first)</a>
+<a href="dev-with-graphql-cql-first.html#_delete_data" class="xref page">(cql-first)</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-the-graphql-api-endpoints"><a class="anchor" href="#about-the-graphql-api-endpoints"></a><a class="link" href="#about-the-graphql-api-endpoints">About the GraphQL API endpoints</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are three Stargate GraphQL API endpoints, one for creating schema in cql-first,
+one for deploying schema in the graphql-first, and the third for querying or mutating a keyspace.
+The URLS are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Schema</dt>
+<dd>
+<p><code><a href="https://localhost:8080/graphql-schema" class="bare">https://localhost:8080/graphql-schema</a></code></p>
+</dd>
+<dt class="hdlist1">Admin</dt>
+<dd>
+<p><code><a href="https://localhost:8080/graphql-admin" class="bare">https://localhost:8080/graphql-admin</a></code></p>
+</dd>
+<dt class="hdlist1">Querying</dt>
+<dd>
+<p><code><a href="https://localhost:8080/graphql/{keyspace}" class="bare">https://localhost:8080/graphql/{keyspace}</a></code></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The schema endpoint is used to create or alter CQL schema in the cql-first GraphQL
+using direct schema manipulation.
+The admin endpoint is used to deploy GraphQL schema in the graphql-first GraphQL
+which will indirectly modify underlying CQL schema.
+The querying endpoint is constructed in the same manner for both graphql-first and cql-first.</p>
+</div>
+<div class="paragraph">
+<p>Each request must have a valid
+<a href="../secure/authnz.html#table-based-authenticationauthorization" class="xref page">application token</a>.
+Each request can also have an optional unique request id.
+The request id is recommended in a production environment and can be useful in troubleshooting issues.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Generating UUIDs</strong>
+Consider using a tool like this <a href="https://www.uuidgenerator.net/" target="_blank" rel="noopener">online UUID generator</a>
+to quickly create a random UUID to pass with your requests if you are submitting
+the queries manually using a tool like cURL.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="naming-conventions-for-graphql"><a class="anchor" href="#naming-conventions-for-graphql"></a><a class="link" href="#naming-conventions-for-graphql">Naming conventions for GraphQL</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The GraphQL API uses specific naming conventions to preserve capitalization and
+special characters. Note that if typical GraphQL naming conventions are used,
+such as <code>camelCase</code>, that the underlying Cassandra storage tables will use double
+quoting to preserve the capitalization. If a naming conflict occurs, an error
+results that the table already exists.</p>
+</div>
+<table class="tableblock frame-ends grid-all stretch">
+<caption class="title">Table 1. GraphQL naming convention</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">GraphQL table name</th>
+<th class="tableblock halign-left valign-top">CQL table name</th>
+<th class="tableblock halign-left valign-top">GraphQL mutation format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">insertfoo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Foo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Foo"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">insertFoo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foo_bar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foo_bar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">insertfoo_bar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FooBar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"FooBar"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">insertFooBar</p></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hellox21_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Hello!"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">insertHellox21_</p></td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-graphql-playground"><a class="anchor" href="#using-the-graphql-playground"></a><a class="link" href="#using-the-graphql-playground">Using the GraphQL Playground</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The easiest way to get started with GraphQL is to use the built-in GraphQL playground.
+In Stargate, go to your browser and launch the url:
+<code><a href="https://localhost:8080/playground" class="bare">https://localhost:8080/playground</a></code></p>
+</div>
+<div class="paragraph">
+<p>Add your
+<a href="../secure/authnz.html#table-based-authenticationauthorization" class="xref page">application token</a>
+to the HTTP HEADERS
+section at the lower lefthand corner of the GraphQL Playground window:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{"x-cassandra-token":"$AUTH_TOKEN"}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once in the playground, you can create new schema and interact with the
+GraphQL APIs. The server paths are structured to provide access to creating and
+querying schema, as well as querying and modifying Cassandra data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/graphql-schema</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>An API for exploring and creating schema, or Data Definition Language (DDL).
+For example, Stargate has queries to create, modify, or drop tables,
+such as <code>createTable</code>, or <code>dropTable</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>/graphql/&lt;keyspace&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>An API for querying and modifying your tables using GraphQL fields.
+Generally, you will start the playground with <code>/graphql-schema</code> to create some schema.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="dev-with-doc.html">Develop with Document</a></span>
+  <span class="next"><a href="dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -233,8 +812,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../assets'</script>
+<script src="../../assets/js/site.js"></script>
+<script async src="../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>

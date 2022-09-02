@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>Stargate gRPC API client creation :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/develop/api-grpc/gRPC-client-creation.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +133,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../manage/manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -154,17 +371,158 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Stargate Documentation</a></li>
+    <li><a href="gRPC-client-creation.html">Stargate gRPC API client creation</a></li>
+  </ul>
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-develop/modules/develop/pages/api-grpc/gRPC-client-creation.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">Stargate gRPC API client creation</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>Stargate has a gRPC server implemented as part of the gRPC API.
+You can create a gRPC client to use Stargate in any language that gRPC supports.
+This section provides information to developers that wish to create a client in
+a language not yet supported.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="client-creation"><a class="anchor" href="#client-creation"></a><a class="link" href="#client-creation">Client creation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This quote from <a href="https://grpc.io/docs/what-is-grpc/introduction/">gRPC.io</a>
+provides context to why you might wish to create a gRPC client:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>In gRPC, a client application can directly call a method on a server application
+on a different machine as if it were a local object, making it easier for you to
+create distributed applications and services.
+As in many RPC systems, gRPC is based around the idea of defining a service,
+specifying the methods that can be called remotely with their parameters and
+return types.
+On the server side, the server implements this interface and runs a gRPC server
+to handle client calls.
+On the client side, the client has a stub (referred to as just a client in some
+languages) that provides the same methods as the server.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>The Stargate gRPC API implements two query services, <code>standard</code> and <code>batch</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>standard</code> service executes a single Cassandra Query Language (CQL) query.
+The <code>batch</code> service executes a batch of CQL queries.</p>
+</div>
+<div class="sect2">
+<h3 id="proto-files"><a class="anchor" href="#proto-files"></a><a class="link" href="#proto-files">Proto files</a></h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/stargate/stargate/blob/master/grpc-proto/proto/stargate.proto"><code>stargate.proto</code></a>
+file provides these services that interact with a Stargate coordinator to execute
+CQL queries.
+The <a href="https://github.com/stargate/stargate/blob/master/grpc-proto/proto/query.proto"><code>query.proto</code></a>
+file identifies the relevant messages required to interact with CQL.
+These include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type values, including some special elements that need additional message definitions</p>
+</li>
+<li>
+<p>Values</p>
+</li>
+<li>
+<p>Query strings</p>
+</li>
+<li>
+<p>Query parameters</p>
+</li>
+<li>
+<p>Metadata about columns</p>
+</li>
+<li>
+<p>Tracing information</p>
+</li>
+<li>
+<p>Schema change information, including the object (keyspace, table, etc.) changed</p>
+</li>
+<li>
+<p>Query response</p>
+</li>
+<li>
+<p>ResultSet of values returned from a query</p>
+</li>
+<li>
+<p>Batch queries</p>
+</li>
+<li>
+<p>Batch parameters</p>
+</li>
+<li>
+<p>Errors</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When a language-specific proto file is generated from these two files, the services
+provided allow a gRPC client to interact with Apache Cassandra through Stargate.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generate-grpc-classes-for-a-language"><a class="anchor" href="#generate-grpc-classes-for-a-language"></a><a class="link" href="#generate-grpc-classes-for-a-language">Generate gRPC classes for a language</a></h3>
+<div class="paragraph">
+<p>This section is possibly the most “black-boxed” part of the whole process.
+Each language has special tools to automatically generate classes from the proto files.
+When the appropriate tools are run, new files will be generated.</p>
+</div>
+<div class="paragraph">
+<p>For example, in Python, the following commands are run to generate the required protobuf files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">$ pip install grpcio
+$ pip install grpcio-tools
+
+$ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. stargate.proto
+$ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. query.proto</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The generated files generated are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>query_pb2.py — contains message classes</p>
+</li>
+<li>
+<p>query_grpc_pb2.py — contains server and client classes</p>
+</li>
+<li>
+<p>stargate_pb2.py - contains message classes</p>
+</li>
+<li>
+<p>stargate_pb2_grpc.py — contains server and client classes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="client-code"><a class="anchor" href="#client-code"></a><a class="link" href="#client-code">Client code</a></h3>
+<div class="paragraph">
+<p>Examples of some <a href="../dev-with-grpc.html" class="xref page">gRPC clients</a> written for Stargate exist to provide samples of how
+a new client can be created.</p>
+</div>
+</div>
+</div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -233,8 +591,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../../assets'</script>
+<script src="../../../assets/js/site.js"></script>
+<script async src="../../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>

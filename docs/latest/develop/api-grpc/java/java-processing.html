@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>Untitled :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/develop/api-grpc/java/java-processing.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../../../assets/css/site.css">
+    <link rel="icon" href="../../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +133,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../../graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../../dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../../manage/manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../manage/metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../manage/start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../../../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -155,16 +372,37 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-develop/modules/develop/pages/api-grpc/java/java-processing.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<div class="sect1">
+<h2 id="java-grpc-processing-result-set"><a class="anchor" href="#java-grpc-processing-result-set"></a><a class="link" href="#java-grpc-processing-result-set">Java gRPC processing result set</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>After executing a query, a response returns rows that match the SELECT statement.
+If there are no rows, the returned payload is unset.
+The convenience function <code>getResultSet()</code> is provided to help transform this
+response into a result set that&#8217;s easier to work with.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">QueryOuterClass.ResultSet rs = queryString.getResultSet();
+
+for (Row row : rs.getRowsList()) {
+    System.out.println(""
+            + "FirstName=" + row.getValues(0).getString() + ", "
+            + "lastname=" + row.getValues(1).getString());
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>Since the result type is known, the <code>getString</code> function transforms the value into a native string.
+Additional functions also exist for other types such as <code>int</code>, <code>map</code>, and <code>blob</code>.
+The full list can be found in
+<a href="https://github.com/stargate/stargate/blob/master/grpc-proto/src/main/java/io/stargate/grpc/Values.java">Values.java</a>.</p>
+</div>
+</div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -233,8 +471,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../../../assets'</script>
+<script src="../../../../assets/js/site.js"></script>
+<script async src="../../../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>

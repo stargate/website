@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>Untitled :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/develop/api-graphql-cql-first/gql-adding-rows.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +133,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api-grpc/gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../manage/manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -155,16 +372,406 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-develop/modules/develop/pages/api-graphql-cql-first/gql-adding-rows.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<div class="sect2">
+<h3 id="insert-data"><a class="anchor" href="#insert-data"></a><a class="link" href="#insert-data">Insert data</a></h3>
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>Any of the created APIs can be used to interact with the GraphQL data, to write
+or read data.</p>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>First, let&#8217;s navigate to your new keyspace <code>library</code> inside the playground.
+Change the location to
+<a href="http://localhost:8080/graphql/library">http://localhost:8080/graphql/library</a>
+and add a couple of books to the <code>book</code> table:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># insert 2 books in one mutation
+mutation insert2Books {
+  moby: insertbook(value: {title:"Moby Dick", author:"Herman Melville"}) {
+    value {
+      title
+    }
+  }
+  catch22: insertbook(value: {title:"Catch-22", author:"Joseph Heller"}) {
+    value {
+      title
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "moby": {
+      "value": {
+        "title": "Moby Dick"
+      }
+    },
+    "catch22": {
+      "value": {
+        "title": "Catch-22"
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the keyword <code>value</code> is used twice in the mutation.
+The first use defines the value that the record is set to, for instance, the title
+to Moby Dick and the author to Herman Melville.
+The second use defines the values that will be displayed after the success
+of the mutation, so that proper insertion can be verified.
+This same method is valid for updates and read queries.</p>
+</div>
+<div class="sect3">
+<h4 id="insertion-options"><a class="anchor" href="#insertion-options"></a><a class="link" href="#insertion-options">Insertion options</a></h4>
+<div class="paragraph">
+<p>Three insertion options are configurable during data insertion or updating:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html">consistency level</a></p>
+</li>
+<li>
+<p><a href="https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigSerialConsistency.html">serial consistency level</a></p>
+</li>
+<li>
+<p><a href="https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/useExpire.html">time-to-live (TTL)</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example insertion that sets the consistency level and TTL:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># insert a book and set the option for consistency level
+mutation insertBookWithOption {
+  nativeson: insertbook(value: {title:"Native Son", author:"Richard Wright"}, options: {consistency: LOCAL_QUORUM, ttl:86400}) {
+    value {
+      title
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "moby": {
+      "value": {
+        "title": "Moby Dick"
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The serial consistency can also be set with <code>serialConsistency</code> in the options,
+if needed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="insert-collections-set-list-map"><a class="anchor" href="#insert-collections-set-list-map"></a><a class="link" href="#insert-collections-set-list-map">Insert collections (set, list, map)</a></h4>
+<div class="paragraph">
+<p>Inserting a collection is simple. An example of inserting a list:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># insert an article USING A LIST (authors)
+mutation insertArticle {
+  magarticle: insertarticle(value: {title:"How to use GraphQL", authors: ["First author", "Second author"], mtitle:"Database Magazine"}) {
+    value {
+      title
+      mtitle
+      authors
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "magarticle": {
+      "value": {
+        "title": "How to use GraphQL",
+        "mtitle": "Database Magazine",
+        "authors": [
+          "First author",
+          "Second author"
+        ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>A map is slightly more complex:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation insertOneBadge {
+  gold: insertBadges(value: { btype:"Gold", earned: "2020-11-20", category: ["Editor", "Writer"] } ) {
+    value {
+      btype
+      earned
+      category
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "gold": {
+      "value": {
+        "badge_type": "Gold",
+        "badge_id": 100,
+        "earned": [
+          {
+            "key": "Writer",
+            "value": "2020-11-20"
+          }
+        ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="insert-a-tuple"><a class="anchor" href="#insert-a-tuple"></a><a class="link" href="#insert-a-tuple">Insert a tuple</a></h4>
+<div class="paragraph">
+<p>Inserting a tuple involves inserting an object; note the use of <code>item0</code>, <code>item`1</code>,
+and so on, to insert the parts of the tuple</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># insert a reader record that uses a TUPLE
+mutation insertJaneWithTuple{
+   jane: insertreader(
+     value: {
+       user_id: "b5b5666b-2a37-4d0b-a5eb-053e54fc242b"
+       name: "Jane Doe"
+       birthdate: "2000-01-01"
+       email: ["janedoe@gmail.com", "janedoe@yahoo.com"]
+       reviews: { item0: "Moby Dick", item1: 5, item2: "2020-12-01" }
+     }
+   ) {
+     value {
+       user_id
+       name
+       birthdate
+       reviews {
+        item0
+        item1
+        item2
+      }
+     }
+   }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "jane": {
+      "value": {
+        "user_id": "b5b5666b-2a37-4d0b-a5eb-053e54fc242b",
+        "name": "Jane Doe",
+        "birthdate": "2000-01-01",
+        "reviews": {
+          "item0": "Moby Dick",
+          "item1": 5,
+          "item2": "2020-12-01"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="insert-a-user-defined-type-udt"><a class="anchor" href="#insert-a-user-defined-type-udt"></a><a class="link" href="#insert-a-user-defined-type-udt">Insert a user-defined type (UDT)</a></h4>
+<div class="paragraph">
+<p>Inserting a UDT requires taking careful note of the brackets used:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># insert a reader record that uses a UDT
+mutation insertReaderWithUDT{
+  ag: insertreader(
+    value: {
+      user_id: "e0ed81c3-0826-473e-be05-7de4b4592f64"
+      name: "Allen Ginsberg"
+      birthdate: "1926-06-03"
+      addresses: [{ street: "Haight St", city: "San Francisco", zip: "94016" }]
+    }
+  ) {
+    value {
+      user_id
+      name
+      birthdate
+      addresses {
+        street
+        city
+        zip
+      }
+    }
+  }
+ }</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "ag": {
+      "value": {
+        "user_id": "e0ed81c3-0826-473e-be05-7de4b4592f64",
+        "name": "Allen Ginsberg",
+        "birthdate": "1926-06-03",
+        "addresses": [
+          {
+            "street": "Haight St",
+            "city": "San Francisco",
+            "zip": "94016"
+          }
+        ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -233,8 +840,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../../assets'</script>
+<script src="../../../assets/js/site.js"></script>
+<script async src="../../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>

@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>Using metrics with Stargate :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/manage/metrics.html">
+    <link rel="prev" href="manage-overview.html">
+    <link rel="next" href="start-stargate.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../assets/css/site.css">
+    <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +135,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../develop/developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../develop/graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../develop/dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../develop/dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../develop/dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../develop/api-grpc/gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../develop/api-grpc/gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../develop/api-grpc/gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../develop/api-grpc/gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -154,18 +373,278 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Stargate Documentation</a></li>
+    <li><a href="manage-overview.html">Managing Stargate</a></li>
+    <li><a href="metrics.html">Using Prometheus and Grafana with Stargate</a></li>
+  </ul>
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-core/modules/manage/pages/metrics.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">Using metrics with Stargate</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>Stargate is a data gateway deployed between client applications and a database.
+Metrics can be monitored using Prometheus and Grafana. A
+<a href="https://github.com/stargate/docker-images/"><code>docker-compose</code>
+script</a> is available to run Apache Cassandra<sup>&#8482;</sup>, Stargate, Prometheus, and Grafana
+together to explore the metrics available.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a><a class="link" href="#prerequisites">Prerequisites</a></h2>
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are looking to just get started, <a href="https://astra.datastax.com">DataStax Astra Database-as-a-Service</a>
+can get you started with no install steps.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install <a href="https://everything.curl.dev/">cURL</a>, a utility for running REST, Document, or GraphQL queries on the command line.</p>
+</li>
+<li>
+<p><em>[Optional]</em> If you prefer, you can <a href="../develop/tooling.html#using-postman" class="xref page" target="_blank" rel="noopener">use Postman</a> as a client interface for exploring the APIs</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You will also find links to downloadable collections and environments in <a href="../develop/tooling.html#postman-resources" class="xref page">Using Postman</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>[Optional]</em> If you going to use the GraphQL API, you will want to <a href="../develop/tooling.html#graphql-resources" class="xref page" target="_blank" rel="noopener">use the GraphQL Playground</a> to deploy schema and execute mutations and queries.</p>
+</li>
+<li>
+<p><em>[Optional]</em> For the REST and Document APIs, you can use the <a href="../develop/tooling.html#swagger-resources" class="xref page" target="_blank" rel="noopener">Swagger UI</a>.</p>
+</li>
+<li>
+<p>Install <a href="https://www.docker.com/products/docker-desktop">Docker for Desktop</a></p>
+</li>
+<li>
+<p>Pull a Stargate Docker image</p>
+</li>
+</ul>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_cassandra-4-0"></a>Cassandra 4.0</p>
+</li>
+<li>
+<p><a id="tabset1_cassandra-3-x"></a>Cassandra 3.x</p>
+</li>
+<li>
+<p><a id="tabset1_dse-6-8"></a>DSE 6.8</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_cassandra-4-0">
+<div class="paragraph">
+<p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
+and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 4.0 backend.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-4_0:v1.0.57</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_cassandra-3-x">
+<div class="paragraph">
+<p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
+and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-3_11:v1.0.57</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_dse-6-8">
+<div class="paragraph">
+<p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
+and GraphQL Playground, along with a DataStax Enterprise<sup>&#8482;</sup>  6.8 backend.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-dse-68:v1.0.57</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Run the Stargate Docker image</p>
+</li>
+</ul>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_cassandra-4-0"></a>Cassandra 4.0</p>
+</li>
+<li>
+<p><a id="tabset2_cassandra-3-x"></a>Cassandra 3.x</p>
+</li>
+<li>
+<p><a id="tabset2_dse-6-8"></a>DSE 6.8</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_cassandra-4-0">
+<div class="paragraph">
+<p>Start the Stargate container in <a href="../install/starctl.html" class="xref page">developer mode</a>.
+Developer mode removes the need to set up a separate Cassandra instance and is
+meant for development and testing only.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --name stargate \
+  -p 8080:8080 \
+  -p 8081:8081 \
+  -p 8082:8082 \
+  -p 127.0.0.1:9042:9042 \
+  -d \
+  -e CLUSTER_NAME=stargate \
+  -e CLUSTER_VERSION=4.0 \
+  -e DEVELOPER_MODE=true \
+  stargateio/stargate-4_0:v1.0.57</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_cassandra-3-x">
+<div class="paragraph">
+<p>Start the Stargate container in <a href="../install/starctl.html" class="xref page">developer mode</a>.
+Developer mode removes the need to set up a separate Cassandra instance and is
+meant for development and testing only.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --name stargate \
+  -p 8080:8080 \
+  -p 8081:8081 \
+  -p 8082:8082 \
+  -p 127.0.0.1:9042:9042 \
+  -d \
+  -e CLUSTER_NAME=stargate \
+  -e CLUSTER_VERSION=3.11 \
+  -e DEVELOPER_MODE=true \
+  stargateio/stargate-3_11:v1.0.57</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_dse-6-8">
+<div class="paragraph">
+<p>Start the Stargate container in <a href="../install/starctl.html" class="xref page">developer mode</a>.
+Developer mode removes the need to set up a separate DSE instance and is
+meant for development and testing only.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --name stargate \
+  -p 8080:8080 \
+  -p 8081:8081 \
+  -p 8082:8082 \
+  -p 127.0.0.1:9042:9042 \
+  -d \
+  -e CLUSTER_NAME=stargate \
+  -e CLUSTER_VERSION=6.8 \
+  -e DEVELOPER_MODE=true \
+  stargateio/stargate-dse-68:v1.0.57</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate an authorization token to access the interface by following the instructions in <a href="../secure/authnz.html#table-based-authenticationauthorization " class="xref page">Table-based authentication/Authorization</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access-prometheus"><a class="anchor" href="#access-prometheus"></a><a class="link" href="#access-prometheus">Access Prometheus</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once all the images are running, you can access <a href="https://prometheus.io/">Prometheus</a> in the browser at
+<a href="https://localhost:9090/">https://localhost:9090</a>.</p>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>Note that the default file <code>/etc/prometheus/prometheus.yml</code> is replaced with a
+mounted file from the docker-compose repository, to identify the stargate node
+as the target for gathering metrics.
+The default target of <code>localhost:9090</code> (the Prometheus node) has been replaced with
+'stargate:8085' (the stargate node&#8217;s metrics port).</p>
 </div>
+<div class="paragraph">
+<p>The Stargate metrics are grouped by API, and can accessed as any other metrics are
+accessed in <a href="https://prometheus.io">Prometheus</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access-grafana"><a class="anchor" href="#access-grafana"></a><a class="link" href="#access-grafana">Access Grafana</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once all the images are running, you can access <a href="https://grafana.com/oss/grafana">Grafana</a> in the browser at
+<a href="https://localhost:3000/">https://localhost:3000</a>.
+You&#8217;ll need to login with the default username and password, <code>admin/admin</code>.
+Grafana will require you to create a new password to proceed.</p>
+</div>
+<div class="paragraph">
+<p>Add Prometheus as a data source by clicking the data source icon on the lefthand side
+editing the form with the following information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit the HTTP URL field to add <code><a href="https://localhost:9090" class="bare">https://localhost:9090</a></code></p>
+</li>
+<li>
+<p>Change the HTTP Access field to <code>Browser</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Press "Save &amp; Test" to check that the data source is added.
+Add a new dashboard and choose Prometheus as the data source.
+The Stargate metrics can be selected as a metric to display.</p>
+</div>
+<div class="paragraph">
+<p>For more information on using Grafana, access the <a href="https://grafana.com/docs/">Grafana docs</a>.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="manage-overview.html">Managing Stargate</a></span>
+  <span class="next"><a href="start-stargate.html">Start Stargate</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -233,8 +712,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../assets'</script>
+<script src="../../assets/js/site.js"></script>
+<script async src="../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>

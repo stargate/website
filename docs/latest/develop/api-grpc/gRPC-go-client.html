@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page Not Found :: Stargate documentation</title>
+    <title>gRPC Go Client :: Stargate documentation</title>
+    <link rel="canonical" href="https://stargate.io/latest/develop/api-grpc/gRPC-go-client.html">
+    <link rel="prev" href="gRPC-rust-client.html">
+    <link rel="next" href="gRPC-node-client.html">
     <meta name="generator" content="Antora 3.0.1">
-    <link rel="stylesheet" href="/assets/css/site.css">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="icon" href="../../../assets/img/favicon.ico" type="image/x-icon"> 
   </head>
-  <body class="status-404">
+  <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
@@ -132,16 +135,232 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container">
+<div class="nav-container" data-component="latest" data-version="">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Stargate Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../core-index.html">Stargate Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../FAQ.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../quickstart/quickstart-overview.html">Stargate QuickStarts</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-document.html">Document API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-rest.html">REST API QuickStart</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/qs-graphql-cql-first.html">GraphQL API CQL-first QuickStart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../concepts/concepts.html">Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../install/install-overview.html">Installing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_astra.html">Astra</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_3x.html">Cassandra 3.x</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_cass_40.html">Cassandra 4.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/install_dse_68.html">DSE 6.8</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/starctl.html">The starctl command</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../install/building.html">Building Stargate from source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../developing.html">Developing with Stargate APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-rest.html">Develop with REST</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-doc.html">Develop with Document</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../graphql.html">Develop with GraphQL</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-cql-first.html">Develop with GraphQL (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../dev-with-graphql-schema-first.html">Develop with GraphQL (Schema-first)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="../dev-with-grpc.html">Develop with gRPC</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-rust-client.html">gRPC Rust client</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="gRPC-go-client.html">gRPC Go client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-node-client.html">gRPC Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gRPC-java-client.html">gRPC Java client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../dev-with-cql.html">Develop with CQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tooling.html">Tooling Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/rest-nodejs-client.html">REST Node.js client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdks/doc-nodejs-collection-client.html">Document Node.js client</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../manage/manage-overview.html">Managing Stargate</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/metrics.html">Using Prometheus and Grafana with Stargate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../manage/start-stargate.html">Start Stargate</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <span class="nav-text">Securing Stargate</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/authnz.html">Authentication and authorization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../secure/auth.html">Authentication</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="../../api.html">API References</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/docv2.html">Stargate Document API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv2.html">Stargate REST API v2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../_attachments/restv1.html">Stargate REST API v1</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Stargate Documentation</span>
+    <span class="version">default</span>
+  </div>
   <ul class="components">
-    <li class="component">
+    <li class="component is-current">
       <span class="title">Stargate Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/latest/index.html">default</a>
+        <li class="version is-current">
+          <a href="../../index.html">default</a>
         </li>
       </ul>
     </li>
@@ -154,18 +373,488 @@
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Stargate Documentation</a></li>
+    <li><a href="../developing.html">Developing with Stargate APIs</a></li>
+    <li><a href="../dev-with-grpc.html">Develop with gRPC</a></li>
+    <li><a href="gRPC-go-client.html">gRPC Go client</a></li>
+  </ul>
 </nav>
-</div>
+  <div class="edit-this-page"><a href="https://github.com/stargate/docs/blob/master/docs-src/stargate-develop/modules/develop/pages/api-grpc/gRPC-go-client.adoc">Edit this Page</a></div>
+  </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Page Not Found</h1>
+<h1 class="page">gRPC Go Client</h1>
+<div class="sect1">
+<h2 id="go-set-up"><a class="anchor" href="#go-set-up"></a><a class="link" href="#go-set-up">Go set-up</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="add-dependencies"><a class="anchor" href="#add-dependencies"></a><a class="link" href="#add-dependencies">Add dependencies</a></h3>
 <div class="paragraph">
-<p>The page you&#8217;re looking for does not exist. It may have been moved.</p>
+<p>To begin, add the required dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">go get -u github.com/stargate/stargate-grpc-go-client</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
-If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+<p>The next sections explain the parts of a script to use the Stargate functionality.
+A <a href="#_go_full_sample_script">full working script</a> is included below.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-connecting"><a class="anchor" href="#go-connecting"></a><a class="link" href="#go-connecting">Go connecting</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="authentication"><a class="anchor" href="#authentication"></a><a class="link" href="#authentication">Authentication</a></h3>
+<div class="paragraph">
+<p>This example assumes that you&#8217;re running Stargate locally with the default credentials
+of <code>cassandra/cassandra</code>.
+For more information regarding authentication please see the
+<a href="../../secure/authnz.html" class="xref page">Stargate authentication and authorization docs</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet can be used to generate the table-based auth token
+in the client code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">grpcEndpoint := "localhost:8090"
+authEndpoint := "localhost:8081"
+username := "cassandra"
+passwd := "cassandra"
+
+conn, err := grpc.Dial(grpcEndpoint, grpc.WithInsecure(), grpc.WithBlock(),
+  grpc.WithPerRPCCredentials(
+    auth.NewTableBasedTokenProviderUnsafe(
+      fmt.Sprintf("http://%s/v1/auth", authEndpoint), username, passwd,
+    ),
+  ),
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a secure connection, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">grpcEndpoint := "localhost:8090"
+authEndpoint := "localhost:8081"
+username := "cassandra"
+passwd := "cassandra"
+
+config := &amp;tls.Config{
+ 	InsecureSkipVerify: false,
+}
+conn, err := grpc.Dial(grpcEndpoint, grpc.WithTransportCredentials(credentials.NewTLS(config)),
+  grpc.WithBlock(),
+  grpc.WithPerRPCCredentials(
+    auth.NewTableBasedTokenProvider(
+      fmt.Sprintf("http://%s/v1/auth", authEndpoint), username, passwd,
+    ),
+  ),
+)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-up-client"><a class="anchor" href="#set-up-client"></a><a class="link" href="#set-up-client">Set up client</a></h3>
+<div class="paragraph">
+<p>To connect to your Stargate instance, set up the client as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">stargateClient, err = client.NewStargateClientWithConn(conn)
+
+if err != nil {
+  fmt.Printf("error creating client %v", err)
+  os.Exit(1)
+}
+fmt.Printf("made client\n")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-querying"><a class="anchor" href="#go-querying"></a><a class="link" href="#go-querying">Go querying</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A simple query can be performed by passing a CQL query to the client using the
+<code>ExecuteQuery()</code> function for standard query execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">selectQuery := &amp;pb.Query{
+  Cql: "SELECT firstname, lastname FROM test.users;",
+}
+
+response, err := stargateClient.ExecuteQuery(selectQuery)
+if err != nil {
+  fmt.Printf("error executing query %v", err)
+  return
+}
+fmt.Printf("select executed\n")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data definition (DDL) queries are supported in the same manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">// Create a new keyspace
+createKeyspaceQuery := &amp;pb.Query{
+	Cql: "CREATE KEYSPACE IF NOT EXISTS test WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};",
+}
+
+_, err = stargateClient.ExecuteQuery(createKeyspaceQuery)
+if err != nil {
+	fmt.Printf("error creating keyspace %v", err)
+	return
+}
+fmt.Printf("made keyspace\n")
+
+// Create a new table
+createTableQuery := &amp;pb.Query{
+	Cql: "CREATE TABLE IF NOT EXISTS test.users (firstname text PRIMARY KEY, lastname text);",
+}
+
+_, err = stargateClient.ExecuteQuery(createTableQuery)
+if err != nil {
+	fmt.Printf("error creating table %v", err)
+	return
+}
+fmt.Printf("made table \n")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In general, users will create a keyspace and table first.</p>
+</div>
+<div class="paragraph">
+<p>Parameterized queries are also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">any, err := anypb.New(
+	&amp;pb.Values{
+		Values: []*pb.Value{
+			{Inner: &amp;pb.Value_String_{String_: "system"}},
+		},
+	},
+)
+if err != nil {
+	return err
+}
+
+// read from table
+query := &amp;pb.Query{
+	Cql: "SELECT * FROM system_schema.keyspaces WHERE keyspace_name = ?",
+	Values: &amp;pb.Values{
+		Values: []*pb.Value{
+			{Inner: &amp;pb.Value_String_{String_: "system"}},
+		},
+	},
+	Parameters: &amp;pb.QueryParameters{
+		Tracing:      false,
+		SkipMetadata: false,
+	},
+}
+response, err := stargateClient.ExecuteQuery(query)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>ExecuteQuery</code> function can be used to execute a single query.</p>
+</div>
+<div class="paragraph">
+<p>If you need to group several commands together as a
+<a href="https://cassandra.apache.org/doc/latest/cassandra/cql/dml.html#batch_statement">batch statement</a>,
+the client also provides an <code>ExecuteBatch()</code> function to execute a batch query:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">batch := &amp;pb.Batch{
+  Type: pb.Batch_LOGGED,
+  Queries: []*pb.BatchQuery{
+    {
+      Cql: "INSERT INTO test.users (firstname, lastname) VALUES ('Lorina', 'Poland');",
+    },
+    {
+      Cql: "INSERT INTO test.users (firstname, lastname) VALUES ('Ronnie', 'Miller');",
+    },
+  },
+}
+
+_, err = stargateClient.ExecuteBatch(batch)
+if err != nil {
+  fmt.Printf("error creating batch %v", err)
+  return
+}
+fmt.Printf("insert data\n")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This example inserts two values into the keyspace table <code>test.users</code>.
+Only <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code> operations can be used in a batch query.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-processing-result-set"><a class="anchor" href="#go-processing-result-set"></a><a class="link" href="#go-processing-result-set">Go processing result set</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After executing a query, a response returns rows that match the SELECT statement.
+You can call <code>getResultSet()</code> on the response to grab a <code>ResultSet</code> to process.
+Note the function may return <code>undefined</code> if no <code>ResultSet</code> is returned; check if it is defined or cast.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">result := response.GetResultSet()
+
+var i, j int
+for i = 0; i &lt; 2; i++ {
+  valueToPrint := ""
+  for j = 0; j &lt; 2; j++ {
+    value, err := client.ToString(result.Rows[i].Values[j])
+    if err != nil {
+      fmt.Printf("error getting value %v", err)
+      os.Exit(1)
+    }
+    valueToPrint += " "
+    valueToPrint += value
+  }
+  fmt.Printf("%v \n", valueToPrint)
+}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the result type is known, the <code>ToString</code> function transforms the value into a native string.
+Additional functions also exist for other types such as <code>int</code>, <code>map</code>, and <code>blob</code>.
+The full list can be found in
+<a href="https://github.com/stargate/stargate-grpc-go-client/blob/main/stargate/pkg/client/values.go">values.go</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-full-sample-script"><a class="anchor" href="#go-full-sample-script"></a><a class="link" href="#go-full-sample-script">Go full sample script</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To put all the pieces together, here is a sample script that combines all the pieces
+shown above:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_sample-script"></a>Sample script</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_sample-script">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">package main
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/stargate/stargate-grpc-go-client/stargate/pkg/auth"
+	"github.com/stargate/stargate-grpc-go-client/stargate/pkg/client"
+	pb "github.com/stargate/stargate-grpc-go-client/stargate/pkg/proto"
+
+	"google.golang.org/grpc"
+)
+
+var stargateClient *client.StargateClient
+
+func main() {
+
+	grpcEndpoint := "localhost:8090"
+	authEndpoint := "localhost:8081"
+	username := "cassandra"
+	passwd := "cassandra"
+
+	conn, err := grpc.Dial(grpcEndpoint, grpc.WithInsecure(), grpc.WithBlock(),
+		grpc.WithPerRPCCredentials(
+			auth.NewTableBasedTokenProviderUnsafe(
+				fmt.Sprintf("http://%s/v1/auth", authEndpoint), username, passwd,
+			),
+		),
+	)
+
+	// config := &amp;tls.Config{
+	// 	InsecureSkipVerify: false,
+	// }
+	//conn, err := grpc.Dial(grpcEndpoint, grpc.WithTransportCredentials(credentials.NewTLS(config)),
+	//   grpc.WithBlock(),
+	//   grpc.WithPerRPCCredentials(
+	//     auth.NewTableBasedTokenProvider(
+	//       fmt.Sprintf("http://%s/v1/auth", authEndpoint), username, passwd,
+	//     ),
+	//   ),
+	// )
+
+	stargateClient, err = client.NewStargateClientWithConn(conn)
+
+	if err != nil {
+		fmt.Printf("error creating client %v", err)
+		os.Exit(1)
+	}
+	fmt.Printf("made client\n")
+
+	// Create a new keyspace
+	createKeyspaceQuery := &amp;pb.Query{
+		Cql: "CREATE KEYSPACE IF NOT EXISTS test WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};",
+	}
+
+	_, err = stargateClient.ExecuteQuery(createKeyspaceQuery)
+	if err != nil {
+		fmt.Printf("error creating keyspace %v", err)
+		return
+	}
+	fmt.Printf("made keyspace\n")
+
+	// Create a new table
+	createTableQuery := &amp;pb.Query{
+		Cql: "CREATE TABLE IF NOT EXISTS test.users (firstname text PRIMARY KEY, lastname text);",
+	}
+
+	_, err = stargateClient.ExecuteQuery(createTableQuery)
+	if err != nil {
+		fmt.Printf("error creating table %v", err)
+		return
+	}
+	fmt.Printf("made table \n")
+
+	batch := &amp;pb.Batch{
+		Type: pb.Batch_LOGGED,
+		Queries: []*pb.BatchQuery{
+			{
+				Cql: "INSERT INTO test.users (firstname, lastname) VALUES ('Jane', 'Doe');",
+			},
+			{
+				Cql: "INSERT INTO test.users (firstname, lastname) VALUES ('Serge', 'Provencio');",
+			},
+		},
+	}
+
+	_, err = stargateClient.ExecuteBatch(batch)
+	if err != nil {
+		fmt.Printf("error creating batch %v", err)
+		return
+	}
+	fmt.Printf("insert data\n")
+
+	selectQuery := &amp;pb.Query{
+		Cql: "SELECT firstname, lastname FROM test.users;",
+	}
+
+	response, err := stargateClient.ExecuteQuery(selectQuery)
+	if err != nil {
+		fmt.Printf("error executing query %v", err)
+		return
+	}
+	fmt.Printf("select executed\n")
+
+	result := response.GetResultSet()
+
+	var i, j int
+	for i = 0; i &lt; 2; i++ {
+		valueToPrint := ""
+		for j = 0; j &lt; 2; j++ {
+			value, err := client.ToString(result.Rows[i].Values[j])
+			if err != nil {
+				fmt.Printf("error getting value %v", err)
+				os.Exit(1)
+			}
+			valueToPrint += " "
+			valueToPrint += value
+		}
+		fmt.Printf("%v \n", valueToPrint)
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">[ ~/CLONES/grpc-go ] (main ✏️ 1) $go run connect-sgoss.go
+made client
+made keyspace
+made table
+insert data
+select executed
+ Jane Doe
+ Serge Provencio</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-developing"><a class="anchor" href="#go-developing"></a><a class="link" href="#go-developing">Go developing</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="getting-started"><a class="anchor" href="#getting-started"></a><a class="link" href="#getting-started">Getting started</a></h3>
+<div class="paragraph">
+<p>Clone the repo, then install dependencies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">go mod download</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="testing"><a class="anchor" href="#testing"></a><a class="link" href="#testing">Testing</a></h3>
+<div class="paragraph">
+<p>The tests for this project can be run from the root using the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">go test ./... -v -tags integration</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The addition of <code>-tags integration</code> also runs the integration tests.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generating-grpc-code-stubs"><a class="anchor" href="#generating-grpc-code-stubs"></a><a class="link" href="#generating-grpc-code-stubs">Generating gRPC code stubs</a></h3>
+<div class="paragraph">
+<p>To update the protobuf files being used, add the new files to the top level proto
+directory and then run <code>make proto</code> from the root of the project.
+After running, you will find the new generated <code>`*.pb.go</code> files in <code>stargate/pkg/proto</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coding-style"><a class="anchor" href="#coding-style"></a><a class="link" href="#coding-style">Coding style</a></h3>
+<div class="paragraph">
+<p>This project uses <code>golangci-lint</code> to lint code.
+These standards are enforced automatically in the CI pipeline.</p>
+</div>
+<div class="paragraph">
+<p>The Stargate gRPC Go Client repository is located at
+<a href="https://github.com/stargate/stargate-grpc-go-client">https://github.com/stargate/stargate-grpc-go-client</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="gRPC-rust-client.html">gRPC Rust client</a></span>
+  <span class="next"><a href="gRPC-node-client.html">gRPC Node.js client</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -233,8 +922,8 @@ If you typed the URL of this page manually, please double check that you entered
         license</a></p>
   </div>
 </footer>
-<script>window.uiRootPath = '/assets'</script>
-<script src="/assets/js/site.js"></script>
-<script async src="/assets/js/vendor/highlight.js"></script>
+<script>window.uiRootPath = '../../../assets'</script>
+<script src="../../../assets/js/site.js"></script>
+<script async src="../../../assets/js/vendor/highlight.js"></script>
   </body>
 </html>
