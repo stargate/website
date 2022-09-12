@@ -1,18 +1,14 @@
 ---
 layout: post
-title: "Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)"
-date:   2022-09-12 00:00:00 -0600
-synopsis: "s."
+title: "Stargate v2 Beta: Open for extension"
+date:   2022-09-11 00:00:00 -0600
+synopsis: "An update on Stargate v2 including announcement of the first Beta release"
 author_info:
   name:
-    first: "Stone"
-    last: "Mark"
+    first: "Mark"
+    last: "Stone"
   picture: "assets/images/stargate-profile.png"
---- 
-
-# Stargate v2 Beta: Open for extension
-
-Mark Stone, Jeff Carpenter
+---
 
 Last Friday, we released the first [Beta](https://github.com/stargate/stargate/releases/tag/v2.0.0-BETA-1) for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try this new release out for yourself.
 
