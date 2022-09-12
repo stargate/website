@@ -1,4 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-09-09T20:00:09+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)</title><link href="https://stargate.io/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2.html" rel="alternate" type="text/html" title="Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)" /><published>2022-05-31T06:00:00+00:00</published><updated>2022-05-31T06:00:00+00:00</updated><id>https://stargate.io/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2</id><content type="html" xml:base="https://stargate.io/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2.html">&lt;p&gt;In my &lt;a href=&quot;/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html&quot;&gt;previous blog post&lt;/a&gt;, I introduced the Dynamo API Service, which is our project to make Apache Cassandra&lt;sup&gt;Ⓡ&lt;/sup&gt; compatible with Amazon DynamoDB by building a middleware. In this blog post, I will share a few interesting challenges we encountered and how we tackled them.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-09-12T19:09:02+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate v2 Beta: Open for extension</title><link href="https://stargate.io/2022/09/11/stargate-v2-beta.html" rel="alternate" type="text/html" title="Stargate v2 Beta: Open for extension" /><published>2022-09-11T06:00:00+00:00</published><updated>2022-09-11T06:00:00+00:00</updated><id>https://stargate.io/2022/09/11/stargate-v2-beta</id><content type="html" xml:base="https://stargate.io/2022/09/11/stargate-v2-beta.html">&lt;p&gt;Last Friday, we released the first &lt;a href=&quot;https://github.com/stargate/stargate/releases/tag/v2.0.0-BETA-1&quot;&gt;Beta&lt;/a&gt; for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-stargate-v2&quot;&gt;What is Stargate v2?&lt;/h2&gt;
+
+&lt;p&gt;To answer this question, let’s start with a quick refresher on the Stargate project. We like to refer to Stargate as a “data API gateway” (or data gateway for short) built on top of Apache Cassandra.&lt;/p&gt;
+
+&lt;p&gt;In a technology world that is increasingly dominated by cloud data services rather than databases, application developers are likely to think in terms of data abstractions like JSON rather than an idiom unique to a particular database. An API gateway is therefore an ideal way to meet developers where they are, allowing them to work in frameworks and structures familiar to them without having to know all the particulars of the underlying database. Stargate is designed to meet this need – backed by the power of Cassandra, and presenting REST, Document, and GraphQL as developer friendly APIs. We’ve also added a set of gRPC libraries for doing CQL over gRPC as an easier, lightweight, and more cloud friendly alternative to native drivers for CQL.&lt;/p&gt;
+
+&lt;p&gt;Stargate v2 represents a significant architectural update for our data API gateway, designed to address several opportunities for improvement we identified in working with the original architecture. In particular:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Monolith to modular. The original Stargate codebase is too tightly coupled to the persistence engine, making it hard to develop anything without knowing everything. Going forward, we’re factoring out the REST, GraphQL and Document APIs as independent services. Enhancing a particular API service, or adding an entirely new API service, will be much easier, while CQL and gRPC APIs remain in the coordinator node for optimal performance.&lt;/li&gt;
+  &lt;li&gt;Cloud friendly. Being more service-oriented is of course also more cloud friendly. We’ve created a new “bridge” gRPC API to the coordinator node that makes it easy to create additional API services. Supplying a HTTP-based API allows developers to extend the architecture more quickly compared to traditional the CQL binary protocol and drivers. We’re also moving away from OSGi as our containerization standard, and instead making each service deployable as its own Kubernetes pod. Kubernetes is the de facto standard for cloud deployments, and we’re happy to align with that. This will also improve compatibility with the cloud native version of Cassandra, namely &lt;a href=&quot;https://k8ssandra.io/&quot;&gt;K8ssandra&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Operator friendly. By leveraging Kubernetes, we can make each service independently deployable and scalable. This will give operators a lot more control over how they manage and scale Stargate.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What hasn’t changed is our commitment to backward compatibility for all API endpoints. Additionally, Stargate v2 continues to support multiple Cassandra backends including Cassandra 3.11, Cassandra 4.0, and DataStax Enterprise 6.8. Stargate is also deployed as part of DataStax AstraDB, which provides important feedback on usage of Stargate at scale. To learn more about the Stargate v2 effort, check out our other blogs &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;announcing the project&lt;/a&gt; and discussing the &lt;a href=&quot;https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html&quot;&gt;design approach&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-its-time-to-release-a-beta&quot;&gt;Why it’s time to release a Beta&lt;/h2&gt;
+
+&lt;p&gt;In our last update on Stargate v2, we &lt;a href=&quot;https://stargate.io/2022/01/06/reaching-the-first-milestone.html&quot;&gt;shared the progress&lt;/a&gt; on factoring the REST API out of the coordinator node as a separate microservice. Since that time we have created a new “Bridge” gRPC API distinct from the publicly available gRPC API and factored the GraphQL and Document API endpoints out of the coordinator into their own separate microservices. All three API services use the &lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus framework&lt;/a&gt;, which enables them to be very lightweight and leverage an up-to-date Java version - JDK 17.&lt;/p&gt;
+
+&lt;p&gt;We are now getting close to a Release Candidate, and have a worthy Beta. This enables the open source community to start trying out Stargate v2 at near production quality in a couple of key areas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Performance and scalability - we want to give you the opportunity to validate that performance continues to meet your expectations. It will also allow you to explore the new deployment and scaling possibilities of a specific API , deploying only the API services you actually need.&lt;/li&gt;
+  &lt;li&gt;Extensibility - a key goal of Stargate v2 is the idea that the community should be able to add new API services &lt;a href=&quot;https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html&quot;&gt;more quickly and easily&lt;/a&gt;. The Bridge API exposed by the Coordinator services is really all that’s needed to add a new API service, and the source code for the REST, GraphQL, and Document API services provide instructive example code of what a finished API service should look like.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Beta designation is our way of signaling that these facets of v2 are ready for full exploration and testing by the open source community.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-run-stargate-v2&quot;&gt;How to run Stargate v2&lt;/h2&gt;
+
+&lt;p&gt;Now that we have a Beta release, why not give it a try? To make it easier to experiment with the release, we’ve built Docker images and provided Docker Compose scripts in order to spin up Stargate with a backing Cassandra or DSE cluster. The Docker images are available on our &lt;a href=&quot;https://hub.docker.com/u/stargateio&quot;&gt;Docker Hub&lt;/a&gt; page, but the easiest way to run is to clone the Stargate repo and use the scripts we’ve provided:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/stargate/stargate.git
+cd stargate
+git checkout v2.0.0
+cd docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;From here, you’ll see three subdirectories: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cassandra-3.11&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cassandra-4.0&lt;/code&gt;, and	&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dse-6.8&lt;/code&gt;. Depending on which Cassandra backend you wish to use, there are scripts available to start Stargate in Docker. Let’s look at Cassandra 4.0 as an example:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd cassandra-4.0
+./start_cass_40_dev_mode.sh -t 2.0.0-BETA-1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t&lt;/code&gt; option defines which version to use, in this case &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2.0.0-BETA-1&lt;/code&gt;. We’ve provided these scripts that wrap Docker Compose to make it easier to impose the desired startup sequence. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;start_cass_40_dev_mode.sh&lt;/code&gt; script provides a simple configuration that starts a single instance of the REST and GraphQL APIs and a single instance of the Stargate coordinator in “developer mode”, meaning that the coordinator is running a full Cassandra 4.0 node. Developer mode is a feature that many Stargate users don’t know about but it’s a great option for simple testing. If you’d like to run with a 3-node Cassandra cluster instead, you can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;start_cass_40.sh&lt;/code&gt; script, again using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t&lt;/code&gt; option to specify the desired release.&lt;/p&gt;
+
+&lt;p&gt;Once you have a cluster running, it’s a simple matter to generate some test queries against your running instance. The easiest way to do this is to use our recently updated Postman collections. There are three collections available: REST, GraphQL and Docs API. Once you have Postman installed, you can load the collections from the &lt;a href=&quot;https://www.postman.com/datastax/workspace/datastax-astra-db-stargate/overview&quot;&gt;DataStax workspace&lt;/a&gt; on the Postman website. See the Stargate &lt;a href=&quot;https://stargate.io/docs/latest/develop/tooling.html&quot;&gt;documentation&lt;/a&gt; for more information.&lt;/p&gt;
+
+&lt;p&gt;For example, let’s try running the REST collection against our local Stargate v2 cluster. After loading the collections, make sure to select the “Stargate OSS API Environment” from the pulldown at the upper right (1). This configures settings that will cause Postman to talk to endpoints on your local computer using the default port number. Then select the “Stargate-OSS-Astra-REST-API” collection from the list on the left (2) and run the collection (3).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stargate-v2-postman.png&quot; alt=&quot;postman&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can sit back and watch as Postman uses Stargate’s authentication API to generate a token and use that token to securely invoke operations against your local copy of the Stargate REST API. Try out the other collections as well and let us know what you think.&lt;/p&gt;
+
+&lt;h2 id=&quot;we-want-your-feedback&quot;&gt;We want your feedback&lt;/h2&gt;
+
+&lt;p&gt;What’s next? In the coming weeks we’ll continue to generate additional Beta releases based on your feedback. We will especially want feedback when we’ve reached what we consider to be a Release Candidate.&lt;/p&gt;
+
+&lt;p&gt;You can provide feedback through whatever channel is easiest for you:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We do our work out in the open, so &lt;a href=&quot;https://github.com/stargate/stargate&quot;&gt;Github&lt;/a&gt; is a great place to provide feedback, and we use &lt;a href=&quot;https://github.com/stargate/stargate/discussions&quot;&gt;Github Discussions&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;We also have a &lt;a href=&quot;https://discord.gg/33mKDHHFUE&quot;&gt;Discord server&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Or find us on &lt;a href=&quot;https://twitter.com/stargateio&quot;&gt;Twitter&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Or &lt;a href=&quot;https://www.linkedin.com/groups/9091327/?lipi=urn%3Ali%3Apage%3Ad_flagship3_groups_index%3BiWk36RDvQXmdJSCjsT5YlQ%3D%3D&quot;&gt;LinkedIn&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Last Friday, we released the first Beta for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)</title><link href="https://stargate.io/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2.html" rel="alternate" type="text/html" title="Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)" /><published>2022-05-31T06:00:00+00:00</published><updated>2022-05-31T06:00:00+00:00</updated><id>https://stargate.io/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2</id><content type="html" xml:base="https://stargate.io/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2.html">&lt;p&gt;In my &lt;a href=&quot;/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html&quot;&gt;previous blog post&lt;/a&gt;, I introduced the Dynamo API Service, which is our project to make Apache Cassandra&lt;sup&gt;Ⓡ&lt;/sup&gt; compatible with Amazon DynamoDB by building a middleware. In this blog post, I will share a few interesting challenges we encountered and how we tackled them.&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-authenticate&quot;&gt;How to authenticate?&lt;/h2&gt;
 
@@ -766,65 +834,4 @@
 
 &lt;p&gt;Features like improved internode messaging will benefit Stargate, but we don’t have to do anything in Stargate to receive those benefits; they’ll happen organically below the Stargate coordinator layer. Features like improved streaming offer new opportunities for streaming support in Stargate which we hope to take advantage of in the future. For now rest assured that new streaming features in Stargate will be planned to work with both 4.x and 3.x.&lt;/p&gt;
 
-&lt;p&gt;The world’s most scalable open source database just got better. As a result, Stargate got better too.&lt;/p&gt;</content><author><name></name></author><summary type="html">Six years in the making, Apache Cassandra has reached its 4.0 GA release. This is a big milestone for one of the most important open source projects, and a significant step forward in the world of NoSQL and Fast Data.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Blasting Off into Stargate using HTTPie</title><link href="https://stargate.io/2021/04/08/blasting-off-into-stargate-using-httpie.html" rel="alternate" type="text/html" title="Blasting Off into Stargate using HTTPie" /><published>2021-04-08T00:00:00+00:00</published><updated>2021-04-08T00:00:00+00:00</updated><id>https://stargate.io/2021/04/08/blasting-off-into-stargate-using-httpie</id><content type="html" xml:base="https://stargate.io/2021/04/08/blasting-off-into-stargate-using-httpie.html">&lt;p&gt;As a DataStax Developer Advocate, my job is to help our amazing teams provide you with the best possible experience with Cassandra and our products.&lt;/p&gt;
-
-&lt;p&gt;Datastax &lt;a href=&quot;https://dtsx.io/workshop&quot;&gt;Astra&lt;/a&gt; is built on Apache Cassandra. In addition to great &lt;a href=&quot;https://docs.astra.datastax.com/docs&quot;&gt;documentation&lt;/a&gt;, Astra offers a robust free tier that can run small production workloads, pet projects, or just let you play—all for free, no credit card required. Cassandra can be tricky for hardcore SQL developers, because it uses a different slightly different query language (CQL), but when you get Astra, Stargate is there to let you interact with your data through APIs. Our open source &lt;a href=&quot;https://stargate.io/&quot;&gt;Stargate&lt;/a&gt; product provides REST, GraphQL, and schemaless document APIs in addition to native language drivers. If you like them but don’t want to use our products, that’s fine!  It’s completely open source and you can implement it on your own system.&lt;/p&gt;
-
-&lt;p&gt;One of the things I noticed when I arrived at DataStax is that our tutorials rely heavily on curl for performing commands against our APIs. I prefer HTTPie, a similar tool designed for REST API interaction.So I created an authentication plugin for the HTTPie tool that stores your variables and lets you make requests like:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;schemas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyspaces&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I’ve put together a &lt;a href=&quot;https://katacoda.com/datastax/scenarios/httpie-astra&quot;&gt;Katacoda scenario&lt;/a&gt; for you to see how everything works. If you want to implement it locally, here are the instructions:&lt;/p&gt;
-
-&lt;p&gt;The first secret to this is an rc file (~/.astrarc), which keeps track of your DB, region, username, and password, and auto-refreshes your token. You can have as many sections in this file as works for you—it’s just an INI-style configuration file.&lt;/p&gt;
-
-&lt;p&gt;The second secret is the HTTPie configuration file, in ~/.config/httpie/config.json&lt;/p&gt;
-
-&lt;p&gt;My configuration is what you see here; I have the “fruity” color scheme, my default auth-type is astra, and the section of the .astrarc file is “default”.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;default_options&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;--style=fruity&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;--auth-type=astra&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;--auth=default:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;My goal here is to make it so you can bounce around between REST and GraphQL queries, get nicely formatted JSON results, and perhaps use jq to pare them down—but mostly I want for the tool to get out of your way.&lt;/p&gt;
-
-&lt;p&gt;Interested?  At this point httpie-astra requires python 3.5, but if you want me to make it support 2.7, please just let me know in the &lt;a href=&quot;https://community.datastax.com/index.html&quot;&gt;Datastax Community&lt;/a&gt; or on Discord.&lt;/p&gt;
-
-&lt;p&gt;You can get it through github:
-git clone https://synedra-datastax/httpie-astra&lt;/p&gt;
-
-&lt;p&gt;Or with pip:
-pip3 install httpie-astra&lt;/p&gt;
-
-&lt;p&gt;Once you’ve got it installed, get your environment set up by making a simple call like:&lt;/p&gt;
-
-&lt;p&gt;http –auth-type astra -a default: :/v2/schemas/keyspaces&lt;/p&gt;
-
-&lt;p&gt;This will give you instructions to get all your variables set up.&lt;/p&gt;
-
-&lt;p&gt;Let’s take a look at an example from our Astra REST documentation.&lt;/p&gt;
-
-&lt;p&gt;The curl command looks like this:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-curl&quot; data-lang=&quot;curl&quot;&gt;curl --request GET \
---url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/restv2/schemas/keyspaces/${ASTRA_DB_KEYSPACE}/tables/products
-\
---header 'accept: application/json' \
---header 'x-cassandra-request-id: {unique-UUID}' \
---header &quot;x-cassandra-token: ${ASTRA_AUTHORIZATION_TOKEN}&quot;
-```
-
-Then it gives you back a single line JSON doc.
-
-```
-{&quot;data&quot;:{&quot;name&quot;:&quot;products&quot;,&quot;keyspace&quot;:&quot;tutorial&quot;,&quot;columnDefinitions&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;typeDefinition&quot;:&quot;uuid&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;created&quot;,&quot;typeDefinition&quot;:&quot;timestamp&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;description&quot;,&quot;typeDefinition&quot;:&quot;varchar&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;name&quot;,&quot;typeDefinition&quot;:&quot;varchar&quot;,&quot;static&quot;:false},{&quot;name&quot;:&quot;price&quot;,&quot;typeDefinition&quot;:&quot;decimal&quot;,&quot;static&quot;:false}],&quot;primaryKey&quot;:{&quot;partitionKey&quot;:[&quot;id&quot;],&quot;clusteringKey&quot;:[]},&quot;tableOptions&quot;:{&quot;defaultTimeToLive&quot;:0,&quot;clusteringExpression&quot;:[]}}}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The httpie command already knows a lot of this information, so the call is much simpler. I’m using the config.json I described above to set my auth-type and config section. I’ll show this output as a screen shot because it’s really easy to understand:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/blasting-off-into-stargate-using-httpie/httpie.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We’re on the job, getting the Stargate examples and Astra API examples to include HTTPie tabs, but in the meantime if you’re having fun with this, please let me know in the community or discord, and let’s make this rock for you!&lt;/p&gt;</content><author><name></name></author><summary type="html">As a DataStax Developer Advocate, my job is to help our amazing teams provide you with the best possible experience with Cassandra and our products.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;The world’s most scalable open source database just got better. As a result, Stargate got better too.&lt;/p&gt;</content><author><name></name></author><summary type="html">Six years in the making, Apache Cassandra has reached its 4.0 GA release. This is a big milestone for one of the most important open source projects, and a significant step forward in the world of NoSQL and Fast Data.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
