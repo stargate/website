@@ -194,6 +194,9 @@
     </button>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../install/ports.html">Stargate Ports</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../install/install_astra.html">Astra</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -480,6 +483,29 @@ can get you started with no install steps.</p>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset1_cassandra-4-0">
+<details open>
+<summary class="title">v2</summary>
+<div class="content">
+<div class="paragraph">
+<p>For Stargate v2, you&#8217;ll need to pull an image for coordinator, plus an image for each API that you wish to run: restapi, graphql, and docsapi.
+The coordinator image contains a Apache Cassandra<sup>&#8482;</sup> backend, the Cassandra Query Language (CQL), and the gRPC API.</p>
+</div>
+<div class="paragraph">
+<p>The following are the commands for each of those images:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-4_0:v2.0.0-BETA-3
+docker pull stargateio/restapi:v2.0.0-BETA-3
+docker pull stargateio/docsapi:v2.0.0-BETA-3
+docker pull stargateio/graphqlapi:v2.0.0-BETA-3</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">v1</summary>
+<div class="content">
 <div class="paragraph">
 <p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
 and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 4.0 backend.</p>
@@ -490,7 +516,32 @@ and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 4.0 bac
 </div>
 </div>
 </div>
+</details>
+</div>
 <div class="tab-pane" aria-labelledby="tabset1_cassandra-3-x">
+<details open>
+<summary class="title">v2</summary>
+<div class="content">
+<div class="paragraph">
+<p>For Stargate v2, you&#8217;ll need to pull an image for coordinator, plus an image for each API that you wish to run: restapi, graphql, and docsapi.
+The coordinator image contains a Apache Cassandra<sup>&#8482;</sup> backend, the Cassandra Query Language (CQL), and the gRPC API.</p>
+</div>
+<div class="paragraph">
+<p>The following are the commands for each of those images:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-3_11:v2.0.0-BETA-3
+docker pull stargateio/restapi:v2.0.0-BETA-3
+docker pull stargateio/docsapi:v2.0.0-BETA-3
+docker pull stargateio/graphqlapi:v2.0.0-BETA-3</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">v1</summary>
+<div class="content">
 <div class="paragraph">
 <p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
 and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 backend.</p>
@@ -501,7 +552,32 @@ and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 ba
 </div>
 </div>
 </div>
+</details>
+</div>
 <div class="tab-pane" aria-labelledby="tabset1_dse-6-8">
+<details open>
+<summary class="title">v2</summary>
+<div class="content">
+<div class="paragraph">
+<p>For Stargate v2, you&#8217;ll need to pull an image for coordinator, plus an image for each API that you wish to run: restapi, graphql, and docsapi.
+The coordinator image contains a Apache Cassandra<sup>&#8482;</sup> backend, the Cassandra Query Language (CQL), and the gRPC API.</p>
+</div>
+<div class="paragraph">
+<p>The following are the commands for each of those images:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-68:v2.0.0-BETA-3
+docker pull stargateio/restapi:v2.0.0-BETA-3
+docker pull stargateio/docsapi:v2.0.0-BETA-3
+docker pull stargateio/graphqlapi:v2.0.0-BETA-3</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">v1</summary>
+<div class="content">
 <div class="paragraph">
 <p>This image contains the Cassandra Query Language (CQL), REST, Document, GraphQL APIs,
 and GraphQL Playground, along with a DataStax Enterprise<sup>&#8482;</sup>  6.8 backend.</p>
@@ -511,6 +587,8 @@ and GraphQL Playground, along with a DataStax Enterprise<sup>&#8482;</sup>  6.8 
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/stargate-dse-68:v1.0.57</code></pre>
 </div>
 </div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -537,6 +615,27 @@ and GraphQL Playground, along with a DataStax Enterprise<sup>&#8482;</sup>  6.8 
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset2_cassandra-4-0">
+<details open>
+<summary class="title">v2</summary>
+<div class="content">
+<div class="paragraph">
+<p>Use this docker-compose <a href="https://github.com/stargate/stargate/blob/v2.0.0/docker-compose/cassandra-4.0/start_cass_40_dev_mode.sh">shell script</a> to start the coordinator and APIs in developer mode.
+The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/stargate/docker-compose</code> directory, and run the script.
+You will want to run, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_cass_4_0_dev_mode.sh -t v2.0.0-BETA-3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The latest available image can be found <a href="https://hub.docker.com/r/stargateio/coordinator-4_0/tags">here</a>.</p>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">v1</summary>
+<div class="content">
 <div class="paragraph">
 <p>Start the Stargate container in <a href="../install/starctl.html" class="xref page">developer mode</a>.
 Developer mode removes the need to set up a separate Cassandra instance and is
@@ -557,7 +656,30 @@ meant for development and testing only.</p>
 </div>
 </div>
 </div>
+</details>
+</div>
 <div class="tab-pane" aria-labelledby="tabset2_cassandra-3-x">
+<details open>
+<summary class="title">v2</summary>
+<div class="content">
+<div class="paragraph">
+<p>Use this docker-compose <a href="https://github.com/stargate/stargate/blob/v2.0.0/docker-compose/cassandra-3.11/start_cass_311_dev_mode.sh">shell script</a> to start the coordinator and APIs in developer mode.
+The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/stargate/docker-compose</code> directory, and run the script.
+You will want to run, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_cass_3_11_dev_mode.sh -t v2.0.0-BETA-3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The latest available image can be found <a href="https://hub.docker.com/r/stargateio/coordinator-3_11/tags">here</a>.</p>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">v1</summary>
+<div class="content">
 <div class="paragraph">
 <p>Start the Stargate container in <a href="../install/starctl.html" class="xref page">developer mode</a>.
 Developer mode removes the need to set up a separate Cassandra instance and is
@@ -578,7 +700,30 @@ meant for development and testing only.</p>
 </div>
 </div>
 </div>
+</details>
+</div>
 <div class="tab-pane" aria-labelledby="tabset2_dse-6-8">
+<details open>
+<summary class="title">v2</summary>
+<div class="content">
+<div class="paragraph">
+<p>Use this docker-compose <a href="https://github.com/stargate/stargate/blob/v2.0.0/docker-compose/dse-6.8/start_cass_40_dev_mode.sh">shell script</a> to start the coordinator and APIs in developer mode.
+The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/stargate/docker-compose</code> directory, and run the script.
+You will want to run, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_dse_68_dev_mode.sh -t v2.0.0-BETA-3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The latest available image can be found <a href="https://hub.docker.com/r/stargateio/coordinator-6.8/tags">here</a>.</p>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">v1</summary>
+<div class="content">
 <div class="paragraph">
 <p>Start the Stargate container in <a href="../install/starctl.html" class="xref page">developer mode</a>.
 Developer mode removes the need to set up a separate DSE instance and is
@@ -598,6 +743,8 @@ meant for development and testing only.</p>
   stargateio/stargate-dse-68:v1.0.57</code></pre>
 </div>
 </div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -651,12 +798,27 @@ docs/build/stargate/stargate/develop/api-doc/doc-creating-namespace.html</p>
 <p><a id="tabset3_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
+<p><a id="tabset3_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
 <p><a id="tabset3_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset3_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/schemas/namespaces' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "test"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/schemas/namespaces' \
@@ -750,12 +912,28 @@ and <code>2</code> for the number of data <code>replicas</code>.</p>
 <p><a id="tabset4_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
+<p><a id="tabset4_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
 <p><a id="tabset4_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset4_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/schemas/namespaces' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "test",
+    "replicas": 2
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/schemas/namespaces' \
@@ -793,12 +971,28 @@ where <code>dc1</code> defaults to 3 replicas and <code>dc2</code> is set to 5 r
 <p><a id="tabset5_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
+<p><a id="tabset5_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
 <p><a id="tabset5_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset5_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'https://localhost:8180/v2/schemas/namespaces' \
+-H "X-Cassandra-Token: $AUTH_TOKEN" \
+-H 'Content-Type: application/json' \
+-d '{
+    "name": "test-dcs",
+    "datacenters": [ {"name": "dc1"}, {"name": "dc2", "replicas": 5} ]
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X POST 'https://localhost:8082/v2/schemas/namespaces' \
@@ -837,12 +1031,24 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 <p><a id="tabset6_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
+<p><a id="tabset6_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
 <p><a id="tabset6_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset6_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'https://localhost:8180/v2/schemas/namespaces' \
+-H "X-Cassandra-Token: $AUTH_TOKEN" \
+-H 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'https://localhost:8082/v2/schemas/namespaces' \
@@ -897,12 +1103,24 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 <p><a id="tabset7_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
+<p><a id="tabset7_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
 <p><a id="tabset7_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset7_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X GET 'https://localhost:8180/v2/schemas/namespaces/test' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X GET 'https://localhost:8082/v2/schemas/namespaces/test' \
@@ -934,11 +1152,36 @@ Document API query with <code>cURL</code> to find all the namespaces:</p>
 a namespace. All collections and documents will be deleted along with the
 namespace.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset8_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X DELETE 'https://localhost:8180/v2/schemas/namespaces/test' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X DELETE 'https://localhost:8082/v2/schemas/namespaces/test' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -978,15 +1221,31 @@ In this example we use <code>library</code> for the <code>name</code>.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset8_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset9_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset8_result"></a>Result</p>
+<p><a id="tabset9_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset9_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset8_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset9_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
+--request POST 'https://localhost:8180/v2/namespaces/test/collections' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "library"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset9_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -999,7 +1258,7 @@ In this example we use <code>library</code> for the <code>name</code>.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset8_result">
+<div class="tab-pane" aria-labelledby="tabset9_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">No return</code></pre>
@@ -1077,15 +1336,47 @@ In this example, a collection is created to store a Person object that has three
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset9_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset10_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset9_result"></a>Result</p>
+<p><a id="tabset10_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset10_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset9_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset10_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8180/v2/namespaces/test/collections/library2/json-schema' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "description": "The person'\''s first name."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "The person'\''s last name."
+    },
+    "age": {
+      "description": "Age in years which must be equal to or greater than zero.",
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
+'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset10_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library2/json-schema' \
@@ -1114,7 +1405,7 @@ In this example, a collection is created to store a Person object that has three
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset9_result">
+<div class="tab-pane" aria-labelledby="tabset10_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1168,15 +1459,27 @@ Also, partial updates of data are not allowed if JSON schema is defined.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset10_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset11_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset10_result"></a>Result</p>
+<p><a id="tabset11_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset11_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset10_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset11_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'https://localhost:8180/v2/namespaces/test/collections' \
+-H "X-Cassandra-Token: $AUTH_TOKEN" \
+-H 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset11_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L -X GET 'https://localhost:8082/v2/namespaces/test/collections' \
@@ -1185,7 +1488,7 @@ Also, partial updates of data are not allowed if JSON schema is defined.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset10_result">
+<div class="tab-pane" aria-labelledby="tabset11_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1215,12 +1518,38 @@ Also, partial updates of data are not allowed if JSON schema is defined.</p>
 <p>Send a <code>DELETE</code> request to <code>/v2/schemas/namespaces/test/collections/library</code> to delete a namespace.
 All documents will be deleted along with the collection:</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset12_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X DELETE 'https://localhost:8180/v2/namespaces/test/collections/library' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset12_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
 -X DELETE 'https://localhost:8082/v2/namespaces/test/collections/library' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1292,15 +1621,32 @@ The data is passed in the JSON body.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset11_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset13_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset11_result"></a>Result</p>
+<p><a id="tabset13_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset13_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset11_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset13_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
+--request PUT 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data '{
+  "stuff": "2545331a-aaad-45d2-b084-9da3d8f4c311",
+  "other": "I need a document with a set value for a test."
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset13_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -1314,7 +1660,7 @@ The data is passed in the JSON body.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset11_result">
+<div class="tab-pane" aria-labelledby="tabset13_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1341,15 +1687,32 @@ The data is passed in the JSON body.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset12_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset14_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset12_result"></a>Result</p>
+<p><a id="tabset14_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset14_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset12_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset14_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
+--request POST 'https://localhost:8180/v2/namespaces/test/collections/library' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data '{
+  "id": "some-stuff",
+  "other": "This is nonsensical stuff."
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset14_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -1363,7 +1726,7 @@ The data is passed in the JSON body.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset12_result">
+<div class="tab-pane" aria-labelledby="tabset14_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1388,15 +1751,66 @@ Send a <code>POST</code> request to <code>/v2/namespaces/{namespace_name}/collec
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset13_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset15_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset13_result"></a>Result</p>
+<p><a id="tabset15_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset15_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset13_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset15_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/namespaces/test/collections/library' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+    "reader": {
+       "name": "Amy Smith",
+       "user_id": "12345",
+       "birthdate": "10-01-1980",
+       "email": {
+           "primary": "asmith@gmail.com",
+           "secondary": "amyispolite@aol.com"
+       },
+       "address": {
+           "primary": {
+               "street": "200 Antigone St",
+               "city": "Nevertown",
+               "state": "MA",
+               "zip-code": 55555
+           },
+           "secondary": {
+               "street": "850 2nd St",
+               "city": "Evertown",
+               "state": "MA",
+               "zip-code": 55556
+           }
+       },
+       "reviews": [
+           {
+               "book-title": "Moby Dick", 
+               "rating": 4, 
+               "review-date": "04-25-2002",
+               "comment": "It was better than I thought."
+           },
+           {
+               "book-title": "Pride and Prejudice", 
+               "rating": 2, 
+               "review-date": "12-02-2002",
+               "comment": "It was just like the movie."
+           }
+       ]
+    }
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset15_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library' \
@@ -1444,7 +1858,7 @@ Send a <code>POST</code> request to <code>/v2/namespaces/{namespace_name}/collec
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset13_result">
+<div class="tab-pane" aria-labelledby="tabset15_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1481,15 +1895,52 @@ It is a <code>PUT</code> request:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset14_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset16_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset14_result"></a>Result</p>
+<p><a id="tabset16_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset16_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset14_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset16_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '     {
+        "book": {
+            "title": "Native Son",
+            "isbn": "12322",
+            "author": [
+                "Richard Wright"
+            ],
+            "pub-year": 1930,
+            "genre": [
+                "poverty",
+                "action"
+            ],
+            "format": [
+                "hardback",
+                "paperback",
+                "epub"
+            ],
+            "languages": [
+                "English",
+                "German",
+                "French"
+            ]
+        }
+    }
+'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset16_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id' \
@@ -1523,7 +1974,7 @@ It is a <code>PUT</code> request:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset14_result">
+<div class="tab-pane" aria-labelledby="tabset16_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1547,15 +1998,28 @@ Let&#8217;s read the data from the last example with a <code>GET</code> request:
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset15_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset17_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset15_result"></a>Result</p>
+<p><a id="tabset17_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset17_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset15_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset17_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset17_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -1565,7 +2029,7 @@ Let&#8217;s read the data from the last example with a <code>GET</code> request:
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset15_result">
+<div class="tab-pane" aria-labelledby="tabset17_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1630,15 +2094,100 @@ You can also use any valid path syntax (globs not allowed), e.g. <code>id-path=u
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset16_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset18_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset16_result"></a>Result</p>
+<p><a id="tabset18_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset18_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset16_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset18_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/namespaces/test/collections/library/batch' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' [{
+     "reader": {
+        "name": "Jane Doe",
+        "user_id": "12345",
+        "birthdate": "10-01-1980",
+        "email": {
+            "primary": "jdoe@gmail.com",
+            "secondary": "jane.doe@aol.com"
+        },
+        "address": {
+            "primary": {
+                "street": "100 Main St",
+                "city": "Evertown",
+                "state": "MA",
+                "zip-code": 55555
+            },
+            "secondary": {
+                "street": "850 2nd St",
+                "city": "Evertown",
+                "state": "MA",
+                "zip-code": 55556
+            }
+        },
+        "reviews": [
+            {
+                "book-title": "Moby Dick", 
+                "rating": 3, 
+                "review-date": "02-02-2002",
+                "comment": "It was okay."
+            },
+            {
+                "book-title": "Pride and Prejudice", 
+                "rating": 5, 
+                "review-date": "03-02-2002",
+                "comment": "It was a wonderful book! I loved reading it."
+            }
+        ]
+     }
+  },
+  {
+    "reader": {
+       "name": "John Jones",
+       "user_id": "54321",
+       "birthdate": "06-11-2000",
+       "email": {
+           "primary": "jjones@gmail.com",
+           "secondary": "johnnyj@aol.com"
+       },
+       "address": {
+           "primary": {
+               "street": "4593 Webster Ave",
+               "city": "Paradise",
+               "state": "CA",
+               "zip-code": 95534
+           }
+       },
+       "reviews": [
+           {
+               "book-title": "Moby Dick", 
+               "rating": 2, 
+               "review-date": "03-15-2020",
+               "comment": "Boring book that I had to read for class."
+           },
+           {
+               "book-title": "Pride and Prejudice", 
+               "rating": 2, 
+               "review-date": "0-02-2020",
+               "comment": "Another boring book."
+           }
+       ]
+    }
+}
+ ]'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset18_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/batch' \
@@ -1720,7 +2269,7 @@ You can also use any valid path syntax (globs not allowed), e.g. <code>id-path=u
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset16_result">
+<div class="tab-pane" aria-labelledby="tabset18_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1746,15 +2295,105 @@ You can also use any valid path syntax (globs not allowed), e.g. <code>id-path=u
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset17_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset19_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset17_result"></a>Result</p>
+<p><a id="tabset19_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset19_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset17_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset19_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/namespaces/test/collections/library/batch' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' [{
+     "book": {
+         "title": "Moby Dick",
+         "isbn": "12345",
+         "author": [
+             "Herman Melville"
+         ],
+         "pub-year": 1899,
+         "genre": [
+             "adventure",
+             "ocean",
+             "action"
+         ],
+         "format": [
+             "hardback",
+             "paperback",
+             "epub"
+         ],
+         "languages": [
+             "English",
+             "German",
+             "French"
+         ]
+     }
+    },
+ {
+     "book": {
+         "title": "Pride and Prejudice",
+         "isbn": "45674",
+         "author": [
+             "Jane Austen"
+         ],
+         "pub-year": 1890,
+         "genre": [
+             "romance",
+             "England",
+             "regency"
+         ],
+         "format": [
+             "hardback",
+             "paperback",
+             "epub"
+         ],
+         "languages": [
+             "English",
+             "Japanese",
+             "French"
+         ]
+     }
+ },
+     {
+        "book": {
+            "title": "The Art of French Cooking",
+            "isbn": "19922",
+            "author": [
+                "Julia Child",
+                "Simone Beck",
+                "Louisette Bertholle"
+            ],
+            "pub-year": 1960,
+            "genre": [
+                "cooking",
+                "French cuisine"
+            ],
+            "format": [
+                "hardback",
+                "paperback",
+                "epub"
+            ],
+            "languages": [
+                "English",
+                "German",
+                "French",
+                "Belgian"
+            ]
+        }
+    }
+]'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset19_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/batch' \
@@ -1841,7 +2480,7 @@ You can also use any valid path syntax (globs not allowed), e.g. <code>id-path=u
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset17_result">
+<div class="tab-pane" aria-labelledby="tabset19_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1865,15 +2504,67 @@ You can also use any valid path syntax (globs not allowed), e.g. <code>id-path=u
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset18_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset20_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset18_result"></a>Result</p>
+<p><a id="tabset20_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset20_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset18_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset20_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8180/v2/namespaces/test/collections/library/John-Smith' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '     {
+     "reader": {
+        "name": "John Smith",
+        "user_id": "12346",
+        "birthdate": "11-01-1992",
+        "email": {
+            "primary": "jsmith@gmail.com",
+            "secondary": "john.smith@aol.com"
+        },
+        "address": {
+            "primary": {
+                "street": "200 Z St",
+                "city": "Evertown",
+                "state": "MA",
+                "zip-code": 55555
+            },
+            "secondary": {
+                "street": "850 2nd St",
+                "city": "Evertown",
+                "state": "MA",
+                "zip-code": 55556
+            }
+        },
+        "reviews": [
+            {
+                "book-title": "Moby Dick", 
+                "rating": 3, 
+                "review-date": "02-02-2002",
+                "comment": "It was okay."
+            },
+            {
+                "book-title": "Pride and Prejudice", 
+                "rating": 5, 
+                "review-date": "03-02-2002",
+                "comment": "It was a wonderful book! I loved reading it."
+            }
+        ]
+     }
+ }
+'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset20_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library/John-Smith' \
@@ -1922,7 +2613,7 @@ You can also use any valid path syntax (globs not allowed), e.g. <code>id-path=u
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset18_result">
+<div class="tab-pane" aria-labelledby="tabset20_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -1952,15 +2643,36 @@ TTL will add a time-to-live value in the database, so that the entry will be mar
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset19_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset21_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset19_result"></a>Result</p>
+<p><a id="tabset21_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset21_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset19_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset21_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311?profile=true' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+  "yet-another-field": "Hopefully, I haven'\''t lost my other two fields!",
+  "choices": [
+     "eeny",
+     "meeny",
+     "meiny",
+     "mo"
+  ]
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset21_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311?profile=true' \
@@ -1978,7 +2690,7 @@ TTL will add a time-to-live value in the database, so that the entry will be mar
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset19_result">
+<div class="tab-pane" aria-labelledby="tabset21_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2043,15 +2755,28 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset20_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset22_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset20_result"></a>Result</p>
+<p><a id="tabset22_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset22_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset20_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset22_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset22_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -2061,7 +2786,7 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset20_result">
+<div class="tab-pane" aria-labelledby="tabset22_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2095,15 +2820,30 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset21_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset23_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset21_result"></a>Result</p>
+<p><a id="tabset23_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset23_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset21_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset23_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311?ttl=10000' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+  "okaydokie": "Now I have done it! We have a TTL at last!"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset23_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311?ttl=10000' \
@@ -2115,7 +2855,7 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset21_result">
+<div class="tab-pane" aria-labelledby="tabset23_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2133,15 +2873,28 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset22_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset24_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset22_result"></a>Result</p>
+<p><a id="tabset24_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset24_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset22_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset24_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset24_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -2151,7 +2904,7 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset22_result">
+<div class="tab-pane" aria-labelledby="tabset24_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2184,15 +2937,31 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset23_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset25_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset23_result"></a>Result</p>
+<p><a id="tabset25_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset25_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset23_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset25_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+  "id": "some-other-stuff",
+  "other": "This is changed nonsensical stuff."
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset25_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PUT 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
@@ -2205,7 +2974,7 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset23_result">
+<div class="tab-pane" aria-labelledby="tabset25_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2223,15 +2992,28 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset24_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset26_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset24_result"></a>Result</p>
+<p><a id="tabset26_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset26_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset24_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset26_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset26_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -2241,7 +3023,7 @@ ND p27 = ? AND p28 = ? AND p29 = ? AND p30 = ? AND p31 = ? AND p32 = ? AND p33 =
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset24_result">
+<div class="tab-pane" aria-labelledby="tabset26_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2269,15 +3051,30 @@ the values will be overwritten.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset25_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset27_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset25_result"></a>Result</p>
+<p><a id="tabset27_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset27_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset25_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset27_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+  "yet-another-field": "Hopefully, I haven'\''t lost my other two fields!"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset27_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
@@ -2289,7 +3086,7 @@ the values will be overwritten.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset25_result">
+<div class="tab-pane" aria-labelledby="tabset27_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2307,15 +3104,28 @@ the values will be overwritten.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset26_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset28_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset26_result"></a>Result</p>
+<p><a id="tabset28_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset28_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset26_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset28_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset28_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -2325,7 +3135,7 @@ the values will be overwritten.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset26_result">
+<div class="tab-pane" aria-labelledby="tabset28_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2363,15 +3173,35 @@ If it does exist, it will be updated with the new document data.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset27_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset29_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset27_result"></a>Result</p>
+<p><a id="tabset29_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset29_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset27_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset29_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+  "yet-another-field": "Hopefully, I haven'\''t lost my other two fields!",
+  "languages": [
+     "English",
+     "German",
+     "French"
+  ]
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset29_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request PATCH 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
@@ -2388,7 +3218,7 @@ If it does exist, it will be updated with the new document data.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset27_result">
+<div class="tab-pane" aria-labelledby="tabset29_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2406,15 +3236,28 @@ If it does exist, it will be updated with the new document data.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset28_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset30_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset28_result"></a>Result</p>
+<p><a id="tabset30_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset30_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset28_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset30_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset30_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -2424,7 +3267,7 @@ If it does exist, it will be updated with the new document data.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset28_result">
+<div class="tab-pane" aria-labelledby="tabset30_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2459,19 +3302,22 @@ This example will change the book title from <code>Native Son</code> to <code>Na
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset29_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset31_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset29_result"></a>Result</p>
+<p><a id="tabset31_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset31_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset29_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset31_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X 'PUT' \
-  'http://https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book' \
+  'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book' \
   -H "X-Cassandra-Token: $AUTH_TOKEN" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -2479,7 +3325,19 @@ This example will change the book title from <code>Native Son</code> to <code>Na
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset29_result">
+<div class="tab-pane" aria-labelledby="tabset31_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X 'PUT' \
+  'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book' \
+  -H "X-Cassandra-Token: $AUTH_TOKEN" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{ "title": "Native Daughter" }'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset31_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2503,19 +3361,22 @@ This example overwrites a book&#8217;s information:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset30_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset32_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset30_result"></a>Result</p>
+<p><a id="tabset32_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset32_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset30_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset32_curl-command-v2">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X 'PATCH' \
-  'http://https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book' \
+  'http://https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book' \
   -H 'accept: application/json' \
   -H "X-Cassandra-Token: $AUTH_TOKEN" \
   -H 'Content-Type: application/json' \
@@ -2546,7 +3407,42 @@ This example overwrites a book&#8217;s information:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset30_result">
+<div class="tab-pane" aria-labelledby="tabset32_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X 'PATCH' \
+  'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book' \
+  -H 'accept: application/json' \
+  -H "X-Cassandra-Token: $AUTH_TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "book": {
+    "title": "Native Daughter",
+    "isbn": "12322",
+    "author": [
+        "Richard Wright"
+    ],
+    "pub-year": 1930,
+    "genre": [
+        "poverty",
+        "action"
+    ],
+    "format": [
+        "hardback",
+        "paperback",
+        "epub"
+    ],
+    "languages": [
+        "English",
+        "German",
+        "French"
+    ]
+  }
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset32_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2572,24 +3468,44 @@ This example overwrites a book&#8217;s information:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset31_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset33_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset31_result"></a>Result</p>
+<p><a id="tabset33_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset33_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset31_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset33_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X GET 'https://localhost:8082/v2/schemas/namespaces/test/functions' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X GET 'https://localhost:8180/v2/schemas/namespaces/test/functions' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset31_result">
+<div class="tab-pane" aria-labelledby="tabset33_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl -X GET 'https://localhost:8082/v2/schemas/namespaces/test/functions' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset33_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2619,24 +3535,44 @@ This example overwrites a book&#8217;s information:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset32_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset34_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset32_result"></a>Result</p>
+<p><a id="tabset34_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset34_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset32_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset34_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset32_result">
+<div class="tab-pane" aria-labelledby="tabset34_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset34_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2664,18 +3600,21 @@ document-path. Notice that structure of the data passed:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset33_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset35_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset33_result"></a>Result</p>
+<p><a id="tabset35_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset35_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset33_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset35_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -2684,7 +3623,27 @@ document-path. Notice that structure of the data passed:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset33_result">
+<div class="tab-pane" aria-labelledby="tabset35_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+ "operation": "$push", "value": "culture" 
+}'</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset35_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2719,18 +3678,21 @@ document-path. Notice that structure of the data passed:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset34_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset36_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset34_result"></a>Result</p>
+<p><a id="tabset36_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset36_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset34_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset36_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw ' {
@@ -2739,7 +3701,27 @@ document-path. Notice that structure of the data passed:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset34_result">
+<div class="tab-pane" aria-labelledby="tabset36_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location --request POST 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre/function' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+ "operation": "$pop"
+}'</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset36_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2758,24 +3740,44 @@ document-path. Notice that structure of the data passed:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset35_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset37_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset35_result"></a>Result</p>
+<p><a id="tabset37_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset37_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset35_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset37_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset35_result">
+<div class="tab-pane" aria-labelledby="tabset37_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/genre' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset37_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2815,15 +3817,28 @@ Both methods will be detailed.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset36_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset38_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset36_result"></a>Result</p>
+<p><a id="tabset38_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset38_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset36_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset38_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset38_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -2833,7 +3848,7 @@ Both methods will be detailed.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset36_result">
+<div class="tab-pane" aria-labelledby="tabset38_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -2962,15 +3977,28 @@ You can set the value in the REST query:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset37_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset39_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset37_result"></a>Result</p>
+<p><a id="tabset39_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset39_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset37_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset39_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
+--request GET 'https://localhost:8180/v2/namespaces/test/collections/library?page-size=5' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset39_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location \
@@ -2980,7 +4008,7 @@ You can set the value in the REST query:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset37_result">
+<div class="tab-pane" aria-labelledby="tabset39_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3127,15 +4155,26 @@ parameter set to the first page&#8217;s pageState:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset38_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset40_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset38_result"></a>Result</p>
+<p><a id="tabset40_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset40_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset38_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset40_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?page-state=JGQwODFlYmIyLTQ4OWUtNDI1ZS04NTI1LWEyNTU4NGY0N2JjZADwf_____B_____' \
+--header "X-Cassandra-Token: $AUTH_TOKEN"</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset40_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?page-state=JGQwODFlYmIyLTQ4OWUtNDI1ZS04NTI1LWEyNTU4NGY0N2JjZADwf_____B_____' \
@@ -3143,7 +4182,7 @@ parameter set to the first page&#8217;s pageState:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset38_result">
+<div class="tab-pane" aria-labelledby="tabset40_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3262,15 +4301,27 @@ You can specify the fields that you wish returned in the REST query:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset39_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset41_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset39_result"></a>Result</p>
+<p><a id="tabset41_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset41_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset39_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset41_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id?fields=["book.title","book.genre"]' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset41_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id?fields=["book.title","book.genre"]' \
@@ -3279,7 +4330,7 @@ You can specify the fields that you wish returned in the REST query:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset39_result">
+<div class="tab-pane" aria-labelledby="tabset41_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3317,15 +4368,27 @@ For one of the simplest <code>WHERE</code> clasues, get all documents where a na
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset40_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset42_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset40_result"></a>Result</p>
+<p><a id="tabset42_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset42_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset40_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset42_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$eq":"Amy%20Smith"}}' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset42_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$eq":"Amy%20Smith"}}' \
@@ -3334,7 +4397,7 @@ For one of the simplest <code>WHERE</code> clasues, get all documents where a na
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset40_result">
+<div class="tab-pane" aria-labelledby="tabset42_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3401,15 +4464,27 @@ Get all documents where name eq a particular reader with the fields reader name 
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset41_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset43_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset41_result"></a>Result</p>
+<p><a id="tabset43_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset43_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset41_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset43_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$eq":"Amy%20Smith"}}&amp;fields=["reader.name","reader.birthdate"]' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset43_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$eq":"Amy%20Smith"}}&amp;fields=["reader.name","reader.birthdate"]' \
@@ -3418,7 +4493,7 @@ Get all documents where name eq a particular reader with the fields reader name 
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset41_result">
+<div class="tab-pane" aria-labelledby="tabset43_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3530,15 +4605,27 @@ Get all documents where name eq a particular reader with the fields reader name 
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset42_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset44_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset42_result"></a>Result</p>
+<p><a id="tabset44_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset44_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset42_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset44_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$eq":"Amy%20Smith"}}&amp;fields=["reader.name","reader.birthdate"]' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset44_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$eq":"Amy%20Smith"}}&amp;fields=["reader.name","reader.birthdate"]' \
@@ -3547,7 +4634,7 @@ Get all documents where name eq a particular reader with the fields reader name 
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset42_result">
+<div class="tab-pane" aria-labelledby="tabset44_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3608,15 +4695,27 @@ Get all documents where name eq a particular reader with the fields reader name 
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset43_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset45_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset43_result"></a>Result</p>
+<p><a id="tabset45_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset45_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset43_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset45_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"$and":[{"reader.name":{"$ne":"Amy%20Smith"}},{"reader.name":{"$exists":true}}]}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset45_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"$and":[{"reader.name":{"$ne":"Amy%20Smith"}},{"reader.name":{"$exists":true}}]}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
@@ -3625,7 +4724,7 @@ Get all documents where name eq a particular reader with the fields reader name 
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset43_result">
+<div class="tab-pane" aria-labelledby="tabset45_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3670,15 +4769,27 @@ accomplish the same thing as the <code>and</code> operator in the last example:<
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset44_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset46_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset44_result"></a>Result</p>
+<p><a id="tabset46_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset46_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset44_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset46_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$ne":"Amy%20Smith","$exists":true}}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset46_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$ne":"Amy%20Smith","$exists":true}}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
@@ -3687,7 +4798,7 @@ accomplish the same thing as the <code>and</code> operator in the last example:<
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset44_result">
+<div class="tab-pane" aria-labelledby="tabset46_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3735,15 +4846,27 @@ Both matches must exist in order for a document to be returned.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset45_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset47_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset45_result"></a>Result</p>
+<p><a id="tabset47_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset47_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset45_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset47_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"$and":[{"reader.name":{"$ne":"Amy%20Smith"}},{"reader.name":{"$exists":true}}]}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset47_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"$and":[{"reader.name":{"$ne":"Amy%20Smith"}},{"reader.name":{"$exists":true}}]}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
@@ -3752,7 +4875,7 @@ Both matches must exist in order for a document to be returned.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset45_result">
+<div class="tab-pane" aria-labelledby="tabset47_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3796,15 +4919,27 @@ Either match must exist in order for a document to be returned.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset46_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset48_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset46_result"></a>Result</p>
+<p><a id="tabset48_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset48_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset46_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset48_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"$or":[{"reader.name":{"$eq":"Amy%20Smith"}},{"reader.name":{"$eq":"Jane%20Doe"}}]}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset48_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"$or":[{"reader.name":{"$eq":"Amy%20Smith"}},{"reader.name":{"$eq":"Jane%20Doe"}}]}&amp;fields=["reader.name","reader.user_id","reader.birthdate"]&amp;page-size=6' \
@@ -3813,7 +4948,7 @@ Either match must exist in order for a document to be returned.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset46_result">
+<div class="tab-pane" aria-labelledby="tabset48_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3850,15 +4985,27 @@ The results also include documents that do not contain the field.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset47_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset49_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset47_result"></a>Result</p>
+<p><a id="tabset49_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset49_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset47_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset49_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"$not":{"book.title":{"$eq":"Moby%20Dick"}}}&amp;fields=["book.title","book.authors"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset49_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"$not":{"book.title":{"$eq":"Moby%20Dick"}}}&amp;fields=["book.title","book.authors"]&amp;page-size=6' \
@@ -3867,7 +5014,7 @@ The results also include documents that do not contain the field.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset47_result">
+<div class="tab-pane" aria-labelledby="tabset49_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -3905,15 +5052,27 @@ less than or equal to 5 (all values that are 4 or 5):</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset48_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset50_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset48_result"></a>Result</p>
+<p><a id="tabset50_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset50_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset48_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset50_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.reviews.[*].rating":{"$gt":3,"$lte":5}}&amp;fields=["reader.name","reader.reviews.rating","reader.reviews"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset50_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.reviews.[*].rating":{"$gt":3,"$lte":5}}&amp;fields=["reader.name","reader.reviews.rating","reader.reviews"]&amp;page-size=6' \
@@ -3922,7 +5081,7 @@ less than or equal to 5 (all values that are 4 or 5):</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset48_result">
+<div class="tab-pane" aria-labelledby="tabset50_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4001,24 +5160,44 @@ less than or equal to 5 (all values that are 4 or 5):</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset49_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset51_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset49_result"></a>Result</p>
+<p><a id="tabset51_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset51_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset49_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset51_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$in":["Jane%20Doe","Amy%20Smith"]}}&amp;fields=["reader.name","reader.birthdate","reader.reviews"]&amp;page-size=6' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$in":["Jane%20Doe","Amy%20Smith"]}}&amp;fields=["reader.name","reader.birthdate","reader.reviews"]&amp;page-size=6' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset49_result">
+<div class="tab-pane" aria-labelledby="tabset51_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location -g --request GET '<a href="https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$in":">"Jane%20Doe","Amy%20Smith"</a>}}&amp;fields=["reader.name","reader.birthdate","reader.reviews"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset51_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4077,24 +5256,44 @@ less than or equal to 5 (all values that are 4 or 5):</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset50_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset52_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset50_result"></a>Result</p>
+<p><a id="tabset52_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset52_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset50_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset52_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$in":["Jane%20Doe","John%20Smith"]}}&amp;fields=["reader.name","reader.address","reader.reviews"]&amp;page-size=6' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$in":["Jane%20Doe","John%20Smith"]}}&amp;fields=["reader.name","reader.address","reader.reviews"]&amp;page-size=6' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset50_result">
+<div class="tab-pane" aria-labelledby="tabset52_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location -g --request GET '<a href="https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$in":">"Jane%20Doe","John%20Smith"</a>}}&amp;fields=["reader.name","reader.address","reader.reviews"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset52_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4183,24 +5382,44 @@ or the fields does not exist.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset51_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset53_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset51_result"></a>Result</p>
+<p><a id="tabset53_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset53_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset51_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset53_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.name":{"$nin":["Jane%20Doe","Amy%20Smith"]}}&amp;fields=["reader.name","reader.birthdate","reader.reviews"]&amp;page-size=6' \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$nin":["Jane%20Doe","Amy%20Smith"]}}&amp;fields=["reader.name","reader.birthdate","reader.reviews"]&amp;page-size=6' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset51_result">
+<div class="tab-pane" aria-labelledby="tabset53_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>curl --location -g --request GET '<a href="https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.name":{"$nin":">"Jane%20Doe","Amy%20Smith"</a>}}&amp;fields=["reader.name","reader.birthdate","reader.reviews"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset53_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4271,15 +5490,27 @@ For example, a specified value for a city can search in both the primary and sec
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset52_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset54_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset52_result"></a>Result</p>
+<p><a id="tabset54_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset54_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset52_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset54_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.address.primary,secondary.city":{"$eq":"Evertown"}}&amp;fields=["reader.name","reader.address","reader.reviews"]' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset54_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.address.primary,secondary.city":{"$eq":"Evertown"}}&amp;fields=["reader.name","reader.address","reader.reviews"]' \
@@ -4288,7 +5519,7 @@ For example, a specified value for a city can search in both the primary and sec
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset52_result">
+<div class="tab-pane" aria-labelledby="tabset54_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4426,15 +5657,27 @@ Each reader review has a number of fields, of which <code>book-title</code> is o
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset53_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset55_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset53_result"></a>Result</p>
+<p><a id="tabset55_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset55_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset53_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset55_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library?where={"reader.reviews.[*].book-title":{"$eq":"Moby%20Dick"}}&amp;fields=["reader.name","reader.address","reader.reviews"]&amp;page-size=6' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset55_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library?where={"reader.reviews.[*].book-title":{"$eq":"Moby%20Dick"}}&amp;fields=["reader.name","reader.address","reader.reviews"]&amp;page-size=6' \
@@ -4443,7 +5686,7 @@ Each reader review has a number of fields, of which <code>book-title</code> is o
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset53_result">
+<div class="tab-pane" aria-labelledby="tabset55_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4595,15 +5838,28 @@ Send a <code>GET</code> request to <code>/v2/namespaces/{namespace_name}/collect
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset54_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset56_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset54_result"></a>Result</p>
+<p><a id="tabset56_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset56_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset54_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset56_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X GET 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset56_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
@@ -4613,7 +5869,7 @@ Send a <code>GET</code> request to <code>/v2/namespaces/{namespace_name}/collect
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset54_result">
+<div class="tab-pane" aria-labelledby="tabset56_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4643,15 +5899,27 @@ to retrieve a book title:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset55_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset57_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset55_result"></a>Result</p>
+<p><a id="tabset57_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset57_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset55_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset57_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8180/v2/namespaces/test/collections/library/native-son-doc-id/book/title' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset57_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/native-son-doc-id/book/title' \
@@ -4660,7 +5928,7 @@ to retrieve a book title:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset55_result">
+<div class="tab-pane" aria-labelledby="tabset57_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4683,15 +5951,27 @@ to find the book-title of the second book a reader reviewed:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset56_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset58_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset56_result"></a>Result</p>
+<p><a id="tabset58_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset58_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset56_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset58_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library/John-Smith/reader/reviews/[1]' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset58_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/John-Smith/reader/reviews/[1]' \
@@ -4700,7 +5980,7 @@ to find the book-title of the second book a reader reviewed:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset56_result">
+<div class="tab-pane" aria-labelledby="tabset58_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4727,15 +6007,27 @@ to find the book-title of the second book a reader reviewed:</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset57_curl-command-v2"></a>cURL command (/v2)</p>
+<p><a id="tabset59_curl-command-v2"></a>cURL command (/v2)</p>
 </li>
 <li>
-<p><a id="tabset57_result"></a>Result</p>
+<p><a id="tabset59_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+<li>
+<p><a id="tabset59_result"></a>Result</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset57_curl-command-v2">
+<div class="tab-pane" aria-labelledby="tabset59_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8180/v2/namespaces/test/collections/library/John-Smith/reader/reviews?WHERE={"reader.reviews.rating":{"$eq":5}' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset59_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request GET 'https://localhost:8082/v2/namespaces/test/collections/library/John-Smith/reader/reviews?WHERE={"reader.reviews.rating":{"$eq":5}' \
@@ -4744,7 +6036,7 @@ to find the book-title of the second book a reader reviewed:</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset57_result">
+<div class="tab-pane" aria-labelledby="tabset59_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
@@ -4783,11 +6075,36 @@ to find the book-title of the second book a reader reviewed:</p>
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}</code>.
 In this example, the secondary address for the user John Smith is deleted from the document.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset60_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset60_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset60_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request DELETE 'https://localhost:8180/v2/namespaces/test/collections/library/John-Smith/reader/address/secondary' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset60_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request DELETE 'https://localhost:8082/v2/namespaces/test/collections/library/John-Smith/reader/address/secondary' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -4797,12 +6114,38 @@ In this example, the secondary address for the user John Smith is deleted from t
 <p>To delete a document, send a <code>DELETE</code> request to
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}</code>.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset61_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset61_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset61_curl-command-v2">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -L \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
+-X DELETE 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset61_curl-command-v1">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -L \
 -X DELETE 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json'</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4824,11 +6167,36 @@ Deletions do not return any data.
 <p>To delete a document, based on a WHERE clause, send a <code>DELETE</code> request to
 <code>/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/?{where-clause}</code>.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset62_curl-command-v2"></a>cURL command (/v2)</p>
+</li>
+<li>
+<p><a id="tabset62_curl-command-v1"></a>cURL command (/v1)</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset62_curl-command-v2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request DELETE 'https://localhost:8180/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311?where={ "id":{"$eq":"some stuff"}}' \
+--header "X-Cassandra-Token: $AUTH_TOKEN" \
+--header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset62_curl-command-v1">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location -g --request DELETE 'https://localhost:8082/v2/namespaces/test/collections/library/2545331a-aaad-45d2-b084-9da3d8f4c311?where={ "id":{"$eq":"some stuff"}}' \
 --header "X-Cassandra-Token: $AUTH_TOKEN" \
 --header 'Content-Type: application/json' \</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
