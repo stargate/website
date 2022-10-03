@@ -40,7 +40,14 @@ layout: base
           <img data-src="{{ page.author_info.picture | relative_url }}"
             alt="{{ page.author_info.name.first }} {{ page.author_info.name.last }}"
             class="post-item__info-author_image lazyload" width="32" height="32">
-          <span>By <span class="link">{{ page.author_info.name.first }} {{ page.author_info.name.last }}</span></span>
+          {% assign main_author = page.author_info.name.first | append: " " | append: page.author_info.name.last %}
+          {% assign authors = main_author %}
+          {% if page.extra_authors != nil %}
+            {% assign extra_authors = page.extra_authors | join: ", " %}
+            {% assign authors = main_author | append: ", " | append: extra_authors %}
+          {% endif %}
+          <span>By <span class="link">{{ authors }}</span>
+          </span>
           &#8226;
           <span>{{ page.date | date: "%b %-d, %Y" }}</span>
         </div>
