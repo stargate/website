@@ -8,6 +8,7 @@ author_info:
     first: "Mark"
     last: "Stone"
   picture: "assets/images/stargate-profile.png"
+extra_authors: [ "Jeff Carpenter"]
 ---
 
 Last Friday, we released the first [Beta](https://github.com/stargate/stargate/releases/tag/v2.0.0-BETA-1) for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.
