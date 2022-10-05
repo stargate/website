@@ -52,6 +52,6 @@ Since one of the Stargate v2 goals is to be more Docker/Kubernetes friendly, we�
 
 Now that we’ve mostly completed breaking our first API service out of the monolith, we’re working on setting up performance testing, reviewing the architecture, and getting ready to factor the GraphQL and Document APIs into their own services. 
 
-We’d love to hear your inputs about the new architecture and the progress that is being made on the new implementation, so feel free to jump into the conversation on [Discord](https://discord.com/invite/5gY8GDB) with questions, or comment on our [design discussions on GitHub](https://github.com/stargate/stargate/discussions?discussions_q=label:stargate-v2).
+We’d love to hear your inputs about the new architecture and the progress that is being made on the new implementation, so feel free to jump into the conversation on [Discord](https://discord.gg/HHtMAvjaZB) with questions, or comment on our [design discussions on GitHub](https://github.com/stargate/stargate/discussions?discussions_q=label:stargate-v2).
 
 _Special thanks to Tatu Saloranta, Olivier Michallat, Doug Wettlaufer and Mark Stone for their contributions to the Stargate v2 effort and this post._
