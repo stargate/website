@@ -22,7 +22,10 @@ hide_banner: true
       </div>
       <div class="row">
         <div class="col-md-6 homepage__hero--buttons">
-          <a href="{{ '/docs' | relative_url }}" class="btn btn-purple">
+          <a
+            href="{{ '/docs/latest/install/install-overview.html' | relative_url }}"
+            class="btn btn-purple"
+          >
             <svg
               width="0.8em"
               height="1em"
@@ -37,7 +40,11 @@ hide_banner: true
             </svg>
             <span>Download Now</span>
           </a>
-          <a href="{{ '/docs' | relative_url }}" class="btn btn-purple"
+          <a
+            href="https://astra.datastax.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-purple"
             >Try on Astra DB free</a
           >
         </div>
@@ -45,8 +52,15 @@ hide_banner: true
 
       <div class="row">
         <div class="col-md-6 homepage__hero--extra-links">
-          <a href="{{ '/docs' | relative_url }}">Read the Docs</a>
-          <a href="{{ '/docs' | relative_url }}">Postman</a>
+          <a href="{{ '/docs/latest/core-index.html' | relative_url }}"
+            >Read the Docs</a
+          >
+          <a
+            href="https://www.postman.com/datastax"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Postman</a
+          >
         </div>
       </div>
     </div>
@@ -109,7 +123,10 @@ hide_banner: true
               </h4>
             </div>
             <div class="col-md-2">
-              <a href="#" class="btn btn-outline-light btn-block btn-lg">
+              <a
+                href="{{ '/docs/latest/develop/dev-with-grpc.html' | relative_url }}"
+                class="btn btn-outline-light btn-block btn-lg"
+              >
                 Try It Now
               </a>
             </div>
@@ -299,8 +316,12 @@ hide_banner: true
                         definition with the (JSON) Documents API.
                       </p>
                       <p>
-                        <a href="#">JSON schema</a> is also supported for those
-                        with structured or semi-structured JSON.
+                        <a
+                          href="{{ '/docs/latest/develop/dev-with-doc.html#add-json-schema-to-a-collection' | relative_url}}"
+                          >JSON schema</a
+                        >
+                        is also supported for those with structured or
+                        semi-structured JSON.
                       </p>
                     </div>
                   </div>
@@ -412,12 +433,21 @@ hide_banner: true
                       <p>
                         Stargate is Apache v2 licensed and uses public Github
                         repos and Discord for collaboration and
-                        <a href="#">contribution</a>.
+                        <a
+                          href="https://github.com/stargate/stargate/blob/master/CONTRIBUTING.md"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >contribution</a
+                        >.
                       </p>
                       <p>
                         Check out cool stuff in the community, like this
-                        experimental <a href="#">Dynamo DB API</a> project, and
-                        be welcome!
+                        experimental
+                        <a
+                          href="{{ '/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html' | relative_url }}"
+                          >Dynamo DB API</a
+                        >
+                        project, and be welcome!
                       </p>
                     </div>
                   </div>
@@ -427,9 +457,14 @@ hide_banner: true
                     <div class="tab__card-body">
                       <p>
                         Cassandra 4.1 itself has
-                        <a href="#">new extension points</a> for Storage,
-                        Network Encryption, Authentication, Schema Storage, and
-                        Guardrails.
+                        <a
+                          href="https://thenewstack.io/apache-cassandra-4-1-building-the-database-your-kids-will-use/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >new extension points</a
+                        >
+                        for Storage, Network Encryption, Authentication, Schema
+                        Storage, and Guardrails.
                       </p>
                     </div>
                   </div>
