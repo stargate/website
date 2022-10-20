@@ -8,7 +8,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     background-image: url($baseurl + "/assets/images/index-mobile-bg.png");
   }
 }
@@ -48,7 +48,7 @@
 }
 
 .hero-image {
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     max-width: 50%;
     margin-top: 2rem;
   }
@@ -182,7 +182,7 @@
   height: 100%;
   padding: 1rem 0;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     flex-direction: column;
   }
 }
@@ -193,7 +193,7 @@
   justify-content: center;
   border-right: 1px solid #555dc0;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     border-right: none;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -227,7 +227,7 @@
   background: $white;
   margin: 0.5rem;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     padding-right: 0;
 
     #git-watchers,
@@ -248,7 +248,7 @@
   padding: 0.5rem;
   margin-right: 0.5rem;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     margin-right: 0;
@@ -264,7 +264,7 @@
     margin-top: 60px;
   }
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     padding: 60px 0;
 
     .btn {
@@ -285,7 +285,7 @@
 .latest-post__item {
   padding: 30px;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     padding: 30px 0;
   }
 }
@@ -295,7 +295,7 @@
     border-right: 1px solid #c9cef6;
   }
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     .latest-post__item {
       border-right: none;
       border-bottom: 1px solid #c9cef6;
@@ -304,7 +304,7 @@
 }
 
 .latest-post__item-container {
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     min-width: 100%;
   }
 }

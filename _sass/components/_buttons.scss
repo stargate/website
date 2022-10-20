@@ -8,7 +8,7 @@
     margin-right: 1em;
   }
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-sm) {
     padding: 14px;
 
     svg {
@@ -150,12 +150,33 @@
   font-weight: bold;
   font-size: 1.125em;
   line-height: 1.5em;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #ffffff;
   border-radius: 6px;
-  color: #FFFFFF;
+  color: #ffffff;
 
   &:hover {
-    background-color: #FFFFFF;
-    color: #555DC0;
+    background-color: #ffffff;
+    color: #555dc0;
+  }
+}
+
+.btn-primary,
+.btn-purple {
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.15));
+  border-color: #555dc0;
+  background: #555dc0;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-family: "Nunito Sans";
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1em;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+
+  &:hover {
+    color: #ffffff;
+    background: darken(#555dc0, 10%);
   }
 }

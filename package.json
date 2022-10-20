@@ -15,7 +15,7 @@
   "scripts": {
     "serve": "serve _site",
     "build": "JEKYLL_ENV=production bundle exec jekyll build",
-    "start": "bundle exec jekyll serve --livereload --open-url --drafts"
+    "start": "bundle exec jekyll serve --livereload --open-url --drafts --host=0.0.0.0"
   },
   "author": "= <=>",
   "license": "ISC"

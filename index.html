@@ -4,249 +4,627 @@ title: Home
 hide_banner: true
 ---
 
-<main class="template-index">
-  <div class="hero">
+<main class="homepage">
+  <section class="homepage__hero" id="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h1 class="homepage__hero--title">Open Source Data API Gateway</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 homepage__hero--subtitle">
+          <p>
+            Stargate is a data API gateway that deploys between your apps and
+            your Apache Cassandra database(s).
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 homepage__hero--buttons">
+          <a href="{{ '/docs' | relative_url }}" class="btn btn-purple">
+            <svg
+              width="0.8em"
+              height="1em"
+              viewBox="0 0 14 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 16.6629H14V14.7026H0V16.6629ZM14 5.88103H10V0H4V5.88103H0L7 12.7422L14 5.88103Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>Download Now</span>
+          </a>
+          <a href="{{ '/docs' | relative_url }}" class="btn btn-purple"
+            >Try on Astra DB free</a
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 homepage__hero--extra-links">
+          <a href="{{ '/docs' | relative_url }}">Read the Docs</a>
+          <a href="{{ '/docs' | relative_url }}">Postman</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__stats" id="stats">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10 d-flex flex-column align-items-center text-center">
-          <h1 class="hero-title">Open Source Data API Gateway</h1>
-          <p class="hero-text">
-            Stargate is an open source data API gateway that sits between your app and your databases. Stargate brings
-            together an API platform and data request coordination code into one OSS project.
-          </p>
-          <div class="buttons-hero">
-            <a href="{{ '/docs' | relative_url }}" class="btn btn-white hero-btn">Get Started</a>
-            <a href="https://github.com/{{ site.github_repository }}" target="_blank" rel="noopener noreferrer"
-              class="btn btn-icon hero-btn btn-github">
-              <span>
-                {% include logos/github.html %}
+        <div class="col-md-6">
+          <div
+            class="stats hidden"
+            id="github-stats"
+            data-repository="{{ site.github_repository }}"
+          >
+            <div class="stat git-watchers">
+              <div class="stat__info">
+                {% include icons/watch.html %}
+                <span>Watch</span>
+              </div>
+
+              <span class="stat__data" id="git-watchers">
+                {{ site.github_watchers }}
               </span>
-              <span>Github</span>
-            </a>
+            </div>
+            <div class="stat git-stars">
+              <div class="stat__info">
+                {% include icons/star.html %}
+                <span>Star</span>
+              </div>
+
+              <span class="stat__data" id="git-stars">
+                {{ site.github_stars }}
+              </span>
+            </div>
+            <div class="stat git-forks">
+              <div class="stat__info">
+                {% include icons/fork.html %}
+                <span>Fork</span>
+              </div>
+
+              <span class="stat__data" id="git-forks">
+                {{ site.github_forks }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="latest-blog">
+  <section class="homepage__banner" id="banner">
     <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          <h2>Latest From Stargate</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>
+                Go Driverless with gRPC - without sacrificing native driver
+                performance
+              </h4>
+            </div>
+            <div class="col-md-2">
+              <a href="#" class="btn btn-outline-light btn-block btn-lg">
+                Try It Now
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="homepage__blog" id="blog">
+    <div class="container">
       <div class="row">
-        {% for post in site.posts limit: 3 %}
-          <div class="col-lg-4 col-md-4 d-flex">
-            <a class="post-card" href="{{ post.url | relative_url }}">
-              <p>{{ post.title | escape }}</p>
-              <span>
-                <span>By <span class="link">{{ post.author_info.name.first }}
-                    {{ post.author_info.name.last }}</span></span>
-                &#8226;
-                <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-                </span>
-            </a>
-          </div>
+        <div class="col-md-12">
+          <h4 class="homepage__blog--title">Latest from Stargate</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        {% for post in site.posts limit: 3 %} {% assign author =
+        post.author_info.name.first | append: post.author_info.name.last %}
+        <div class="col-md-4 d-flex">
+          <a class="blog-item" href="{{ post.url | relative_url }}">
+            <p>{{ post.title | escape }}</p>
+            <div class="blog-item__info">
+              <span class="blog-item__info-author">
+                By <span>{{ author }}</span>
+              </span>
+              &nbsp;&#8226;&nbsp;
+              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+            </div>
+          </a>
+        </div>
         {% endfor %}
       </div>
+
       <div class="row">
         <div class="col text-center">
-          <a href="{{ '/blog' | relative_url }}" class="btn btn-primary btn-more-blog">See More</a>
+          <a href="{{ '/blog' | relative_url }}" class="btn btn-purple"
+            >See More</a
+          >
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="latest-release">
+  <section class="homepage__release" id="release">
     <div class="container">
       <div class="row">
         <div class="col text-center">
-          <p id="github-releases" className="github-releases hidden" data-repository="{{ site.github_repository }}">
-          </p>
+          <p
+            id="github-releases"
+            class="github-releases hidden"
+            data-repository="{{ site.github_repository }}"
+          ></p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="index-banner">
+  <section class="homepage__video" id="info">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12 d-flex align-items-center justify-content-center">
-          <p>Stargate is the official data API for DataStax Astra DB and DataStax Enterprise!</p>
-          <a href="https://astra.datastax.com/register" class="btn btn-banner">
-            Try It Now
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="homepage__video--title">What does Stargate do?</h2>
+          <div class="homepage__video--text">
+            <p>
+              Stargate transforms Cassandra into a JSON Document DB,
+              automatically exposes your database as secure Web APIs, and
+              non-invasively brings modular, service oriented architecture to
+              the powerhouse database.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <a
+            class="homepage__video--player"
+            data-toggle="modal"
+            data-target="#what-is-stargate-video-modal"
+          >
+            {% include icons/play.html %}
+            <img
+              class="img-fluid lazyload homepage__video--player__image"
+              data-src="{{ '/assets/images/explainer-cover.png' | relative_url }}"
+              alt="Stargate astronaut"
+              width="448"
+              height="760"
+            />
           </a>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="what-is-stargate">
+    <div
+      class="modal fade"
+      id="what-is-stargate-video-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="WhatIsStargateVideoModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="video-wrapper">
+              <iframe
+                id="whatis-stargate-video"
+                src="https://www.youtube.com/embed/2ltVf2EscmM?enablejsapi=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__tabs" id="why">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <h2 class="what-is-stargate__title">What is Stargate?</h2>
-          <div class="what-is-stargate__text">
-            <p>Stargate abstracts Cassandra-specific concepts entirely from app
-              developers and supports different API options, removing barriers of entry for new software developers.</p>
+        <div class="col-md-8 text-center">
+          <h2>Why Stargate for Apache Cassandra</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul
+            class="nav nav-pills justify-content-center"
+            id="why-stargate-tabs"
+            role="tablist"
+          >
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="development-tab"
+                data-toggle="tab"
+                href="#development"
+                role="tab"
+                aria-controls="development"
+                aria-selected="true"
+                >Development</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="operations-tab"
+                data-toggle="tab"
+                href="#operations"
+                role="tab"
+                aria-controls="operations"
+                aria-selected="false"
+                >Operations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="ecosystem-tab"
+                data-toggle="tab"
+                href="#ecosystem"
+                role="tab"
+                aria-controls="ecosystem"
+                aria-selected="false"
+                >Ecosystem</a
+              >
+            </li>
+          </ul>
+
+          <div class="tab-content" id="why-stargate-tabs-content">
+            <div
+              class="tab-pane fade show active"
+              id="development"
+              role="tabpanel"
+              aria-labelledby="development-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Enable document database as a secondary database model
+                        for Cassandra. Skip upfront data modeling and schema
+                        definition with the (JSON) Documents API.
+                      </p>
+                      <p>
+                        <a href="#">JSON schema</a> is also supported for those
+                        with structured or semi-structured JSON.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        An automatic, high-performance gRPC API for every DB
+                        that's as fast as native drivers, with less network API
+                        to learn.
+                      </p>
+                      <p>
+                        Generating a gRPC client for an unsupported language or
+                        language version is straightforward.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Autogenerated, secure Web API endpoints for GraphQL and
+                        REST for every database - plus token authentication.
+                      </p>
+                      <p>Stargate also supports native CQL/Driver traffic.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="operations"
+              role="tabpanel"
+              aria-labelledby="operations-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Modular Cassandra architecture: Stargate separates
+                        coordinator and storage nodes into independently
+                        deployable and scalable services.
+                      </p>
+                      <p>
+                        Fine-tune cluster performance using optimal hardware for
+                        each workload and scale just what's bottlenecked.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Stargate modularizes itself by separating Web API
+                        Services from gRPC/Native driver coordination nodes into
+                        independently deployable and scalable services.
+                      </p>
+                      <p>
+                        Fine-tune cluster performance using optimal hardware for
+                        each workload and scale just what's bottlenecked.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Deploy Stargate to anything: bare metal, VMs, Docker,
+                        GKE, EKS, K8ssandra, DataStax Enterprise, or
+                        as-a-service on Astra DB.
+                      </p>
+                      <p>Also available on AWS and Google Cloud Marketplace.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="ecosystem"
+              role="tabpanel"
+              aria-labelledby="ecosystem-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Adapting Cassandra to the APIs, and data serialization
+                        formats your organization uses is easier than ever using
+                        the gRPC Bridge API and modular architecture.
+                      </p>
+                      <p>
+                        Just learn one purpose-built extension point, versus
+                        having the learn the whole stargate codebase.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Stargate is Apache v2 licensed and uses public Github
+                        repos and Discord for collaboration and
+                        <a href="#">contribution</a>.
+                      </p>
+                      <p>
+                        Check out cool stuff in the community, like this
+                        experimental <a href="#">Dynamo DB API</a> project, and
+                        be welcome!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Cassandra 4.1 itself has
+                        <a href="#">new extension points</a> for Storage,
+                        Network Encryption, Authentication, Schema Storage, and
+                        Guardrails.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__extensions" id="extensions">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 homepage__extensions--header">
+          <h2>API Extensions</h2>
+          <p>
+            Balance productivity with performance across a range of
+            app-to-database connectivity options for your project's needs.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="homepage__extensions--grid">
+            <h4 class="grid--title">Drivers</h4>
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="{{ '/assets/images/extensions/cassandra.png' | relative_url }}"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>
+                Use native drivers and the Cassandra Query Language to access
+                your data in Cassandra
+              </p>
+            </div>
+
+            <h4 class="grid--title lighten">Open API</h4>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="{{ '/assets/images/extensions/grpc.png' | relative_url }}"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>
+                Go driverless with a high performance RPC (gRPC) API for every
+                Cassandra database
+              </p>
+            </div>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="{{ '/assets/images/extensions/graphql.png' | relative_url }}"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>
+                Serve a GraphQL API from any Cassandra database, in schema first
+                or cql first modes
+              </p>
+            </div>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="{{ '/assets/images/extensions/rest.png' | relative_url }}"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>Serve a RESTful API from any Cassandra database</p>
+            </div>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="{{ '/assets/images/extensions/json.png' | relative_url }}"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>Save and search schemaless JSON documents</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <svg
+            class="homepage__extensions--arrow"
+            width="1112"
+            height="16"
+            viewBox="0 0 1112 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928933C7.68054 0.538408 7.04738 0.538408 6.65685 0.928933L0.292893 7.29289ZM1111.71 8.7072C1112.1 8.31668 1112.1 7.68351 1111.71 7.29299L1105.34 0.929029C1104.95 0.538504 1104.32 0.538504 1103.93 0.929029C1103.54 1.31955 1103.54 1.95272 1103.93 2.34324L1109.59 8.0001L1103.93 13.657C1103.54 14.0475 1103.54 14.6806 1103.93 15.0712C1104.32 15.4617 1104.95 15.4617 1105.34 15.0712L1111.71 8.7072ZM1 9L1111 9.0001L1111 7.0001L1 7L1 9Z"
+              fill="#C9CEF6"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="homepage__extensions--arrow-text">
+            <span>More Performant</span>
+            <span>More Flexible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__architecture" id="architecture">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2>Modular, Service Oriented Architecture</h2>
         </div>
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="what-is-stargate__player" data-toggle="modal" data-target="#what-is-stargate-video-modal">
-            {% include icons/play.html %}
-            <img class="img-fluid what-is-stargate__image lazyload"
-              data-src="{{ '/assets/images/explainer-cover.png' | relative_url }}" alt="Stargate astronaut" width="448"
-              height="760">
+        <div class="col-md-9">
+          <img
+            class="img-fluid lazyload"
+            data-src="{{ '/assets/images/architecture-diagram.png' | relative_url }}"
+            alt="Stargate Architecture"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__scale" id="scale">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 offset-md-1">
+          <h3>
+            Scale each tier independently for optimal resource utilization and
+            performance:
+          </h3>
+        </div>
+        <div class="col-md-5">
+          <div class="homepage__scale--text">
+            <h4>APIs</h4>
+            <ul>
+              <li>
+                CQL clients can continue to connect via drivers or CQL over gRPC
+                for the best performance
+              </li>
+              <li>
+                A variety of developer-friendly APIs provide a faster time to
+                market
+              </li>
+              <li>API Nodes scale / deploy independently</li>
+            </ul>
+
+            <h4>Coordinator Nodes</h4>
+            <ul>
+              <li>
+                Coordinator only nodes separate compute-intensive work, allowing
+                Cassandra nodes to focus on storage.
+              </li>
+              <li>Optimize Coordinator nodes for CPU and Network I/O</li>
+            </ul>
+
+            <h4>Cassandra (storage)</h4>
+            <ul>
+              <li>Optimize Storage nodes for Disk I/O</li>
+              <li>
+                Support for backend clusters running Cassandra 3.11, Cassandra
+                4.0, DataStax Enterprise, or DataStax Astra
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="catalog">
-    <div class="container-fluid spaced">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="catalog-title">API Extensions Catalog</h2>
-            </div>
-          </div>
-
-          <div class="row catalog-items">
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="{{ '/assets/images/json-api.png' | relative_url }}" alt="JSON API" width="90"
-                    height="auto">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-doc.html"
-                      target="_blank" rel="noopener noreferrer">
-                      Save and search schemaless JSON documents
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="{{ '/assets/images/graphql-logo.svg' | relative_url }}" alt="GraphQL" width="90"
-                    height="auto">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/graphql.html" target="_blank"
-                      rel="noopener noreferrer">
-                      Serve a GraphQL API from any Cassandra database
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="{{ '/assets/images/restapi.png' | relative_url }}" alt="{Rest API}" width="180"
-                    height="28">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-rest.html"
-                      target="_blank" rel="noopener noreferrer">
-                      Serve a RESTful API from any Cassandra database
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="{{ '/assets/images/grpc.png' | relative_url }}" alt="gRPC" width="90" height="">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-grpc.html" target="_blank"
-                      rel="noopener noreferrer">
-                      Serve a Google RPC (gRPC) API from any Cassandra database
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                       data-src="{{ '/assets/images/eye.png' | relative_url }}" alt="Eye" width="120" height="64">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-cql.html" target="_blank"
-                       rel="noopener noreferrer">
-                      Use the native Cassandra Query Language to access your data in Cassandra
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="github-stats hidden" id="github-stats" data-repository="{{ site.github_repository }}">
-    <div class="git-stat git-watchers">
-      <div class="git-stat__info">
-        {% include icons/watch.html %}
-        <span>&nbsp;Watch</span>
-      </div>
-
-      <span id="git-watchers">{{ site.github_watchers }}</span>
-    </div>
-    <div class="git-stat git-stars">
-      <div class="git-stat__info">
-        {% include icons/star.html %}
-        <span>&nbsp;Star</span>
-      </div>
-
-      <span id="git-stars">{{ site.github_stars }}</span>
-    </div>
-    <div class="git-stat git-forks">
-      <div class="git-stat__info">
-        {% include icons/fork.html %}
-        <span>&nbsp;Fork</span>
-      </div>
-
-      <span id="git-forks">{{ site.github_forks }}</span>
-    </div>
-  </div>
+  </section>
 </main>
-
-<div class="modal" id="what-is-stargate-video-modal" tabindex="-1" role="dialog"
-  aria-labelledby="WhatIsStargateVideoModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="video-wrapper">
-          <iframe id="whatis-stargate-video" src="https://www.youtube.com/embed/2ltVf2EscmM?enablejsapi=1" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

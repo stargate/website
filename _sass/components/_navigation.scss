@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     width: 180px;
     height: auto;
     padding-left: 1rem;
@@ -38,7 +38,7 @@
 .navbar-nav {
   align-items: center;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     align-items: flex-start;
   }
 }
@@ -70,7 +70,7 @@
       height: 24px;
     }
 
-    @include media-breakpoint-down(md) {
+    @media screen and (max-width: $breakpoint-md) {
       svg {
         width: 34px;
         height: 34px;
@@ -92,7 +92,7 @@
   display: flex;
   align-items: center;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     align-items: center;
     justify-content: center;
     margin: 1rem auto;
@@ -104,7 +104,7 @@
   display: flex;
   align-items: center;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     width: 100%;
     padding-top: 1rem;
     flex-direction: column;
@@ -241,6 +241,9 @@
 
 .banner {
   background: #555dc0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 0;
   width: 100%;
   margin-top: -0.5rem;
@@ -259,5 +262,9 @@
     &:hover {
       color: #ffffff;
     }
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    flex-direction: column;
   }
 }

@@ -59,7 +59,7 @@
   }
 }
 
-@include media-breakpoint-down(md) {
+@media screen and (max-width: $breakpoint-md) {
   .footer {
     text-align: center;
   }

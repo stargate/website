@@ -2,6 +2,10 @@
   padding-top: 80px;
   padding-bottom: 80px;
 
+  a {
+    color: $primary;
+  }
+
   &.spaced {
     padding-top: 160px;
   }
@@ -38,7 +42,7 @@
       color: #484d60;
     }
 
-    @include media-breakpoint-down(md) {
+    @media screen and (max-width: $breakpoint-md) {
       margin: 0;
       transform: scale(1);
     }
@@ -147,7 +151,7 @@
     }
   }
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     overflow-x: auto;
   }
 }

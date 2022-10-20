@@ -1,4 +1,4 @@
-@include media-breakpoint-up(sm) {
+@media screen and (min-width: $breakpoint-sm) {
   .container-fluid.spaced {
     padding-left: 4rem;
     padding-right: 4rem;

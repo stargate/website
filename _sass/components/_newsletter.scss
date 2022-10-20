@@ -63,7 +63,7 @@
   }
 
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     background-image: url($baseurl + "/assets/images/mobile-newsletter-bg.png");
     flex-direction: column;
     padding: 36px 30px;
