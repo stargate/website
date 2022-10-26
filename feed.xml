@@ -1,4 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-10-26T11:39:54+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate v2 Beta: Open for extension</title><link href="https://stargate.io/2022/09/11/stargate-v2-beta.html" rel="alternate" type="text/html" title="Stargate v2 Beta: Open for extension" /><published>2022-09-11T06:00:00+00:00</published><updated>2022-09-11T06:00:00+00:00</updated><id>https://stargate.io/2022/09/11/stargate-v2-beta</id><content type="html" xml:base="https://stargate.io/2022/09/11/stargate-v2-beta.html">&lt;p&gt;Last Friday, we released the first &lt;a href=&quot;https://github.com/stargate/stargate/releases/tag/v2.0.0-BETA-1&quot;&gt;Beta&lt;/a&gt; for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-10-26T17:16:47+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate v2 is Generally Available</title><link href="https://stargate.io/2022/10/26/stargate-v2-ga.html" rel="alternate" type="text/html" title="Stargate v2 is Generally Available" /><published>2022-10-26T06:00:00+00:00</published><updated>2022-10-26T06:00:00+00:00</updated><id>https://stargate.io/2022/10/26/stargate-v2-ga</id><content type="html" xml:base="https://stargate.io/2022/10/26/stargate-v2-ga.html">&lt;p&gt;Back in September, we announced the availability of the &lt;a href=&quot;https://stargate.io/2022/09/11/stargate-v2-beta.html&quot;&gt;Stargate v2 Beta release&lt;/a&gt;. After several betas and a release candidate, we’re excited to announce the availability of the general release of Stargate v2!&lt;/p&gt;
+
+&lt;p&gt;As we’ve discussed in &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;previous posts&lt;/a&gt;, v2 represents an architectural refactoring that allows more flexible deployments and makes it easier to create new APIs.&lt;/p&gt;
+
+&lt;p&gt;The GA release includes the results of community feedback as well as learnings from the DataStax team on integrating Stargate v2 into &lt;a href=&quot;https://astra.datastax.com&quot;&gt;DataStax AstraDB&lt;/a&gt;, which have served to inject a high level of confidence in the quality of this release.&lt;/p&gt;
+
+&lt;h2 id=&quot;quickstart-for-v2&quot;&gt;Quickstart for v2&lt;/h2&gt;
+
+&lt;p&gt;If you want to try out the v2 release, we have everything set to go. In the &lt;a href=&quot;https://stargate.io/2022/09/11/stargate-v2-beta.html&quot;&gt;Beta release blog&lt;/a&gt;, we provided instructions on how to quickly deploy Stargate v2 on your desktop using Docker compose, and then use Postman collections to exercise the APIs.&lt;/p&gt;
+
+&lt;p&gt;We also recommend checking out Pieter Humphrey’s &lt;a href=&quot;https://medium.com/building-the-open-data-stack/stargate-brings-apache-cassandra-to-the-postman-api-network-a18d973714b&quot;&gt;blog post&lt;/a&gt; for a more in-depth introduction to these collections and how to use them.&lt;/p&gt;
+
+&lt;h2 id=&quot;migrating-to-v2&quot;&gt;Migrating to v2&lt;/h2&gt;
+
+&lt;p&gt;If you’re currently using Stargate v1 and are ready to upgrade to v2, the process is straightforward. For users that are only using gRPC and CQL APIs, you only need to update your configuration to run the v2 version of the coordinator. Restarting nodes in your backing Cassandra cluster is not required, and you can use a rolling restart approach to update coordinator nodes and your clients for a zero-downtime update.&lt;/p&gt;
+
+&lt;p&gt;In addition, if you’re using Stargate HTTP APIs such as REST, GraphQL or Docs API, you will need to run instances of each API service you need. These APIs are packaged as separate containers from the v2 coordinator node.&lt;/p&gt;
+
+&lt;p&gt;We recommend running at least two instances of each API service you use to ensure high availability, as shown in the figure. The good news is that this will not consume a large amount of additional resources, since all three API services use the &lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus framework&lt;/a&gt; to create lightweight container images based on JDK 17. For more detail see Ivan Senic’s recent interview on the &lt;a href=&quot;https://www.youtube.com/watch?v=nBX-J4LgEog&quot;&gt;Quarkus Insights podcast&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+  &lt;img src=&quot;/assets/images/stargate-v2-high-level.png&quot; alt=&quot;Figure 1: Stargate v2 High Level Architecture&quot; /&gt;
+  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 1: Stargate v2 High Level Architecture&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Images for the coordinator and API services are available on &lt;a href=&quot;https://hub.docker.com/u/stargateio&quot;&gt;Docker Hub&lt;/a&gt;, and we’ve also made sample Docker compose configurations available in the Stargate GitHub repository.&lt;/p&gt;
+
+&lt;p&gt;In order to complete a migration of your HTTP clients to the new APIs, you’ll want to repoint your clients to the new API endpoints. If you’ve deployed a load balancer in front of the Stargate HTTP APIs in v1 deployments, this will be a trivial change requiring no downtime.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All of the default port numbers are the same, with the exception of the Documents API.&lt;/li&gt;
+  &lt;li&gt;Paths for APIs move to the new services, including developer tools like Swagger and GraphQL playground&lt;/li&gt;
+  &lt;li&gt;The REST v1 API remains on the coordinator node, we’re actively discussing how long to maintain this original version of the REST API, but for the moment it is not supported by the v2 REST API service.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more details on ports and paths for v2, see the table below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;API&lt;/th&gt;
+      &lt;th&gt;v1 URLs&lt;/th&gt;
+      &lt;th&gt;v2 URLs&lt;/th&gt;
+      &lt;th&gt;Note&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Metrics&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8084/metrics&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8084/metrics&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;restapi&amp;gt;:8082/metrics&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;docsapi&amp;gt;:8180/metrics&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;graphqlapi&amp;gt;:8080/metrics&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;New metrics endpoints for API services, coordinator unchanged&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Health&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8084/checker/liveness&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8084/checker/readiness&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8084/checker/liveness&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8084/checker/readiness&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;restapi&amp;gt;:8082/stargate/health&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;graphqlapi&amp;gt;:8080/stargate/health&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;docsapi&amp;gt;:8180/stargate/health&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;New health endpoints for API services, coordinator unchanged&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Auth API&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8081/v1/auth/token/generate&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8081/v1/auth/token/generate&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;No change&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;gRPC&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8090&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8090&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;No change&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REST v1&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/v1/keyspaces&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/v1/keyspaces&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;No change, legacy REST v1 remains on coordinator&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REST v2&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/v2/keyspaces&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/v2/schemas/keyspaces&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;restapi&amp;gt;:8082/v2/keyspaces&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;restapi&amp;gt;:8082/v2/schemas/keyspaces&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;REST v2 APIs move to new service&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Docs API&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/v2/namespaces&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/v2/schemas/namespaces&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;docsapi&amp;gt;:8180/v2/namespaces&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;docsapi&amp;gt;:8180/v2/schemas/namespaces&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Docs APIs move to new service, port number changed to 8180&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Swagger&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/swagger-ui&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8082/swagger-ui&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;restapi&amp;gt;:8082/swagger-ui&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;docsapi&amp;gt;:8180/swagger-ui&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;REST v1 swagger remains on coordinator, REST v2 and Docs API on new services&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GraphQL&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8080/graphql-schema&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8080/graphql-admin&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8080/graphql&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;graphqlapi&amp;gt;:8080/graphql-schema&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;graphqlapi&amp;gt;:8080/graphql-admin&lt;/code&gt;&lt;br /&gt;&lt;code&gt;http://&amp;lt;graphqlapi&amp;gt;:8080/graphql&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;GraphQL APIs move to new service&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Playground&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8080/playground&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;graphqlapi&amp;gt;:8080/playground&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;GraphQL Playground moves to new service&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bridge&lt;/td&gt;
+      &lt;td&gt;N/A&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;http://&amp;lt;coordinator&amp;gt;:8091&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;New in v2 for building API services&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Regardless of your particular deployment, no application code changes should be required (beyond any configuration updates required to point to new endpoints), as all Stargate v2 API implementations are backward compatible with v1 implementations.&lt;/p&gt;
+
+&lt;p&gt;Some users may be deploying Stargate as part of a K8ssandra cluster. We’re &lt;a href=&quot;https://github.com/k8ssandra/k8ssandra-operator/issues/688&quot;&gt;actively collaborating&lt;/a&gt; with the K8ssandra team on extending the K8ssandra operator to be able to deploy and scale Stargate v2, including both the coordinator node and the new API services.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-comes-after-v2&quot;&gt;What Comes After v2?&lt;/h2&gt;
+
+&lt;p&gt;As we move forward, we’ll continue to maintain the support of existing APIs and work toward modernization of the coordinator node including JDK updates, Quarkus adoption, and removal of OSGI from the coordinator.&lt;/p&gt;
+
+&lt;p&gt;We’re also excited for the possibility of developing new APIs. The &lt;a href=&quot;https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html&quot;&gt;Dynamo API prototype&lt;/a&gt; developed as a masters project by a team of students from Carnegie Mellon University has served as a valuable proof point of the extensibility of the v2 architecture.&lt;/p&gt;
+
+&lt;p&gt;In our next blog we’ll talk more about how you can contribute to the Stargate project, whether by creating new examples, adding APIs, or extending the coordinator node.&lt;/p&gt;</content><author><name></name></author><summary type="html">Back in September, we announced the availability of the Stargate v2 Beta release. After several betas and a release candidate, we’re excited to announce the availability of the general release of Stargate v2!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stargate v2 Beta: Open for extension</title><link href="https://stargate.io/2022/09/11/stargate-v2-beta.html" rel="alternate" type="text/html" title="Stargate v2 Beta: Open for extension" /><published>2022-09-11T06:00:00+00:00</published><updated>2022-09-11T06:00:00+00:00</updated><id>https://stargate.io/2022/09/11/stargate-v2-beta</id><content type="html" xml:base="https://stargate.io/2022/09/11/stargate-v2-beta.html">&lt;p&gt;Last Friday, we released the first &lt;a href=&quot;https://github.com/stargate/stargate/releases/tag/v2.0.0-BETA-1&quot;&gt;Beta&lt;/a&gt; for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-stargate-v2&quot;&gt;What is Stargate v2?&lt;/h2&gt;
 
@@ -785,53 +911,4 @@ cd docker-compose
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3moyxcN&quot;&gt;Stargate REST API&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3BpaA9p&quot;&gt;Stargate GraphQL API&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3mnCcrp&quot;&gt;Stargate CQL API&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">When we announced Stargate v2, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stargate and Cassandra 4.0 - Better Together</title><link href="https://stargate.io/2021/07/28/stargate-and-cassandra-40-better-together.html" rel="alternate" type="text/html" title="Stargate and Cassandra 4.0 - Better Together" /><published>2021-07-28T06:00:00+00:00</published><updated>2021-07-28T06:00:00+00:00</updated><id>https://stargate.io/2021/07/28/stargate-and-cassandra-40-better-together</id><content type="html" xml:base="https://stargate.io/2021/07/28/stargate-and-cassandra-40-better-together.html">&lt;p&gt;Six years in the making, Apache Cassandra has reached its 4.0 GA release. This is a big milestone for one of the most important open source projects, and a significant step forward in the world of NoSQL and Fast Data.&lt;/p&gt;
-
-&lt;h2 id=&quot;highlights-in-40&quot;&gt;Highlights in 4.0&lt;/h2&gt;
-
-&lt;p&gt;This new release brings a lot of exciting features to Apache Cassandra. A few highlights include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Java 11 support;&lt;/li&gt;
-  &lt;li&gt;Virtual tables;&lt;/li&gt;
-  &lt;li&gt;Improved streaming.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For the full list head over to the &lt;a href=&quot;https://cassandra.apache.org/doc/latest/new/&quot;&gt;official Apache Cassandra docs&lt;/a&gt;. After reading over everything Cassandra 4.0 brings to the table you might be wondering, “What more could I need?”. Well, that’s where Stargate comes in.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-stargate&quot;&gt;What Is Stargate?&lt;/h2&gt;
-
-&lt;p&gt;Stargate is a data gateway providing a multi-model set of APIs through which to interact with your Cassandra database. DataStax runs Stargate as part of &lt;a href=&quot;https://www.datastax.com/products/datastax-astra&quot;&gt;Astra DB&lt;/a&gt;, and Stargate can also be deployed on prem with DataStax Enterprise. And of course Stargate is an open source project in its own right that works with open source Apache Cassandra.&lt;/p&gt;
-
-&lt;p&gt;So why does Stargate matter to developers, and to the Cassandra community?&lt;/p&gt;
-
-&lt;h3 id=&quot;focus-on-what-you-care-about&quot;&gt;Focus On What You Care About&lt;/h3&gt;
-
-&lt;p&gt;For many developers a database is simply a means to an end. We spend our days trying to rapidly deliver incredible applications to benefit our users. Applications typically require some form of data persistence. This may mean direct database access with a driver of some sort but others would rather have an API that allows them to think about and interact with their data in a more familiar vernacular. At this point we’re typically left to either spin up yet another data service or add a new endpoint to our already growing data proxy. But now there’s another option, Stargate.&lt;/p&gt;
-
-&lt;p&gt;When we say Stargate is multi-model, this is the problem we’re solving. Whatever a developer’s preferred API for data interactions, Stargate offers a single gateway to support that API. Rather than incurring the cost of supporting an ancillary service in order to expose, say, a new GraphQL API to interact with your data you can instead install Stargate as part of your Cassandra cluster leaving more time to focus on what you really care about, your users.&lt;/p&gt;
-
-&lt;h3 id=&quot;any-way-you-want-it&quot;&gt;Any Way You Want It&lt;/h3&gt;
-
-&lt;p&gt;As discussed in our &lt;a href=&quot;https://stargate.io/2020/09/14/init-stargate.html&quot;&gt;previous blog&lt;/a&gt;, Stargate is an “open source data gateway” that provides multiple APIs for interacting with your data in a familiar and secure manner. You could grab the Cassandra driver for the language of your choice and start developing from there (an option completely supported by Stargate), and now you can also choose one of the APIs supported by Stargate that you’re already familiar with such as:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;REST&lt;/li&gt;
-  &lt;li&gt;Documents API&lt;/li&gt;
-  &lt;li&gt;GraphQL&lt;/li&gt;
-  &lt;li&gt;gRPC&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The REST API in Stargate enables you to work with your data in a RESTful format. It exposes a complete CRUD interface for your entire data lifecycle, from schema creation to data manipulation and retrieval. Additionally, there is the Documents API that allows for data management in a schemaless manner which allows for fast iteration without worrying about data modeling. See &lt;a href=&quot;https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html&quot;&gt;this blog article&lt;/a&gt; for a deeper dive into the Documents API. Aside from the more traditional, RESTful interfaces there is also the GraphQL API. This API allows you to interact with your data in either a &lt;a href=&quot;https://stargate.io/docs/stargate/1.0/developers-guide/graphql-using.html&quot;&gt;cql-first&lt;/a&gt; or &lt;a href=&quot;https://stargate.io/docs/stargate/1.0/developers-guide/graphql-first-using.html&quot;&gt;schema-first&lt;/a&gt; manner. This new schema-first version is a reimagining of the original cql-first API and provides a more GraphQL native interface that should be familiar to any GraphQL developer. Finally, there is the gRPC API currently in alpha. This new API brings with it all of the existing gRPC and HTTP/2 benefits while still accepting the CQL you’re used to.&lt;/p&gt;
-
-&lt;h3 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h3&gt;
-&lt;p&gt;Now that we’ve highlighted how Stargate can make Cassandra 4.0 even easier to work with, it’s time to give it a spin. Starting with v1.0.31 &lt;a href=&quot;https://hub.docker.com/r/stargateio/stargate-4_0&quot;&gt;Stargate Docker images&lt;/a&gt; will support Cassandra 4.0 GA versions and beyond. Check out &lt;a href=&quot;https://stargate.io/docs/stargate/1.0/developers-guide/install/install_cass_40.html&quot;&gt;our docs&lt;/a&gt; and &lt;a href=&quot;https://github.com/stargate/docker-images/tree/master/cassandra-4.0&quot;&gt;examples&lt;/a&gt; for simple getting started instructions.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-40-means-for-stargate&quot;&gt;What 4.0 Means for Stargate&lt;/h2&gt;
-
-&lt;p&gt;Since pre-v1.0 Stargate we’ve supported Apache Cassandra 4.0. We’ve been there for alphas, betas, and release candidates but today we’re happy to announce that Stargate supports the official Apache Cassandra 4.0 GA release.&lt;/p&gt;
-
-&lt;p&gt;This is an evolutionary change for Stargate more than a ground-breaking step. To bring the flexibility and ease of use that Stargate offers to as many developers as possible, we have always targeted multiple platforms (open source Apache Cassandra, Astra DB, and DataStax Enterprise) as well as multiple versions of Apache Cassandra (3.x and now 4.x). So you don’t need to worry about breaking changes or backwards compatibility. Stargate will continue to support these platforms and versions going forward.&lt;/p&gt;
-
-&lt;p&gt;Features like improved internode messaging will benefit Stargate, but we don’t have to do anything in Stargate to receive those benefits; they’ll happen organically below the Stargate coordinator layer. Features like improved streaming offer new opportunities for streaming support in Stargate which we hope to take advantage of in the future. For now rest assured that new streaming features in Stargate will be planned to work with both 4.x and 3.x.&lt;/p&gt;
-
-&lt;p&gt;The world’s most scalable open source database just got better. As a result, Stargate got better too.&lt;/p&gt;</content><author><name></name></author><summary type="html">Six years in the making, Apache Cassandra has reached its 4.0 GA release. This is a big milestone for one of the most important open source projects, and a significant step forward in the world of NoSQL and Fast Data.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">When we announced Stargate v2, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
