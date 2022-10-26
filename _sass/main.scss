@@ -4,6 +4,7 @@
 
 // components
 @import "./components/buttons";
+@import "./components/pills";
 @import "./components/hero";
 @import "./components/navigation";
 @import "./components/footer";
@@ -15,7 +16,8 @@
 
 // pages
 
-@import "./pages/index";
+// @import "./pages/index";
+@import "./pages/homepage";
 @import "./pages/blog";
 @import "./pages/post";
 @import "./pages/results";

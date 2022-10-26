@@ -157,7 +157,7 @@
 }
 
 .post-item__tags {
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     margin-bottom: 1rem;
   }
 }

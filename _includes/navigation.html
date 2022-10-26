@@ -1,11 +1,9 @@
-<nav class="navbar fixed-top navbar-expand-lg {% unless page.hide_banner %}with-banner{% endunless %}"
+<nav class="navbar fixed-top navbar-expand-lg {% unless page.hide_banner %}with-banner{% endunless %} {% if page.fixed_nav %}dark{% endif %}"
   id="stargate-main-navigation">
   {% unless page.hide_banner %}
   <div class="banner">
-    <div class="d-flex align-items-center justify-content-center">
-      <p>Stargate is the official data API for DataStax Astra DB and DataStax Enterprise!</p>&nbsp;
-      <a href="https://astra.datastax.com/register">Try It Now</a>
-    </div>
+    <p>Stargate is the official data API for DataStax Astra DB and DataStax Enterprise!</p>&nbsp;
+    <a href="https://astra.datastax.com/register">Try It Now</a>
   </div>
   {% endunless %}
   <div class="container-fluid spaced">

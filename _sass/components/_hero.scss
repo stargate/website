@@ -7,7 +7,7 @@
   padding-top: 120px;
   padding-bottom: 80px;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     background-image: url($baseurl + "/assets/images/mobile-hero-bg.png");
   }
 }
@@ -18,7 +18,7 @@
   line-height: 1.3;
   color: #ffffff;
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     text-align: center;
   }
 }
@@ -39,7 +39,7 @@
     }
   }
 
-  @include media-breakpoint-down(md) {
+  @media screen and (max-width: $breakpoint-md) {
     justify-content: center;
   }
 }
@@ -47,4 +47,8 @@
 body.includes-banner div[class^="hero-"],
 body.includes-banner header[class^="hero-"] {
   padding-top: 160px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    padding-top: 240px;
+  }
 }

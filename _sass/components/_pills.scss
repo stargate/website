@@ -1,0 +1,20 @@
+.nav-pills {
+  .nav-link {
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.38em;
+    color: #c9cef6;
+    padding: 0.5em 1.5em;
+
+    &:hover {
+      color: #ffffff;
+    }
+
+    &.active {
+      background: #555dc0;
+      border-radius: 29px;
+      color: #ffffff;
+    }
+  }
+}
