@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-
-  <link rel="shortcut icon" type="image/png" href="/assets/images/stargate-profile.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate" />
-  <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/assets/images/stargate-profile.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/css/styles.css"
+    />
+    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate" /> <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Home | Stargate</title>
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Home" />
@@ -32,9 +52,6 @@
 <script type="application/ld+json">
 {"image":"https://stargate.io/assets/images/default-stargate.png","@type":"WebSite","headline":"Home","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/","name":"Stargate","description":"An open source API framework for data.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-
-
-  
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async
   src="https://www.googletagmanager.com/gtag/js?id=UA-20879577-9"></script>
@@ -45,12 +62,13 @@
 </script>
 
 
+ 
+  </head>
 
-  
-</head>
-
-<body class="stargate includes-banner">
-  <nav class="navbar fixed-top navbar-expand-lg "
+  <body
+    class="stargate "
+  >
+    <nav class="navbar fixed-top navbar-expand-lg  "
   id="stargate-main-navigation">
   
   <div class="container-fluid spaced">
@@ -183,243 +201,514 @@
     </div>
   </div>
 </nav>
+ <main class="homepage">
+  <section class="homepage__hero" id="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h1 class="homepage__hero--title">Open Source Data API Gateway</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 homepage__hero--subtitle">
+          <p>
+            Stargate is a data API gateway that deploys between your apps and
+            your Apache Cassandra database(s).
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 homepage__hero--buttons">
+          <a
+            href="/docs/latest/install/install-overview.html"
+            class="btn btn-purple"
+          >
+            <svg
+              width="0.8em"
+              height="1em"
+              viewBox="0 0 14 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 16.6629H14V14.7026H0V16.6629ZM14 5.88103H10V0H4V5.88103H0L7 12.7422L14 5.88103Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>Download Now</span>
+          </a>
+          <a
+            href="https://astra.datastax.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-purple"
+            >Try on Astra DB free</a
+          >
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-md-6 homepage__hero--extra-links">
+          <a href="/docs/latest/core-index.html"
+            >Read the Docs</a
+          >
+          <a
+            href="https://www.postman.com/datastax"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Postman</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <main class="template-index">
-  <div class="hero">
+  <section class="homepage__stats" id="stats">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10 d-flex flex-column align-items-center text-center">
-          <h1 class="hero-title">Open Source Data API Gateway</h1>
-          <p class="hero-text">
-            Stargate is an open source data API gateway that sits between your app and your databases. Stargate brings
-            together an API platform and data request coordination code into one OSS project.
-          </p>
-          <div class="buttons-hero">
-            <a href="/docs" class="btn btn-white hero-btn">Get Started</a>
-            <a href="https://github.com/stargate/stargate" target="_blank" rel="noopener noreferrer"
-              class="btn btn-icon hero-btn btn-github">
-              <span>
-                <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g clip-path="url(#clip0)">
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M16.402 0C7.34542 0 -0.000488281 7.34591 -0.000488281 16.4025C-0.000488281 23.6478 4.72907 29.7862 11.1693 32C11.9743 32.1006 12.2762 31.5975 12.2762 31.195C12.2762 30.7925 12.2762 29.7862 12.2762 28.3774C7.74794 29.3836 6.74165 26.1635 6.74165 26.1635C6.03724 24.2516 4.93033 23.7484 4.93033 23.7484C3.42089 22.7421 5.03096 22.7421 5.03096 22.7421C6.64102 22.8428 7.54668 24.4528 7.54668 24.4528C9.05611 26.9686 11.3706 26.2642 12.2762 25.8616C12.3769 24.7547 12.88 24.0503 13.2825 23.6478C9.65988 23.2453 5.83599 21.8365 5.83599 15.4969C5.83599 13.6855 6.43976 12.2767 7.54668 11.0692C7.44605 10.7673 6.84228 9.0566 7.74794 6.84277C7.74794 6.84277 9.15674 6.44025 12.2762 8.55346C13.5844 8.15094 14.9932 8.05031 16.402 8.05031C17.8108 8.05031 19.2196 8.25157 20.5278 8.55346C23.6473 6.44025 25.0561 6.84277 25.0561 6.84277C25.9618 9.0566 25.358 10.7673 25.2574 11.1698C26.2637 12.2767 26.9681 13.7862 26.9681 15.5975C26.9681 21.9371 23.1442 23.2453 19.5215 23.6478C20.1253 24.1509 20.6284 25.1572 20.6284 26.6667C20.6284 28.8805 20.6284 30.5912 20.6284 31.195C20.6284 31.5975 20.9303 32.1006 21.7354 32C28.2762 29.7862 32.9052 23.6478 32.9052 16.4025C32.8045 7.34591 25.4586 0 16.402 0Z"
-      fill="currentColor" />
-  </g>
-  <defs>
-    <clipPath id="clip0">
-      <rect width="32.805" height="32" fill="currentColor" transform="translate(-0.000488281)" />
-    </clipPath>
-  </defs>
+        <div class="col-md-6">
+          <div
+            class="stats hidden"
+            id="github-stats"
+            data-repository="stargate/stargate"
+          >
+            <div class="stat git-watchers">
+              <div class="stat__info">
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M1.679 5.932C2.091 5.311 2.921 4.182 4.045 3.215C5.175 2.242 6.527 1.5 8 1.5C9.473 1.5 10.824 2.242 11.955 3.215C13.079 4.182 13.909 5.311 14.321 5.932C14.3349 5.95195 14.3423 5.97569 14.3423 6C14.3423 6.02431 14.3349 6.04805 14.321 6.068C13.909 6.689 13.079 7.818 11.955 8.785C10.825 9.758 9.473 10.5 8 10.5C6.527 10.5 5.176 9.758 4.045 8.785C2.92 7.818 2.09 6.69 1.679 6.068C1.66511 6.04805 1.65766 6.02431 1.65766 6C1.65766 5.97569 1.66511 5.95195 1.679 5.932ZM8 0C6.019 0 4.33 0.992 3.067 2.078C1.797 3.169 0.880001 4.423 0.430001 5.1C0.252302 5.36615 0.157463 5.67898 0.157463 5.999C0.157463 6.31902 0.252302 6.63185 0.430001 6.898C0.880001 7.576 1.797 8.83 3.067 9.922C4.329 11.008 6.019 12 8 12C9.981 12 11.67 11.008 12.933 9.922C14.203 8.831 15.12 7.577 15.57 6.899C15.7477 6.63285 15.8425 6.32002 15.8425 6C15.8425 5.67998 15.7477 5.36715 15.57 5.101C15.12 4.423 14.203 3.169 12.933 2.078C11.671 0.992 9.981 0 8 0ZM8 8C8.53043 8 9.03914 7.78929 9.41421 7.41421C9.78929 7.03914 10 6.53043 10 6C10 5.46957 9.78929 4.96086 9.41421 4.58579C9.03914 4.21071 8.53043 4 8 4C7.46957 4 6.96086 4.21071 6.58579 4.58579C6.21071 4.96086 6 5.46957 6 6C6 6.53043 6.21071 7.03914 6.58579 7.41421C6.96086 7.78929 7.46957 8 8 8Z"
+    fill="currentColor" />
 </svg>
+                <span>Watch</span>
+              </div>
+
+              <span class="stat__data" id="git-watchers">
+                3687
               </span>
-              <span>Github</span>
-            </a>
+            </div>
+            <div class="stat git-stars">
+              <div class="stat__info">
+                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M8 0.25C8.14001 0.24991 8.27725 0.289014 8.39619 0.362887C8.51513 0.43676 8.61102 0.542452 8.673 0.668L10.555 4.483L14.765 5.095C14.9035 5.11511 15.0335 5.17355 15.1405 5.26372C15.2475 5.35388 15.3271 5.47218 15.3704 5.60523C15.4137 5.73829 15.4189 5.8808 15.3854 6.01665C15.3519 6.1525 15.2811 6.27628 15.181 6.374L12.135 9.344L12.854 13.536C12.8777 13.6739 12.8624 13.8157 12.8097 13.9454C12.757 14.0751 12.6691 14.1874 12.5559 14.2697C12.4427 14.352 12.3087 14.401 12.1691 14.4111C12.0295 14.4212 11.8899 14.3921 11.766 14.327L8 12.347L4.234 14.327C4.11018 14.392 3.97066 14.4211 3.83119 14.411C3.69171 14.4009 3.55784 14.352 3.44468 14.2699C3.33152 14.1877 3.24359 14.0755 3.19081 13.946C3.13803 13.8165 3.12251 13.6749 3.146 13.537L3.866 9.343L0.817997 6.374C0.717563 6.27632 0.646496 6.15247 0.612848 6.01647C0.579201 5.88047 0.584318 5.73777 0.627621 5.60453C0.670924 5.47129 0.75068 5.35284 0.857852 5.26261C0.965025 5.17238 1.09533 5.11397 1.234 5.094L5.444 4.483L7.327 0.668C7.38898 0.542452 7.48486 0.43676 7.6038 0.362887C7.72274 0.289014 7.85998 0.24991 8 0.25ZM8 2.695L6.615 5.5C6.56121 5.6089 6.48178 5.70311 6.38354 5.77453C6.2853 5.84595 6.17118 5.89244 6.051 5.91L2.954 6.36L5.194 8.544C5.28115 8.62886 5.34635 8.73365 5.38398 8.84933C5.42161 8.96501 5.43054 9.0881 5.41 9.208L4.882 12.292L7.651 10.836C7.75863 10.7794 7.8784 10.7499 8 10.7499C8.12159 10.7499 8.24137 10.7794 8.349 10.836L11.119 12.292L10.589 9.208C10.5685 9.0881 10.5774 8.96501 10.615 8.84933C10.6526 8.73365 10.7178 8.62886 10.805 8.544L13.045 6.361L9.949 5.911C9.82881 5.89344 9.71469 5.84695 9.61645 5.77553C9.51821 5.70411 9.43878 5.6099 9.385 5.501L8 2.694V2.695Z"
+    fill="currentColor" />
+</svg>
+                <span>Star</span>
+              </div>
+
+              <span class="stat__data" id="git-stars">
+                238
+              </span>
+            </div>
+            <div class="stat git-forks">
+              <div class="stat__info">
+                <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M3 2.25005C3 2.44897 2.92099 2.63973 2.78033 2.78038C2.63968 2.92104 2.44892 3.00005 2.25 3.00005C2.05109 3.00005 1.86033 2.92104 1.71967 2.78038C1.57902 2.63973 1.5 2.44897 1.5 2.25005C1.5 2.05114 1.57902 1.86037 1.71967 1.71972C1.86033 1.57907 2.05109 1.50005 2.25 1.50005C2.44892 1.50005 2.63968 1.57907 2.78033 1.71972C2.92099 1.86037 3 2.05114 3 2.25005ZM3 4.37205C3.50042 4.19513 3.92217 3.847 4.19073 3.38919C4.45929 2.93138 4.55735 2.39337 4.4676 1.87025C4.37785 1.34713 4.10605 0.872581 3.70025 0.530474C3.29445 0.188367 2.78077 0.000732422 2.25 0.000732422C1.71924 0.000732422 1.20556 0.188367 0.79976 0.530474C0.393958 0.872581 0.122161 1.34713 0.0324079 1.87025C-0.0573456 2.39337 0.0407231 2.93138 0.309281 3.38919C0.577839 3.847 0.999594 4.19513 1.5 4.37205V5.25005C1.5 5.84679 1.73706 6.41909 2.15901 6.84104C2.58097 7.263 3.15327 7.50005 3.75 7.50005H5.25V9.62805C4.74932 9.80499 4.3273 10.1532 4.05855 10.6112C3.78981 11.0692 3.69164 11.6075 3.78139 12.1309C3.87115 12.6543 4.14306 13.1291 4.54905 13.4714C4.95504 13.8137 5.46897 14.0014 6 14.0014C6.53104 14.0014 7.04497 13.8137 7.45096 13.4714C7.85695 13.1291 8.12886 12.6543 8.21862 12.1309C8.30837 11.6075 8.2102 11.0692 7.94146 10.6112C7.67271 10.1532 7.25069 9.80499 6.75 9.62805V7.50005H8.25C8.84674 7.50005 9.41904 7.263 9.84099 6.84104C10.263 6.41909 10.5 5.84679 10.5 5.25005V4.37205C11.0004 4.19513 11.4222 3.847 11.6907 3.38919C11.9593 2.93138 12.0574 2.39337 11.9676 1.87025C11.8778 1.34713 11.6061 0.872581 11.2002 0.530474C10.7944 0.188367 10.2808 0.000732422 9.75 0.000732422C9.21924 0.000732422 8.70556 0.188367 8.29976 0.530474C7.89396 0.872581 7.62216 1.34713 7.53241 1.87025C7.44265 2.39337 7.54072 2.93138 7.80928 3.38919C8.07784 3.847 8.49959 4.19513 9 4.37205V5.25005C9 5.44897 8.92099 5.63973 8.78033 5.78038C8.63968 5.92104 8.44892 6.00005 8.25 6.00005H3.75C3.55109 6.00005 3.36033 5.92104 3.21967 5.78038C3.07902 5.63973 3 5.44897 3 5.25005V4.37205ZM6.75 11.7501C6.75 11.949 6.67099 12.1397 6.53033 12.2804C6.38968 12.421 6.19892 12.5001 6 12.5001C5.80109 12.5001 5.61033 12.421 5.46967 12.2804C5.32902 12.1397 5.25 11.949 5.25 11.7501C5.25 11.5511 5.32902 11.3604 5.46967 11.2197C5.61033 11.0791 5.80109 11.0001 6 11.0001C6.19892 11.0001 6.38968 11.0791 6.53033 11.2197C6.67099 11.3604 6.75 11.5511 6.75 11.7501ZM9.75 3.00005C9.94892 3.00005 10.1397 2.92104 10.2803 2.78038C10.421 2.63973 10.5 2.44897 10.5 2.25005C10.5 2.05114 10.421 1.86037 10.2803 1.71972C10.1397 1.57907 9.94892 1.50005 9.75 1.50005C9.55109 1.50005 9.36033 1.57907 9.21968 1.71972C9.07902 1.86037 9 2.05114 9 2.25005C9 2.44897 9.07902 2.63973 9.21968 2.78038C9.36033 2.92104 9.55109 3.00005 9.75 3.00005Z"
+    fill="currentColor" />
+</svg>
+                <span>Fork</span>
+              </div>
+
+              <span class="stat__data" id="git-forks">
+                772
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="latest-blog">
+  <section class="homepage__banner" id="banner">
     <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          <h2>Latest From Stargate</h2>
-        </div>
-      </div>
-      <div class="row">
-        
-          <div class="col-lg-4 col-md-4 d-flex">
-            <a class="post-card" href="/2022/09/11/stargate-v2-beta.html">
-              <p>Stargate v2 Beta: Open for extension</p>
-              <span>
-                <span>By <span class="link">Mark
-                    Stone</span></span>
-                &#8226;
-                <span>Sep 11, 2022</span>
-                </span>
-            </a>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>
+                Go Driverless with gRPC - without sacrificing native driver
+                performance
+              </h4>
+            </div>
+            <div class="col-md-2">
+              <a
+                href="/docs/latest/develop/dev-with-grpc.html"
+                class="btn btn-outline-light btn-block btn-lg"
+              >
+                Try It Now
+              </a>
+            </div>
           </div>
-        
-          <div class="col-lg-4 col-md-4 d-flex">
-            <a class="post-card" href="/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2.html">
-              <p>Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)</p>
-              <span>
-                <span>By <span class="link">Boxuan
-                    Li</span></span>
-                &#8226;
-                <span>May 31, 2022</span>
-                </span>
-            </a>
-          </div>
-        
-          <div class="col-lg-4 col-md-4 d-flex">
-            <a class="post-card" href="/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html">
-              <p>Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)</p>
-              <span>
-                <span>By <span class="link">Boxuan
-                    Li</span></span>
-                &#8226;
-                <span>May 23, 2022</span>
-                </span>
-            </a>
-          </div>
-        
-      </div>
-      <div class="row">
-        <div class="col text-center">
-          <a href="/blog" class="btn btn-primary btn-more-blog">See More</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="latest-release">
+  <section class="homepage__blog" id="blog">
     <div class="container">
       <div class="row">
-        <div class="col text-center">
-          <p id="github-releases" className="github-releases hidden" data-repository="stargate/stargate">
-          </p>
+        <div class="col-md-12">
+          <h4 class="homepage__blog--title">Latest from Stargate</h4>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="index-banner">
-    <div class="container">
       <div class="row">
-        <div class="col-lg-12 d-flex align-items-center justify-content-center">
-          <p>Stargate is the official data API for DataStax Astra DB and DataStax Enterprise!</p>
-          <a href="https://astra.datastax.com/register" class="btn btn-banner">
-            Try It Now
+         
+        <div class="col-md-4 d-flex">
+          <a class="blog-item" href="/2022/09/11/stargate-v2-beta.html">
+            <p>Stargate v2 Beta: Open for extension</p>
+            <div class="blog-item__info">
+              <span class="blog-item__info-author">
+                By <span>MarkStone</span>
+              </span>
+              &nbsp;&#8226;&nbsp;
+              <span>Sep 11, 2022</span>
+            </div>
           </a>
         </div>
+         
+        <div class="col-md-4 d-flex">
+          <a class="blog-item" href="/2022/05/31/towards-dynamodb-compatibility-for-cassandra-part-2.html">
+            <p>Stargate: Towards DynamoDB Compatibility for Cassandra (Part 2)</p>
+            <div class="blog-item__info">
+              <span class="blog-item__info-author">
+                By <span>BoxuanLi</span>
+              </span>
+              &nbsp;&#8226;&nbsp;
+              <span>May 31, 2022</span>
+            </div>
+          </a>
+        </div>
+         
+        <div class="col-md-4 d-flex">
+          <a class="blog-item" href="/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html">
+            <p>Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)</p>
+            <div class="blog-item__info">
+              <span class="blog-item__info-author">
+                By <span>BoxuanLi</span>
+              </span>
+              &nbsp;&#8226;&nbsp;
+              <span>May 23, 2022</span>
+            </div>
+          </a>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <a href="/blog" class="btn btn-purple"
+            >See More</a
+          >
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="what-is-stargate">
+  <section class="homepage__release" id="release">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <p
+            id="github-releases"
+            class="github-releases hidden"
+            data-repository="stargate/stargate"
+          ></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__video" id="info">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <h2 class="what-is-stargate__title">What is Stargate?</h2>
-          <div class="what-is-stargate__text">
-            <p>Stargate abstracts Cassandra-specific concepts entirely from app
-              developers and supports different API options, removing barriers of entry for new software developers.</p>
+        <div class="col-md-6">
+          <h2 class="homepage__video--title">What does Stargate do?</h2>
+          <div class="homepage__video--text">
+            <p>
+              Stargate transforms Cassandra into a JSON Document DB,
+              automatically exposes your database as secure Web APIs, and
+              non-invasively brings modular, service oriented architecture to
+              the powerhouse database.
+            </p>
           </div>
         </div>
       </div>
-
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <div class="what-is-stargate__player" data-toggle="modal" data-target="#what-is-stargate-video-modal">
+          <a
+            class="homepage__video--player"
+            data-toggle="modal"
+            data-target="#what-is-stargate-video-modal"
+          >
             <svg class="play-icon" width="1em" height="1em" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path class="circle"
     d="M40 80C62.0914 80 80 62.0914 80 40C80 17.9086 62.0914 0 40 0C17.9086 0 0 17.9086 0 40C0 62.0914 17.9086 80 40 80Z"
     fill="currentColor" />
   <path class="play" d="M62.7816 40L28.6094 59.7351V20.3091L62.7816 40Z" fill="white" />
 </svg>
-            <img class="img-fluid what-is-stargate__image lazyload"
-              data-src="/assets/images/explainer-cover.png" alt="Stargate astronaut" width="448"
-              height="760">
+            <img
+              class="img-fluid lazyload homepage__video--player__image"
+              data-src="/assets/images/explainer-cover.png"
+              alt="Stargate astronaut"
+              width="448"
+              height="760"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="what-is-stargate-video-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="WhatIsStargateVideoModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="video-wrapper">
+              <iframe
+                id="whatis-stargate-video"
+                src="https://www.youtube.com/embed/pfhqDrNZb70?enablejsapi=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="catalog">
-    <div class="container-fluid spaced">
+  <section class="homepage__tabs" id="why">
+    <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="catalog-title">API Extensions Catalog</h2>
-            </div>
+        <div class="col-md-8 text-center">
+          <h2>Why Stargate for Apache Cassandra</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="nav-pills--wrapper">
+            <ul
+              class="nav nav-pills"
+              id="why-stargate-tabs"
+              role="tablist"
+            >
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  id="development-tab"
+                  data-toggle="tab"
+                  href="#development"
+                  role="tab"
+                  aria-controls="development"
+                  aria-selected="true"
+                  >Development</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="operations-tab"
+                  data-toggle="tab"
+                  href="#operations"
+                  role="tab"
+                  aria-controls="operations"
+                  aria-selected="false"
+                  >Operations</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="ecosystem-tab"
+                  data-toggle="tab"
+                  href="#ecosystem"
+                  role="tab"
+                  aria-controls="ecosystem"
+                  aria-selected="false"
+                  >Ecosystem</a
+                >
+              </li>
+            </ul>
           </div>
 
-          <div class="row catalog-items">
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="/assets/images/json-api.png" alt="JSON API" width="90"
-                    height="auto">
+          <div class="tab-content" id="why-stargate-tabs-content">
+            <div
+              class="tab-pane fade show active"
+              id="development"
+              role="tabpanel"
+              aria-labelledby="development-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Enable document database as a secondary database model
+                        for Cassandra. Skip upfront data modeling and schema
+                        definition with the (JSON) Documents API.
+                      </p>
+                      <p>
+                        <a
+                          href="/docs/latest/develop/dev-with-doc.html#add-json-schema-to-a-collection"
+                          >JSON schema</a
+                        >
+                        is also supported for those with structured or
+                        semi-structured JSON.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-doc.html"
-                      target="_blank" rel="noopener noreferrer">
-                      Save and search schemaless JSON documents
-                    </a>
-                  </p>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        An automatic, high-performance gRPC API for every DB
+                        that's as fast as native drivers, with less network API
+                        to learn.
+                      </p>
+                      <p>
+                        Generating a gRPC client for an unsupported language or
+                        language version is straightforward.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="/assets/images/graphql-logo.svg" alt="GraphQL" width="90"
-                    height="auto">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/graphql.html" target="_blank"
-                      rel="noopener noreferrer">
-                      Serve a GraphQL API from any Cassandra database
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="/assets/images/restapi.png" alt="{Rest API}" width="180"
-                    height="28">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-rest.html"
-                      target="_blank" rel="noopener noreferrer">
-                      Serve a RESTful API from any Cassandra database
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                    data-src="/assets/images/grpc.png" alt="gRPC" width="90" height="">
-                </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-grpc.html" target="_blank"
-                      rel="noopener noreferrer">
-                      Serve a Google RPC (gRPC) API from any Cassandra database
-                    </a>
-                  </p>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Autogenerated, secure Web API endpoints for GraphQL and
+                        REST for every database - plus token authentication.
+                      </p>
+                      <p>Stargate also supports native CQL/Driver traffic.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 catalog-item__container">
-              <div class="catalog-item">
-                <div class="col-lg-5 catalog-item__image-container">
-                  <img class="catalog-item__image img-fluid lazyload"
-                       data-src="/assets/images/eye.png" alt="Eye" width="120" height="64">
+            <div
+              class="tab-pane fade"
+              id="operations"
+              role="tabpanel"
+              aria-labelledby="operations-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Modular Cassandra architecture: Stargate separates
+                        coordinator and storage nodes into independently
+                        deployable and scalable services.
+                      </p>
+                      <p>
+                        Fine-tune cluster performance using optimal hardware for
+                        each workload and scale just what's bottlenecked.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-lg-7">
-                  <p class="catalog-item__text">
-                    <a href="https://stargate.io/docs/latest/develop/dev-with-cql.html" target="_blank"
-                       rel="noopener noreferrer">
-                      Use the native Cassandra Query Language to access your data in Cassandra
-                    </a>
-                  </p>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Stargate modularizes itself by separating Web API
+                        Services from gRPC/Native driver coordination nodes into
+                        independently deployable and scalable services.
+                      </p>
+                      <p>
+                        Fine-tune cluster performance using optimal hardware for
+                        each workload and scale just what's bottlenecked.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Deploy Stargate to anything: bare metal, VMs, Docker,
+                        GKE, EKS, K8ssandra, DataStax Enterprise, or
+                        as-a-service on Astra DB.
+                      </p>
+                      <p>Also available on AWS and Google Cloud Marketplace.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="ecosystem"
+              role="tabpanel"
+              aria-labelledby="ecosystem-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Adapting Cassandra to the APIs, and data serialization
+                        formats your organization uses is easier than ever using
+                        the gRPC Bridge API and modular architecture.
+                      </p>
+                      <p>
+                        Just learn one purpose-built extension point, versus
+                        having the learn the whole stargate codebase.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Stargate is Apache v2 licensed and uses public Github
+                        repos and Discord for collaboration and
+                        <a
+                          href="https://github.com/stargate/stargate/blob/master/CONTRIBUTING.md"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >contribution</a
+                        >.
+                      </p>
+                      <p>
+                        Check out cool stuff in the community, like this
+                        experimental
+                        <a
+                          href="/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html"
+                          >Dynamo DB API</a
+                        >
+                        project, and be welcome!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="tab__card">
+                    <div class="tab__card-body">
+                      <p>
+                        Cassandra 4.1 itself has
+                        <a
+                          href="https://thenewstack.io/apache-cassandra-4-1-building-the-database-your-kids-will-use/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >new extension points</a
+                        >
+                        for Storage, Network Encryption, Authentication, Schema
+                        Storage, and Guardrails.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -427,65 +716,195 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="github-stats hidden" id="github-stats" data-repository="stargate/stargate">
-    <div class="git-stat git-watchers">
-      <div class="git-stat__info">
-        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M1.679 5.932C2.091 5.311 2.921 4.182 4.045 3.215C5.175 2.242 6.527 1.5 8 1.5C9.473 1.5 10.824 2.242 11.955 3.215C13.079 4.182 13.909 5.311 14.321 5.932C14.3349 5.95195 14.3423 5.97569 14.3423 6C14.3423 6.02431 14.3349 6.04805 14.321 6.068C13.909 6.689 13.079 7.818 11.955 8.785C10.825 9.758 9.473 10.5 8 10.5C6.527 10.5 5.176 9.758 4.045 8.785C2.92 7.818 2.09 6.69 1.679 6.068C1.66511 6.04805 1.65766 6.02431 1.65766 6C1.65766 5.97569 1.66511 5.95195 1.679 5.932ZM8 0C6.019 0 4.33 0.992 3.067 2.078C1.797 3.169 0.880001 4.423 0.430001 5.1C0.252302 5.36615 0.157463 5.67898 0.157463 5.999C0.157463 6.31902 0.252302 6.63185 0.430001 6.898C0.880001 7.576 1.797 8.83 3.067 9.922C4.329 11.008 6.019 12 8 12C9.981 12 11.67 11.008 12.933 9.922C14.203 8.831 15.12 7.577 15.57 6.899C15.7477 6.63285 15.8425 6.32002 15.8425 6C15.8425 5.67998 15.7477 5.36715 15.57 5.101C15.12 4.423 14.203 3.169 12.933 2.078C11.671 0.992 9.981 0 8 0ZM8 8C8.53043 8 9.03914 7.78929 9.41421 7.41421C9.78929 7.03914 10 6.53043 10 6C10 5.46957 9.78929 4.96086 9.41421 4.58579C9.03914 4.21071 8.53043 4 8 4C7.46957 4 6.96086 4.21071 6.58579 4.58579C6.21071 4.96086 6 5.46957 6 6C6 6.53043 6.21071 7.03914 6.58579 7.41421C6.96086 7.78929 7.46957 8 8 8Z"
-    fill="currentColor" />
-</svg>
-        <span>&nbsp;Watch</span>
+  <section class="homepage__extensions" id="extensions">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 homepage__extensions--header">
+          <h2>API Extensions</h2>
+          <p>
+            Balance productivity with performance across a range of
+            app-to-database connectivity options for your project's needs.
+          </p>
+        </div>
       </div>
 
-      <span id="git-watchers">3687</span>
-    </div>
-    <div class="git-stat git-stars">
-      <div class="git-stat__info">
-        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M8 0.25C8.14001 0.24991 8.27725 0.289014 8.39619 0.362887C8.51513 0.43676 8.61102 0.542452 8.673 0.668L10.555 4.483L14.765 5.095C14.9035 5.11511 15.0335 5.17355 15.1405 5.26372C15.2475 5.35388 15.3271 5.47218 15.3704 5.60523C15.4137 5.73829 15.4189 5.8808 15.3854 6.01665C15.3519 6.1525 15.2811 6.27628 15.181 6.374L12.135 9.344L12.854 13.536C12.8777 13.6739 12.8624 13.8157 12.8097 13.9454C12.757 14.0751 12.6691 14.1874 12.5559 14.2697C12.4427 14.352 12.3087 14.401 12.1691 14.4111C12.0295 14.4212 11.8899 14.3921 11.766 14.327L8 12.347L4.234 14.327C4.11018 14.392 3.97066 14.4211 3.83119 14.411C3.69171 14.4009 3.55784 14.352 3.44468 14.2699C3.33152 14.1877 3.24359 14.0755 3.19081 13.946C3.13803 13.8165 3.12251 13.6749 3.146 13.537L3.866 9.343L0.817997 6.374C0.717563 6.27632 0.646496 6.15247 0.612848 6.01647C0.579201 5.88047 0.584318 5.73777 0.627621 5.60453C0.670924 5.47129 0.75068 5.35284 0.857852 5.26261C0.965025 5.17238 1.09533 5.11397 1.234 5.094L5.444 4.483L7.327 0.668C7.38898 0.542452 7.48486 0.43676 7.6038 0.362887C7.72274 0.289014 7.85998 0.24991 8 0.25ZM8 2.695L6.615 5.5C6.56121 5.6089 6.48178 5.70311 6.38354 5.77453C6.2853 5.84595 6.17118 5.89244 6.051 5.91L2.954 6.36L5.194 8.544C5.28115 8.62886 5.34635 8.73365 5.38398 8.84933C5.42161 8.96501 5.43054 9.0881 5.41 9.208L4.882 12.292L7.651 10.836C7.75863 10.7794 7.8784 10.7499 8 10.7499C8.12159 10.7499 8.24137 10.7794 8.349 10.836L11.119 12.292L10.589 9.208C10.5685 9.0881 10.5774 8.96501 10.615 8.84933C10.6526 8.73365 10.7178 8.62886 10.805 8.544L13.045 6.361L9.949 5.911C9.82881 5.89344 9.71469 5.84695 9.61645 5.77553C9.51821 5.70411 9.43878 5.6099 9.385 5.501L8 2.694V2.695Z"
-    fill="currentColor" />
-</svg>
-        <span>&nbsp;Star</span>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="homepage__extensions--grid">
+            <h4 class="grid--title">Drivers</h4>
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="/assets/images/extensions/cassandra.png"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>
+                Use native drivers and the Cassandra Query Language to access
+                your data in Cassandra
+              </p>
+            </div>
+
+            <h4 class="grid--title large">Open API</h4>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="/assets/images/extensions/grpc.png"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>
+                Go driverless with a high performance RPC (gRPC) API for every
+                Cassandra database
+              </p>
+            </div>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="/assets/images/extensions/graphql.png"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>
+                Serve a GraphQL API from any Cassandra database, in schema first
+                or cql first modes
+              </p>
+            </div>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="/assets/images/extensions/rest.png"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>Serve a RESTful API from any Cassandra database</p>
+            </div>
+
+            <div class="grid--item">
+              <img
+                class="img-fluid lazyload"
+                data-src="/assets/images/extensions/json.png"
+                alt="Stargate astronaut"
+                width="158"
+                height="112"
+              />
+
+              <p>Save and search schemaless JSON documents</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <span id="git-stars">238</span>
-    </div>
-    <div class="git-stat git-forks">
-      <div class="git-stat__info">
-        <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M3 2.25005C3 2.44897 2.92099 2.63973 2.78033 2.78038C2.63968 2.92104 2.44892 3.00005 2.25 3.00005C2.05109 3.00005 1.86033 2.92104 1.71967 2.78038C1.57902 2.63973 1.5 2.44897 1.5 2.25005C1.5 2.05114 1.57902 1.86037 1.71967 1.71972C1.86033 1.57907 2.05109 1.50005 2.25 1.50005C2.44892 1.50005 2.63968 1.57907 2.78033 1.71972C2.92099 1.86037 3 2.05114 3 2.25005ZM3 4.37205C3.50042 4.19513 3.92217 3.847 4.19073 3.38919C4.45929 2.93138 4.55735 2.39337 4.4676 1.87025C4.37785 1.34713 4.10605 0.872581 3.70025 0.530474C3.29445 0.188367 2.78077 0.000732422 2.25 0.000732422C1.71924 0.000732422 1.20556 0.188367 0.79976 0.530474C0.393958 0.872581 0.122161 1.34713 0.0324079 1.87025C-0.0573456 2.39337 0.0407231 2.93138 0.309281 3.38919C0.577839 3.847 0.999594 4.19513 1.5 4.37205V5.25005C1.5 5.84679 1.73706 6.41909 2.15901 6.84104C2.58097 7.263 3.15327 7.50005 3.75 7.50005H5.25V9.62805C4.74932 9.80499 4.3273 10.1532 4.05855 10.6112C3.78981 11.0692 3.69164 11.6075 3.78139 12.1309C3.87115 12.6543 4.14306 13.1291 4.54905 13.4714C4.95504 13.8137 5.46897 14.0014 6 14.0014C6.53104 14.0014 7.04497 13.8137 7.45096 13.4714C7.85695 13.1291 8.12886 12.6543 8.21862 12.1309C8.30837 11.6075 8.2102 11.0692 7.94146 10.6112C7.67271 10.1532 7.25069 9.80499 6.75 9.62805V7.50005H8.25C8.84674 7.50005 9.41904 7.263 9.84099 6.84104C10.263 6.41909 10.5 5.84679 10.5 5.25005V4.37205C11.0004 4.19513 11.4222 3.847 11.6907 3.38919C11.9593 2.93138 12.0574 2.39337 11.9676 1.87025C11.8778 1.34713 11.6061 0.872581 11.2002 0.530474C10.7944 0.188367 10.2808 0.000732422 9.75 0.000732422C9.21924 0.000732422 8.70556 0.188367 8.29976 0.530474C7.89396 0.872581 7.62216 1.34713 7.53241 1.87025C7.44265 2.39337 7.54072 2.93138 7.80928 3.38919C8.07784 3.847 8.49959 4.19513 9 4.37205V5.25005C9 5.44897 8.92099 5.63973 8.78033 5.78038C8.63968 5.92104 8.44892 6.00005 8.25 6.00005H3.75C3.55109 6.00005 3.36033 5.92104 3.21967 5.78038C3.07902 5.63973 3 5.44897 3 5.25005V4.37205ZM6.75 11.7501C6.75 11.949 6.67099 12.1397 6.53033 12.2804C6.38968 12.421 6.19892 12.5001 6 12.5001C5.80109 12.5001 5.61033 12.421 5.46967 12.2804C5.32902 12.1397 5.25 11.949 5.25 11.7501C5.25 11.5511 5.32902 11.3604 5.46967 11.2197C5.61033 11.0791 5.80109 11.0001 6 11.0001C6.19892 11.0001 6.38968 11.0791 6.53033 11.2197C6.67099 11.3604 6.75 11.5511 6.75 11.7501ZM9.75 3.00005C9.94892 3.00005 10.1397 2.92104 10.2803 2.78038C10.421 2.63973 10.5 2.44897 10.5 2.25005C10.5 2.05114 10.421 1.86037 10.2803 1.71972C10.1397 1.57907 9.94892 1.50005 9.75 1.50005C9.55109 1.50005 9.36033 1.57907 9.21968 1.71972C9.07902 1.86037 9 2.05114 9 2.25005C9 2.44897 9.07902 2.63973 9.21968 2.78038C9.36033 2.92104 9.55109 3.00005 9.75 3.00005Z"
-    fill="currentColor" />
-</svg>
-        <span>&nbsp;Fork</span>
+      <div class="row d-none d-md-flex">
+        <div class="col-md-12">
+          <svg
+            class="homepage__extensions--arrow"
+            width="1112"
+            height="16"
+            viewBox="0 0 1112 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928933C7.68054 0.538408 7.04738 0.538408 6.65685 0.928933L0.292893 7.29289ZM1111.71 8.7072C1112.1 8.31668 1112.1 7.68351 1111.71 7.29299L1105.34 0.929029C1104.95 0.538504 1104.32 0.538504 1103.93 0.929029C1103.54 1.31955 1103.54 1.95272 1103.93 2.34324L1109.59 8.0001L1103.93 13.657C1103.54 14.0475 1103.54 14.6806 1103.93 15.0712C1104.32 15.4617 1104.95 15.4617 1105.34 15.0712L1111.71 8.7072ZM1 9L1111 9.0001L1111 7.0001L1 7L1 9Z"
+              fill="#C9CEF6"
+            />
+          </svg>
+        </div>
       </div>
 
-      <span id="git-forks">772</span>
+      <div class="row d-none d-md-flex">
+        <div class="col-md-12">
+          <div class="homepage__extensions--arrow-text">
+            <span>More Performant</span>
+            <span>More Flexible</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="homepage__architecture" id="architecture">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2>Modular, Service Oriented Architecture</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <img
+            class="img-fluid lazyload"
+            data-src="/assets/images/architecture-diagram.png"
+            alt="Stargate Architecture"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="homepage__scale" id="scale">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 offset-md-1">
+          <h3>
+            Scale each tier independently for optimal resource utilization and
+            performance:
+          </h3>
+        </div>
+        <div class="col-md-5">
+          <div class="homepage__scale--text">
+            <h4>APIs</h4>
+            <ul>
+              <li>
+                CQL clients can continue to connect via drivers or CQL over gRPC
+                for the best performance
+              </li>
+              <li>
+                A variety of developer-friendly APIs provide a faster time to
+                market
+              </li>
+              <li>API Nodes scale / deploy independently</li>
+            </ul>
+
+            <h4>Coordinator Nodes</h4>
+            <ul>
+              <li>
+                Coordinator only nodes separate compute-intensive work, allowing
+                Cassandra nodes to focus on storage.
+              </li>
+              <li>Optimize Coordinator nodes for CPU and Network I/O</li>
+            </ul>
+
+            <h4>Cassandra (storage)</h4>
+            <ul>
+              <li>Optimize Storage nodes for Disk I/O</li>
+              <li>
+                Support for backend clusters running Cassandra 3.11, Cassandra
+                4.0, DataStax Enterprise, or DataStax Astra
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-
-<div class="modal" id="what-is-stargate-video-modal" tabindex="-1" role="dialog"
-  aria-labelledby="WhatIsStargateVideoModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="video-wrapper">
-          <iframe id="whatis-stargate-video" src="https://www.youtube.com/embed/2ltVf2EscmM?enablejsapi=1" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <footer class="footer">
+ <footer class="footer">
   <div class="container-fluid spaced">
     <div class="row">
       <div class="col-md-4">
@@ -585,25 +1004,25 @@
 </footer>
 
 
-  <script src="/assets/js/lazysizes.js" async=""></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-  crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-  integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-  crossorigin="anonymous"></script>
-  <script src="/assets/js/main.js" async=""></script>
-  <script
-  src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
-  type="text/javascript"
-  charset="UTF-8"
-  data-domain-script="7aeda1d3-ab5d-4ac1-b17d-d1b37473af5a"
-  async=""></script>
-  <script type="text/javascript">
-    function OptanonWrapper() { }
-  </script>
+    <script
+      src="/assets/js/lazysizes.js"
+      async=""
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/js/main.js" async=""></script>
+    <script
+      src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+      type="text/javascript"
+      charset="UTF-8"
+      data-domain-script="7aeda1d3-ab5d-4ac1-b17d-d1b37473af5a"
+      async=""
+    ></script>
+    <script type="text/javascript">
+      function OptanonWrapper() {}
+    </script>
 
-  
-</body>
-
+    
+  </body>
 </html>
