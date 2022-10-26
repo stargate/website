@@ -18,7 +18,7 @@ The GA release includes the results of community feedback as well as learnings f
 
 ## Quickstart for v2
 
-If you want to try out the v2 release, we have everything set to go. In the [Beta release blog](https://stargate.io/2022/09/11/stargate-v2-beta.html), we provided instructions on how to quickly deploy Stargate v2 on your desktop using Docker compose, and then use Postman collections to exercise the APIs.
+If you want to try out the v2 release, we have everything set to go for you. In the [Beta release blog](https://stargate.io/2022/09/11/stargate-v2-beta.html), we provided instructions on how to quickly deploy Stargate v2 on your desktop using Docker compose, and then use Postman collections to exercise the APIs.
 
 We also recommend checking out Pieter Humphrey’s [blog post](https://medium.com/building-the-open-data-stack/stargate-brings-apache-cassandra-to-the-postman-api-network-a18d973714b) for a more in-depth introduction to these collections and how to use them.
 
