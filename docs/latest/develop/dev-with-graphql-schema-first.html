@@ -497,14 +497,14 @@ can get you started with no install steps.</p>
 The coordinator image contains a Apache Cassandra<sup>&#8482;</sup> backend, the Cassandra Query Language (CQL), and the gRPC API.</p>
 </div>
 <div class="paragraph">
-<p>The following are the commands for each of those images:</p>
+<p>The following are the commands for each of those images using the tag <code>v2</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-4_0:v2.0.0-BETA-3
-docker pull stargateio/restapi:v2.0.0-BETA-3
-docker pull stargateio/docsapi:v2.0.0-BETA-3
-docker pull stargateio/graphqlapi:v2.0.0-BETA-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-4_0:v2
+docker pull stargateio/restapi:v2
+docker pull stargateio/docsapi:v2
+docker pull stargateio/graphqlapi:v2</code></pre>
 </div>
 </div>
 </div>
@@ -533,14 +533,14 @@ and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 4.0 bac
 The coordinator image contains a Apache Cassandra<sup>&#8482;</sup> backend, the Cassandra Query Language (CQL), and the gRPC API.</p>
 </div>
 <div class="paragraph">
-<p>The following are the commands for each of those images:</p>
+<p>The following are the commands for each of those images using the tag <code>v2</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-3_11:v2.0.0-BETA-3
-docker pull stargateio/restapi:v2.0.0-BETA-3
-docker pull stargateio/docsapi:v2.0.0-BETA-3
-docker pull stargateio/graphqlapi:v2.0.0-BETA-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-3_11:v2
+docker pull stargateio/restapi:v2
+docker pull stargateio/docsapi:v2
+docker pull stargateio/graphqlapi:v2</code></pre>
 </div>
 </div>
 </div>
@@ -569,14 +569,14 @@ and GraphQL Playground, along with an Apache Cassandra<sup>&#8482;</sup> 3.11 ba
 The coordinator image contains a Apache Cassandra<sup>&#8482;</sup> backend, the Cassandra Query Language (CQL), and the gRPC API.</p>
 </div>
 <div class="paragraph">
-<p>The following are the commands for each of those images:</p>
+<p>The following are the commands for each of those images using the tag <code>v2</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-68:v2.0.0-BETA-3
-docker pull stargateio/restapi:v2.0.0-BETA-3
-docker pull stargateio/docsapi:v2.0.0-BETA-3
-docker pull stargateio/graphqlapi:v2.0.0-BETA-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker pull stargateio/coordinator-68:v2
+docker pull stargateio/restapi:v2
+docker pull stargateio/docsapi:v2
+docker pull stargateio/graphqlapi:v2</code></pre>
 </div>
 </div>
 </div>
@@ -626,16 +626,19 @@ and GraphQL Playground, along with a DataStax Enterprise<sup>&#8482;</sup>  6.8 
 <div class="content">
 <div class="paragraph">
 <p>Use this docker-compose <a href="https://github.com/stargate/stargate/blob/v2.0.0/docker-compose/cassandra-4.0/start_cass_40_dev_mode.sh">shell script</a> to start the coordinator and APIs in developer mode.
-The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/stargate/docker-compose</code> directory, and run the script.
+The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/docker-compose</code> directory, and run the script.
 You will want to run, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_cass_4_0_dev_mode.sh -t v2.0.0-BETA-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_cass_4_0_dev_mode.sh</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The latest available image can be found <a href="https://hub.docker.com/r/stargateio/coordinator-4_0/tags">here</a>.</p>
+<p>This command will start using the latest available coordinator and API images with the <code>v2</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>You may also select a specific image tag using the <code>-t &lt;image_tag&gt;</code> option. A list of the available tags for the coordinator can be found <a href="https://hub.docker.com/r/stargateio/coordinator-4_0/tags">here</a>.</p>
 </div>
 </div>
 </details>
@@ -670,16 +673,19 @@ meant for development and testing only.</p>
 <div class="content">
 <div class="paragraph">
 <p>Use this docker-compose <a href="https://github.com/stargate/stargate/blob/v2.0.0/docker-compose/cassandra-3.11/start_cass_311_dev_mode.sh">shell script</a> to start the coordinator and APIs in developer mode.
-The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/stargate/docker-compose</code> directory, and run the script.
+The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/docker-compose</code> directory, and run the script.
 You will want to run, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_cass_3_11_dev_mode.sh -t v2.0.0-BETA-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_cass_3_11_dev_mode.sh</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The latest available image can be found <a href="https://hub.docker.com/r/stargateio/coordinator-3_11/tags">here</a>.</p>
+<p>This command will start using the latest available coordinator and API images with the <code>v2</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>You may also select a specific image tag using the <code>-t &lt;image_tag&gt;</code> option. A list of the available tags for the coordinator can be found <a href="https://hub.docker.com/r/stargateio/coordinator-3_11/tags">here</a>.</p>
 </div>
 </div>
 </details>
@@ -714,16 +720,19 @@ meant for development and testing only.</p>
 <div class="content">
 <div class="paragraph">
 <p>Use this docker-compose <a href="https://github.com/stargate/stargate/blob/v2.0.0/docker-compose/dse-6.8/start_cass_40_dev_mode.sh">shell script</a> to start the coordinator and APIs in developer mode.
-The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/stargate/docker-compose</code> directory, and run the script.
+The easiest way to do that is to navigate to the <code>&lt;install_location&gt;/stargate/docker-compose</code> directory, and run the script.
 You will want to run, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_dse_68_dev_mode.sh -t v2.0.0-BETA-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./start_dse_68_dev_mode.sh</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The latest available image can be found <a href="https://hub.docker.com/r/stargateio/coordinator-6.8/tags">here</a>.</p>
+<p>This command will start using the latest available coordinator and API images with the <code>v2</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>You may also select a specific image tag using the <code>-t &lt;image_tag&gt;</code> option. A list of the available tags for the coordinator can be found <a href="https://hub.docker.com/r/stargateio/coordinator-6.8/tags">here</a>.</p>
 </div>
 </div>
 </details>
@@ -780,15 +789,15 @@ The URLS are:</p>
 <dl>
 <dt class="hdlist1">Schema</dt>
 <dd>
-<p><code><a href="https://localhost:8080/graphql-schema" class="bare">https://localhost:8080/graphql-schema</a></code></p>
+<p><code><a href="http://localhost:8080/graphql-schema" class="bare">http://localhost:8080/graphql-schema</a></code></p>
 </dd>
 <dt class="hdlist1">Admin</dt>
 <dd>
-<p><code><a href="https://localhost:8080/graphql-admin" class="bare">https://localhost:8080/graphql-admin</a></code></p>
+<p><code><a href="http://localhost:8080/graphql-admin" class="bare">http://localhost:8080/graphql-admin</a></code></p>
 </dd>
 <dt class="hdlist1">Querying</dt>
 <dd>
-<p><code><a href="https://localhost:8080/graphql/{keyspace_name}" class="bare">https://localhost:8080/graphql/{keyspace_name}</a></code></p>
+<p><code><a href="http://localhost:8080/graphql/{keyspace_name}" class="bare">http://localhost:8080/graphql/{keyspace_name}</a></code></p>
 </dd>
 </dl>
 </div>
@@ -884,7 +893,7 @@ results that the table already exists.</p>
 <div class="paragraph">
 <p>The easiest way to get started with GraphQL is to use the built-in GraphQL playground.
 In Stargate, go to your browser and launch the url:
-<code><a href="https://localhost:8080/playground" class="bare">https://localhost:8080/playground</a></code></p>
+<code><a href="http://localhost:8080/playground" class="bare">http://localhost:8080/playground</a></code></p>
 </div>
 <div class="paragraph">
 <p>Add your
@@ -1980,7 +1989,7 @@ with a cURL command:</p>
 <div class="tab-pane" aria-labelledby="tabset11_graphql-command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl https://localhost:8080/graphql-admin \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl http://localhost:8080/graphql-admin \
   -H "X-Cassandra-Token: $AUTH_TOKEN" \
   -F operations='
 {
@@ -2031,7 +2040,7 @@ to get the current version.</p>
 <div class="tab-pane" aria-labelledby="tabset12_graphql-command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl https://localhost:8080/graphql-admin \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl http://localhost:8080/graphql-admin \
   -H "X-Cassandra-Token: $AUTH_TOKEN" \
   -F operations='
 {
@@ -2085,7 +2094,7 @@ Either the GraphQL Playground or the cURL command can be used to update the sche
 <div class="tab-pane" aria-labelledby="tabset13_graphql-command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Works in https://localhost:8080/graphql-admin
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># Works in http://localhost:8080/graphql-admin
 {
   schemas(keyspace: "library") {
     version
@@ -3589,7 +3598,7 @@ run the following cURL command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl  https://localhost:8080/graphql-files/cql_directives.graphql \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl  http://localhost:8080/graphql-files/cql_directives.graphql \
   --header "X-Cassandra-Token: $AUTH_TOKEN"</code></pre>
 </div>
 </div>
