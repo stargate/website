@@ -125,7 +125,7 @@ query {
 
 ## How it works
 
-Stargate's GraphQL API is built using the [GraphQL Java](https://www.graphql-java.com/) implementation and you can find the source code in the [graphqlapi directory](https://github.com/stargate/stargate/tree/master/graphqlapi) in the Stargate repo. 
+Stargate's GraphQL API is built using the [GraphQL Java](https://www.graphql-java.com/) implementation and you can find the source code in the [graphqlapi directory](https://github.com/stargate/stargate/tree/main/apis/sgv2-graphqlapi) in the Stargate repo. 
 
 By default, the API exposes two HTTP endpoints. The first is at the `/graphql-schema` path and exposes an API for exploring, creating and altering the database schema. The second is at the `/graphql/{keyspace-name}` path and exposes an API for inserting, modifying, deleting and querying data. 
 
@@ -142,50 +142,23 @@ createTable(
 )
 {% endhighlight %}
 
-You'll see that this has the `keyspaceName`, `tableName`, `partitionKeys`, `clusteringKeys`, `values`, and `ifNotExists` fields. In the Stargate code, this is defined with the following.
+You'll see that this has the `keyspaceName`, `tableName`, `partitionKeys`, `clusteringKeys`, `values`, and `ifNotExists` fields. 
 
-{% highlight javascript %}
-private GraphQLFieldDefinition buildCreateTable() {
-  return GraphQLFieldDefinition.newFieldDefinition()
-      .name("createTable")
-      .argument(GraphQLArgument.newArgument().name("keyspaceName").type(nonNull(Scalars.GraphQLString)))
-      .argument(GraphQLArgument.newArgument().name("tableName").type(nonNull(Scalars.GraphQLString)))
-      .argument(GraphQLArgument.newArgument().name("partitionKeys").type(nonNull(list(buildColumnInput()))))
-      .argument(GraphQLArgument.newArgument().name("clusteringKeys").type(list(buildClusteringKeyInput())))
-      .argument(GraphQLArgument.newArgument().name("values").type(list(buildColumnInput())))
-      .argument(GraphQLArgument.newArgument().name("ifNotExists").type(Scalars.GraphQLBoolean))
-      .type(Scalars.GraphQLBoolean)
-      .dataFetcher(schemaDataFetcherFactory.createSchemaFetcher(CreateTableDataFetcher.class.getName()))
-      .build();
-}
-{% endhighlight %}
-
-One thing to note is the use of `DataFetchers` which is what provides the data for the field. This is where the translation between the GraphQL input to the Cassandra query happens. You'll see for the `createTable` mutation that the `CreateTableDataFetcher` takes the arguments from the `DataFetchingEnvironment`, translates that to a Cassandra query, and passes it to the persistence engine for processing. 
-
-Each of the mutations and queries for Stargate's GraphQL API follow this general pattern. If you're interested in more of this nitty gritty, hop down to the Deep Dive section of this blog or better yet check out the source code in the [graphqlapi](https://github.com/stargate/stargate/tree/master/graphqlapi) directory!
+Each of the mutations and queries for Stargate's GraphQL API follow this general pattern. If you're interested in learning how this works in the Java code, hop down to the Deep Dive section of this blog or better yet check out the source code in the [graphqlapi](https://github.com/stargate/stargate/tree/main/apis/sgv2-graphqlapi) directory!
 
 ## Get started
 The easiest way to get your hands on the GraphQL API is to use the Stargate docker image and start the container in developer mode. There is also a built-in GraphQL Playground servlet to make it easy to test and tinker with your mutations and queries.
 
 ### Set-Up: Get the image and authenticate. Then, hello GraphQL.
 
-**Step 1: Pull down and fire up the latest docker image** ([https://hub.docker.com/u/stargateio](https://hub.docker.com/u/stargateio))
+**Step 1: Start Stargate coordinator and GraphQL API using Docker** ([https://hub.docker.com/u/stargateio](https://hub.docker.com/u/stargateio))
 
-Get the image:
+We have instructions under the [docker-compose](https://github.com/stargate/stargate/tree/main/docker-compose) that you can use to run Stargate with the Cassandra version of your choice. Tip: use one of the "developer mode" scripts for faster startup, for example:
 
 {% highlight bash %}
-docker pull stargateio/stargate-3_11:v0.0.6
-{% endhighlight %}
-
-With DEVELOPER_MODE=true, start the container: (This removes the need to install a separate Cassandra instance.)
-{% highlight bash %}
-docker run --name stargate \
-  -p 8081:8081 -p 8080:8080 \
-  -e CLUSTER_NAME=stargate \
-  -e CLUSTER_VERSION=3.11 \
-  -e DEVELOPER_MODE=true \
-  -e ENABLE_AUTH=true \
-  -d stargateio/stargate-3_11:v0.0.6
+git clone stargate/stargate
+cd stargate/docker-compose/cassandra-4.0
+./start_cass_40_dev_mode.sh
 {% endhighlight %}
 
 **Step 2: Generate an authentication token** from Stargate's REST-based auth service using the default credentials. Note: these credentials should be changed for real environments.
@@ -323,45 +296,43 @@ Just like that you have a GraphQL API on top of your Cassandra database. You can
 
 Let's peel back the layers a bit further and talk about a few other aspects of the API. One question that you may ask, what happens when the schema changes? To ensure that Stargate's GraphQL API stays in sync with the database objects, there are `EventListeners` that detect the changes and update the `KeyspaceHandlers` accordingly. This means that if you add/remove tables or change the types of columns, the Stargate GraphQL API will reflect those changes automatically.
 
-The mutations and queries available at the `/graphql/{keyspace-name}` path work similarly to those at the `/graphql-schema` path. The available mutations for a single table are insert, update, and delete and correspond to `INSERT`, `UPDATE`, and `DELETE` statements that are available in Cassandra. Each table also has a generated query that allows you to read rows with filtering on the primary key and ordering based on the clustering key. An example of the insert mutation from Stargate's [GqlKeyspaceSchema](https://github.com/stargate/stargate/blob/master/graphqlapi/src/main/java/io/stargate/graphql/core/GqlKeyspaceSchema.java) class is below.
+The mutations and queries available at the `/graphql/{keyspace-name}` path work similarly to those at the `/graphql-schema` path. The available mutations for a single table are insert, update, and delete and correspond to `INSERT`, `UPDATE`, and `DELETE` statements that are available in Cassandra. Each table also has a generated query that allows you to read rows with filtering on the primary key and ordering based on the clustering key. An example of the insert mutation can be found in the [documentation](https://stargate.io/docs/latest/develop/dev-with-graphql-cql-first.html):
 
 {% highlight javascript %}
-private GraphQLFieldDefinition buildInsert(Table table) {
-  return GraphQLFieldDefinition.newFieldDefinition()
-      .name("insert" + nameMapping.getEntityName().get(table))
-      .argument(
-          GraphQLArgument.newArgument()
-              .name("value")
-              .type(
-                  new GraphQLNonNull(
-                      new GraphQLTypeReference(
-                          nameMapping.getEntityName().get(table) + "Input"))))
-      .argument(GraphQLArgument.newArgument().name("ifNotExists").type(Scalars.GraphQLBoolean))
-      .argument(GraphQLArgument.newArgument().name("options").type(mutationOptions))
-      .type(new GraphQLTypeReference(nameMapping.getEntityName().get(table) + "MutationResult"))
-      .dataFetcher(fetcherFactory.new InsertMutationDataFetcher(table))
-      .build();
+# insert 2 books in one mutation
+mutation insert2Books {
+  moby: insertbook(value: {title:"Moby Dick", author:"Herman Melville"}) {
+    value {
+      title
+    }
+  }
+  catch22: insertbook(value: {title:"Catch-22", author:"Joseph Heller"}) {
+    value {
+      title
+    }
+  }
 }
 {% endhighlight %}
 
-Queries have a filter option available that is defined by a custom `GraphQLInputObjectType`. This filter is useful when you only want to pull back data that fits certain criteria. The filters available in this first release are `eq` (equal), `notEq` (not equal), `gt` (greater than), `gte` (greater than or equal to), `lt` (less than), `lte` (less than or equal to), and `in` (within) operators. Note that these can only be used with fields that were in the primary key during table creation, just like in Cassandra. In the Stargate code that is defined with the following:
+Queries have a filter option available. This filter is useful when you only want to pull back data that fits certain criteria. The filters available include `eq` (equal), `notEq` (not equal), `gt` (greater than), `gte` (greater than or equal to), `lt` (less than), `lte` (less than or equal to), and `in` (within) operators. Note that these can only be used with fields that were in the primary key during table creation, just like in Cassandra. Here is an example query:
 
 {% highlight javascript %}
-private static GraphQLInputObjectType filterInputType(GraphQLScalarType type) {
-  return GraphQLInputObjectType.newInputObject()
-      .name(type.getName() + "FilterInput")
-      .field(GraphQLInputObjectField.newInputObjectField().name("eq").type(type))
-      .field(GraphQLInputObjectField.newInputObjectField().name("notEq").type(type))
-      .field(GraphQLInputObjectField.newInputObjectField().name("gt").type(type))
-      .field(GraphQLInputObjectField.newInputObjectField().name("gte").type(type))
-      .field(GraphQLInputObjectField.newInputObjectField().name("lt").type(type))
-      .field(GraphQLInputObjectField.newInputObjectField().name("lte").type(type))
-      .field(GraphQLInputObjectField.newInputObjectField().name("in").type(new GraphQLList(type)))
-      .build();
+# query a badge record that has a MAP (earned) with the partition key and the clustering key
+query oneGold100Badge {
+  badge(filter: { badge_type: {eq:"Gold"} badge_id: {eq:100}} ) {
+    values {
+      badge_type
+      badge_id
+      earned {
+        key
+        value
+      }
+    }
+  }
 }
 {% endhighlight %}
 
-Stargate's GraphQL API also allows you to have control over the execution of the request with Cassandra. You can set the consistency level for a query to dictate how many data replicas must respond and also the row limit, pagesize and pagestate. All of the normal Cassandra data types are supported with the exception of User Defined Types, Sets, Maps, Tuples and Lists (see [#141](https://github.com/stargate/stargate/issues/141) and [#126](https://github.com/stargate/stargate/issues/126))
+Stargate's GraphQL API also allows you to have control over the execution of the request with Cassandra. You can set the consistency level for a query to dictate how many data replicas must respond and also the row limit, pagesize and pagestate. All of the normal Cassandra data types are supported.
 
 ## Next steps
 
