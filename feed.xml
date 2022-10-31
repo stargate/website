@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-10-26T17:20:40+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate v2 is Generally Available</title><link href="https://stargate.io/2022/10/26/stargate-v2-ga.html" rel="alternate" type="text/html" title="Stargate v2 is Generally Available" /><published>2022-10-26T06:00:00+00:00</published><updated>2022-10-26T06:00:00+00:00</updated><id>https://stargate.io/2022/10/26/stargate-v2-ga</id><content type="html" xml:base="https://stargate.io/2022/10/26/stargate-v2-ga.html">&lt;p&gt;Back in September, we announced the availability of the &lt;a href=&quot;https://stargate.io/2022/09/11/stargate-v2-beta.html&quot;&gt;Stargate v2 Beta release&lt;/a&gt;. After several betas and a release candidate, we’re excited to announce the availability of the general release of Stargate v2!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2022-10-31T14:15:20+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Why and How to Contribute to Stargate</title><link href="https://stargate.io/2022/10/30/contributing-stargate.html" rel="alternate" type="text/html" title="Why and How to Contribute to Stargate" /><published>2022-10-30T06:00:00+00:00</published><updated>2022-10-30T06:00:00+00:00</updated><id>https://stargate.io/2022/10/30/contributing-stargate</id><content type="html" xml:base="https://stargate.io/2022/10/30/contributing-stargate.html">&lt;p&gt;As an open source project Stargate, the data gateway for Apache Cassandra, has always been open to outside contribution and participation. With &lt;a href=&quot;https://stargate.io/2022/10/26/stargate-v2-ga.html&quot;&gt;Stargate v2&lt;/a&gt;, we’ve taken practical steps to make it easier to  contribute. We value diverse perspectives on how we should evolve Stargate. With diversity of opinion comes greater innovation. Please help us innovate for the benefit of both Stargate and Cassandra.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-you-should-contribute-to-stargate&quot;&gt;Why You Should Contribute to Stargate&lt;/h2&gt;
+
+&lt;p&gt;All open source projects offer a variety of ways for the open source community to contribute, and Stargate is no different:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Contribute to our documentation with examples or how-tos.&lt;/li&gt;
+  &lt;li&gt;Modify the code based one what you want to see in Stargate, and submit a pull request.&lt;/li&gt;
+  &lt;li&gt;Install and run Stargate for yourself, and make a feature suggestion.&lt;/li&gt;
+  &lt;li&gt;Find and report bugs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Historically, as an open source project whose development is driven primarily by one company (DataStax), and whose code base has been both complex and monolithic in nature, the bar to becoming a Stargate contributor has been set pretty high.&lt;/p&gt;
+
+&lt;p&gt;Until now, that is. With Stargate v2 we have made the code base more modular, more approachable, and thus easier to contribute to. In fact, we have three specific areas where it would be valuable to the community to receive contributions.&lt;/p&gt;
+
+&lt;h2 id=&quot;extending-grpc-access&quot;&gt;Extending gRPC Access&lt;/h2&gt;
+
+&lt;p&gt;The first opportunity to easily contribute to Stargate predates v2. A year ago we released our gRPC API for Stargate, along with a set of gRPC client libraries, as a means of making CQL calls over gRPC as a transit protocol. We also leverage &lt;a href=&quot;https://github.com/stargate/stargate/tree/master/grpc-proto/proto&quot;&gt;gRPC protobuf&lt;/a&gt; files to create the skeleton of a CQL query engine in whatever language you compile the gRPC library for.&lt;/p&gt;
+
+&lt;p&gt;We launched gRPC with client libraries for &lt;a href=&quot;https://github.com/stargate/stargate-grpc-java-client&quot;&gt;Java&lt;/a&gt;, &lt;a href=&quot;https://github.com/stargate/stargate-grpc-go-client&quot;&gt;Go&lt;/a&gt;, &lt;a href=&quot;https://github.com/stargate/stargate-grpc-node-client&quot;&gt;Node.js&lt;/a&gt;, and &lt;a href=&quot;https://github.com/stargate/stargate-grpc-rust-client&quot;&gt;Rust&lt;/a&gt;. Of note is that neither the Node.js nor the Rust libraries were written by developers on the core Stargate team at DataStax. Equally important, the work was done quickly, in each case a few weeks’ of side project effort.&lt;/p&gt;
+
+&lt;p&gt;This is by design. The intent is not that the core team will write every library that the community might find useful. The intent is to make writing these client libraries so easy that anyone who sees a need could simply write one for themselves.&lt;/p&gt;
+
+&lt;h2 id=&quot;extending-stargate-apis&quot;&gt;Extending Stargate APIs&lt;/h2&gt;
+
+&lt;p&gt;Version 2 of Stargate breaks down the monolith and instead isolates each API as a separate service. We still have Stargate coordinator nodes that talk directly to Cassandra via CQL, and for performance reasons we still have the gRPC API and the CQL API talking directly to these coordinator nodes. Our other APIs talk to a new bridge endpoint in the coordinator via gRPC.&lt;/p&gt;
+
+&lt;figure class=&quot;image&quot;&gt;
+  &lt;img src=&quot;/assets/images/stargate-v2-high-level.png&quot; alt=&quot;Figure 1: Stargate v2 High Level Architecture&quot; /&gt;
+  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 1: Stargate v2 High Level Architecture&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Previously, in order to extend Stargate you had to understand quite a bit of the code in order to do much of anything. Now someone wanting to add a new HTTP-based API would only have to learn the bridge API, and learn about gRPC networking. This should provide a much lower barrier to entry for extending Stargate with new APIs.&lt;/p&gt;
+
+&lt;h2 id=&quot;extending-stargate-to-new-data-stores&quot;&gt;Extending Stargate to New Data Stores&lt;/h2&gt;
+
+&lt;p&gt;Right now Stargate only talks to Apache Cassandra as a data store. Given that DataStax is a Cassandra-oriented company, that will always be our focus. Architecturally, though, Stargate could be extended to work with other data stores.&lt;/p&gt;
+
+&lt;p&gt;This would be a matter of learning the Stargate coordinator code as a starting point. We grant that this is a higher barrier to entry than learning the bridge code. Anyone with knowledge of the coordinator code and mastery of the internals of another data store should be able to rewrite the coordinator code to talk to that alternate data store, extending Stargate in a fundamentally new way.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;There is no wrong way to contribute to Stargate. While the core Stargate team have our own ideas and incoming requests from DataStax Astra, we don’t want to be on this journey alone, which is a big part of why we wrote Stargate v2.&lt;/p&gt;
+
+&lt;p&gt;Those of you in the open source Stargate community will have your own views about what’s important, and what should be prioritized. Engage with us, and share your passionately held views. We can disagree, and in constructive disagreement find a better path forward.&lt;/p&gt;
+
+&lt;p&gt;Building knowledge through better documentation; truly the lowest barrier to entry for participation, and maybe the most important:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Test our &lt;a href=&quot;https://stargate.io/docs&quot;&gt;documentation&lt;/a&gt;! Where did we get it wrong, or fall behind current functionality in the Stargate platform?&lt;/li&gt;
+  &lt;li&gt;Give us a write-up of your favorite examples. Quality, approachable reference examples are an essential part of a project.&lt;/li&gt;
+  &lt;li&gt;Finally figured out something that was initially puzzling? Write a how-to; we love how-tos!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Extending gRPC:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We’d like to have a Python library.&lt;/li&gt;
+  &lt;li&gt;We’d also like to have a C# library.&lt;/li&gt;
+  &lt;li&gt;What would you like to see, or help create?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Extending APIs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;AWS Dynamo is a great data interface, and it’s specific to AWS. A group of students from Carnegie Mellon University has started work on a &lt;a href=&quot;https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html&quot;&gt;Dynamo-compatible API&lt;/a&gt; for Stargate that could make this capability available in multiple clouds.&lt;/li&gt;
+  &lt;li&gt;What additional APIs would you like to see, or help build?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Extending to new DataStores&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We’d like to cover more variants of Cassandra than just the three we currently cover (Apache Cassandra 3.x/4.x, DataStax Enterprise, and &lt;a href=&quot;https://astra.datastax.com&quot;&gt;DataStax Astra DB&lt;/a&gt;). AWS Keyspaces, for example, is another Cassandra variant that could benefit from Stargate.&lt;/li&gt;
+  &lt;li&gt;What additional data stores would you like to see, or contribute to integrating?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The best way to get involved with these efforts is to jump right into the project GitHub. Create an &lt;a href=&quot;https://github.com/stargate/stargate/issues&quot;&gt;issue&lt;/a&gt;, submit a &lt;a href=&quot;https://github.com/stargate/stargate/pulls&quot;&gt;pull request&lt;/a&gt;, or start a new &lt;a href=&quot;https://github.com/stargate/stargate/discussions&quot;&gt;discussion&lt;/a&gt;. We look forward to collaborating with you!&lt;/p&gt;</content><author><name></name></author><summary type="html">As an open source project Stargate, the data gateway for Apache Cassandra, has always been open to outside contribution and participation. With Stargate v2, we’ve taken practical steps to make it easier to contribute. We value diverse perspectives on how we should evolve Stargate. With diversity of opinion comes greater innovation. Please help us innovate for the benefit of both Stargate and Cassandra.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stargate v2 is Generally Available</title><link href="https://stargate.io/2022/10/26/stargate-v2-ga.html" rel="alternate" type="text/html" title="Stargate v2 is Generally Available" /><published>2022-10-26T06:00:00+00:00</published><updated>2022-10-26T06:00:00+00:00</updated><id>https://stargate.io/2022/10/26/stargate-v2-ga</id><content type="html" xml:base="https://stargate.io/2022/10/26/stargate-v2-ga.html">&lt;p&gt;Back in September, we announced the availability of the &lt;a href=&quot;https://stargate.io/2022/09/11/stargate-v2-beta.html&quot;&gt;Stargate v2 Beta release&lt;/a&gt;. After several betas and a release candidate, we’re excited to announce the availability of the general release of Stargate v2!&lt;/p&gt;
 
 &lt;p&gt;As we’ve discussed in &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;previous posts&lt;/a&gt;, v2 represents an architectural refactoring that allows more flexible deployments and makes it easier to create new APIs.&lt;/p&gt;
 
@@ -742,173 +820,4 @@ cd docker-compose
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3pTsDT5&quot;&gt;Stargate and Cassandra 4.0 - Better Together&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3wdUGhp&quot;&gt;Stargate APIs - GraphQL, REST, Document&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3Erl8Xr&quot;&gt;K8ssandra - K8ssandra, Apache Cassandra® on Kubernetes&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of Stargate. We’re listening to feedback from the Stargate developer community and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Introducing the Design for Stargate v2</title><link href="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html" rel="alternate" type="text/html" title="Introducing the Design for Stargate v2" /><published>2021-11-02T06:00:00+00:00</published><updated>2021-11-02T06:00:00+00:00</updated><id>https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2</id><content type="html" xml:base="https://stargate.io/2021/11/02/introducing-the-design-for-stargate-v2.html">&lt;p&gt;When we &lt;a href=&quot;https://stargate.io/2021/11/02/announcing-stargate-v2.html&quot;&gt;announced Stargate v2&lt;/a&gt;, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”&lt;/p&gt;
-
-&lt;p&gt;Like all things in software engineering, arriving at this point was an iterative process. We’ll show you some of the designs we considered before landing on the one we propose today.&lt;/p&gt;
-
-&lt;p&gt;For context, we had a few different criteria in mind while reviewing each of these designs:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Ease of contribution:&lt;/strong&gt; We wanted to make sure that whatever change we made resulted in it being easier for both new and existing contributors to work with &lt;a href=&quot;https://dtsx.io/3w732Y9&quot;&gt;Stargate&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Deployment flexibility:&lt;/strong&gt; The ability to scale components independently was important to us, but we recognize that not everyone will need this and would instead prefer only one or two containers running.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Ongoing performance:&lt;/strong&gt; Of course, we also wanted to be sure that neither of the above changes came at the cost of latency, so we also wanted to ensure that the potential design would still be performant.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With that said, let’s get into the designs.&lt;/p&gt;
-
-&lt;h2 id=&quot;considered-designs&quot;&gt;Considered designs&lt;/h2&gt;
-
-&lt;p&gt;Not every idea can be a winner, and we abandoned our fair share of ideas during this design process. Here we’ll discuss some of these runners-up and explain why they didn’t make the cut. All of them share one thing in common: they assume deployment on &lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;design-1-separate-everything&quot;&gt;Design 1: Separate everything&lt;/h3&gt;
-
-&lt;p&gt;One of our ideas was to go in the opposite direction of where Stargate is currently. In this design, we’d switch from a “shared everything” approach to a “shared nothing.” Instead of everything running within the same JVM and connected using &lt;a href=&quot;https://www.osgi.org/&quot;&gt;OSGi&lt;/a&gt;, each component of Stargate would be its own .jar capable of running in a dedicated container. The diagram below illustrates what this new architecture would look like.&lt;/p&gt;
-
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/assets/images/stargate-v2-shared-nothing.png&quot; alt=&quot;Figure 1: Diagram of our proposed 'shared nothing' design for Stargate v2.&quot; /&gt;
-  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 1: Diagram of our proposed 'shared nothing' design for Stargate v2.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;From left to right, here’s how it would work:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A request would come in through the load balancer and then be routed to the proper user-facing service based on routing rules.&lt;/li&gt;
-  &lt;li&gt;Each service would be responsible for transforming its request into a gRPC payload that it would pass on to an internal gRPC (i.e. the “Bridge”).&lt;/li&gt;
-  &lt;li&gt;The Bridge would apply all cross-cutting concerns, like authentication and authorization, before passing the request along to the persistence service again over gRPC.&lt;/li&gt;
-  &lt;li&gt;Finally, the persistence would take the gRPC payload and transform it into CQL that could be processed and coordinated to the underlying storage nodes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One benefit of this approach is that it provides flexibility for scaling and deployment. For example, if you don’t need the REST API then you would have the option to not deploy that pod. Likewise, for scaling, if you had more &lt;a href=&quot;https://dtsx.io/3BpaA9p&quot;&gt;GraphQL&lt;/a&gt; traffic than &lt;a href=&quot;https://dtsx.io/3BpaA9p&quot;&gt;Document API&lt;/a&gt;, you could add more GraphQL pods without changing the other deployments.&lt;/p&gt;
-
-&lt;p&gt;An immediate downside to this approach was for CQL, since those requests would need to be transformed from CQL frames to gRPC and then back to CQL. Given CQL’s latency-sensitive nature, we felt the additional overhead of multiple serialization and deserialization would be unacceptable.&lt;/p&gt;
-
-&lt;p&gt;Furthermore, this approach would require creating a new schema definition language to transport the requests between services. Although this would certainly be helpful for services that operate at a higher level than plain CQL (like the Documents API), we thought it was unnecessarily complex.&lt;/p&gt;
-
-&lt;h3 id=&quot;design-2-using-cql-to-communicate&quot;&gt;Design 2: Using CQL to communicate&lt;/h3&gt;
-
-&lt;p&gt;The next option we considered was similar to the “shared nothing” design, but differed in that it used CQL as the communication protocol.&lt;/p&gt;
-
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/assets/images/stargate-v2-cql-shared-nothing.png&quot; alt=&quot;Figure 2: Diagram of a 'shared nothing' approach using CQL to communicate.&quot; /&gt;
-  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 2: Diagram of a 'shared nothing' approach using CQL to communicate.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;In this design both the CQL and persistence services would share the same container to reduce CQL latency, but the other services would be separated. For communication, each service would accept its request and then transform it into a CQL statement, which could be sent back to the CQL service via a driver.&lt;/p&gt;
-
-&lt;p&gt;This seemed like a promising approach since all of the current services are written in Java, which has a robust CQL driver. Except for the requirement of a driver introduces three potential issues:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Stargate is written in Java, but we welcome the possibility of services being written in other languages. Although this means your language of choice would need a driver, and if it has a driver, it needs to be in a usable state.&lt;/li&gt;
-  &lt;li&gt;Having a driver bridge the communication gap between user-facing service and persistence creates some authentication issues. Since drivers tend to be session-scoped with a username and password, each service would need to create a new session for each request. Alternatively, there would need to be a system user for the services, which would then need to execute the queries on behalf of the user initiating the request.&lt;/li&gt;
-  &lt;li&gt;Even though most of the services are a one-to-one translation to CQL, there are occasions when this isn’t the case, so it would require making several requests from the service to persistence.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;design-3-multiple-bridges&quot;&gt;Design 3: Multiple bridges&lt;/h3&gt;
-
-&lt;p&gt;One of our next ideas was a hybrid of the previous two. In this design, the simpler services that map more readily to CQL would take one path to the persistence service, while the others would take a different path.&lt;/p&gt;
-
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/assets/images/stargate-v2-multibridge.png&quot; alt=&quot;Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&quot; /&gt;
-  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 3: Diagram of a hybrid approach for Stargate v2 using multiple bridges.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;As shown in the diagram above, we have now gone from one to two Bridge pods and split up the GraphQL service. At the top half of the diagram, things have stayed largely the same in that services that map cleanly to CQL transform their requests into a gRPC payload and then pass that to the Bridge. Where this diverges is the “not directly CQL” services, which now go through a different Bridge that translates the requests into something lower-level before passing them along to the primary Bridge service.&lt;/p&gt;
-
-&lt;p&gt;One of the benefits of this design is that it removes the complexity of translating requests into gRPC from the external services and pushes it down into a centralized location. The translation Bridge can take the customized requests from both the Documents API and the schema-first version of GraphQL and transform them into simpler gRPC payloads that the inner Bridge service can process.&lt;/p&gt;
-
-&lt;p&gt;That being said, this design still suffers from the same downside of the previous design where it has several layers of translation and adds yet another layer for two of the services.&lt;/p&gt;
-
-&lt;h2 id=&quot;meet-the-winning-design&quot;&gt;Meet the winning design&lt;/h2&gt;
-
-&lt;p&gt;After weighing the pros and cons of the other potential designs, we finally settled on what we believe is the best option for Stargate v2. Take a look at the diagram below.&lt;/p&gt;
-
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/assets/images/stargate-v2-services.png&quot; alt=&quot;Figure 4: Diagram of the final design approach for Stargate v2.&quot; /&gt;
-  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Figure 4: Diagram of the final design approach for Stargate v2.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;This design is similar to the earlier ones where the user-facing services are sitting behind a load balancer and communicating with the persistence service via gRPC. Although a noticeable feature is the addition of a “Coordinator Node.” This new Coordinator Node pod will contain three different services that run together in the same JVM: CQL, Bridge, and Persistence.&lt;/p&gt;
-
-&lt;p&gt;Next, we’ll briefly explain how the services involved in this design will work.&lt;/p&gt;
-
-&lt;h3 id=&quot;services&quot;&gt;Services&lt;/h3&gt;
-
-&lt;p&gt;The services component of Stargate will be composed of the discrete, user-facing services running as independent pods. Each service will be responsible for serving requests on its respective interface by:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Accepting requests&lt;/li&gt;
-  &lt;li&gt;Transforming them into CQL&lt;/li&gt;
-  &lt;li&gt;Passing them along to the Bridge via a gRPC request&lt;/li&gt;
-  &lt;li&gt;Transforming the gRPC response back into its format (like JSON or GraphQL) and returning the payload to the user&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;REST, GraphQL, and gRPC continue to convert their respective request types into CQL strings. The Bridge will then pass the CQL string to the persistence service for the query to be executed. Going through the intermediate gRPC provides the services with a gRPC interface (rather than relying on drivers) and takes advantage of cross-cutting functionality provided by the Bridge.&lt;/p&gt;
-
-&lt;h3 id=&quot;bridge&quot;&gt;Bridge&lt;/h3&gt;
-
-&lt;p&gt;The Bridge will be a gRPC service that connects the various user-facing services with the persistence service. Its responsibilities will be to accept gRPC requests while performing authentication and authorization.&lt;/p&gt;
-
-&lt;p&gt;This service will be implemented in almost the same manner as the user-facing gRPC. This service will live within the same JVM as the persistence service and support cross-cutting concerns, such as: authentication and authorization, pluggable request/response filters (e.g. encryption, data masking), and metrics.&lt;/p&gt;
-
-&lt;p&gt;As a cross-cutting concern, it makes sense to push authentication and authorization into this layer rather than expecting each service to reimplement the same functionality.&lt;/p&gt;
-
-&lt;h3 id=&quot;cql-service&quot;&gt;CQL Service&lt;/h3&gt;
-
-&lt;p&gt;The CQL service will continue to function in the same way it does today. It‘ll be considered part of the Coordinator Node and live within the same JVM as the persistence service and Bridge. Since it’s part of the Bridge, it’ll also take advantage of the same cross-cutting libraries as the Bridge.&lt;/p&gt;
-
-&lt;h3 id=&quot;persistence&quot;&gt;Persistence&lt;/h3&gt;
-
-&lt;p&gt;There won’t be much difference in the persistence services that Stargate currently offers. They’ll still operate as coordinators and keep all their existing functionality. The primary changes will just be cosmetic, like removing OSGi (if necessary).&lt;/p&gt;
-
-&lt;p&gt;The Bridge will be packaged within each Persistence layer to produce deployable containers for each supported backend (C* 4.0, DSE 6.8, etc.).&lt;/p&gt;
-
-&lt;h3 id=&quot;rest-graphql-and-grpc-services&quot;&gt;REST, GraphQL, and gRPC services&lt;/h3&gt;
-
-&lt;p&gt;The current &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rest-api&lt;/code&gt; module will be refactored to a separate microservice that uses the internal gRPC API of the Bridge. Dependence on OSGI will be removed — although we’ll likely reuse the health checker module for this and the other HTTP-based API services to provide endpoints for liveness/readiness.&lt;/p&gt;
-
-&lt;p&gt;The REST API service will continue to support both the REST v1 and v2 APIs as there’ll be no API contract changes. The current GraphQL and gRPC API implementations will be factored out from their current places into separate microservices that use the internal gRPC API, and we’ll remove the dependence on OSGI.&lt;/p&gt;
-
-&lt;h3 id=&quot;document-api-service&quot;&gt;Document API service&lt;/h3&gt;
-
-&lt;p&gt;The current Document API implementation will be moved from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rest-api&lt;/code&gt; module into a separate microservice that uses the internal gRPC API. Dependence on OSGI will also be removed.&lt;/p&gt;
-
-&lt;p&gt;Because the Document API operates at a higher level than REST or GraphQL, it won’t follow the same pattern as those two services. Instead, it’ll need to either pull back more data than it needs and perform filtering on its side or send a different sort of payload to the Bridge, which is then interpreted and executed. An example of this payload would be an OR query. Both sides have their benefits. By pulling back more data than necessary reduces the complexity of the Bridge and moves the resource penalty (high memory usage) to the Document API service.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, if we were to handle this on the Coordinator Node side we would then be able to reuse this functionality in other services. An application of this would be to add ORs or JOINs to GraphQL. We’ll resolve this question based on further testing as we progress.&lt;/p&gt;
-
-&lt;h3 id=&quot;load-balancing-authentication-and-other-cross-cutting-concerns&quot;&gt;Load balancing, authentication, and other cross-cutting concerns&lt;/h3&gt;
-
-&lt;p&gt;We don’t assume usage of any particular ingress but encourage its use. The intent is to be compatible with whatever load balancer is used, be it Nginx, Envoy, or HAProxy.&lt;/p&gt;
-
-&lt;p&gt;For HTTP services we could move some of the cross-cutting functionality into a load balancer by exposing endpoints for rate limiting and ext_authz. But we would then leave it up to each user to implement this for their particular load balancer (assuming that their load balancer supports that functionality). For CQL, we still need to implement this logic within Stargate since load balancers wouldn’t be able to act on the binary protocol.&lt;/p&gt;
-
-&lt;p&gt;Authentication and authorization will continue to be pluggable as it is today. Although we include some base implementations, it’ll still be possible to support other methods by implementing the necessary interface.&lt;/p&gt;
-
-&lt;h2 id=&quot;deployment-considerations&quot;&gt;Deployment considerations&lt;/h2&gt;
-
-&lt;p&gt;Breaking apart Stargate will require changes to how it’s deployed, meaning we’ll need to create a Helm chart. As we iterate, this chart can become more advanced and allow for a more customizable deployment (e.g. just REST or some other subset of services).&lt;/p&gt;
-
-&lt;p&gt;In the base case, the chart will deploy each of the user-facing services as a separate pod in addition to the Coordinator Node pod (persistence, CQL, and Bridge). For resource-constrained environments, where there’s a sensitivity to the number of pods, various combinations of pods and containers are possible. For one, it could maintain the same setup as exists today by placing all of the containers in a single pod. Another setup could be two pods: one for the Coordinator Node and another for the services.&lt;/p&gt;
-
-&lt;h2 id=&quot;final-notes&quot;&gt;Final notes&lt;/h2&gt;
-
-&lt;p&gt;We believe that the changes proposed in this design will lead to a much better experience for those who contribute to the Stargate project and those who run it to support their other applications.&lt;/p&gt;
-
-&lt;p&gt;Contributors will be able to quickly iterate on just the parts of the project they want without needing to understand as deeply the other components. Plus, it’ll open up the potential for newer Java versions and frameworks rather than Java 8 with OSGi or even a polyglot environment. Meanwhile, operators will have greater flexibility over their Stargate deployment and the potential for a lower-resource footprint when scaling to handle higher loads.&lt;/p&gt;
-
-&lt;p&gt;Overall, we’re excited about these new changes and look forward to working with the &lt;a href=&quot;https://dtsx.io/3pMAp0Y&quot;&gt;Stargate community&lt;/a&gt; to make this new design a reality. On that note, if you want to review this design and give us your feedback, &lt;a href=&quot;https://dtsx.io/2ZQoJQ4&quot;&gt;join the discussion on GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3w732Y9&quot;&gt;Stargate.io&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stargate.io/2021/11/01/announcing-stargate-v2.html&quot;&gt;Announcing Stargate v2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3pMAp0Y&quot;&gt;Stargate Community&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/2ZQoJQ4&quot;&gt;Stargate v2 discussion on GitHub&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stargate.io/2020/10/05/hello-graphql.html&quot;&gt;Blog: Hello GraphQL: meet Cassandra&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html&quot;&gt;Blog: The Stargate Cassandra Documents API&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3CoHWXf&quot;&gt;Stargate Document API&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3moyxcN&quot;&gt;Stargate REST API&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3BpaA9p&quot;&gt;Stargate GraphQL API&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dtsx.io/3mnCcrp&quot;&gt;Stargate CQL API&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">When we announced Stargate v2, we mainly focused on the “why” behind the change. In this post, we’ll dive into the “how.”</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">After a year of adding new APIs and features, we realized that this is an ideal time to take a step back and look at the overall architecture of Stargate. We’re listening to feedback from the Stargate developer community and taking a look at our technical debt as well. Based on your inputs, we’ve begun some planning for a “Stargate v2” and have identified the following high-level goals:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
