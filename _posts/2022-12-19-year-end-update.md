@@ -2,7 +2,7 @@
 layout: post
 title: "Stargate Community Update December 2022"
 date:   2022-12-18 00:00:00 -0600
-synopsis: "A summary of community activity since the Stargate v2 GA release and what we're looking forward to in 2023."
+synopsis: "A summary of community activity since the Stargate v2.0.0 release and what we're looking forward to in 2023."
 author_info:
   name:
     first: "Jeff"
