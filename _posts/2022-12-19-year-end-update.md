@@ -4,10 +4,10 @@ title: "Stargate Community Update December 2022"
 date:   2022-12-18 00:00:00 -0600
 synopsis: "A summary of community activity since the Stargate v2 GA release and what we're looking forward to in 2023."
 author_info:
-name:
-first: "Jeff"
-last: "Carpenter"
-picture: "assets/images/stargate-profile.png"
+  name:
+    first: "Jeff"
+    last: "Carpenter"
+  picture: "assets/images/stargate-profile.png"
 ---
 
 Hello Stargate community! It’s hard to believe it's already been two months since the [GA release](https://stargate.io/2022/10/26/stargate-v2-ga.html) of Stargate v2! There’s been a lot of activity on the project since that milestone and we wanted to share a few recent highlights as we begin to close out the year:
