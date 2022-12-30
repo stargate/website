@@ -1,10 +1,10 @@
 language: ruby
 services:
   - docker
-# only run CI-builds on master branch
+# only run CI-builds on main branch
 branches:
   only:
-  - master
+  - main
 rvm:
 - 2.5.0
 addons:
