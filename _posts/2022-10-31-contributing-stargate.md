@@ -28,7 +28,7 @@ Until now, that is. With Stargate v2 we have made the code base more modular, mo
 
 ## Extending gRPC Access
 
-The first opportunity to easily contribute to Stargate predates v2. A year ago we released our gRPC API for Stargate, along with a set of gRPC client libraries, as a means of making CQL calls over gRPC as a transit protocol. We also leverage [gRPC protobuf](https://github.com/stargate/stargate/tree/master/grpc-proto/proto) files to create the skeleton of a CQL query engine in whatever language you compile the gRPC library for.
+The first opportunity to easily contribute to Stargate predates v2. A year ago we released our gRPC API for Stargate, along with a set of gRPC client libraries, as a means of making CQL calls over gRPC as a transit protocol. We also leverage [gRPC protobuf](https://github.com/stargate/stargate/tree/main/grpc-proto/proto) files to create the skeleton of a CQL query engine in whatever language you compile the gRPC library for.
 
 We launched gRPC with client libraries for [Java](https://github.com/stargate/stargate-grpc-java-client), [Go](https://github.com/stargate/stargate-grpc-go-client), [Node.js](https://github.com/stargate/stargate-grpc-node-client), and [Rust](https://github.com/stargate/stargate-grpc-rust-client). Of note is that neither the Node.js nor the Rust libraries were written by developers on the core Stargate team at DataStax. Equally important, the work was done quickly, in each case a few weeks’ of side project effort.
 
