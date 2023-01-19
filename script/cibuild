@@ -2,7 +2,11 @@
 
 # skip if build is triggered by pull request
 if [ $TRAVIS_PULL_REQUEST != "false" ]; then
-  echo "this is PR, exiting"
+  echo "this is PR, checking if build will work"
+
+  echo "Running Jekyll Build"
+  bundle exec jekyll build
+
   exit 0
 fi
 

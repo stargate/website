@@ -13,7 +13,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-postcss
   - jekyll-lazy-load-image
   - jekyll-paginate-v2
   - jekyll-algolia
