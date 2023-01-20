@@ -6,13 +6,13 @@ branches:
   only:
   - main
 rvm:
-- 2.5.0
+  - 2.7.0
 addons:
   apt:
     update: true
 before_install:
   - sudo apt-get -y install jq
-  - gem install bundler -v 2.1.4
+  - gem install bundler -v 2.4.4
   - npm install
 # set execution permission on our build script
 before_script:
