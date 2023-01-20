@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Why and How to Contribute to Stargate | Stargate</title>
-<meta name="generator" content="Jekyll v3.9.0">
+<meta name="generator" content="Jekyll v4.3.1">
 <meta property="og:title" content="Why and How to Contribute to Stargate">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="As an open source project Stargate, the data gateway for Apache Cassandra, has always been open to outside contribution and participation. With Stargate v2, we’ve taken practical steps to make it easier to contribute. We value diverse perspectives on how we should evolve Stargate. With diversity of opinion comes greater innovation. Please help us innovate for the benefit of both Stargate and Cassandra.">
@@ -32,17 +32,8 @@
 <meta property="twitter:title" content="Why and How to Contribute to Stargate">
 <meta name="twitter:site" content="@stargateio">
 <script type="application/ld+json">
-{"image":"https://stargate.io/assets/images/default-stargate.png","@type":"BlogPosting","headline":"Why and How to Contribute to Stargate","dateModified":"2022-10-30T06:00:00+00:00","datePublished":"2022-10-30T06:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2022/10/30/contributing-stargate.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2022/10/30/contributing-stargate.html"},"description":"As an open source project Stargate, the data gateway for Apache Cassandra, has always been open to outside contribution and participation. With Stargate v2, we’ve taken practical steps to make it easier to contribute. We value diverse perspectives on how we should evolve Stargate. With diversity of opinion comes greater innovation. Please help us innovate for the benefit of both Stargate and Cassandra.","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-30T06:00:00+00:00","datePublished":"2022-10-30T06:00:00+00:00","description":"As an open source project Stargate, the data gateway for Apache Cassandra, has always been open to outside contribution and participation. With Stargate v2, we’ve taken practical steps to make it easier to contribute. We value diverse perspectives on how we should evolve Stargate. With diversity of opinion comes greater innovation. Please help us innovate for the benefit of both Stargate and Cassandra.","headline":"Why and How to Contribute to Stargate","image":"https://stargate.io/assets/images/default-stargate.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2022/10/30/contributing-stargate.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2022/10/30/contributing-stargate.html"}</script>
 <!-- End Jekyll SEO tag -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-20879577-9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date()); gtag('config', 'UA-20879577-9');
-</script>
-
-
  
   </head>
 
@@ -209,7 +200,7 @@
 
 <h2 id="extending-grpc-access">Extending gRPC Access</h2>
 
-<p>The first opportunity to easily contribute to Stargate predates v2. A year ago we released our gRPC API for Stargate, along with a set of gRPC client libraries, as a means of making CQL calls over gRPC as a transit protocol. We also leverage <a href="https://github.com/stargate/stargate/tree/master/grpc-proto/proto">gRPC protobuf</a> files to create the skeleton of a CQL query engine in whatever language you compile the gRPC library for.</p>
+<p>The first opportunity to easily contribute to Stargate predates v2. A year ago we released our gRPC API for Stargate, along with a set of gRPC client libraries, as a means of making CQL calls over gRPC as a transit protocol. We also leverage <a href="https://github.com/stargate/stargate/tree/main/grpc-proto/proto">gRPC protobuf</a> files to create the skeleton of a CQL query engine in whatever language you compile the gRPC library for.</p>
 
 <p>We launched gRPC with client libraries for <a href="https://github.com/stargate/stargate-grpc-java-client">Java</a>, <a href="https://github.com/stargate/stargate-grpc-go-client">Go</a>, <a href="https://github.com/stargate/stargate-grpc-node-client">Node.js</a>, and <a href="https://github.com/stargate/stargate-grpc-rust-client">Rust</a>. Of note is that neither the Node.js nor the Rust libraries were written by developers on the core Stargate team at DataStax. Equally important, the work was done quickly, in each case a few weeks’ of side project effort.</p>
 

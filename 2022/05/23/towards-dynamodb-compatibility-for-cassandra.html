@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1) | Stargate</title>
-<meta name="generator" content="Jekyll v3.9.0">
+<meta name="generator" content="Jekyll v4.3.1">
 <meta property="og:title" content="Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="To fulfill my capstone project requirement for the Carnegie Mellon University (CMU) Master of Computational Data Science (MCDS) program, I and two of my classmates, Ziyan Zhang and Xiang Yue, collaborated with DataStax to develop a new module in the Stargate system to bring Amazon DynamoDB compatibility to Apache Cassandra.Ⓡ I will introduce our journey in two blog posts. Here in Part 1, I will provide some background on the project and describe the overall design of our system. In Part 2, I will discuss some interesting challenges we encountered and how we solved them.">
@@ -32,17 +32,8 @@
 <meta property="twitter:title" content="Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)">
 <meta name="twitter:site" content="@stargateio">
 <script type="application/ld+json">
-{"image":"https://stargate.io/assets/images/default-stargate.png","@type":"BlogPosting","headline":"Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)","dateModified":"2022-05-23T06:00:00+00:00","datePublished":"2022-05-23T06:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html"},"description":"To fulfill my capstone project requirement for the Carnegie Mellon University (CMU) Master of Computational Data Science (MCDS) program, I and two of my classmates, Ziyan Zhang and Xiang Yue, collaborated with DataStax to develop a new module in the Stargate system to bring Amazon DynamoDB compatibility to Apache Cassandra.Ⓡ I will introduce our journey in two blog posts. Here in Part 1, I will provide some background on the project and describe the overall design of our system. In Part 2, I will discuss some interesting challenges we encountered and how we solved them.","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-23T06:00:00+00:00","datePublished":"2022-05-23T06:00:00+00:00","description":"To fulfill my capstone project requirement for the Carnegie Mellon University (CMU) Master of Computational Data Science (MCDS) program, I and two of my classmates, Ziyan Zhang and Xiang Yue, collaborated with DataStax to develop a new module in the Stargate system to bring Amazon DynamoDB compatibility to Apache Cassandra.Ⓡ I will introduce our journey in two blog posts. Here in Part 1, I will provide some background on the project and describe the overall design of our system. In Part 2, I will discuss some interesting challenges we encountered and how we solved them.","headline":"Stargate: Towards DynamoDB Compatibility for Cassandra (Part 1)","image":"https://stargate.io/assets/images/default-stargate.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html"}</script>
 <!-- End Jekyll SEO tag -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-20879577-9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date()); gtag('config', 'UA-20879577-9');
-</script>
-
-
  
   </head>
 

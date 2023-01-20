@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Stargate v2 Beta: Open for extension | Stargate</title>
-<meta name="generator" content="Jekyll v3.9.0">
+<meta name="generator" content="Jekyll v4.3.1">
 <meta property="og:title" content="Stargate v2 Beta: Open for extension">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Last Friday, we released the first Beta for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.">
@@ -32,17 +32,8 @@
 <meta property="twitter:title" content="Stargate v2 Beta: Open for extension">
 <meta name="twitter:site" content="@stargateio">
 <script type="application/ld+json">
-{"image":"https://stargate.io/assets/images/default-stargate.png","@type":"BlogPosting","headline":"Stargate v2 Beta: Open for extension","dateModified":"2022-09-11T06:00:00+00:00","datePublished":"2022-09-11T06:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2022/09/11/stargate-v2-beta.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2022/09/11/stargate-v2-beta.html"},"description":"Last Friday, we released the first Beta for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-11T06:00:00+00:00","datePublished":"2022-09-11T06:00:00+00:00","description":"Last Friday, we released the first Beta for Stargate v2. In this post we’ll look at why this is a major milestone for the project and how you can try out this new release yourself.","headline":"Stargate v2 Beta: Open for extension","image":"https://stargate.io/assets/images/default-stargate.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2022/09/11/stargate-v2-beta.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2022/09/11/stargate-v2-beta.html"}</script>
 <!-- End Jekyll SEO tag -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-20879577-9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date()); gtag('config', 'UA-20879577-9');
-</script>
-
-
  
   </head>
 
@@ -239,7 +230,7 @@ cd docker-compose
 
 <p>The <code class="language-plaintext highlighter-rouge">-t</code> option defines which version to use, in this case <code class="language-plaintext highlighter-rouge">2.0.0-BETA-1</code>. We’ve provided these scripts that wrap Docker Compose to make it easier to impose the desired startup sequence. The <code class="language-plaintext highlighter-rouge">start_cass_40_dev_mode.sh</code> script provides a simple configuration that starts a single instance of the REST and GraphQL APIs and a single instance of the Stargate coordinator in “developer mode”, meaning that the coordinator is running a full Cassandra 4.0 node. Developer mode is a feature that many Stargate users don’t know about but it’s a great option for simple testing. If you’d like to run with a 3-node Cassandra cluster instead, you can use the <code class="language-plaintext highlighter-rouge">start_cass_40.sh</code> script, again using the <code class="language-plaintext highlighter-rouge">-t</code> option to specify the desired release.</p>
 
-<p>Once you have a cluster running, it’s a simple matter to generate some test queries against your running instance. The easiest way to do this is to use our recently updated Postman collections. There are three collections available: REST, GraphQL and Docs API. Once you have Postman installed, you can load the collections from the <a href="https://www.postman.com/datastax/workspace/datastax-astra-db-stargate/overview">DataStax workspace</a> on the Postman website. See the Stargate <a href="https://stargate.io/docs/latest/develop/tooling.html">documentation</a> for more information.</p>
+<p>Once you have a cluster running, it’s a simple matter to generate some test queries against your running instance. The easiest way to do this is to use our recently updated Postman collections. There are three collections available: REST, GraphQL and Docs API. Once you have Postman installed, you can load the collections from the <a href="https://www.postman.com/datastax/workspace/stargate-cassandra/overview">DataStax workspace</a> on the Postman website. See the Stargate <a href="https://stargate.io/docs/latest/develop/tooling.html">documentation</a> for more information.</p>
 
 <p>For example, let’s try running the REST collection against our local Stargate v2 cluster. After loading the collections, make sure to select the “Stargate OSS API Environment” from the pulldown at the upper right (1). This configures settings that will cause Postman to talk to endpoints on your local computer using the default port number. Then select the “Stargate-OSS-Astra-REST-API” collection from the list on the left (2) and run the collection (3).</p>
 
