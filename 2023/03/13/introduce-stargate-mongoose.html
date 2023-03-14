@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development</title>
+    <title>Introducing Stargate Mongoose and JSON API</title>
 
     <link rel="shortcut icon" type="image/png" href="/assets/images/stargate-profile.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,24 +15,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link type="application/atom+xml" rel="alternate" href="https://stargate.io/feed.xml" title="Stargate"> <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development | Stargate</title>
+<title>Introducing Stargate Mongoose and JSON API | Stargate</title>
 <meta name="generator" content="Jekyll v4.3.1">
-<meta property="og:title" content="Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development">
+<meta property="og:title" content="Introducing Stargate Mongoose and JSON API">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="It is a really great time to be a developer.">
-<meta property="og:description" content="It is a really great time to be a developer.">
-<link rel="canonical" href="https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html">
-<meta property="og:url" content="https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html">
+<meta name="description" content="The Stargate team is excited to share a new initiative that has the potential to bring Stargate and Apache Cassandra to a whole new audience: JavaScript developers. As Mark Stone noted in his recent blog “API Magic: Building Data Services with Apache Cassandra”, we’re exploring the idea of making Stargate APIs more idiomatic and less Cassandra-centric in order to broaden our community and improve the developer experience. In his follow up post “Mongoose: Bringing JSON-Oriented Developers to Apache Cassandra”, Mark discusses why we chose to partner with the JavaScript community, particularly via the Mongoose.js project.">
+<meta property="og:description" content="The Stargate team is excited to share a new initiative that has the potential to bring Stargate and Apache Cassandra to a whole new audience: JavaScript developers. As Mark Stone noted in his recent blog “API Magic: Building Data Services with Apache Cassandra”, we’re exploring the idea of making Stargate APIs more idiomatic and less Cassandra-centric in order to broaden our community and improve the developer experience. In his follow up post “Mongoose: Bringing JSON-Oriented Developers to Apache Cassandra”, Mark discusses why we chose to partner with the JavaScript community, particularly via the Mongoose.js project.">
+<link rel="canonical" href="https://stargate.io/2023/03/13/introduce-stargate-mongoose.html">
+<meta property="og:url" content="https://stargate.io/2023/03/13/introduce-stargate-mongoose.html">
 <meta property="og:site_name" content="Stargate">
 <meta property="og:image" content="https://stargate.io/assets/images/default-stargate.png">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2020-12-09T00:00:00+00:00">
+<meta property="article:published_time" content="2023-03-13T06:00:00+00:00">
 <meta name="twitter:card" content="large">
 <meta property="twitter:image" content="https://stargate.io/assets/images/default-stargate.png">
-<meta property="twitter:title" content="Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development">
+<meta property="twitter:title" content="Introducing Stargate Mongoose and JSON API">
 <meta name="twitter:site" content="@stargateio">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-12-09T00:00:00+00:00","datePublished":"2020-12-09T00:00:00+00:00","description":"It is a really great time to be a developer.","headline":"Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development","image":"https://stargate.io/assets/images/default-stargate.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2020/12/09/announcing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-03-13T06:00:00+00:00","datePublished":"2023-03-13T06:00:00+00:00","description":"The Stargate team is excited to share a new initiative that has the potential to bring Stargate and Apache Cassandra to a whole new audience: JavaScript developers. As Mark Stone noted in his recent blog “API Magic: Building Data Services with Apache Cassandra”, we’re exploring the idea of making Stargate APIs more idiomatic and less Cassandra-centric in order to broaden our community and improve the developer experience. In his follow up post “Mongoose: Bringing JSON-Oriented Developers to Apache Cassandra”, Mark discusses why we chose to partner with the JavaScript community, particularly via the Mongoose.js project.","headline":"Introducing Stargate Mongoose and JSON API","image":"https://stargate.io/assets/images/default-stargate.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://stargate.io/2023/03/13/introduce-stargate-mongoose.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://stargate.io/assets/images/astranaut.png"}},"url":"https://stargate.io/2023/03/13/introduce-stargate-mongoose.html"}</script>
 <!-- End Jekyll SEO tag -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20879577-9"></script>
@@ -168,22 +168,22 @@
   <div class="container">
     <div class="row">
       <div class="offset-md-2 col-md-8">
-        <h1 class="single-post__title">Announcing: Stargate 1.0 GA; REST, GraphQL, &amp; Schemaless JSON for Your Cassandra Development</h1>
-        <h4 class="single-post__subtitle">Level-up your app dev with fast and easy data APIs for the world’s most battle tested database.</h4>
+        <h1 class="single-post__title">Introducing Stargate Mongoose and JSON API</h1>
+        <h4 class="single-post__subtitle">Bringing Stargate and Apache Cassandra to a new community of JavaScript developers.</h4>
       </div>
     </div>
 
     <div class="row">
       <div class="offset-md-2 col-md-8">
         <div class="post-item__info">
-          <img data-src="/assets/images/stargate-profile.png" alt="Denise Gosnell" class="post-item__info-author_image lazyload lazyload" width="32" height="32">
+          <img data-src="/assets/images/stargate-profile.png" alt="Jeff Carpenter" class="post-item__info-author_image lazyload lazyload" width="32" height="32">
           
           
           
-          <span>By <span class="link">Denise Gosnell</span>
+          <span>By <span class="link">Jeff Carpenter</span>
           </span>
           •
-          <span>Dec 9, 2020</span>
+          <span>Mar 13, 2023</span>
         </div>
       </div>
     </div>
@@ -191,163 +191,54 @@
     <div class="row">
       <div class="offset-md-2 col-md-8">
         <div class="single-page__content">
-          <p>It is a really great time to be a developer.</p>
+          <p>The Stargate team is excited to share a new initiative that has the potential to bring Stargate and Apache Cassandra to a whole new audience: JavaScript developers. As Mark Stone noted in his recent blog “<a href="https://thenewstack.io/api-magic-building-data-services-with-apache-cassandra/">API Magic: Building Data Services with Apache Cassandra</a>”, we’re exploring the idea of making Stargate APIs more idiomatic and less Cassandra-centric in order to broaden our community and improve the developer experience. In his follow up post “<a href="https://thenewstack.io/mongoose-bringing-json-oriented-developers-to-apache-cassandra/">Mongoose: Bringing JSON-Oriented Developers to Apache Cassandra</a>”, Mark discusses why we chose to partner with the JavaScript community, particularly via the <a href="https://mongoosejs.com/">Mongoose.js</a> project.</p>
 
-<p>We have tons of APIs integrated within great tools for building dynamic, full stack apps. If you are a developer, you probably are using technologies like schemaless data stores, serverless architectures, JSON APIs, and/or the GraphQL language.</p>
+<p>This post builds on Mark’s posts to give you a guide to how to try out this new capability. If you’ve been tracking the <a href="https://github.com/stargate">Stargate GitHub organization</a>, you may have already seen some new repositories popping up, or perhaps you’ve seen the presentations at the recent <a href="https://www.cassandrasummit.org/cassandra-forward">Cassandra Forward</a> online event. In any case, it’s definitely time for us to share what we’ve built so far. We’re adding a couple of new components to the Stargate project, which you can see captured in the following figure.</p>
 
-<p>Further, there are a bunch of cool frameworks like the <strong>Jam</strong>stack (<strong>J</strong>avaScript, <strong>A</strong>PIs, and <strong>M</strong>arkup) and services like Netlify to make it fast to deploy a serverless app.</p>
+<p><img alt="Stargate Architecture including stargate-mongoose and JSON API" data-src="/assets/images/stargate-mongoose/stargate-mongoose-architecture.png" class="lazyload"></p>
 
-<p>And now, for the first time ever, Apache Cassandra is a part of this stack because <a href="https://astra.datastax.com/">Stargate is now live on Astra</a> as the official data API.</p>
-
-<p>The modern apps we build need data APIs which integrate into our toolset and work with native data shapes (JSON, REST, GraphQL, etc). These data APIs need to support schemaless JSON, while simultaneously providing speed and scalability.</p>
-
-<p>Most importantly, it better only take a few minutes for us to use them within our project.</p>
-
-<p>DataStax built <a href="https://stargate.io/">Stargate</a> into Astra to give us, app developers, a natural data API stack which meshes with the Jamstack (or serverless stack of your choice). Stargate in Astra is built on the rock solid NoSQL data engine (Apache Cassandra) which powers Netflix, Instagram, Yelp, iCloud and other apps we all use everyday.</p>
-
-<h2 id="what-exactly-is-stargate">What exactly is Stargate?</h2>
-<p>Stargate is an <a href="https://stargate.io/2020/09/14/init-stargate.html">open source data gateway</a> that sits between your app server and your databases. Stargate brings together an API platform and data request coordination code into one OSS project.</p>
-
-<p>Multiple successful app companies - like Netflix and Yelp - built their own data gateways to help internal app developers create features using simple APIs, without needing to learn the underlying database or mess with schema.</p>
-
-<p>DataStax integrated Stargate into Astra to give you the same power and ease of access to your data.</p>
-
-<p>What does this mean for you?</p>
+<p>The major new pieces are highlighted in the upper left: the stargate-mongoose JavaScript library, and the JSON API. These new components ha have resulted in the addition of three new repositories:</p>
 
 <ul>
-  <li>No upfront data modelling needed for Documents.</li>
-  <li>Less custom code to maintain.</li>
-  <li>More time to build what you care about.</li>
+  <li>
+<a href="https://github.com/stargate/jsonapi">stargate/jsonapi</a> - this repository contains a new document-oriented API known as JSON API. While Stargate has provided a document-oriented API for some time, feedback we’ve received made it clear that significant improvements were needed. We went back to the drawing board and instead of creating a “Document API v3”, we designed JSON API v1 - a completely new API. This API is more idiomatic to the way developers expect a document-oriented API to work and doesn’t require any Cassandra knowledge to use.</li>
+  <li>
+<a href="https://github.com/stargate/stargate-mongoose">stargate/stargate-mongoose</a> - this repository is a fork of the hugely popular <a href="https://github.com/Automattic/mongoose">Mongoose.js repository</a> that includes the option to use the Stargate JSON API as its storage backend. The <a href="https://www.npmjs.com/package/stargate-mongoose">NPM package</a> it builds can be used as a drop-in replacement for the <a href="https://mongoosejs.com/">Mongoose</a> Object Data Modeling (ODM) library, instantly bringing the power and scalability of Apache Cassandra to JavaScript applications.</li>
+  <li>
+<a href="https://github.com/stargate/stargate-mongoose-sample-apps">stargate/stargate-mongoose-sample-apps</a> - Valeri Karpov, creator of the Mongoose project, has ported three Mongoose sample apps to work with the stargate-mongoose client and graciously donated this code to the Stargate project.</li>
 </ul>
 
-<p><img alt="" data-src="/assets/images/stargate-astra/stargate-astra.png" class="lazyload"></p>
+<p>Please note that these are just the initial versions of new software and are currently considered to be of Alpha quality, with Beta and General Availability (GA) releases targeted for both open source and DataStax Astra in the months to come.</p>
 
-<p>You can work with your data the way you want – JSON via schemaless document APIs or database schema aware GraphQL and RESTful APIs – while Stargate serves as the proxy that coordinates these requests to different flavors of Cassandra.</p>
+<p>We’re doing all this work in public to get as much feedback as early as possible to set the best direction for the project, which is why we’d love to have you take all this for a test drive….</p>
 
-<p>To see it in action, let’s see how this works by using JSON with Stargate’s schemaless Document API in a TikTok clone. Because, if Instagram and Snapchat have a TikTok clone, we should have one, too. Right?</p>
+<h2 id="getting-started-with-stargate-mongoose-and-json-api">Getting Started with stargate-mongoose and JSON API</h2>
 
-<h2 id="real-quick-note-first">Real Quick Note First</h2>
+<p>The easiest way to try this out is with our downloadable demo. Start at the <a href="https://github.com/stargate/stargate-mongoose-sample-apps">stargate-mongoose-sample-apps</a> repository and follow the instructions provided there to run the E-commerce application. You’ll deploy the app as a local <a href="https://www.netlify.com/">Netlify</a> <a href="https://www.netlify.com/products/functions/">Functions</a> application, with the supporting infrastructure (JSON API, Stargate Coordinator, Apache Cassandra) running in Docker.</p>
 
-<p>Slinging JSON to and from Apache Cassandra without data modeling is just too much fun. You gotta <a href="http://astra.datastax.com/">try this out in Astra for yourself</a>. You can get <a href="https://www.datastax.com/dev/documents-api">hands on with it right away</a> or check out our <a href="https://astra.datastax.com/sample-app-gallery">sample app gallery</a> to see schemaless Cassandra in action.</p>
+<p><img alt="E-commerce sample app for stargate-mongoose" data-src="/assets/images/stargate-mongoose/stargate-mongoose-demo.png" class="lazyload"></p>
 
-<p>We are stoked to have engineers from Netflix, Burberry, Macquarie Bank, USAA, and Yelp creating Stargate with us. They are already hard at work battletesting the APIs and collaborating on new features.</p>
+<p>This is a simple but powerful sample application that demonstrates usage of inserting, finding, and deleting documents using stargate-mongoose and the JSON API. If you’d like to dig more into the details of these components, keep reading for a guided tour.</p>
 
-<p>Ok, onto the code!</p>
+<h2 id="get-to-know-stargate-mongoose">Get to know Stargate-mongoose</h2>
 
-<h2 id="posts-in-tiktok">Posts in TikTok</h2>
+<p>To get more detail on stargate-mongoose, check out the GitHub repo. Once you’re there you can follow the <a href="https://github.com/stargate/stargate-mongoose#quickstart">quickstart</a> instructions and then read the developer guide for more details on how the project is built and packaged.</p>
 
-<p>We are going to walk through using Stargate’s APIs in Astra for creating and updating posts within a TikTok clone. We’re walking through examples that are ready to be pasted into your latest Jamstack app.</p>
+<p>One portion new users may find useful is the feature matrix, which describes which Mongoose operations are supported. We plan to keep this updated as the implementation matures.</p>
 
-<p>To use Stargate in Astra in your app, first install and set up our <a href="https://www.npmjs.com/package/@astrajs/collections">JavaScript SDK</a>. You can learn about storing environment <a href="https://www.youtube.com/watch?v=vSmzEGZQI5A">variables in your .env file here</a>.</p>
+<h2 id="get-to-know-json-api">Get to know JSON API</h2>
 
-<p>Let’s start with a basic TikTok post: a video with a caption, like:</p>
+<p>The stargate-mongoose package is all that most JavaScript developers will need, and the Mongoose developer experience is our primary focus for now. Mongoose and other application developers may still be interested in digging into the details of the new JSON API.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">"</span><span class="s2">postId</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">video</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://i.imgur.com/FTBP02Y.mp4</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">caption</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">These ducks are cute</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">timestamp</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2020-12-09T09:08:31.020Z</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">likes</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="p">}</span></code></pre></figure>
+<p>The easiest way to experience the JSON API directly is to make use of the new JSON API <a href="https://www.postman.com/datastax/workspace/stargate-cassandra/collection/25879866-266032b1-1fe9-4abd-aee9-e6e4b335f921">project</a> under the Stargate-Cassandra Postman <a href="https://www.postman.com/datastax/workspace/stargate-cassandra/overview">workspace</a>. You can use the same Docker-based installation described in the previous section, or use the quickstart instructions on the <a href="https://github.com/stargate/jsonapi#readme">JSON API README</a>. The README also describes how you can access the Swagger UI on your local installation.</p>
 
-<p>After connecting to Stargate in Astra with a nodejs client, let’s create a new collection in our app and add the post with:</p>
+<p>For a more formal definition of the API, including naming conventions, limits, and error codes, please take a look at the <a href="https://github.com/stargate/jsonapi/tree/main/docs">specifications</a> under the project docs directory.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">postsCollection</span> <span class="o">=</span> <span class="nx">astraClient</span><span class="p">.</span><span class="nx">namespace</span><span class="p">(</span><span class="dl">"</span><span class="s2">tikTokClone</span><span class="dl">"</span><span class="p">).</span>
-  <span class="nx">collection</span><span class="p">(</span><span class="dl">"</span><span class="s2">posts</span><span class="dl">"</span><span class="p">);</span>
+<p>Those of you with a Cassandra background may wonder how we are storing JSON documents so that they can be retrieved efficiently. While the original Stargate Docs API used a technique known as <a href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">shredding</a> to break up a document into smaller pieces, there were some shortcomings with this design due to the fact that the pieces were stored in multiple rows in the underlying database. For the JSON API, we’re using an improved approach known as “super shredding” which Aaron Morton described in his talk at <a href="https://www.cassandrasummit.org/cassandra-forward">Cassandra Forward</a>. Stay tuned for an upcoming blog where we’ll discuss super shredding in more detail.</p>
 
-<span class="kd">const</span> <span class="nx">post</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">postsCollection</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span></code></pre></figure>
+<h2 id="your-feedback">Your feedback</h2>
 
-<p>If you’ve ever used Cassandra before, you know this is amazing. Look at what we didn’t do: no data modeling, no table creation, no configuration code, no partition keys, no clustering columns. I think you get my drift.</p>
-
-<p>Stargate in Astra allows you to add data to Apache Cassandra in one line of code.</p>
-
-<p>This level of ease of use hasn’t previously been possible with Cassandra. Insert JSON and move on.</p>
-
-<p>Next up, let’s say you want to find all posts about ducks. You can do that via:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// find all posts about ducks</span>
-<span class="kd">const</span> <span class="nx">posts</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">postsCollection</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">caption</span><span class="p">:</span> 
-  <span class="p">{</span> <span class="na">$in</span><span class="p">:</span>  <span class="p">[</span><span class="dl">"</span><span class="s2">ducks</span><span class="dl">"</span><span class="p">]</span> <span class="p">}</span> <span class="p">});</span></code></pre></figure>
-
-<p>And boom. Now you have your ducks channel all set up for your users. Because who doesn’t want a stream fully dedicated to ducks?</p>
-
-<p>Now, your app isn’t going to <a href="https://www.newsweek.com/twitter-fleets-reactions-memes-edit-button-1548037">be like Twitter</a>. We can edit stuff here. Let’s show how to edit your post’s caption. Stories tho? That’s on you</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// update the post’s caption</span>
-<span class="kd">const</span> <span class="nx">post</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">postsCollection</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">documentId</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">caption</span><span class="p">:</span> <span class="dl">"</span><span class="s2">These ducks are MEGA cute</span><span class="dl">"</span><span class="p">,</span>
-<span class="p">});</span></code></pre></figure>
-
-<p>The above was just a quick tour on how to do a few data API calls for a basic TikTok clone. Want to see the full thing? Check out <a href="https://www.youtube.com/watch?v=IATOicvih5A">Ania Kubow</a>’s tutorial to see how to wire this up into a full React app with Netlify.</p>
-
-<h2 id="whats-next">What’s next?</h2>
-
-<p>For more examples, we have hands-on tutorials for using <a href="https://www.datastax.com/dev/rest">Stargate’s REST</a>, <a href="https://www.datastax.com/dev/documents-api">Document</a> and <a href="https://www.datastax.com/dev/graphql">GraphQL APIs</a>. Check ‘em out and let us know what you think.</p>
-
-<p>Have an app idea or want to join the fun? <a href="https://discord.gg/2Xt8QNyFZA">You can join the Stargate community, too</a>.</p>
-
-<p>We would love to see how you customize your TikTok clone to show off more ways to feature data in your app. Or, you can create your own non-TikTok example. We would love to showcase your example in our <a href="https://astra.datastax.com/sample-app-gallery">sample app gallery</a>, so tell us about it in <a href="https://discord.gg/33mKDHHFUE">our contribute channel</a>.</p>
-
-<h2 id="so-you-are-down-here-looking-for-a-few-more-details">So, you are down here looking for a few more details</h2>
-<p>If you came down here, maybe you are looking for a few more lines of code.</p>
-
-<p>No problem.</p>
-
-<p>Let’s show how to set up the node JS client and a few more data API calls. For starters, let’s take a look at how to set up your client to connect to Stargate in Astra.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// npm install @astrajs/collections</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">createClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@astrajs/collections</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="c1">// create an Astra client</span>
-<span class="kd">const</span> <span class="nx">astraClient</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">createClient</span><span class="p">(</span>
-<span class="p">{</span>   <span class="na">astraDatabaseId</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ASTRA_DB_ID</span><span class="p">,</span>
-    <span class="na">astraDatabaseRegion</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ASTRA_DB_REGION</span><span class="p">,</span>
-    <span class="na">username</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ASTRA_DB_USERNAME</span><span class="p">,</span>
-    <span class="na">password</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ASTRA_DB_PASSWORD</span><span class="p">,</span>
-<span class="p">});</span></code></pre></figure>
-
-<p>Easy enough.</p>
-
-<p>Then, let’s create a users collection in our database to store documents about our TikTok users:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// create the users collection in the app</span>
-<span class="kd">const</span> <span class="nx">usersCollection</span> <span class="o">=</span> <span class="nx">astraClient</span><span class="p">.</span><span class="nx">namespace</span><span class="p">(</span><span class="dl">"</span><span class="s2">tikTokClone</span><span class="dl">"</span><span class="p">).</span><span class="nx">collection</span><span class="p">(</span><span class="dl">"</span><span class="s2">users</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
-
-<p>A TikTok user in our app will have the basics: a unique id, a name, username, etc.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">userData</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">"</span><span class="s2">id_3</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Mo Farooq</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mofarooq32</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">avatar</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://i.imgur.com/9KYq7VG.png</span><span class="dl">"</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>So, let’s add our user into our collection:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// create a new user</span>
-<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">usersCollection</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">userData</span><span class="p">);</span></code></pre></figure>
-
-<p>You can check to make sure your user was stored in the database by reading the user back by any of their properties, like their username.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// find our user by username</span>
-<span class="kd">const</span> <span class="nx">users</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">usersCollection</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">username</span><span class="p">:</span> <span class="p">{</span> <span class="na">$eq</span><span class="p">:</span> 
-  <span class="dl">"</span><span class="s2">mofarooq32</span><span class="dl">"</span> <span class="p">}</span> <span class="p">});</span></code></pre></figure>
-
-<p>Or, you can lookup a user by their <strong>documentId</strong>:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// get the user by document id</span>
-<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">usersCollection</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">documentId</span><span class="p">);</span></code></pre></figure>
-
-<p>And, lastly, if you need to delete that user:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// delete the user</span>
-<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">usersCollection</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">documentId</span><span class="p">);</span></code></pre></figure>
-
-<p>Want to see the full code? Check out <a href="https://github.com/kubowania/stargate-tik-tok">Ania Kubow’s app</a> to get all the goodness and start customizing it on your own. Let me know when you have stories up and I can subscribe to your ducks channel.</p>
-
-<p>Thank you for following along all the way down here.</p>
-
-<p>Happy building!</p>
+<p>We’d love to hear feedback on any aspect of this project - the sample applications, specifications, tests and code, compatibility choices - anything and everything! As always, we’re available on <a href="https://discord.com/invite/HHtMAvjaZB">Discord</a> - see the new #stargate-mongoose and #json-api channels. You can also use issues and discussions on our GitHub repos.</p>
 
 
         </div>
@@ -375,19 +266,19 @@
 
 
 
-<div class="share-button facebook" title="Share this on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstargate.io%2F2020%2F12%2F09%2Fannouncing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html')">
+<div class="share-button facebook" title="Share this on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstargate.io%2F2023%2F03%2F13%2Fintroduce-stargate-mongoose.html')">
   <svg width="1em" height="1em" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M25 0H3C2.20435 0 1.44129 0.316071 0.87868 0.87868C0.31607 1.44129 0 2.20435 0 3L0 25C0 25.7957 0.31607 26.5587 0.87868 27.1213C1.44129 27.6839 2.20435 28 3 28H11.5781V18.4806H7.64062V14H11.5781V10.585C11.5781 6.70063 13.8906 4.555 17.4325 4.555C19.1288 4.555 20.9025 4.8575 20.9025 4.8575V8.67H18.9481C17.0225 8.67 16.4219 9.865 16.4219 11.0906V14H20.7206L20.0331 18.4806H16.4219V28H25C25.7957 28 26.5587 27.6839 27.1213 27.1213C27.6839 26.5587 28 25.7957 28 25V3C28 2.20435 27.6839 1.44129 27.1213 0.87868C26.5587 0.316071 25.7957 0 25 0Z" fill="currentColor"></path>
   </svg>
 
 </div>
-<div class="share-button twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fstargate.io%2F2020%2F12%2F09%2Fannouncing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html&amp;tw_p=tweetbutton');">
+<div class="share-button twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fstargate.io%2F2023%2F03%2F13%2Fintroduce-stargate-mongoose.html&amp;tw_p=tweetbutton');">
   <svg width="1em" height="1em" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M25 0H3C1.34375 0 0 1.34375 0 3V25C0 26.6563 1.34375 28 3 28H25C26.6562 28 28 26.6563 28 25V3C28 1.34375 26.6562 0 25 0ZM21.9438 9.925C21.9563 10.1 21.9562 10.2813 21.9562 10.4563C21.9562 15.875 17.8313 22.1188 10.2937 22.1188C7.96875 22.1188 5.8125 21.4438 4 20.2813C4.33125 20.3188 4.65 20.3313 4.9875 20.3313C6.90625 20.3313 8.66875 19.6813 10.075 18.5813C8.275 18.5438 6.7625 17.3625 6.24375 15.7375C6.875 15.8313 7.44375 15.8313 8.09375 15.6625C6.21875 15.2813 4.8125 13.6313 4.8125 11.6375V11.5875C5.35625 11.8938 5.99375 12.0813 6.6625 12.1063C6.10027 11.7323 5.63936 11.2249 5.32092 10.6295C5.00247 10.034 4.83639 9.369 4.8375 8.69375C4.8375 7.93125 5.0375 7.23125 5.39375 6.625C7.4125 9.1125 10.4438 10.7375 13.8438 10.9125C13.2625 8.13125 15.3438 5.875 17.8438 5.875C19.025 5.875 20.0875 6.36875 20.8375 7.16875C21.7625 6.99375 22.65 6.65 23.4375 6.18125C23.1313 7.13125 22.4875 7.93125 21.6375 8.4375C22.4625 8.35 23.2625 8.11875 24 7.8C23.4438 8.61875 22.7438 9.34375 21.9438 9.925Z" fill="currentColor"></path>
   </svg>
 
 </div>
-<div class="share-button linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fstargate.io%2F2020%2F12%2F09%2Fannouncing-stargate-10-ga-rest-graphql-schemaless-json-for-your-cassandra-development.html');">
+<div class="share-button linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fstargate.io%2F2023%2F03%2F13%2Fintroduce-stargate-mongoose.html');">
   <svg width="1em" height="1em" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M26 0H1.99375C0.89375 0 0 0.90625 0 2.01875V25.9813C0 27.0938 0.89375 28 1.99375 28H26C27.1 28 28 27.0938 28 25.9813V2.01875C28 0.90625 27.1 0 26 0ZM8.4625 24H4.3125V10.6375H8.46875V24H8.4625ZM6.3875 8.8125C5.05625 8.8125 3.98125 7.73125 3.98125 6.40625C3.98125 5.08125 5.05625 4 6.3875 4C7.7125 4 8.79375 5.08125 8.79375 6.40625C8.79375 7.7375 7.71875 8.8125 6.3875 8.8125ZM24.0187 24H19.8687V17.5C19.8687 15.95 19.8375 13.9563 17.7125 13.9563C15.55 13.9563 15.2188 15.6438 15.2188 17.3875V24H11.0688V10.6375H15.05V12.4625H15.1062C15.6625 11.4125 17.0188 10.3063 19.0375 10.3063C23.2375 10.3063 24.0187 13.075 24.0187 16.675V24Z" fill="currentColor"></path>
   </svg>

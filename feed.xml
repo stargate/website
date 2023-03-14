@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2023-01-20T15:58:17+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Stargate Community Update December 2022</title><link href="https://stargate.io/2022/12/18/year-end-update.html" rel="alternate" type="text/html" title="Stargate Community Update December 2022" /><published>2022-12-18T06:00:00+00:00</published><updated>2022-12-18T06:00:00+00:00</updated><id>https://stargate.io/2022/12/18/year-end-update</id><content type="html" xml:base="https://stargate.io/2022/12/18/year-end-update.html"><![CDATA[<p>Hello Stargate community! It’s hard to believe it’s already been two months since the <a href="https://stargate.io/2022/10/26/stargate-v2-ga.html">GA release</a> of Stargate v2! There’s been a lot of activity on the project since that milestone and we wanted to share a few recent highlights as we begin to close out the year:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://stargate.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://stargate.io/" rel="alternate" type="text/html" /><updated>2023-03-14T01:42:52+00:00</updated><id>https://stargate.io/feed.xml</id><title type="html">Stargate</title><subtitle>An open source API framework for data.</subtitle><author><name></name></author><entry><title type="html">Introducing Stargate Mongoose and JSON API</title><link href="https://stargate.io/2023/03/13/introduce-stargate-mongoose.html" rel="alternate" type="text/html" title="Introducing Stargate Mongoose and JSON API" /><published>2023-03-13T06:00:00+00:00</published><updated>2023-03-13T06:00:00+00:00</updated><id>https://stargate.io/2023/03/13/introduce-stargate-mongoose</id><content type="html" xml:base="https://stargate.io/2023/03/13/introduce-stargate-mongoose.html"><![CDATA[<p>The Stargate team is excited to share a new initiative that has the potential to bring Stargate and Apache Cassandra to a whole new audience: JavaScript developers. As Mark Stone noted in his recent blog “<a href="https://thenewstack.io/api-magic-building-data-services-with-apache-cassandra/">API Magic: Building Data Services with Apache Cassandra</a>”, we’re exploring the idea of making Stargate APIs more idiomatic and less Cassandra-centric in order to broaden our community and improve the developer experience. In his follow up post “<a href="https://thenewstack.io/mongoose-bringing-json-oriented-developers-to-apache-cassandra/">Mongoose: Bringing JSON-Oriented Developers to Apache Cassandra</a>”, Mark discusses why we chose to partner with the JavaScript community, particularly via the <a href="https://mongoosejs.com/">Mongoose.js</a> project.</p>
+
+<p>This post builds on Mark’s posts to give you a guide to how to try out this new capability. If you’ve been tracking the <a href="https://github.com/stargate">Stargate GitHub organization</a>, you may have already seen some new repositories popping up, or perhaps you’ve seen the presentations at the recent <a href="https://www.cassandrasummit.org/cassandra-forward">Cassandra Forward</a> online event. In any case, it’s definitely time for us to share what we’ve built so far. We’re adding a couple of new components to the Stargate project, which you can see captured in the following figure.</p>
+
+<p><img src="/assets/images/stargate-mongoose/stargate-mongoose-architecture.png" alt="Stargate Architecture including stargate-mongoose and JSON API" /></p>
+
+<p>The major new pieces are highlighted in the upper left: the stargate-mongoose JavaScript library, and the JSON API. These new components ha have resulted in the addition of three new repositories:</p>
+
+<ul>
+  <li><a href="https://github.com/stargate/jsonapi">stargate/jsonapi</a> - this repository contains a new document-oriented API known as JSON API. While Stargate has provided a document-oriented API for some time, feedback we’ve received made it clear that significant improvements were needed. We went back to the drawing board and instead of creating a “Document API v3”, we designed JSON API v1 - a completely new API. This API is more idiomatic to the way developers expect a document-oriented API to work and doesn’t require any Cassandra knowledge to use.</li>
+  <li><a href="https://github.com/stargate/stargate-mongoose">stargate/stargate-mongoose</a> - this repository is a fork of the hugely popular <a href="https://github.com/Automattic/mongoose">Mongoose.js repository</a> that includes the option to use the Stargate JSON API as its storage backend. The <a href="https://www.npmjs.com/package/stargate-mongoose">NPM package</a> it builds can be used as a drop-in replacement for the <a href="https://mongoosejs.com/">Mongoose</a> Object Data Modeling (ODM) library, instantly bringing the power and scalability of Apache Cassandra to JavaScript applications.</li>
+  <li><a href="https://github.com/stargate/stargate-mongoose-sample-apps">stargate/stargate-mongoose-sample-apps</a> - Valeri Karpov, creator of the Mongoose project, has ported three Mongoose sample apps to work with the stargate-mongoose client and graciously donated this code to the Stargate project.</li>
+</ul>
+
+<p>Please note that these are just the initial versions of new software and are currently considered to be of Alpha quality, with Beta and General Availability (GA) releases targeted for both open source and DataStax Astra in the months to come.</p>
+
+<p>We’re doing all this work in public to get as much feedback as early as possible to set the best direction for the project, which is why we’d love to have you take all this for a test drive….</p>
+
+<h2 id="getting-started-with-stargate-mongoose-and-json-api">Getting Started with stargate-mongoose and JSON API</h2>
+
+<p>The easiest way to try this out is with our downloadable demo. Start at the <a href="https://github.com/stargate/stargate-mongoose-sample-apps">stargate-mongoose-sample-apps</a> repository and follow the instructions provided there to run the E-commerce application. You’ll deploy the app as a local <a href="https://www.netlify.com/">Netlify</a> <a href="https://www.netlify.com/products/functions/">Functions</a> application, with the supporting infrastructure (JSON API, Stargate Coordinator, Apache Cassandra) running in Docker.</p>
+
+<p><img src="/assets/images/stargate-mongoose/stargate-mongoose-demo.png" alt="E-commerce sample app for stargate-mongoose" /></p>
+
+<p>This is a simple but powerful sample application that demonstrates usage of inserting, finding, and deleting documents using stargate-mongoose and the JSON API. If you’d like to dig more into the details of these components, keep reading for a guided tour.</p>
+
+<h2 id="get-to-know-stargate-mongoose">Get to know Stargate-mongoose</h2>
+
+<p>To get more detail on stargate-mongoose, check out the GitHub repo. Once you’re there you can follow the <a href="https://github.com/stargate/stargate-mongoose#quickstart">quickstart</a> instructions and then read the developer guide for more details on how the project is built and packaged.</p>
+
+<p>One portion new users may find useful is the feature matrix, which describes which Mongoose operations are supported. We plan to keep this updated as the implementation matures.</p>
+
+<h2 id="get-to-know-json-api">Get to know JSON API</h2>
+
+<p>The stargate-mongoose package is all that most JavaScript developers will need, and the Mongoose developer experience is our primary focus for now. Mongoose and other application developers may still be interested in digging into the details of the new JSON API.</p>
+
+<p>The easiest way to experience the JSON API directly is to make use of the new JSON API <a href="https://www.postman.com/datastax/workspace/stargate-cassandra/collection/25879866-266032b1-1fe9-4abd-aee9-e6e4b335f921">project</a> under the Stargate-Cassandra Postman <a href="https://www.postman.com/datastax/workspace/stargate-cassandra/overview">workspace</a>. You can use the same Docker-based installation described in the previous section, or use the quickstart instructions on the <a href="https://github.com/stargate/jsonapi#readme">JSON API README</a>. The README also describes how you can access the Swagger UI on your local installation.</p>
+
+<p>For a more formal definition of the API, including naming conventions, limits, and error codes, please take a look at the <a href="https://github.com/stargate/jsonapi/tree/main/docs">specifications</a> under the project docs directory.</p>
+
+<p>Those of you with a Cassandra background may wonder how we are storing JSON documents so that they can be retrieved efficiently. While the original Stargate Docs API used a technique known as <a href="https://stargate.io/2020/10/19/the-stargate-cassandra-documents-api.html">shredding</a> to break up a document into smaller pieces, there were some shortcomings with this design due to the fact that the pieces were stored in multiple rows in the underlying database. For the JSON API, we’re using an improved approach known as “super shredding” which Aaron Morton described in his talk at <a href="https://www.cassandrasummit.org/cassandra-forward">Cassandra Forward</a>. Stay tuned for an upcoming blog where we’ll discuss super shredding in more detail.</p>
+
+<h2 id="your-feedback">Your feedback</h2>
+
+<p>We’d love to hear feedback on any aspect of this project - the sample applications, specifications, tests and code, compatibility choices - anything and everything! As always, we’re available on <a href="https://discord.com/invite/HHtMAvjaZB">Discord</a> - see the new #stargate-mongoose and #json-api channels. You can also use issues and discussions on our GitHub repos.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[The Stargate team is excited to share a new initiative that has the potential to bring Stargate and Apache Cassandra to a whole new audience: JavaScript developers. As Mark Stone noted in his recent blog “API Magic: Building Data Services with Apache Cassandra”, we’re exploring the idea of making Stargate APIs more idiomatic and less Cassandra-centric in order to broaden our community and improve the developer experience. In his follow up post “Mongoose: Bringing JSON-Oriented Developers to Apache Cassandra”, Mark discusses why we chose to partner with the JavaScript community, particularly via the Mongoose.js project.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stargate Community Update December 2022</title><link href="https://stargate.io/2022/12/18/year-end-update.html" rel="alternate" type="text/html" title="Stargate Community Update December 2022" /><published>2022-12-18T06:00:00+00:00</published><updated>2022-12-18T06:00:00+00:00</updated><id>https://stargate.io/2022/12/18/year-end-update</id><content type="html" xml:base="https://stargate.io/2022/12/18/year-end-update.html"><![CDATA[<p>Hello Stargate community! It’s hard to believe it’s already been two months since the <a href="https://stargate.io/2022/10/26/stargate-v2-ga.html">GA release</a> of Stargate v2! There’s been a lot of activity on the project since that milestone and we wanted to share a few recent highlights as we begin to close out the year:</p>
 
 <ul>
   <li><strong>Dynamo Adapter Prototype</strong> - since February, the Stargate core team have had the privilege of mentoring a team of students from Carnegie Mellon University pursuing their Master of Computational Data Science degree. After sharing about their work in the Spring 2022 semester on the <a href="https://stargate.io/2022/05/23/towards-dynamodb-compatibility-for-cassandra.html">first half of the project</a>, Boxuan Li, Ziyan Zhang and Xiang Yue have now completed a prototype of a <a href="https://github.com/stargate/dynamoDB-adapter" rel="nofollow">DynamoDB Adapter</a> for Stargate, which they have generously donated to the Stargate project. You can see a <a href="https://www.youtube.com/watch?v=7ZUD2J8wGLI">demo</a> on YouTube. We’d love to continue work on this prototype with future student groups or other interested community members, as it is an important validation of the v2 architecture.</li>
@@ -585,167 +629,4 @@ cd docker-compose
 
 <p>Github will also gradually rename their own internal repositories over time. This reflects the difficulty that Github and other organizations face – it’s hard to rename something that is in active use.</p>
 
-<p>Hard, but not impossible, and it’s the right thing to do. We at the Stargate project are following suit. We’ll use <code class="language-plaintext highlighter-rouge">main</code> as the name of our primary branch going forward, and we are actively renaming existing primary branches to be named <code class="language-plaintext highlighter-rouge">main</code>. The Docs repo is the first to get renamed. Others will follow. We can’t let inertia be an impediment. We want our work on Stargate to be open, transparent, and inclusive. This is a necessary step to align with the virtue of inclusivity.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Starting in October 2020, all new source code repositories created on GitHub have a primary branch named main instead of master as part of the company’s effort to remove unnecessary references to slavery and replace them with more inclusive terms. This “fix forward first” approach is the first step in making systemic changes to the naming conventions.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Native Driver Alternatives Using Stargate gRPC API in Java</title><link href="https://stargate.io/2021/11/29/native-driver-alternatives-using-stargate-grpc-api-in-java.html" rel="alternate" type="text/html" title="Native Driver Alternatives Using Stargate gRPC API in Java" /><published>2021-11-29T06:00:00+00:00</published><updated>2021-11-29T06:00:00+00:00</updated><id>https://stargate.io/2021/11/29/native-driver-alternatives-using-stargate-grpc-api-in-java</id><content type="html" xml:base="https://stargate.io/2021/11/29/native-driver-alternatives-using-stargate-grpc-api-in-java.html"><![CDATA[<p>Developers should be able to build highly scalable apps even when they call multilingual and multi-cloud microservices. That’s why the Stargate team recently made a new API generally available to help developers build applications with their preferred language.</p>
-
-<p>The new API is called <a href="https://dtsx.io/2Z2nCfU">gRPC Remote Procedure Call</a> (gRPC), and we built it on the framework created by Google. In this post, we’ll show you how easy it is to start using this API from the Java ecosystem. We’ll also explain the basic methods exposed to the clients that allow us to interact with the gRPC API.</p>
-
-<p>The setup is simple. The generated code based on protobuf files (<code class="language-plaintext highlighter-rouge">query.proto</code> and <code class="language-plaintext highlighter-rouge">stargate.proto</code>) is shipped with the <code class="language-plaintext highlighter-rouge">grpc-proto</code> dependency. In your client application, you only need to add two dependencies, the client and a functional channel service provider. In this example we picked netty:</p>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
-    <span class="nt">&lt;dependency&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>io.stargate.grpc<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>grpc-proto<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>1.0.40<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;/dependency&gt;</span>
-    <span class="nt">&lt;dependency&gt;</span>
-         <span class="nt">&lt;groupId&gt;</span>io.grpc<span class="nt">&lt;/groupId&gt;</span>
-         <span class="nt">&lt;artifactId&gt;</span>grpc-netty-shaded<span class="nt">&lt;/artifactId&gt;</span>
-         <span class="nt">&lt;version&gt;</span>1.40.1<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;/dependencies&gt;</span>
-</code></pre></div></div>
-
-<p>If you don’t add the <code class="language-plaintext highlighter-rouge">grpc-netty-shaded</code>, you’ll get the following error:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No functional channel service provider found. Try adding a dependency on the grpc-okhttp, grpc-netty, or grpc-netty-shaded artifact.
-</code></pre></div></div>
-
-<p>Once we have all the needed dependencies we should be able to use the Stargate gRPC-stub API.</p>
-
-<p>After this step, you should have <code class="language-plaintext highlighter-rouge">StargateGrpc</code> available on your classpath from the <code class="language-plaintext highlighter-rouge">grpc-proto</code> dependency. It contains the logic for interacting with Stargate gRPC API.</p>
-
-<h2 id="putting-the-stargate-grpc-api-to-use">Putting the Stargate gRPC API to use</h2>
-
-<p>Once we have the generated code with the <code class="language-plaintext highlighter-rouge">StargateGrpc</code> class shipped within <code class="language-plaintext highlighter-rouge">grpc-proto</code> dependency, we’re ready to create the client.</p>
-
-<p>Before delving into the code, we need to generate the auth token that will be used to perform authorization. Please visit the <a href="https://dtsx.io/3csSw47">Stargate Authz documentation</a> for a guide on this. Here’s some code that will work for our needs:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s1">'localhost:8081/v1/auth'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">'{
-    "username": "cassandra",
-    "password": "cassandra"
-}'</span>
-</code></pre></div></div>
-
-<p>In this snippet, we’re assuming that Stargate is running on the <code class="language-plaintext highlighter-rouge">localhost:8081</code>. Once we have that, we can connect to the gRPC API. First, we need to generate the <code class="language-plaintext highlighter-rouge">Channel</code> that is used to perform the connection:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">ManagedChannel</span> <span class="nf">createChannel</span><span class="o">(</span><span class="nc">String</span> <span class="n">host</span><span class="o">,</span> <span class="kt">int</span> <span class="n">port</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="nc">ManagedChannelBuilder</span><span class="o">.</span><span class="na">forAddress</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">).</span><span class="na">usePlaintext</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Please note that <code class="language-plaintext highlighter-rouge">usePlaintext()</code> should only be used for development and testing. When used in a production environment it should use a load balancer that terminates transport layer security (TLS). For local development of Stargate, it will be:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ManagedChannel</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">createChannel</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="mi">8090</span><span class="o">);</span>
-</code></pre></div></div>
-
-<p>Next, we can generate the <code class="language-plaintext highlighter-rouge">StargateGrpc</code> stub. There are two ways of interacting with the gRPC API. The first one is synchronous (blocking):</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">io.stargate.grpc.StargateBearerToken</span><span class="o">;</span>
-
-<span class="nc">StargateGrpc</span><span class="o">.</span><span class="na">StargateBlockingStub</span> <span class="n">blockingStub</span> <span class="o">=</span> <span class="nc">StargateGrpc</span><span class="o">.</span><span class="na">newBlockingStub</span><span class="o">(</span><span class="n">channel</span><span class="o">)</span>
-     <span class="o">.</span><span class="na">withCallCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">StargateBearerToken</span><span class="o">(</span><span class="s">"token-value"</span><span class="o">))</span>
-</code></pre></div></div>
-
-<p>The second way of interacting is asynchronous (non-blocking):</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StargateGrpc</span><span class="o">.</span><span class="na">StargateStub</span> <span class="o">=</span> <span class="nc">StargateGrpc</span><span class="o">.</span><span class="na">newStub</span><span class="o">(</span><span class="n">channel</span><span class="o">)</span>
-        <span class="o">.</span><span class="na">withCallCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">StargateBearerToken</span><span class="o">(</span><span class="s">"token-value"</span><span class="o">));</span>
-</code></pre></div></div>
-
-<p>We will focus on the blocking approach in this example since it is simpler to illustrate. Please be aware that for your use case you might need to use the second approach.</p>
-
-<p>We need to set up the <code class="language-plaintext highlighter-rouge">CallCredentials</code>, using the <code class="language-plaintext highlighter-rouge">token-value</code> generated in the previous step. We will assume that all queries are executed within the existing keyspace <code class="language-plaintext highlighter-rouge">ks</code> and table <code class="language-plaintext highlighter-rouge">test</code>. The table definition is as follows:</p>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="n">test</span> <span class="p">(</span><span class="n">k</span> <span class="nb">text</span><span class="p">,</span> <span class="n">v</span> <span class="nb">int</span><span class="p">,</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">));</span>
-</code></pre></div></div>
-
-<p>The Stargate gRPC API provides a way to execute two types of queries: Standard CQL queries and batch queries containing N CQL queries.</p>
-
-<h2 id="build-and-execute-a-standard-query-with-the-grpc-api">Build and execute a standard query with the gRPC API</h2>
-
-<p>When we want to run a standard query we can start by inserting a record using the gRPC stub:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">io.stargate.proto.QueryOuterClass.Response</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.stargate.proto.QueryOuterClass</span><span class="o">;</span>
-
-<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">blockingStub</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span>
-        <span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">Query</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">setCql</span><span class="o">(</span><span class="s">"INSERT INTO ks.test (k, v) VALUES ('a', 1)"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">build</span><span class="o">()</span>
-    <span class="o">);</span>
-</code></pre></div></div>
-
-<p>This will build and execute a single query. Next, we can retrieve the inserted record(s):</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span>
-    <span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">Query</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">setCql</span><span class="o">(</span><span class="s">"SELECT k, v FROM ks.test"</span><span class="o">)</span>
-        <span class="o">.</span><span class="na">build</span><span class="o">()</span>
-<span class="o">);</span>
-</code></pre></div></div>
-
-<p>If we print out the result set, it will have the following structure:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result_set <span class="o">{</span>
-  data <span class="o">{</span>
-    type_url: <span class="s2">"type.googleapis.com/stargate.ResultSet"</span>
-    value: <span class="s2">"some_binary_data"</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>The value contains the binary data, that we can deserialize. First, we need to unwrap the result set:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getResultSet</span><span class="o">();</span>
-
-<span class="n">rs</span><span class="o">.</span><span class="na">getRows</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">getValues</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">getString</span><span class="o">();</span> <span class="c1">// it will return value for k = "a"</span>
-<span class="n">rs</span><span class="o">.</span><span class="na">getRows</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">getValues</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getInt</span><span class="o">();</span> <span class="c1">// it will return value for v = 1</span>
-</code></pre></div></div>
-
-<p>We can get all rows with the <code class="language-plaintext highlighter-rouge">getRowsList()</code> method and iterate over the result or get the specific row using its index and pass it to the <code class="language-plaintext highlighter-rouge">getRows(int index)</code> method. We picked the latter approach in the example above.</p>
-
-<p>Our retrieval query (<code class="language-plaintext highlighter-rouge">SELECT k, v FROM ks.test</code>) stated explicitly which columns should be retrieved. Because of that, we can safely get the values using their positions via the <code class="language-plaintext highlighter-rouge">getValues()</code> method.</p>
-
-<p>The <code class="language-plaintext highlighter-rouge">getString()</code> and <code class="language-plaintext highlighter-rouge">getInt()</code> perform deserialization of data. These methods were used because we knew the underlying type of the corresponding columns. The API provides utility methods for deserialization for more types as well. For the full list of available types, see <code class="language-plaintext highlighter-rouge">value</code> section in the <a href="https://dtsx.io/3nxrgYI"><code class="language-plaintext highlighter-rouge">query.proto</code></a> file. If you want to iterate over all results, you can with this snippet:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="o">(</span><span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">Row</span> <span class="nl">row:</span> <span class="n">rs</span><span class="o">.</span><span class="na">getRowsList</span><span class="o">()){</span>
-      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">getValuesList</span><span class="o">());</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>This will allow you to operate on a single row. When you execute it, you’ll get the following:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>string: <span class="s2">"a"</span>
-, int: 1 <span class="o">]</span>
-</code></pre></div></div>
-
-<h2 id="run-batch-queries-with-stargate-grpc-api">Run Batch queries with Stargate gRPC API</h2>
-
-<p>In case we want to execute N queries, we can use the <code class="language-plaintext highlighter-rouge">executeBatch</code> method:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">blockingStub</span><span class="o">.</span><span class="na">executeBatch</span><span class="o">(</span>
-    <span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">Batch</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>               
-        <span class="o">.</span><span class="na">addQueries</span><span class="o">(</span>
-            <span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">BatchQuery</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">setCql</span><span class="o">(</span><span class="s">"INSERT INTO ks.test (k, v) VALUES ('a', 1)"</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
-         <span class="o">)</span>          
-         <span class="o">.</span><span class="na">addQueries</span><span class="o">(</span> 
-             <span class="nc">QueryOuterClass</span><span class="o">.</span><span class="na">BatchQuery</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
-                 <span class="o">.</span><span class="na">setCql</span><span class="o">(</span><span class="s">"INSERT INTO ks.test (k, v) VALUES ('b', 2)"</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
-                 <span class="o">)</span>
-                 <span class="o">.</span><span class="na">build</span><span class="o">()</span>
- <span class="o">);</span>
-</code></pre></div></div>
-
-<p>This takes the <code class="language-plaintext highlighter-rouge">Batch</code> as an argument. A <code class="language-plaintext highlighter-rouge">Batch</code> can contain N queries of type <code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code>, or <code class="language-plaintext highlighter-rouge">DELETE</code>. We are adding two queries via the <code class="language-plaintext highlighter-rouge">addQueries</code> method. You can learn more about handling the <code class="language-plaintext highlighter-rouge">Batch</code> request in the <a href="https://dtsx.io/3cs7doc">Batch Documentation</a>.</p>
-
-<p>Now you know how to integrate the gRPC client via <code class="language-plaintext highlighter-rouge">blockingStub</code>. If you want to dive deeper into it take a look at the <a href="https://dtsx.io/2Z2nCfU">Java Client documentation on gRPC</a>.</p>
-
-<h2 id="resources">Resources</h2>
-
-<ol>
-  <li><a href="https://dtsx.io/3qTlaUL">Join the Stargate community</a></li>
-  <li><a href="https://dtsx.io/2Z2nCfU">Using Stargate gRPC API clients for Rust, Go and Node.js</a></li>
-</ol>]]></content><author><name></name></author><summary type="html"><![CDATA[Developers should be able to build highly scalable apps even when they call multilingual and multi-cloud microservices. That’s why the Stargate team recently made a new API generally available to help developers build applications with their preferred language.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>Hard, but not impossible, and it’s the right thing to do. We at the Stargate project are following suit. We’ll use <code class="language-plaintext highlighter-rouge">main</code> as the name of our primary branch going forward, and we are actively renaming existing primary branches to be named <code class="language-plaintext highlighter-rouge">main</code>. The Docs repo is the first to get renamed. Others will follow. We can’t let inertia be an impediment. We want our work on Stargate to be open, transparent, and inclusive. This is a necessary step to align with the virtue of inclusivity.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Starting in October 2020, all new source code repositories created on GitHub have a primary branch named main instead of master as part of the company’s effort to remove unnecessary references to slavery and replace them with more inclusive terms. This “fix forward first” approach is the first step in making systemic changes to the naming conventions.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://stargate.io/assets/images/default-stargate.png" /><media:content medium="image" url="https://stargate.io/assets/images/default-stargate.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
