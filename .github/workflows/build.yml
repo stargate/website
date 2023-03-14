@@ -1,27 +1,33 @@
-name: Validation - Build Jekyll site
+name: Build Jekyll site
 
 on:
   pull_request:
-    branches: [main]
+    branches: 
+    - main
 
 jobs:
-  jekyll:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-    # Use GitHub Actions' cache to shorten build times and decrease load on servers
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-
-    # Standard usage
-    - uses:  helaili/jekyll-action@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        jekyll_src: '_site'
-        target_branch: 'gh-pages'
-        build_only: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.0
+          bundler-cache: true
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+      - name: Install dependencies
+        run: bundle install
+      - name: Build jekyll site
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
