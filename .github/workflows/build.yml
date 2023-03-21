@@ -8,26 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
 
+    steps:
+      - uses: actions/checkout@v3
+
+      # install ruby
+      # action already handles gems caches
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.0
           bundler-cache: true
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
-      - name: Install dependencies
-        run: bundle install
+
+      # simple build only
       - name: Build jekyll site
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
