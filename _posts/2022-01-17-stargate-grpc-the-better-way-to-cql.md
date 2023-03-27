@@ -123,7 +123,7 @@ If your favorite language is not on our list, extending to a new language is not
 
 Thanks to bidirectionality and efficient data serialization, you’ll now get performance on par with native drivers combined with the simplicity of a thin client library, all within a context that plays nicely with the rest of your microservices.
 
-To learn more, head over to [Stargate’s Github](https://github.com/stargate). You can also find source code and examples on [using Stargate gRPC API clients](https://stargate.io/docs/stargate/1.0/developers-guide/gRPC-using.html):
+To learn more, head over to [Stargate’s Github](https://github.com/stargate). You can also find source code and examples on [using Stargate gRPC API clients](https://stargate.io/docs/latest/develop/dev-with-grpc.html):
 
 * [Java client](https://github.com/stargate/stargate-grpc-java-client)
 * [Go client](https://github.com/stargate/stargate-grpc-go-client)
@@ -135,6 +135,6 @@ And, lastly, welcome to the “No Drivers” future of Apache Cassandra.
 ## **Resources**
 
 1. [Stargate - GitHub](https://github.com/stargate)
-2. [Using Stargate gRPC API clients](https://stargate.io/docs/stargate/1.0/developers-guide/gRPC-using.html)
+2. [Using Stargate gRPC API clients](https://stargate.io/docs/latest/develop/dev-with-grpc.html)
 3. [Native Driver Alternatives Using Stargate gRPC API in Java](https://stargate.io/2021/11/29/native-driver-alternatives-using-stargate-grpc-api-in-java)
 
