@@ -31,7 +31,7 @@ It is difficult for users that are already using and/or are familiar with Dynamo
 
 [Stargate](https://stargate.io/) is an open source data gateway that sits between your app and your databases.
 
-Stargate is an open-source middleware that sits on top of a database, e.g. Apache Cassandra. It abstracts Cassandra-specific concepts entirely from app developers and supports different API options, removing barriers of entry for new software developers. Right now, Stargate supports [REST API](https://stargate.io/docs/stargate/1.0/quickstart/quick_start-rest.html), [Document API](https://stargate.io/docs/stargate/1.0/quickstart/quick_start-document.html), [gRPC API](https://stargate.io/docs/stargate/1.0/developers-guide/gRPC.html), and [GraphQL API](https://stargate.io/docs/stargate/1.0/quickstart/quick_start-graphql.html). These different API options are pluggable and can be installed when needed.
+Stargate is an open-source middleware that sits on top of a database, e.g. Apache Cassandra. It abstracts Cassandra-specific concepts entirely from app developers and supports different API options, removing barriers of entry for new software developers. Right now, Stargate supports [REST API](https://stargate.io/docs/latest/quickstart/qs-rest.html), [Document API](https://stargate.io/docs/latest/quickstart/qs-document.html), [gRPC API](https://stargate.io/docs/latest/develop/dev-with-grpc.html), and [GraphQL API](https://stargate.io/docs/latest/quickstart/qs-graphql-cql-first.html). These different API options are pluggable and can be installed when needed.
 
 ## Stargate Architecture
 

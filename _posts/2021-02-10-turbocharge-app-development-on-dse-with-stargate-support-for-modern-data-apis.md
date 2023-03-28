@@ -37,6 +37,6 @@ With this release, Stargate supports DSE 6.8 as one of these pluggable persisten
 — [Jon Lau](https://www.linkedin.com/in/jon-lau-10a81363/), Cassandra DB Platform Owner,  Engineer, Macquarie Group
 
 ## How To Get Started
-Follow our documentation [here](https://stargate.io/docs/stargate/1.0/developers-guide/install/install_dse_68.html) to get started with Stargate. If you’d like to learn more and see how Stargate exposes these endpoints and integrates with DSE, take a look at this [blog post](https://stargate.io/2020/09/14/init-stargate.html) and the [Stargate](https://github.com/stargate/stargate) source code for a deeper dive. The blog post does a great job of explaining the mechanics of Stargate and you can always dig into the code for a more thorough analysis. 
+Follow our documentation [here](https://stargate.io/docs/latest/install/install_dse_68.html) to get started with Stargate. If you’d like to learn more and see how Stargate exposes these endpoints and integrates with DSE, take a look at this [blog post](https://stargate.io/2020/09/14/init-stargate.html) and the [Stargate](https://github.com/stargate/stargate) source code for a deeper dive. The blog post does a great job of explaining the mechanics of Stargate and you can always dig into the code for a more thorough analysis. 
 
 Get started today! [Download Stargate](https://downloads.datastax.com/#stargate) and [sign up for our upcoming webinar](https://www.datastax.com/resources/webinar/create-new-apps-faster-worlds-most-proven-nosql-database-nam)!
