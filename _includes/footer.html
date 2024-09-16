@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-4">
         <p class="copyright">
-          © 2023 Stargate Project Authors
+          © <span id="cyear"></span> Stargate Project Authors
         </p>
       </div>
       <div class="col-md-4">
@@ -53,4 +53,7 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById("cyear").textContent = new Date().getFullYear();
+  </script>
 </footer>
